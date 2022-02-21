@@ -2,6 +2,7 @@
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Anomaly\Streams\Platform\Application\Application;
 
 class DeleteNonExistingCoverPhotos extends Command
 {
@@ -24,7 +25,7 @@ class DeleteNonExistingCoverPhotos extends Command
         foreach ($classifieds as $classified) {
             $name = pathinfo($classified->cover_photo);
 
-            if (!file_exists(storage_path("streams/default/files-module/local/images/{$name['basename']}"))) {
+            if (!file_exists(storage_path("streams/".app(Application::class)->getReference()."/files-module/local/images/{$name['basename']}"))) {
                 $nullableClassifieds[] = $classified->id;
             }
         }
