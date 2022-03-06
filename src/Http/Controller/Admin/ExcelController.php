@@ -1,6 +1,7 @@
 <?php namespace Visiosoft\AdvsModule\Http\Controller\Admin;
 
 use Anomaly\FilesModule\File\Contract\FileRepositoryInterface;
+use Anomaly\Streams\Platform\Application\Application;
 use Anomaly\Streams\Platform\Http\Controller\AdminController;
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
 use Maatwebsite\Excel\Facades\Excel;
@@ -12,7 +13,7 @@ class ExcelController extends AdminController
     {
         if (request()->action == "save" and $file = $fileRepository->find(request()->file)) {
             if ($file->extension === 'xls' || $file->extension === 'xlsx') {
-                $pathToFolder = "/storage/streams/default/files-module/local/ads_excel/";
+                $pathToFolder = "/storage/streams/".app(Application::class)->getReference()."/files-module/local/ads_excel/";
                 Excel::import(new AdvsImport(), base_path() . $pathToFolder . $file->name);
                 $this->messages->success(trans('streams::message.create_success', ['name' => trans('module::addon.title')]));
             }
