@@ -36,7 +36,6 @@ use Visiosoft\CatsModule\Category\CategoryRepository;
 use Visiosoft\LocationModule\Country\Contract\CountryRepositoryInterface;
 use Visiosoft\LocationModule\Country\CountryRepository;
 use Visiosoft\OrdersModule\Orderdetail\Event\CreatedOrderDetail;
-use function Clue\StreamFilter\fun;
 
 class AdvsModuleServiceProvider extends AddonServiceProvider
 {
@@ -50,9 +49,6 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
 
     protected $routes = [
         // Admin AdvsController
-        'admin/users/export' => [
-            'uses' => 'Visiosoft\AdvsModule\Http\Controller\Admin\AdvsController@userExport',
-        ],
         'admin/advs' => [
             'as' => 'visiosoft.module.advs::admin_advs',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\Admin\AdvsController@index',
