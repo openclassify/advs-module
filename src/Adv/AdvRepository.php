@@ -328,6 +328,7 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
                     return '://' . $match[1] . '/' . join('/', array_map('rawurlencode', explode('/', $match[2])));
                 }, $adv->files[0]->make()->url());
 
+
                 $image = Image::make(file_get_contents($url, false, stream_context_create($arrContextOptions)));
                 $image->resize(
                     null,
@@ -461,7 +462,8 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
             ->whereDate('finish_at', '>=', date("Y-m-d H:i:s"))
             ->where('status', 'approved')
             ->where('slug', '!=', '')
-            ->where('cat' . $level, $catID);
+            ->where('cat' . $level, $catID)
+            ->orderBy('publish_at','DESC');
 
         if ($limit) {
             $advs = $advs->limit($limit);
