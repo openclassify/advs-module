@@ -895,7 +895,6 @@ class AdvsController extends PublicController
                 $adv->save();
             }
 
-
             $post = $form->getPostData();
             $post['id'] = $this->request->update_id;
 

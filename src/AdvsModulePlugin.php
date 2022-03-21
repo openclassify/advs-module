@@ -127,7 +127,13 @@ class AdvsModulePlugin extends Plugin
 		        function ($slug) {
 	        		return app(AdvModel::class)->is_enabled($slug);
 		        }
-	        )
+	        ),
+            new \Twig_SimpleFunction(
+                'getByCat',
+                function ($catID = null,$level = '1', $limit = 12) {
+                    return app(AdvRepositoryInterface::class)->getByCat($catID,$level, $limit);
+                }
+            ),
         ];
     }
 
