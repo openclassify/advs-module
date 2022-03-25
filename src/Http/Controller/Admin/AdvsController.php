@@ -37,7 +37,6 @@ class AdvsController extends AdminController
         $this->advsEntryTranslationsModel = $advsEntryTranslationsModel;
         $this->optionRepository = $optionRepository;
     }
-
     public function index(AdvTableBuilder $table)
     {
         $table->addAsset("styles.css", "visiosoft.module.advs::css/custom.css");
