@@ -23,8 +23,8 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
     private $folderRepository;
 
     public function __construct(
-        AdvModel $model,
-        FileRepositoryInterface $fileRepository,
+        AdvModel                  $model,
+        FileRepositoryInterface   $fileRepository,
         FolderRepositoryInterface $folderRepository
     )
     {
@@ -313,7 +313,7 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
             $folder = $this->folderRepository->findBySlug('images');
             $thumbnail = $this->fileRepository->findByNameAndFolder($fileName, $folder);
 
-            if (!$thumbnail AND $ext[1] != 'svg') {
+            if (!$thumbnail and $ext[1] != 'svg') {
 
                 // Create thumbnail image
 
@@ -463,7 +463,7 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
             ->where('status', 'approved')
             ->where('slug', '!=', '')
             ->where('cat' . $level, $catID)
-            ->orderBy('publish_at','DESC');
+            ->orderBy('publish_at', 'DESC');
 
         if ($limit) {
             $advs = $advs->limit($limit);
@@ -765,5 +765,16 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
         }
 
         return [];
+    }
+
+    public function getSimilarAd($id, array $userIds, $limit = 10)
+    {
+        return $this->newQuery()->whereDate('finish_at', '>=', date("Y-m-d H:i:s"))
+            ->where('status', '=', 'approved')
+            ->where('id', '!=', $id)
+            ->where('slug', '!=', '')
+            ->whereIn('created_by_id', $userIds)
+            ->orderBy('publish_at', 'desc')
+            ->inRandomOrder()->limit($limit)->get();
     }
 }
