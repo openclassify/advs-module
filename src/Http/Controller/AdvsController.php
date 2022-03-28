@@ -538,10 +538,9 @@ class AdvsController extends PublicController
             $id = $adv->id;
             $adv->similar_ads = [];
             $storeRepository = app(StoreRepositoryInterface::class);
-            $storeUserIds = $storeRepository->getAllUserByUserId($adv->created_by_id);
-            $usersIds = $storeUserIds->toArray();
-            if (!empty($usersIds)) {
-                $adv->similar_ads = $this->adv_repository->getSimilarAd($id, $usersIds, 6);
+            $similarAds = $storeRepository->getStoresAdsByUserIdRandomlyLimited($adv->created_by_id, 6);
+            if (!empty($similarAds)) {
+                $adv->similar_ads = $similarAds->toArray();
             }
         }
         if ((auth()->user() and auth()->user()->hasRole('admin')) or ($adv && ((!$adv->expired() && $adv->getStatus() === 'approved') || $adv->created_by_id === \auth()->id()))) {
