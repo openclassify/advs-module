@@ -25,25 +25,28 @@ class AdvTableFilters
                     'query' => NameDescFilterQuery::class,
                 ],
                 'country',
-                'id' => [
+                'ID' => [
                     'heading' => 'ID',
                     'filter' => 'input',
                     'query' => IdFilterQuery::class,
                 ],
                 'City' => [
                     'exact' => true,
+                    'placeholder'=> 'visiosoft.module.advs::field.city.name',
                     'filter' => 'select',
                     'query' => CityFilterQuery::class,
                     'options' => $cities,
                 ],
                 'Category' => [
                     'exact' => true,
+                    'placeholder'=> 'visiosoft.module.advs::field.parent_category.name',
                     'filter' => 'select',
                     'query' => CategoryFilterQuery::class,
                     'options' => $categories,
                 ],
                 'user' => [
                     'exact' => true,
+                    'placeholder'=> 'visiosoft.module.advs::field.user',
                     'filter' => 'select',
                     'query' => UserFilterQuery::class,
                 ],

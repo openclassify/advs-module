@@ -95,7 +95,7 @@ return [
         'name' => 'Para Birimi'
     ],
     'status' => [
-        'name' => 'durum',
+        'name' => 'Durum',
         'option' => [
             'approved' => 'Onaylandı',
             'expired' => 'Süresi Doldu',
@@ -391,5 +391,5 @@ return [
     'name_a_z' => 'İlan Başlığı (A\'dan Z\'ye)',
     'name_z_a' => 'İlan Başlığı (Z\'den A\'ya)',
     'select_lang_ads' => 'İlan dilini seçiniz',
-
+    'user' => 'Kullanıcı',
 ];
