@@ -7,6 +7,7 @@ use Anomaly\Streams\Platform\Support\Currency;
 use Anomaly\UsersModule\User\Contract\UserRepositoryInterface;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Http\Request;
+use Illuminate\Session\Store;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Visiosoft\AdvsModule\Adv\AdvModel;
@@ -31,6 +32,7 @@ use Visiosoft\LocationModule\Neighborhood\NeighborhoodModel;
 use Visiosoft\LocationModule\Village\VillageModel;
 use Visiosoft\ProfileModule\Adress\Contract\AdressRepositoryInterface;
 use Visiosoft\SeoModule\Legend\Command\AddMetaData;
+use Visiosoft\StoreModule\Store\Contract\StoreRepositoryInterface;
 
 class AdvsController extends PublicController
 {
@@ -61,33 +63,33 @@ class AdvsController extends PublicController
     private $optionRepository;
 
     public function __construct(
-        UserRepositoryInterface $userRepository,
+        UserRepositoryInterface                $userRepository,
 
-        AdvModel $advModel,
-        AdvRepositoryInterface $advRepository,
+        AdvModel                               $advModel,
+        AdvRepositoryInterface                 $advRepository,
 
         OptionConfigurationRepositoryInterface $optionConfigurationRepository,
 
-        CountryRepositoryInterface $country_repository,
+        CountryRepositoryInterface             $country_repository,
 
-        CityModel $city_model,
-        CityRepository $cityRepository,
+        CityModel                              $city_model,
+        CityRepository                         $cityRepository,
 
-        DistrictModel $district_model,
+        DistrictModel                          $district_model,
 
-        NeighborhoodModel $neighborhood_model,
+        NeighborhoodModel                      $neighborhood_model,
 
-        VillageModel $village_model,
+        VillageModel                           $village_model,
 
-        CategoryRepositoryInterface $category_repository,
+        CategoryRepositoryInterface            $category_repository,
 
-        OptionRepositoryInterface $optionRepository,
+        OptionRepositoryInterface              $optionRepository,
 
-        SettingRepositoryInterface $settings_repository,
+        SettingRepositoryInterface             $settings_repository,
 
-        Dispatcher $events,
+        Dispatcher                             $events,
 
-        Request $request
+        Request                                $request
     )
     {
         $this->userRepository = $userRepository;
@@ -532,7 +534,15 @@ class AdvsController extends PublicController
             $id = $seo;
             $adv = $this->adv_repository->getListItemAdv($id);
         }
-
+        if ($this->adv_model->is_enabled('store')) {
+            $id = $adv->id;
+            $adv->similar_ads = [];
+            $storeRepository = app(StoreRepositoryInterface::class);
+            $similarAds = $storeRepository->getStoresAdsByUserIdRandomlyLimited($adv->created_by_id, 6);
+            if (!empty($similarAds)) {
+                $adv->similar_ads = $similarAds->toArray();
+            }
+        }
         if ((auth()->user() and auth()->user()->hasRole('admin')) or ($adv && ((!$adv->expired() && $adv->getStatus() === 'approved') || $adv->created_by_id === \auth()->id()))) {
             // Check if created by exists
             if ((auth()->user() and !auth()->user()->hasRole('admin')) and !$adv->created_by) {
@@ -777,7 +787,7 @@ class AdvsController extends PublicController
 
     public function store
     (
-        AdvFormBuilder $form,
+        AdvFormBuilder            $form,
         AdressRepositoryInterface $address
     )
     {

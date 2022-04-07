@@ -78,4 +78,6 @@ interface AdvRepositoryInterface extends EntryRepositoryInterface
     public function getClassifiedsByCoordinates($lat, $lng, $distance = 50);
 
     public function getClassifiedsByCatsIDsAndLevels($categories, $limit = 10);
+
+    public function getSimilarAd($id,array $userIds,$limit = 10);
 }
