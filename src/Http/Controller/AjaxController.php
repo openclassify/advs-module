@@ -3,6 +3,7 @@
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
 use Anomaly\Streams\Platform\Support\Currency;
 use Anomaly\UsersModule\User\UserModel;
+use Carbon\Carbon;
 use Visiosoft\AdvsModule\Adv\AdvModel;
 use Illuminate\Http\Request;
 use Visiosoft\AdvsModule\Adv\Contract\AdvRepositoryInterface;
@@ -59,15 +60,22 @@ class AjaxController extends PublicController
     {
         $my_advs = new AdvModel();
         $type = $request->type;
-        if ($type == 'pending') {
+        if ($type === 'pending') {
             $page_title = trans('visiosoft.module.advs::field.pending_adv.name');
             $my_advs = $my_advs->pendingAdvsByUser();
         } else {
             $page_title = trans('visiosoft.module.advs::field.my_adv.name');
             $my_advs = $my_advs->myAdvsByUser();
         }
-        $my_advs = $my_advs->select(['id', 'cover_photo', 'slug', 'price', 'currency', 'city', 'country_id', 'cat1', 'cat2', 'status'])
-                           ->orderByDesc('id');
+        $my_advs = $my_advs
+            ->select(['id', 'cover_photo', 'slug', 'price', 'currency', 'city', 'country_id', 'cat1', 'cat2', 'status', 'created_at'])
+            ->where(function($q) {
+                if ($this->request->search) {
+                    return $q->where('id', 'LIKE', '%' . $this->request->search . '%');
+                }
+                return $q;
+            })
+            ->orderByDesc('id');
 
         if (\request()->paginate === 'true') {
             $my_advs = $advRepository->addAttributes($my_advs->paginate(setting_value('streams::per_page')));
@@ -75,10 +83,11 @@ class AjaxController extends PublicController
             $my_advs = $advRepository->addAttributes($my_advs->get());
         }
 
-        foreach ($my_advs as $index => $ad) {
-            $my_advs[$index]->detail_url = $this->adv_model->getAdvDetailLinkByModel($ad, 'list');
-            $my_advs[$index] = $this->adv_model->AddAdsDefaultCoverImage($ad);
-            $my_advs[$index]->formatted_price = app(Currency::class)->format($ad->price, $ad->currency);
+        foreach ($my_advs as $ad) {
+            $ad->detail_url = $this->adv_model->getAdvDetailLinkByModel($ad, 'list');
+            $ad = $this->adv_model->AddAdsDefaultCoverImage($ad);
+            $ad->formatted_price = app(Currency::class)->format($ad->price, $ad->currency);
+            $ad->date = Carbon::create($ad->created_at)->format('d.m.Y');
         }
 
         return response()->json(['success' => true, 'content' => $my_advs, 'title' => $page_title]);
