@@ -128,14 +128,15 @@ return [
     'google_statistic_code' => [
         'name' => 'Google İstatistik Kodu',
     ],
+    'body_custom_space' => [
+        'name' => 'Body Alanı',
+    ],
     'register_email_field' => [
         'name' => 'Üye Kayıt E-posta Zorunluluğu',
     ],
     'market_place' => [
         'name' => 'Pazar Yeri',
-        'instructions' => 'If the marketplace is down, your site will act as ecommerce. For example,
-	        some fields in the profile such as ads, dopings, messages, sale, packages and store are not visible and
-	        removes corporate membership.'
+        'instructions' => 'Pazaryeri kapalıysa siteniz e-ticaret sitesi görevi görür. Örneğin, profildeki reklamlar, dopingler, mesajlar, satışlar, paketler, mağazalar gibi alanlar ve kurumsal üyelikler görünmez.'
     ],
     'price_area_hidden' => [
         'name' => 'Fiyat Alanı Gizli',
@@ -287,7 +288,28 @@ return [
     'hide_contact_created_at' => [
         'name' => 'Hide Contact Fields For in Create New Ad'
     ],
+    'show_input_flag' => [
+        'name' => 'Girdilerde Bayrak Göster',
+        'instructions' => 'Çevrilebilir girdilerde bayrak ve açıklama göster.'
+    ],
+    'hide_out_of_stock_products_without_listing' => [
+        'name' => 'Stokta olmayan ürünleri gizleyin',
+        'instructions' => 'Stokta olmayan ürünleri listelemede ve ana sayfada gizler.'
+    ],
     'only_email_login' => [
         'name' => 'Sadece Email İle Giriş',
-    ]
+    ],
+    'preview_mode' => [
+        'name' => 'Önizleme Modu',
+        'instructions' => 'Bu mod etkinleştirildiğinde, reklam kullanıcı tarafından önizlenir.'
+    ],
+    'show_order_note' => [
+        'name' => 'Sipariş Notunu Göster',
+        'instructions' => "Müşterilerin siparişlerinin ödemesi onaylandığında özel metni göstermek için kullanılan sipariş notu alanını gösterin."
+    ],
+    'top_right' => 'Sağ Üst',
+    'top_left' => 'Sol Üst',
+    'bottom_right' => 'Sağ Alt',
+    'bottom_left' => 'Sol Alt',
+    'middle' => 'Orta',
 ];

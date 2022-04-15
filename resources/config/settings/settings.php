@@ -342,8 +342,8 @@ return [
         'env' => 'ADV_WATERMARK_POSITION',
         'required' => true,
         'config' => [
-            'options' => ['top-right' => 'Top Right', 'top-left' => 'Top Left', 'bottom-right' => 'Bottom Right',
-                'bottom-left' => 'Bottom Left', 'center' => 'Middle'],
+            'options' => ['top-right' => 'visiosoft.module.advs::setting.top_right', 'top-left' => 'visiosoft.module.advs::setting.top_left', 'bottom-right' => 'visiosoft.module.advs::setting.bottom_right',
+                'bottom-left' => 'visiosoft.module.advs::setting.bottom_left', 'center' => 'visiosoft.module.advs::setting.middle'],
             'default_value' => 'top-right',
         ]
     ],
