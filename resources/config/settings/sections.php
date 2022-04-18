@@ -24,6 +24,7 @@ return [
             'ads' => [
                 'title' => 'visiosoft.module.advs::section.ads',
                 'fields' => [
+                    'extend_ad',
                     'preview_mode',
                     'show_finish_and_publish_date',
                     'latest-limit',

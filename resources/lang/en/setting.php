@@ -309,4 +309,8 @@ return [
         'name' => 'Show Order Note',
         'instructions' => "Show the order note field which is used to show the customers custom text when their order's payment is approved."
     ],
+    'extend_ad' => [
+        'name' => 'Extend Ad',
+        'instructions' => 'It represents the active state of the time extension feature on the My Ads screen.'
+    ],
 ];
