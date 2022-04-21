@@ -372,7 +372,7 @@ return [
     'subscription' => 'Abonelik',
 	'created' => 'Oluşturuldu',
 	'product_option' => [
-		'name' => 'Ürün Seçeneği'
+		'name' => 'İlan Seçeneği'
 	],
 	'option_json' => [
 		'name' => 'Seçenek'

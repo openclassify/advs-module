@@ -137,7 +137,7 @@
                                                            maxlength="2">
                                                 {% endif %}
                                             </div>
-                                            <select name="currency" class="mt-3 border-0 ml-2" id="currency" required>
+                                            <select name="currency" class="mt-3 border-0 ml-2 flex-fill" id="currency" required>
                                                 {% for currency in config_get('streams::currencies.enabled') %}
                                                     <option value="{{ currency }}">
                                                         {{ currency == "TRY" ? currency_symbol(currency) : currency }}
