@@ -293,9 +293,15 @@ class AdvsController extends PublicController
             $ranges = $returnvalues['ranges'];
             $radio = $returnvalues['radio'];
             $text = $returnvalues['text'];
+            
+            $main_list_CFS = app('Visiosoft\CustomfieldsModule\CustomField\Contract\CustomFieldRepositoryInterface')
+                ->getSeenCustomFieldsWithCategory(null);
 
             $listingCFs = app('Visiosoft\CustomfieldsModule\CustomField\Contract\CustomFieldRepositoryInterface')
                 ->getSeenCustomFieldsWithCategory($category);
+
+            $listingCFs = $listingCFs->merge($main_list_CFS);
+            
             foreach ($advs as $adv) {
                 if ($adv->cf_json) {
                     $tempFeatures = app('Visiosoft\CustomfieldsModule\Http\Controller\CustomFieldsController')
