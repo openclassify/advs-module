@@ -258,7 +258,7 @@ return [
     'edit_category' => 'Kategoriyi Düzenle',
     'set_category' => 'Kategoriyi Ayarla',
     'max' => [
-        'name' => 'Maksimum',
+        'name' => 'Max',
     ],
     'min' => [
         'name' => 'Min',
