@@ -2,7 +2,9 @@
 
 {% if setting_value('visiosoft.theme.sahibinden::show_subcategories_on_mobile_view')
 		and subCats|length > 0
-		and request().show != 'all' %}
+		and request().show != 'all'
+		and request().query is empty
+%}
 	<div class="mobile-sub-cats">
 		<ul class="categories-list px-0 mr-2 d-block d-sm-none">
 				<li class="categories-list-li category-icon text-truncate d-flex justify-content-between text-dark">
