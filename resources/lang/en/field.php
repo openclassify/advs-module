@@ -401,4 +401,10 @@ return [
     'undefined_page' => 'Undefined Page',
     'id' => 'ID',
     'custom_field' => 'Custom Field',
+
+    // ads_bar_widget
+    'pending_ads'       => 'Pending Ads',
+    'approved_ads'       => 'Approved Ads',
+    'outdated_ads'       => 'Outdated Ads',
+    'passive_ads'       => 'Passive Ads'
 ];
