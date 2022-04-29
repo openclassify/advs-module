@@ -104,11 +104,11 @@ class AdvsController extends AdminController
                     $adv['currency_standard_price'],
                     $adv['category2'],
                     $adv['thumbnail'],
+                    $adv['video'],
                 );
                 $newAdv = $this->advRepository->create(array_merge($adv, [
                     'slug' => $adv['slug'] . '_' . time(),
                 ]));
-
                 // Replicate ad translations
                 $advTranslations = $this->advsEntryTranslationsModel->newQuery()->where('entry_id', $advID)->get();
                 $translations = array();
