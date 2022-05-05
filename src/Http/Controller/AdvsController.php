@@ -1158,8 +1158,9 @@ class AdvsController extends PublicController
 
     public function extendSingle($adId, PackageRepositoryInterface $packageRepository, UserentryRepositoryInterface $userentryRepository ,AdvsLogRepositoryInterface $advsLogRepository)
     {
+        $extendedAdMsg = 'visiosoft.module.advs::message.extended';
         if (is_module_installed('visiosoft.module.packages')) {
-            foreach ($packageRepository->getMyPackages() as $index => $myPackage) {
+            foreach ($packageRepository->getMyPackages() as $myPackage) {
 
                 if ($myPackage->remaining_ad_limit > 0) {
                     $packageEntry = $userentryRepository
@@ -1175,7 +1176,7 @@ class AdvsController extends PublicController
                         'user_entry_id' => $packageEntry->id,
                     ]);
                     $adsExtended = $this->adv_repository->extendAds($adId);
-                    $this->messages->success(trans('visiosoft.module.advs::message.extended', ['number' => $adsExtended]));
+                    $this->messages->success(trans($extendedAdMsg, ['number' => $adsExtended]));
                     return $this->redirect->back();
 
                 } else {
@@ -1187,7 +1188,7 @@ class AdvsController extends PublicController
             }
         } else {
             $adsExtended = $this->adv_repository->extendAds($adId);
-            $this->messages->success(trans('visiosoft.module.advs::message.extended', ['number' => $adsExtended]));
+            $this->messages->success(trans($extendedAdMsg, ['number' => $adsExtended]));
         }
 
         return $this->redirect->back();
