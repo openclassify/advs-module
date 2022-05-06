@@ -18,6 +18,7 @@ return [
     'success_delete' => 'Ad Deleted',
     'pending_ad_status' => 'Your ad is pending approval by the Editor.',
     'extended' => ':number ad(s) has been extended successfully.',
+    'extend_package_fail' => 'Please buy a package first.',
     'category_not_exist' => 'This category does not exist anymore!',
     'currency_converted' => 'Currency Converted Successfully.',
     'choose_user' => 'Choose a user',

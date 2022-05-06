@@ -18,6 +18,7 @@ return [
     'success_delete' => 'İlan Silindi',
     'pending_ad_status' => 'İlanınız Editör tarafından onay beklemektedir.',
     'extended' => ':number ilan süresi uzatıldı.',
+    'extend_package_fail' => 'Önce paket satın almalısınız.',
     'category_not_exist' => 'Bu kategori artık mevcut değil!',
     'currency_converted' => 'Para Birimi Başarıyla Dönüştürüldü.',
     'choose_user' => 'Bir Kullanıcı Seçin',

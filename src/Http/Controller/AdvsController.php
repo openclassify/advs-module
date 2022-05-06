@@ -30,9 +30,14 @@ use Visiosoft\LocationModule\Country\Contract\CountryRepositoryInterface;
 use Visiosoft\LocationModule\District\DistrictModel;
 use Visiosoft\LocationModule\Neighborhood\NeighborhoodModel;
 use Visiosoft\LocationModule\Village\VillageModel;
+use Visiosoft\PackagesModule\AdvsLog\Contract\AdvsLogRepositoryInterface;
+use Visiosoft\PackagesModule\Http\Controller\PackageFEController;
+use Visiosoft\PackagesModule\Package\Contract\PackageRepositoryInterface;
+use Visiosoft\PackagesModule\Userentry\Contract\UserentryRepositoryInterface;
 use Visiosoft\ProfileModule\Adress\Contract\AdressRepositoryInterface;
 use Visiosoft\SeoModule\Legend\Command\AddMetaData;
 use Visiosoft\StoreModule\Store\Contract\StoreRepositoryInterface;
+use function React\Promise\Stream\first;
 
 class AdvsController extends PublicController
 {
@@ -1151,10 +1156,41 @@ class AdvsController extends PublicController
         return $this->redirect->back();
     }
 
-    public function extendSingle($adId)
+    public function extendSingle($adId, PackageRepositoryInterface $packageRepository, UserentryRepositoryInterface $userentryRepository ,AdvsLogRepositoryInterface $advsLogRepository)
     {
-        $adsExtended = $this->adv_repository->extendAds($adId);
-        $this->messages->success(trans('visiosoft.module.advs::message.extended', ['number' => $adsExtended]));
+        $extendedAdMsg = 'visiosoft.module.advs::message.extended';
+        if (is_module_installed('visiosoft.module.packages')) {
+            foreach ($packageRepository->getMyPackages() as $myPackage) {
+
+                if ($myPackage->remaining_ad_limit > 0) {
+                    $packageEntry = $userentryRepository
+                        ->newQuery()
+                        ->select()
+                        ->where('package_id','=',$myPackage->package_id)
+                        ->firstOrFail();
+                    $packageEntry->update([
+                        'remaining_ad_limit' => $packageEntry->remaining_ad_limit - 1,
+                    ]);
+                    $advsLogRepository->createAdLog([
+                        'adv_id' => $adId,
+                        'user_entry_id' => $packageEntry->id,
+                    ]);
+                    $adsExtended = $this->adv_repository->extendAds($adId);
+                    $this->messages->success(trans($extendedAdMsg, ['number' => $adsExtended]));
+                    return $this->redirect->back();
+
+                } else {
+                    if ($packageRepository->getMyPackages()->last() == $myPackage) {
+                        $this->messages->error(trans('visiosoft.module.advs::message.extend_package_fail'));
+                    }
+                }
+
+            }
+        } else {
+            $adsExtended = $this->adv_repository->extendAds($adId);
+            $this->messages->success(trans($extendedAdMsg, ['number' => $adsExtended]));
+        }
+
         return $this->redirect->back();
     }
 
