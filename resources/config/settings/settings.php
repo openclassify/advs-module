@@ -521,4 +521,22 @@ return [
             'default_value' => true,
         ],
     ],
+    'title_length' => [
+        'type' => 'anomaly.field_type.integer',
+        'config' => [
+            'default_value' => 255
+        ]
+    ],
+    'is_desc_required' => [
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => false,
+        ],
+    ],
+    'is_image_required' => [
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => true,
+        ],
+    ]
 ];

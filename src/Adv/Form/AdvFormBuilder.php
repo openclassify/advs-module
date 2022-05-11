@@ -44,7 +44,7 @@ class AdvFormBuilder extends FormBuilder
                 'type' => 'anomaly.field_type.text'
             ],
             'advs_desc' => [
-                'required' => $requiredFields
+                'required' => setting_value('visiosoft.module.advs::is_desc_required')
             ],
             'cat1',
             'cat2',
@@ -79,7 +79,9 @@ class AdvFormBuilder extends FormBuilder
                 'label' => false,
                 'class' => 'hidden d-none mapVal'
             ],
-            'files',
+            'files' => [
+                'required' => setting_value('visiosoft.module.advs::is_image_required')
+            ],
             'doc_files',
             'popular_adv',
             'adv_day',

@@ -75,7 +75,8 @@
                                     {% set fields = form.fields.base().pluck('field_name').all() %}
                                     {% for field in form.fields.translations('name') %}
                                         {{ field.setAttributes({
-                                            'class': 'd-block mt-3 w-100 border-0'
+                                            'class': 'd-block mt-3 w-100 border-0',
+                                            'maxlength': setting_value('visiosoft.module.advs::title_length')
                                         }).setValue((form_params[field.field~"_"~field.getLocale()]) ?? field.value).render({'form': form})|raw }}
                                     {% endfor %}
                                 </label>
@@ -258,7 +259,9 @@
                             <div class="bg-light p-4 upload-photos-wrapper">
                                 <div class="row form-group images">
                                     <div class="col-md-12">
-                                        {{ form.fields.files.input |raw }}
+                                        {{ form.fields.files.setAttributes({
+                                            'required' : setting_value('visiosoft.module.advs::is_image_required')
+                                        }).input |raw }}
                                         <input name="doc_files"
                                                value="{{ form.fields.doc_files.value.pluck('id').all()|join(',') }}"
                                                hidden>
