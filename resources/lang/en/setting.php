@@ -313,4 +313,16 @@ return [
         'name' => 'Extend Ad',
         'instructions' => 'It represents the active state of the time extension feature on the My Ads screen.'
     ],
+    'title_length' => [
+        'name' => 'Title Length',
+        'instructions' => 'Length of the charaters of title when creating any ad.'
+    ],
+    'is_desc_required' => [
+        'name' => 'Required Ad Description ?',
+        'instructions' => 'Is ad description required ?'
+    ],
+    'is_image_required' => [
+        'name' => 'Required Ad Image ?',
+        'instructions' => 'Is ad image required ?'
+    ],
 ];

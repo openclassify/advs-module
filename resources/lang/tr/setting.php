@@ -307,6 +307,18 @@ return [
         'name' => 'Sipariş Notunu Göster',
         'instructions' => "Müşterilerin siparişlerinin ödemesi onaylandığında özel metni göstermek için kullanılan sipariş notu alanını gösterin."
     ],
+    'title_length' => [
+        'name' => 'İlan Başlığı Uzunluğu',
+        'instructions' => 'İlan oluştururken girilen ilan başlığının karakter uzunluğu.'
+    ],
+    'is_desc_required' => [
+        'name' => 'İlan Açıklaması Zorunlu Mu ?',
+        'instructions' => 'İlan oluştururken girilen açıklamanın mecburi olması durumu.'
+    ],
+    'is_image_required' => [
+        'name' => 'İlan Resmi Zorunlu Mu ?',
+        'instructions' => 'İlan oluştururken yüklenen resmin mecburi olması durumu.'
+    ],
     'top_right' => 'Sağ Üst',
     'top_left' => 'Sol Üst',
     'bottom_right' => 'Sağ Alt',
