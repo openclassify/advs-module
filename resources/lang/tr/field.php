@@ -40,6 +40,9 @@ return [
     'advs_desc' => [
         'name' => 'Açıklama'
     ],
+    'ad_note' => [
+        'name' => 'İlan Notu ( Yalnızca ilan sahibi görebilir. )'
+    ],
     'online_payment' => [
         'name' => 'Online ödeme'
     ],

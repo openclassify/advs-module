@@ -538,5 +538,12 @@ return [
         'config' => [
             'default_value' => true,
         ],
+    ],
+    'show_ad_note' =>[
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => false,
+        ],
     ]
+
 ];

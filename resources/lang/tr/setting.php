@@ -319,6 +319,10 @@ return [
         'name' => 'İlan Resmi Zorunlu Mu ?',
         'instructions' => 'İlan oluştururken yüklenen resmin mecburi olması durumu.'
     ],
+    'show_ad_note' => [
+        'name' => 'İlan Oluştururken Not Girilsin',
+        'instructions' => 'Girilen notu yalnızca ilanın sahibi görebilir !'
+    ],
     'top_right' => 'Sağ Üst',
     'top_left' => 'Sol Üst',
     'bottom_right' => 'Sağ Alt',

@@ -46,6 +46,11 @@ class AdvFormBuilder extends FormBuilder
             'advs_desc' => [
                 'required' => setting_value('visiosoft.module.advs::is_desc_required')
             ],
+            'ad_note' => [
+                'type' => 'anomaly.field_type.textarea',
+                'translatable' => true,
+                'required' => $requiredFields
+            ],
             'cat1',
             'cat2',
             'cat3',

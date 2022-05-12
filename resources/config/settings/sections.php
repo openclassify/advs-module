@@ -63,6 +63,7 @@ return [
                     'create_ad_button_color',
                     'hide_standard_price_field',
                     'title_length',
+                    'show_ad_note',
                     'is_desc_required',
                     'is_image_required',
                     'hide_options_field',

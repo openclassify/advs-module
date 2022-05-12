@@ -325,4 +325,8 @@ return [
         'name' => 'Required Ad Image ?',
         'instructions' => 'Is ad image required ?'
     ],
+    'show_ad_note' => [
+        'name' => 'Enter Ad Note When Creating',
+        'instructions' => 'Just the ad owner can see this note !'
+    ]
 ];

@@ -130,6 +130,9 @@ return [
     'value' => [
         'name' => 'Value'
     ],
+    'ad_note' => [
+        'name' => 'Ad Note ( Just the ad owner can see. )'
+    ],
     'list' => 'List',
     'home' => 'Home',
     'list-page' => 'List Page',
