@@ -1161,14 +1161,14 @@ class AdvsController extends PublicController
         $extendedAdMsg = 'visiosoft.module.advs::message.extended';
         $extendedFailAdMsg = 'visiosoft.module.advs::message.extend_package_fail';
         if (is_module_installed('visiosoft.module.packages')) {
-            if ($packageRepository->getMyPackages()->items) {
+            if ($packageRepository->getMyPackages()->count()) {
                 foreach ($packageRepository->getMyPackages() as $myPackage) {
 
                     if ($myPackage->remaining_ad_limit > 0) {
                         $packageEntry = $userentryRepository
                             ->newQuery()
                             ->select()
-                            ->where('package_id', '=', $myPackage->package_id)
+                            ->where('user_package_id', '=', $myPackage->id)
                             ->firstOrFail();
                         $packageEntry->update([
                             'remaining_ad_limit' => $packageEntry->remaining_ad_limit - 1,
@@ -1189,7 +1189,8 @@ class AdvsController extends PublicController
 
                 }
             } else {
-                    $this->messages->error(trans($extendedFailAdMsg));
+
+                $this->messages->error(trans($extendedFailAdMsg));
             }
         } else {
             $adsExtended = $this->adv_repository->extendAds($adId);
