@@ -49,7 +49,7 @@ class AdvFormBuilder extends FormBuilder
             'ad_note' => [
                 'type' => 'anomaly.field_type.textarea',
                 'translatable' => true,
-                'required' => $requiredFields
+                'required' => false
             ],
             'cat1',
             'cat2',
