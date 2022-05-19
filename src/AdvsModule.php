@@ -41,7 +41,9 @@ class AdvsModule extends Module
 			    'new_productoptions_value',
 		    ],
 	    ],
-	    'option_configuration',
+	    'option_configuration' => [
+            'title' => 'visiosoft.module.advs::section.option_configuration.title',
+        ],
         'assets_clear' => [
 	        'title' => 'visiosoft.module.advs::section.assets_clear.name',
 	        'href' => '/admin/assets/clear',
