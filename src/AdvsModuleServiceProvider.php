@@ -278,6 +278,10 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
         SetLang::class,
         redirectDiffrentLang::class,
     ];
+	
+    protected $providers = [
+        \Fruitcake\Cors\CorsServiceProvider::class
+    ];
 
     protected $listeners = [
         TableIsQuerying::class => [
