@@ -277,6 +277,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
     protected $middleware = [
         SetLang::class,
         redirectDiffrentLang::class,
+        \Fruitcake\Cors\HandleCors::class, # this line
     ];
 	
     protected $providers = [
