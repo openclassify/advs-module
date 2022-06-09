@@ -250,10 +250,10 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\OptionConfigurationController@confAddCart',
         ],
 
-	    'api/conf/add-cart' => [
-		    'as' => 'configuration::api_add_conf_cart',
-		    'uses' => 'Visiosoft\AdvsModule\Http\Controller\OptionConfigurationController@ajaxConfAddCart',
-	    ],
+        'api/conf/add-cart' => [
+            'as' => 'configuration::api_add_conf_cart',
+            'uses' => 'Visiosoft\AdvsModule\Http\Controller\OptionConfigurationController@ajaxConfAddCart',
+        ],
 
         // Admin ProductoptionsController
         'admin/advs/product_options' => 'Visiosoft\AdvsModule\Http\Controller\Admin\ProductoptionsController@index',
@@ -277,19 +277,17 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
     protected $middleware = [
         SetLang::class,
         redirectDiffrentLang::class,
-        \Fruitcake\Cors\HandleCors::class, # this line
     ];
-	
-    protected $providers = [
-        \Fruitcake\Cors\CorsServiceProvider::class
-    ];
+
+    protected $providers = [];
 
     protected $listeners = [
         TableIsQuerying::class => [
             AddAdvsSettingsScript::class,
-        ], CreatedOrderDetail::class => [
-			AddTotalSales::class,
-	    ]
+        ],
+        CreatedOrderDetail::class => [
+            AddTotalSales::class,
+        ]
     ];
 
     protected $bindings = [
@@ -316,7 +314,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
         'streams::form.partials.translations' => 'visiosoft.module.advs::form.partials.translations',
     ];
 
-    public function boot(AddonCollection $addonCollection, FileModel $fileModel,CategoryRepositoryInterface $categoryRepository)
+    public function boot(AddonCollection $addonCollection, FileModel $fileModel, CategoryRepositoryInterface $categoryRepository)
     {
 
         $settings_url = [
