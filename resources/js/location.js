@@ -123,10 +123,8 @@ if (locationedit) {
     var lat = locationedit.split(",")[0];
     var lng = locationedit.split(",")[1];
     var coordcenter = new google.maps.LatLng(lat, lng);
-}else if(LAT && LONG){
+} else {
     var coordcenter = new google.maps.LatLng(LAT, LONG);
-}else {
-    var coordcenter = new google.maps.LatLng(38.9573415, 35.2415759);
 }
 
 var mapOptions = {

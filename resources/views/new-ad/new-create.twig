@@ -347,8 +347,8 @@
         var default_GET = "{{ setting_value('visiosoft.module.advs::default_GET') }}";
         var adv_id = "{{ id }}";
         var pick_option = "{{ trans('visiosoft.module.location::field.pick_option.name') }}"
-        var LAT = {{ setting_value("visiosoft.module.location::map_coordinates_lat") }};
-        var LONG = {{ setting_value("visiosoft.module.location::map_coordinates_long") }};
+        var LAT = {{ setting_value("visiosoft.module.location::map_coordinates_lat", 38.9573415) }};
+        var LONG = {{ setting_value("visiosoft.module.location::map_coordinates_long", 35.2415759) }};
     </script>
 
     {% if setting_value('visiosoft.module.advs::make_map_required') %}
