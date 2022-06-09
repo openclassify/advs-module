@@ -124,7 +124,7 @@ if (locationedit) {
     var lng = locationedit.split(",")[1];
     var coordcenter = new google.maps.LatLng(lat, lng);
 } else {
-    var coordcenter = new google.maps.LatLng(LAT, LONG);
+    var coordcenter = new google.maps.LatLng(defaultLat, defaultLong);
 }
 
 var mapOptions = {
