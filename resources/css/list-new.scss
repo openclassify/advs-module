@@ -251,7 +251,20 @@ ul {
 
 #listingPage {
   /* Breadcrumb */
-
+  #breadcrumb {
+    padding-left: .5rem;
+    div {
+      span {
+        margin-right: .2rem;
+        font-size: .8rem;
+        
+        &:not(:last-child):after {
+          content: ">";
+          margin-left: .2rem;
+        }
+      }
+    }
+  }
   /* End Breadcrumb */
 
   #mainContainer {
