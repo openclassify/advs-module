@@ -71,7 +71,7 @@ class AjaxController extends PublicController
                 $my_advs = $my_advs->myAdvsByUser();
             }
             $my_advs = $my_advs
-                ->select(['id', 'cover_photo', 'slug', 'price', 'currency', 'city', 'country_id', 'cat1', 'cat2', 'status', 'created_at'])
+                ->select(['id', 'cover_photo', 'slug', 'price', 'currency', 'count_show_ad','city', 'country_id', 'cat1', 'cat2', 'status', 'created_at'])
                 ->where(function ($q) {
                     if ($this->request->search) {
                         return $q->where('id', 'LIKE', '%' . $this->request->search . '%');
