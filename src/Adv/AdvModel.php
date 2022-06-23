@@ -308,12 +308,14 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
             $city_id = !empty($adv->city) ? $adv->city : 0;
             $district_id = !empty($adv->district) ? $adv->district : 0;
 
+            $table_prefix = DB::getTablePrefix();
+
             $q = collect(DB::select("
                     SELECT country.abv as country_abv, country_trans.name as country_name,
-                        (SELECT name FROM default_location_cities_translations as city_trans WHERE city_trans.id = " . $city_id . " AND city_trans.locale = '" . $locale . "') as city_name,
-                        (SELECT name FROM default_location_districts_translations as district_trans WHERE district_trans.id = " . $district_id . " AND district_trans.locale = '" . $locale . "') as district_name
-                    FROM default_location_countries AS country
-                    JOIN default_location_countries_translations AS country_trans on country.id = country_trans.entry_id WHERE country.id = " . $country_id . " and country_trans.locale = '" . $locale . "'
+                        (SELECT name FROM ".$table_prefix."location_cities_translations as city_trans WHERE city_trans.id = " . $city_id . " AND city_trans.locale = '" . $locale . "') as city_name,
+                        (SELECT name FROM ".$table_prefix."location_districts_translations as district_trans WHERE district_trans.id = " . $district_id . " AND district_trans.locale = '" . $locale . "') as district_name
+                    FROM ".$table_prefix."location_countries AS country
+                    JOIN ".$table_prefix."location_countries_translations AS country_trans on country.id = country_trans.entry_id WHERE country.id = " . $country_id . " and country_trans.locale = '" . $locale . "'
                     "))->first();
 
             if (is_object($q)) {
