@@ -298,7 +298,7 @@ class AdvsController extends PublicController
             $ranges = $returnvalues['ranges'];
             $radio = $returnvalues['radio'];
             $text = $returnvalues['text'];
-            
+
             $main_list_CFS = app('Visiosoft\CustomfieldsModule\CustomField\Contract\CustomFieldRepositoryInterface')
                 ->getSeenCustomFieldsWithCategory(null);
 
@@ -306,7 +306,7 @@ class AdvsController extends PublicController
                 ->getSeenCustomFieldsWithCategory($category);
 
             $listingCFs = $listingCFs->merge($main_list_CFS);
-            
+
             foreach ($advs as $adv) {
                 if ($adv->cf_json) {
                     $tempFeatures = app('Visiosoft\CustomfieldsModule\Http\Controller\CustomFieldsController')
@@ -545,16 +545,19 @@ class AdvsController extends PublicController
             $id = $seo;
             $adv = $this->adv_repository->getListItemAdv($id);
         }
-        if ($this->adv_model->is_enabled('store')) {
-            $id = $adv->id;
-            $adv->similar_ads = [];
-            $storeRepository = app(StoreRepositoryInterface::class);
-            $similarAds = $storeRepository->getStoresAdsByUserIdRandomlyLimited($adv->created_by_id, 6);
-            if (!empty($similarAds)) {
-                $adv->similar_ads = $similarAds->toArray();
+
+        if ($adv and ((auth()->user() and auth()->user()->hasRole('admin')) or ((!$adv->expired() && $adv->getStatus() === 'approved') || $adv->created_by_id === \auth()->id()))) {
+
+            if ($this->adv_model->is_enabled('store')) {
+                $id = $adv->id;
+                $adv->similar_ads = [];
+                $storeRepository = app(StoreRepositoryInterface::class);
+                $similarAds = $storeRepository->getStoresAdsByUserIdRandomlyLimited($adv->created_by_id, 6);
+                if (!empty($similarAds)) {
+                    $adv->similar_ads = $similarAds->toArray();
+                }
             }
-        }
-        if ((auth()->user() and auth()->user()->hasRole('admin')) or ($adv && ((!$adv->expired() && $adv->getStatus() === 'approved') || $adv->created_by_id === \auth()->id()))) {
+
             // Check if created by exists
             if ((auth()->user() and !auth()->user()->hasRole('admin')) and !$adv->created_by) {
                 $this->messages->error('visiosoft.module.advs::message.this_ad_is_not_valid_anymore');
@@ -1245,30 +1248,43 @@ class AdvsController extends PublicController
         $quantity = $request->quantity;
         $id = $request->id;
         $type = $request->type;
-        if ($request->dataType === 'ad-configuration') {
-            $optionConf = new  OptionConfigurationModel();
-            $adv = $optionConf->newQuery()->find($id);
-            $status = $adv->stockControl($id, $quantity);
-        } else {
-            $advmodel = new AdvModel();
-            $adv = $advmodel->getAdv($id);
-            $status = $advmodel->stockControl($id, $quantity);
+
+        if ($id)
+        {
+            //Check Ad or Ad Option
+            if ($request->dataType === 'ad-configuration') {
+                $optionConf = new  OptionConfigurationModel();
+                $adv = $optionConf->newQuery()->find($id);
+            } else {
+                $advmodel = new AdvModel();
+                $adv = $advmodel->getAdv($id);
+            }
+
+            if ($adv)
+            {
+                //Check Quantity
+                if ($request->dataType === 'ad-configuration') {
+                    $status = $adv->stockControl($id, $quantity);
+                } else {
+                    $status = $advmodel->stockControl($id, $quantity);
+                }
+
+                $response = array();
+                if ($status == 1) {
+                    $response['newQuantity'] = $advRepository->getQuantity($quantity, $type, $adv);
+
+                } else {
+                    $response['newQuantity'] = $adv->stock;
+                }
+
+                $response['newPrice'] = $adv->price * $response['newQuantity'];
+
+                $response['newPrice'] = app(Currency::class)->format($response['newPrice'], strtoupper($adv->currency));
+                $response['status'] = $status;
+                $response['maxQuantity'] = $adv->stock;
+                return $response;
+            }
         }
-
-        $response = array();
-        if ($status == 1) {
-            $response['newQuantity'] = $advRepository->getQuantity($quantity, $type, $adv);
-
-        } else {
-            $response['newQuantity'] = $adv->stock;
-        }
-
-        $response['newPrice'] = $adv->price * $response['newQuantity'];
-
-        $response['newPrice'] = app(Currency::class)->format($response['newPrice'], strtoupper($adv->currency));
-        $response['status'] = $status;
-        $response['maxQuantity'] = $adv->stock;
-        return $response;
     }
 
     public function getClassifiedsByCoordinates()
