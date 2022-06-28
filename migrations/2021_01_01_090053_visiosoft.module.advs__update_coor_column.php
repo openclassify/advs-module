@@ -6,7 +6,12 @@ use Illuminate\Support\Facades\Schema;
 
 class VisiosoftModuleAdvsUpdateCoorColumn extends Migration
 {
-
+    public function __construct()
+    {
+        \Illuminate\Support\Facades\DB::getDoctrineSchemaManager()
+            ->getDatabasePlatform()->registerDoctrineTypeMapping('point', 'string');
+    }
+    
     public function up()
     {
         if (Schema::hasColumn('advs_advs', 'coor'))
