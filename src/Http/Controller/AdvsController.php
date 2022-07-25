@@ -28,8 +28,11 @@ use Visiosoft\LocationModule\City\CityModel;
 use Visiosoft\LocationModule\City\CityRepository;
 use Visiosoft\LocationModule\Country\Contract\CountryRepositoryInterface;
 use Visiosoft\LocationModule\District\DistrictModel;
+use Visiosoft\LocationModule\District\DistrictRepository;
 use Visiosoft\LocationModule\Neighborhood\NeighborhoodModel;
+use Visiosoft\LocationModule\Neighborhood\NeighborhoodRepository;
 use Visiosoft\LocationModule\Village\VillageModel;
+use Visiosoft\LocationModule\Village\VillageRepository;
 use Visiosoft\PackagesModule\AdvsLog\Contract\AdvsLogRepositoryInterface;
 use Visiosoft\PackagesModule\Http\Controller\PackageFEController;
 use Visiosoft\PackagesModule\Package\Contract\PackageRepositoryInterface;
@@ -54,10 +57,13 @@ class AdvsController extends PublicController
     private $cityRepository;
 
     private $district_model;
+    private $districtRepository;
 
     private $neighborhood_model;
+    private $neighborhoodRepository;
 
     private $village_model;
+    private $villageRepository;
 
     private $category_repository;
 
@@ -81,10 +87,13 @@ class AdvsController extends PublicController
         CityRepository                         $cityRepository,
 
         DistrictModel                          $district_model,
+        DistrictRepository                     $districtRepository,
 
         NeighborhoodModel                      $neighborhood_model,
+        NeighborhoodRepository                 $neighborhoodRepository,
 
         VillageModel                           $village_model,
+        VillageRepository                      $villageRepository,
 
         CategoryRepositoryInterface            $category_repository,
 
@@ -110,10 +119,13 @@ class AdvsController extends PublicController
         $this->cityRepository = $cityRepository;
 
         $this->district_model = $district_model;
+        $this->districtRepository = $districtRepository;
 
         $this->neighborhood_model = $neighborhood_model;
+        $this->neighborhoodRepository = $neighborhoodRepository;
 
         $this->village_model = $village_model;
+        $this->villageRepository = $villageRepository;
 
         $this->category_repository = $category_repository;
 
@@ -431,6 +443,9 @@ class AdvsController extends PublicController
                 'name' => trans('visiosoft.module.advs::field.address'),
                 'value' => $value
             ];
+        }
+        if (setting_value("visiosoft.module.advs::showDetailedAddress")) {
+            $cFArray = $this->showDetailedAddress($param, $cFArray);
         }
 
         Cookie::queue(Cookie::make('last_search', $this->requestHttp->getRequestUri(), 84000));
@@ -1305,5 +1320,100 @@ class AdvsController extends PublicController
                 'msg' => $e->getMessage()
             ];
         }
+    }
+
+    public function showDetailedAddress($param, $cFArray)
+    {
+        if ($districts = \request()->district) {
+            $districtIDs = explode(',', $districts[0]);
+            $districts = $this->districtRepository->findAllByIDs($districtIDs);
+            $value = array();
+            foreach ($districts as $district) {
+                $removalLink = array_filter($param, function ($singleParam) {
+                    return $singleParam !== 'district';
+                }, ARRAY_FILTER_USE_KEY);
+                $removalLink = fullLink(
+                    $removalLink,
+                    \request()->url(),
+                    ['district[]' => implode(
+                        ',',
+                        array_filter($districtIDs, function ($singleDistrict) use ($district) {
+                            return $singleDistrict != $district->id;
+                        })
+                    )]
+                );
+
+                $value[] = [
+                    'name' => $district->name,
+                    'removalLink' => $removalLink
+                ];
+            }
+
+            $cFArray[] = [
+                'name' => trans('visiosoft.module.advs::field.district.name'),
+                'value' => $value
+            ];
+        }
+        if ($neighborhoods = \request()->neighborhood) {
+            $neighborhoodIDs = explode(',', $neighborhoods[0]);
+            $neighborhoods = $this->neighborhoodRepository->findAllByIDs($neighborhoodIDs);
+            $value = array();
+            foreach ($neighborhoods as $neighborhood) {
+                $removalLink = array_filter($param, function ($singleParam) {
+                    return $singleParam !== 'neighborhood';
+                }, ARRAY_FILTER_USE_KEY);
+                $removalLink = fullLink(
+                    $removalLink,
+                    \request()->url(),
+                    ['neighborhood[]' => implode(
+                        ',',
+                        array_filter($neighborhoodIDs, function ($singleNeighborhood) use ($neighborhood) {
+                            return $singleNeighborhood != $neighborhood->id;
+                        })
+                    )]
+                );
+
+                $value[] = [
+                    'name' => $neighborhood->name,
+                    'removalLink' => $removalLink
+                ];
+            }
+
+            $cFArray[] = [
+                'name' => trans('visiosoft.module.advs::field.neighborhood.name'),
+                'value' => $value
+            ];
+        }
+        if ($villages = \request()->village) {
+            $villageIDs = explode(',', $villages[0]);
+            $villages = $this->villageRepository->findAllByIDs($villageIDs);
+            $value = array();
+            foreach ($villages as $village) {
+                $removalLink = array_filter($param, function ($singleParam) {
+                    return $singleParam !== 'village';
+                }, ARRAY_FILTER_USE_KEY);
+                $removalLink = fullLink(
+                    $removalLink,
+                    \request()->url(),
+                    ['village[]' => implode(
+                        ',',
+                        array_filter($villageIDs, function ($singleVillage) use ($village) {
+                            return $singleVillage != $village->id;
+                        })
+                    )]
+                );
+
+                $value[] = [
+                    'name' => $village->name,
+                    'removalLink' => $removalLink
+                ];
+            }
+
+            $cFArray[] = [
+                'name' => trans('visiosoft.module.advs::field.village.name'),
+                'value' => $value
+            ];
+        }
+        return $cFArray;
     }
 }
