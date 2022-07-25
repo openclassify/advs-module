@@ -1322,98 +1322,52 @@ class AdvsController extends PublicController
         }
     }
 
-    public function showDetailedAddress($param, $cFArray)
+    public function detailedAddressInfo($param,$fields,$fieldName,$fieldIDs)
     {
-        if ($districts = \request()->district) {
-            $districtIDs = explode(',', $districts[0]);
-            $districts = $this->districtRepository->findAllByIDs($districtIDs);
-            $value = array();
-            foreach ($districts as $district) {
-                $removalLink = array_filter($param, function ($singleParam) {
-                    return $singleParam !== 'district';
-                }, ARRAY_FILTER_USE_KEY);
-                $removalLink = fullLink(
-                    $removalLink,
-                    \request()->url(),
-                    ['district[]' => implode(
-                        ',',
-                        array_filter($districtIDs, function ($singleDistrict) use ($district) {
-                            return $singleDistrict != $district->id;
-                        })
-                    )]
-                );
+        $value = array();
+        foreach ($fields as $field) {
+            $removalLink = array_filter($param, function ($singleParam) use ($fieldName) {
+                return $singleParam !== $fieldName;
+            }, ARRAY_FILTER_USE_KEY);
+            $removalLink = fullLink(
+                $removalLink,
+                \request()->url(),
+                [$fieldName.'[]' => implode(
+                    ',',
+                    array_filter($fieldIDs, function ($singleField) use ($field) {
+                        return $singleField != $field->id;
+                    })
+                )]
+            );
 
-                $value[] = [
-                    'name' => $district->name,
-                    'removalLink' => $removalLink
-                ];
-            }
-
-            $cFArray[] = [
-                'name' => trans('visiosoft.module.advs::field.district.name'),
-                'value' => $value
+            $value[] = [
+                'name' => $field->name,
+                'removalLink' => $removalLink
             ];
         }
-        if ($neighborhoods = \request()->neighborhood) {
-            $neighborhoodIDs = explode(',', $neighborhoods[0]);
-            $neighborhoods = $this->neighborhoodRepository->findAllByIDs($neighborhoodIDs);
-            $value = array();
-            foreach ($neighborhoods as $neighborhood) {
-                $removalLink = array_filter($param, function ($singleParam) {
-                    return $singleParam !== 'neighborhood';
-                }, ARRAY_FILTER_USE_KEY);
-                $removalLink = fullLink(
-                    $removalLink,
-                    \request()->url(),
-                    ['neighborhood[]' => implode(
-                        ',',
-                        array_filter($neighborhoodIDs, function ($singleNeighborhood) use ($neighborhood) {
-                            return $singleNeighborhood != $neighborhood->id;
-                        })
-                    )]
-                );
 
-                $value[] = [
-                    'name' => $neighborhood->name,
-                    'removalLink' => $removalLink
-                ];
+        return $cFArray[] = [
+            'name' => trans('visiosoft.module.advs::field.'.$fieldName.'.name'),
+            'value' => $value
+        ];
+
+    }
+
+    public function detailAddress ($repositories, $param, $cFArray,$request){
+        foreach ($repositories as $repository) {
+            if ($item = $request[$repository]) {
+                $itemIDs = explode(',', $item[0]);
+
+                $repoPath = 'Visiosoft\\LocationModule\\' . ucfirst($repository) .'\\' . ucfirst($repository) . 'Repository';
+                $items = app($repoPath)->findAllByIDs($itemIDs);
+                $cFArray[] = $this->detailedAddressInfo($param, $items, $repository, $itemIDs);
             }
-
-            $cFArray[] = [
-                'name' => trans('visiosoft.module.advs::field.neighborhood.name'),
-                'value' => $value
-            ];
-        }
-        if ($villages = \request()->village) {
-            $villageIDs = explode(',', $villages[0]);
-            $villages = $this->villageRepository->findAllByIDs($villageIDs);
-            $value = array();
-            foreach ($villages as $village) {
-                $removalLink = array_filter($param, function ($singleParam) {
-                    return $singleParam !== 'village';
-                }, ARRAY_FILTER_USE_KEY);
-                $removalLink = fullLink(
-                    $removalLink,
-                    \request()->url(),
-                    ['village[]' => implode(
-                        ',',
-                        array_filter($villageIDs, function ($singleVillage) use ($village) {
-                            return $singleVillage != $village->id;
-                        })
-                    )]
-                );
-
-                $value[] = [
-                    'name' => $village->name,
-                    'removalLink' => $removalLink
-                ];
-            }
-
-            $cFArray[] = [
-                'name' => trans('visiosoft.module.advs::field.village.name'),
-                'value' => $value
-            ];
         }
         return $cFArray;
+    }
+
+    public function showDetailedAddress($param, $cFArray)
+    {
+        return $this->detailAddress(['district', 'neighborhood', 'village'], $param, $cFArray,\request());
     }
 }
