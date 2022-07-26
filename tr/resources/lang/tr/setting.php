@@ -328,5 +328,9 @@ return [
     'show_ad_note' => [
         'name' => 'Enter Ad Note When Creating',
         'instructions' => 'Just the ad owner can see this note !'
+    ],
+    'showDetailedAddress' => [
+        'name' => 'Show Detailed Address Info In List',
+        'instructions' => 'Enable for see detailed address information in listing page.'
     ]
 ];
