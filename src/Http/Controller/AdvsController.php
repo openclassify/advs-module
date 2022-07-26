@@ -57,13 +57,10 @@ class AdvsController extends PublicController
     private $cityRepository;
 
     private $district_model;
-    private $districtRepository;
 
     private $neighborhood_model;
-    private $neighborhoodRepository;
 
     private $village_model;
-    private $villageRepository;
 
     private $category_repository;
 
