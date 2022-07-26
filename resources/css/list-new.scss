@@ -298,6 +298,7 @@ ul {
       /* Query bar */
       #queryBar {
         & > div {
+          width: 100%;
           margin: calc(3rem / 16) calc(16rem / 16) calc(4rem / 16) 0;
 
           & > span {
@@ -324,10 +325,11 @@ ul {
           }
 
           button {
-            height: calc(12rem / 16);
-            width: calc(12rem / 16);
-            background-color: #EC9C4A;
+            height: calc(22rem / 17);
+            width: calc(22rem / 18);
+            background-color: #ec9c4a;
             border-radius: calc(2rem / 16);
+            padding: 0;
 
             &:focus {
               outline: none;
@@ -336,8 +338,8 @@ ul {
 
           svg {
             flex-shrink: 0;
-            height: calc(6rem / 16);
-            width: calc(6rem / 16);
+            height: calc(6rem / 6);
+            width: calc(6rem / 12);
           }
         }
 
