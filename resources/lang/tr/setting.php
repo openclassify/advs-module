@@ -328,4 +328,8 @@ return [
     'bottom_right' => 'Sağ Alt',
     'bottom_left' => 'Sol Alt',
     'middle' => 'Orta',
+    'showDetailedAddress' => [
+        'name' => 'Detaylı Adres Gösterimi',
+        'instructions' => 'Listeleme sayfasında adres bilgisini detaylı görmek için aktif edin.'
+    ]
 ];

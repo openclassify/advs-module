@@ -28,8 +28,11 @@ use Visiosoft\LocationModule\City\CityModel;
 use Visiosoft\LocationModule\City\CityRepository;
 use Visiosoft\LocationModule\Country\Contract\CountryRepositoryInterface;
 use Visiosoft\LocationModule\District\DistrictModel;
+use Visiosoft\LocationModule\District\DistrictRepository;
 use Visiosoft\LocationModule\Neighborhood\NeighborhoodModel;
+use Visiosoft\LocationModule\Neighborhood\NeighborhoodRepository;
 use Visiosoft\LocationModule\Village\VillageModel;
+use Visiosoft\LocationModule\Village\VillageRepository;
 use Visiosoft\PackagesModule\AdvsLog\Contract\AdvsLogRepositoryInterface;
 use Visiosoft\PackagesModule\Http\Controller\PackageFEController;
 use Visiosoft\PackagesModule\Package\Contract\PackageRepositoryInterface;
@@ -81,10 +84,13 @@ class AdvsController extends PublicController
         CityRepository                         $cityRepository,
 
         DistrictModel                          $district_model,
+        DistrictRepository                     $districtRepository,
 
         NeighborhoodModel                      $neighborhood_model,
+        NeighborhoodRepository                 $neighborhoodRepository,
 
         VillageModel                           $village_model,
+        VillageRepository                      $villageRepository,
 
         CategoryRepositoryInterface            $category_repository,
 
@@ -110,10 +116,13 @@ class AdvsController extends PublicController
         $this->cityRepository = $cityRepository;
 
         $this->district_model = $district_model;
+        $this->districtRepository = $districtRepository;
 
         $this->neighborhood_model = $neighborhood_model;
+        $this->neighborhoodRepository = $neighborhoodRepository;
 
         $this->village_model = $village_model;
+        $this->villageRepository = $villageRepository;
 
         $this->category_repository = $category_repository;
 
@@ -431,6 +440,9 @@ class AdvsController extends PublicController
                 'name' => trans('visiosoft.module.advs::field.address'),
                 'value' => $value
             ];
+        }
+        if (setting_value("visiosoft.module.advs::showDetailedAddress")) {
+            $cFArray = $this->showDetailedAddress($param, $cFArray);
         }
 
         Cookie::queue(Cookie::make('last_search', $this->requestHttp->getRequestUri(), 84000));
@@ -1305,5 +1317,54 @@ class AdvsController extends PublicController
                 'msg' => $e->getMessage()
             ];
         }
+    }
+
+    public function detailedAddressInfo($param,$fields,$fieldName,$fieldIDs)
+    {
+        $value = array();
+        foreach ($fields as $field) {
+            $removalLink = array_filter($param, function ($singleParam) use ($fieldName) {
+                return $singleParam !== $fieldName;
+            }, ARRAY_FILTER_USE_KEY);
+            $removalLink = fullLink(
+                $removalLink,
+                \request()->url(),
+                [$fieldName.'[]' => implode(
+                    ',',
+                    array_filter($fieldIDs, function ($singleField) use ($field) {
+                        return $singleField != $field->id;
+                    })
+                )]
+            );
+
+            $value[] = [
+                'name' => $field->name,
+                'removalLink' => $removalLink
+            ];
+        }
+
+        return $cFArray[] = [
+            'name' => trans('visiosoft.module.advs::field.'.$fieldName.'.name'),
+            'value' => $value
+        ];
+
+    }
+
+    public function detailAddress ($repositories, $param, $cFArray,$request){
+        foreach ($repositories as $repository) {
+            if ($item = $request[$repository]) {
+                $itemIDs = explode(',', $item[0]);
+
+                $repoPath = 'Visiosoft\\LocationModule\\' . ucfirst($repository) .'\\' . ucfirst($repository) . 'Repository';
+                $items = app($repoPath)->findAllByIDs($itemIDs);
+                $cFArray[] = $this->detailedAddressInfo($param, $items, $repository, $itemIDs);
+            }
+        }
+        return $cFArray;
+    }
+
+    public function showDetailedAddress($param, $cFArray)
+    {
+        return $this->detailAddress(['district', 'neighborhood', 'village'], $param, $cFArray,\request());
     }
 }
