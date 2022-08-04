@@ -16,8 +16,8 @@
         {% if listLocation %}
             <th class="text-nowrap sortable{{ param.sort_by == 'address_z_a' ? ' sort-by sort-desc' : (param.sort_by == 'address_a_z' ? ' sort-by') }}"
                 data-sort-asc="address_a_z" data-sort-desc="address_z_a">
-                {{ trans('visiosoft.module.advs::field.city.name') }}
-                / {{ trans('visiosoft.module.advs::field.district.name') }}
+                {{ trans('visiosoft.module.advs::field.country.name') }}
+                / {{ trans('visiosoft.module.advs::field.city.name') }}
                 {{ img('visiosoft.module.advs::images/sort-arrow.svg').data|raw }}
             </th>
         {% endif %}
