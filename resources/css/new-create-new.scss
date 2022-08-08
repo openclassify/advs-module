@@ -296,3 +296,11 @@ label {
     height: auto;
   }
 }
+
+.upload-photos-wrapper {
+  .fa-spin {
+    position: absolute;
+    left: 50%;
+    font-size: 75px;
+  }
+}
