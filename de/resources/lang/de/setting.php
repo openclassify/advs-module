@@ -332,5 +332,11 @@ return [
     'showDetailedAddress' => [
         'name' => 'Show Detailed Address Info In List',
         'instructions' => 'Enable for see detailed address information in listing page.'
+    ],
+    'location_data_type_first' => [
+        'name' => 'Listing Location First Type',
+    ],
+    'location_data_type_second' => [
+        'name' => 'Listing Location Second Type',
     ]
 ];
