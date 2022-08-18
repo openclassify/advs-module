@@ -550,6 +550,30 @@ return [
         'config' => [
             'default_value' => true,
         ]
+    ],
+    'location_data_type_first' => [
+        'type' => 'anomaly.field_type.select',
+        'config' => [
+            'options' => [
+                'country' => 'visiosoft.module.advs::field.country.name',
+                'city' => 'visiosoft.module.advs::field.city.name',
+                'district' => 'visiosoft.module.advs::field.district.name',
+                'neighborhood' => 'visiosoft.module.advs::field.neighborhood.name',
+            ],
+            'default_value' => 'country'
+        ]
+    ],
+    'location_data_type_second' => [
+        'type' => 'anomaly.field_type.select',
+        'config' => [
+            'options' => [
+                'country' => 'visiosoft.module.advs::field.country.name',
+                'city' => 'visiosoft.module.advs::field.city.name',
+                'district' => 'visiosoft.module.advs::field.district.name',
+                'neighborhood' => 'visiosoft.module.advs::field.neighborhood.name',
+            ],
+            'default_value' => 'city'
+        ]
     ]
 
 ];
