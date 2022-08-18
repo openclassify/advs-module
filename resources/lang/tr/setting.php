@@ -331,5 +331,11 @@ return [
     'showDetailedAddress' => [
         'name' => 'Detaylı Adres Gösterimi',
         'instructions' => 'Listeleme sayfasında adres bilgisini detaylı görmek için aktif edin.'
+    ],
+    'location_data_type_first' => [
+        'name' => 'Listeleme Lokasyon Birinci Veri',
+    ],
+    'location_data_type_second' => [
+        'name' => 'Listeleme Lokasyon İkinci Veri',
     ]
 ];

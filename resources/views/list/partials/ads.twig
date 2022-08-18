@@ -44,8 +44,10 @@
 
                 {% if listLocation %}
                     <td class="location-data">
-                        <p>{{ adv.country_name }}</p>
-                        <p>{{ adv.city_name }}</p>
+                        {% set firstLocationType = setting_value('visiosoft.module.advs::location_data_type_first') %}
+                        {% set secondLocationType = setting_value('visiosoft.module.advs::location_data_type_second') %}
+                        <p>{{getListingLocation(firstLocationType,adv)}}</p>
+                        <p>{{getListingLocation(secondLocationType,adv)}}</p>
                     </td>
                 {% endif %}
                 {% if setting_value('visiosoft.module.advs::market_place') and showDate%}

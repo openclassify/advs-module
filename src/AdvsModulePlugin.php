@@ -5,6 +5,7 @@ use Twig_Environment;
 use Visiosoft\AdvsModule\Adv\AdvModel;
 use Visiosoft\AdvsModule\Adv\Command\appendRequestURL;
 use Visiosoft\AdvsModule\Adv\Command\GetAd;
+use Visiosoft\AdvsModule\Adv\Command\GetListingLocation;
 use Visiosoft\AdvsModule\Adv\Command\getPopular;
 use Visiosoft\AdvsModule\Adv\Command\GetUserAds;
 use Visiosoft\AdvsModule\Adv\Command\isActive;
@@ -79,6 +80,12 @@ class AdvsModulePlugin extends Plugin
                 'getUserAds',
                 function ($userID = null, $status = "approved") {
                     return $this->dispatch(new GetUserAds($userID, $status));
+                }
+            ),
+            new \Twig_SimpleFunction(
+                'getListingLocation',
+                function ($locationInfo, $currentAdv) {
+                    return $this->dispatch(new GetListingLocation($locationInfo, $currentAdv));
                 }
             ),
             new \Twig_SimpleFunction(
