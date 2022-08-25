@@ -209,7 +209,7 @@ return [
         'instructions' => 'Yönetici panelinde'
     ],
     'show_breadcrumb_when_creating_ad' => [
-        'name' => 'İlan/ürün eklerken Oluştururken harita Göster',
+        'name' => 'İlan/ürün eklerken Oluştururken BreadCrumb Göster',
     ],
     'show_ads_count' => [
         'name' => 'İlan Sayısını Göster',
