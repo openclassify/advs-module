@@ -306,7 +306,7 @@ class AdvsController extends PublicController
             $selectImage = $returnvalues['selectImage'];
             $ranges = $returnvalues['ranges'];
             $radio = $returnvalues['radio'];
-            $text = $returnvalues['text'];
+            $text = array_merge($returnvalues['date-text'],$returnvalues['text']);
 
             $main_list_CFS = app('Visiosoft\CustomfieldsModule\CustomField\Contract\CustomFieldRepositoryInterface')
                 ->getSeenCustomFieldsWithCategory(null);

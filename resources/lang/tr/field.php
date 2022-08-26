@@ -359,7 +359,7 @@ return [
     'ads_with_map' => 'Haritalı İlanlar',
     'advanced_sorting' => 'Gelişmiş Sıralama',
     'filter_by_word' => 'Kelime İle Filtrele',
-    'filter_by' => 'Filtreleme ölçütü: ad',
+    'filter_by' => 'Filtreleme ölçütü: :name',
 
     'free' => 'Bedava',
     'ad_date' => 'İlan Tarihi',
