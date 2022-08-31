@@ -66,6 +66,16 @@ return [
         ],
     ],
 
+    'iban_name' => [
+        'type' => 'anomaly.field_type.wysiwyg',
+        'bind' => 'adv.iban_name',
+        'env' => 'ADV_IBAN_NAME',
+        'config' => [
+            'default_value' => '<h3>Openclassify</h3>',
+        ],
+    ],
+
+
     'google_statistic_code' => [
         'type' => 'anomaly.field_type.editor',
         'bind' => 'adv.google_statistic_code',
