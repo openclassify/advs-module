@@ -36,9 +36,6 @@ return [
     'iban_numbers' => [
         'name' => 'IBAN',
     ],
-    'iban_name' => [
-        'name' => 'IBAN Name Surname',
-    ],
     'logo' => [
         'name' => 'Logo',
     ],
