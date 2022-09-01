@@ -38,7 +38,7 @@
                         {% endif %}
                         {% if showPrice %}
                             <div class="product-price-hb rounded d-flex align-items-center mt-2 bg-secondary-md bg-none text-dark justify-content-between">
-                                {{ adv.price != '0' ? currency_format(adv.price,adv.currency) : trans('visiosoft.module.advs::field.free') }}
+                                {{ adv.price != '0' ? currency_format(adv.price,adv.currency) : setting_value("visiosoft.module.advs::hide_zero_price") ? '-' : trans('visiosoft.module.advs::field.free') }}
                                 {{ addBlock('list/extra-actions', {'ad': adv, 'vars': _context}, ['comparisons'])|raw }}
                             </div>
 
