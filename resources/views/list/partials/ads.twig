@@ -65,7 +65,7 @@
                         </p>
                     {% endif %}
                     <p class="text-nowrap">
-                        {{ adv.price != '0' ? currency_format(adv.price,adv.currency) : trans('visiosoft.module.advs::field.free') }}
+                        {{ adv.price != '0' ? currency_format(adv.price,adv.currency) : setting_value("visiosoft.module.advs::hide_zero_price") ? '-' : trans('visiosoft.module.advs::field.free') }}
                     </p>
                 </td>
             </tr>
