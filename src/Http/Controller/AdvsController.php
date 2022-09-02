@@ -1041,12 +1041,13 @@ class AdvsController extends PublicController
             if ($is_new_create) {
                 event(new CreatedAd($adv));
             } else {
-                try {
-                    $this->adv_model->foreignCurrency($this->request->currency, $this->request->price, $this->request->update_id, $this->settings_repository, false);
-                } catch (\Exception $exception) {
-                    $this->messages->error(trans('visiosoft.module.advs::message.currency_converter_not_available'));
-                }
                 event(new EditedAd($before_editing, $adv));
+            }
+
+            try {
+                $this->adv_model->foreignCurrency($this->request->currency, $this->request->price, $this->request->update_id, $this->settings_repository, false);
+            } catch (\Exception $exception) {
+                $this->messages->error(trans('visiosoft.module.advs::message.currency_converter_not_available'));
             }
 
             if (config('adv.preview_mode')) {
