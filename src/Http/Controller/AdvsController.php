@@ -142,8 +142,15 @@ class AdvsController extends PublicController
         $featured_advs = array();
         $subCats = array();
 
-        $param = $this->requestHttp->toArray();
+        $districtSlug=null;
+        if(str_contains($city,'-')){
+            $routeParameters=explode('-',$city);
+            $neighborhoodSlug= count($routeParameters)== 3 ? $routeParameters[2]:null;
+            $districtSlug=$routeParameters[1];
+            $city=$routeParameters[0];
+        }
 
+        $param = $this->requestHttp->toArray();
         $countries = $this->country_repository->newQuery()->get();
 
         $isActiveDopings = $this->adv_model->is_enabled('dopings');
@@ -174,7 +181,6 @@ class AdvsController extends PublicController
                 route('adv_list_seo', [$category->slug])
             ));
         }
-
         // Search by city slug
         $cityId = null;
         if ($category) {
@@ -210,6 +216,8 @@ class AdvsController extends PublicController
             } elseif ($city) {
                 if (isset($param['city'][0]) && empty($param['city'][0])) { // Slug and empty param
                     unset($param['city']);
+                    unset($param['district']);
+                    unset($param['neighborhood']);
                     return redirect(fullLink(
                         $param,
                         route('adv_list_seo', [$category->slug])
@@ -225,6 +233,75 @@ class AdvsController extends PublicController
                 }
             }
         }
+
+        // change root by single district
+        $isSingleDistrict = $cityId
+            && !$isMultipleCity
+            && isset($param['district'])
+            && !strpos($param['district'][0], ',') === true;
+
+        if ($isSingleDistrict && !empty($param['district'][0])) {
+            $district = $this->districtRepository->find($param['district'][0]);
+            unset($param['city']);
+            unset($param['district']);
+            return redirect(fullLink(
+                $param,
+                route('adv_list_seo', [$category->slug, $cityId->slug . '-' . $district->slug])
+            ));
+        }elseif ( $isSingleDistrict && empty($param['district'][0])){
+            unset($param['district']);
+            unset($param['neighborhood']);
+            return redirect(fullLink(
+                $param,
+                route('adv_list_seo', [$category->slug, $cityId->slug])
+            ));
+        }
+
+        //change root by single neighborhood
+        $isSingleNeighborhood=($isSingleDistrict || !is_null($districtSlug))
+            && isset($param['neighborhood'])
+            && !strpos($param['neighborhood'][0],',') === true;
+
+        if ($isSingleNeighborhood && !empty($param['neighborhood'][0])){
+            $neighborhood=$this->neighborhoodRepository->find($param['neighborhood'][0]);
+            unset($param['neighborhood']);
+            return redirect(fullLink(
+                $param,
+                route('adv_list_seo', [$category->slug, $cityId->slug . '-' . $districtSlug. '-'.$neighborhood->slug])
+            ));
+        }elseif ($isSingleNeighborhood && empty($param['neighborhood'][0])){
+            unset($param['neighborhood']);
+            return redirect(fullLink($param,\request()->url()));
+        }
+
+        //control district and neighborhood params
+        if (isset($routeParameters) && count($routeParameters) >= 2 ){
+            if ( isset($param['district']) && !strpos($param['district'][0],',') || !isset($param['district'])){
+                $district=$this->districtRepository->findBySlug($districtSlug);
+                if (!empty($district[0])){
+                    $this->request->offsetSet('district',[$district->toArray()[0]['id']]);
+                    $param['district']=[$district->toArray()[0]['id']];
+                }else{
+                    return redirect(fullLink(
+                        $param,
+                        route('adv_list_seo', [$category->slug, $cityId->slug])
+                    ));
+                }
+                if (count($routeParameters) >= 3 ){
+                    $neighborhood=$this->neighborhoodRepository->findBySlug($neighborhoodSlug);
+                    if (!empty($neighborhood[0])){
+                        $this->request->offsetSet('neighborhood',[$neighborhood->toArray()[0]['id']]);
+                        $param['neighborhood']=[$neighborhood->toArray()[0]['id']];
+                    }else{
+                        return redirect(fullLink(
+                            $param,
+                            route('adv_list_seo', [$category->slug, $cityId->slug.'-'.$districtSlug])
+                        ));
+                    }
+                }
+            }
+        }
+
 
         $isActiveCustomFields = $this->adv_model->is_enabled('customfields');
         $advs = $this->adv_repository->searchAdvs(
@@ -270,7 +347,6 @@ class AdvsController extends PublicController
                 $advs[$index]->currency = $_COOKIE['currency'];
                 $advs[$index]->price = $foreign_currencies[$_COOKIE['currency']];
             }
-
         }
         $seenList = array();
         if ($isActiveCustomFields) {
