@@ -11,6 +11,7 @@ use Anomaly\Streams\Platform\Entry\EntryRepository;
 use Visiosoft\AdvsModule\Support\Command\Currency;
 use Visiosoft\CatsModule\Category\CategoryModel;
 use Visiosoft\CatsModule\Category\Contract\CategoryRepositoryInterface;
+use Visiosoft\GlobalHelperExtension\GlobalHelperExtension;
 use Visiosoft\LocationModule\City\CityModel;
 use Visiosoft\LocationModule\Country\CountryModel;
 use Visiosoft\LocationModule\District\DistrictModel;
@@ -21,16 +22,19 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
     protected $model;
     private $fileRepository;
     private $folderRepository;
+    private $helper;
 
     public function __construct(
         AdvModel                  $model,
         FileRepositoryInterface   $fileRepository,
-        FolderRepositoryInterface $folderRepository
+        FolderRepositoryInterface $folderRepository,
+        GlobalHelperExtension     $helper
     )
     {
         $this->model = $model;
         $this->fileRepository = $fileRepository;
         $this->folderRepository = $folderRepository;
+        $this->helper = $helper;
     }
 
     public function searchAdvs(
@@ -39,8 +43,7 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
     )
     {
         $isSort = !empty($param['sort_by']);
-        $isActiveDopings = new AdvModel();
-        $isActiveDopings = $isActiveDopings->is_enabled('dopings');
+        $isActiveDopings = $this->helper->is_enabled('module','dopings');
 
         $query = $this->model;
         $query = $query->where('advs_advs.slug', '!=', "");
@@ -154,7 +157,7 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
             }
         }
 
-        if ($this->model->is_enabled('customfields')) {
+        if ($this->helper->is_enabled('module','customfields')) {
             $query = app('Visiosoft\CustomfieldsModule\Http\Controller\CustomFieldsController')->filterSearch($customParameters, $param, $query);
         }
 
