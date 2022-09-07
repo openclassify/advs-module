@@ -235,11 +235,12 @@ class AdvsController extends PublicController
         }
 
         // change root by single district
-        if (isset($param['district'])
-            && !strpos($param['district'][0], ',')
-            && !empty($param['district'][0])
+        $isSingleDistrict = $cityId
             && !$isMultipleCity
-            && $cityId ) {
+            && isset($param['district'])
+            && !strpos($param['district'][0], ',') === true;
+
+        if ($isSingleDistrict && !empty($param['district'][0])) {
             $district = $this->districtRepository->find($param['district'][0]);
             unset($param['city']);
             unset($param['district']);
@@ -247,7 +248,7 @@ class AdvsController extends PublicController
                 $param,
                 route('adv_list_seo', [$category->slug, $cityId->slug . '-' . $district->slug])
             ));
-        }elseif ( $cityId && isset($param['district']) && !strpos($param['district'][0], ',') && empty($param['district'][0])){
+        }elseif ( $isSingleDistrict && empty($param['district'][0])){
             unset($param['district']);
             unset($param['neighborhood']);
             return redirect(fullLink(
@@ -257,14 +258,18 @@ class AdvsController extends PublicController
         }
 
         //change root by single neighborhood
-        if ( !is_null($districtSlug) && isset($param['neighborhood']) && !strpos($param['neighborhood'][0],',') && !empty($param['neighborhood'][0]) ){
+        $isSingleNeighborhood=($isSingleDistrict || !is_null($districtSlug))
+            && isset($param['neighborhood'])
+            && !strpos($param['neighborhood'][0],',') === true;
+
+        if ($isSingleNeighborhood && !empty($param['neighborhood'][0])){
             $neighborhood=$this->neighborhoodRepository->find($param['neighborhood'][0]);
             unset($param['neighborhood']);
             return redirect(fullLink(
                 $param,
                 route('adv_list_seo', [$category->slug, $cityId->slug . '-' . $districtSlug. '-'.$neighborhood->slug])
             ));
-        }elseif (isset($param['neighborhood']) && !strpos($param['neighborhood'][0], ',') && empty($param['neighborhood'][0])){
+        }elseif ($isSingleNeighborhood && empty($param['neighborhood'][0])){
             unset($param['neighborhood']);
             return redirect(fullLink($param,\request()->url()));
         }
@@ -1036,12 +1041,13 @@ class AdvsController extends PublicController
             if ($is_new_create) {
                 event(new CreatedAd($adv));
             } else {
-                try {
-                    $this->adv_model->foreignCurrency($this->request->currency, $this->request->price, $this->request->update_id, $this->settings_repository, false);
-                } catch (\Exception $exception) {
-                    $this->messages->error(trans('visiosoft.module.advs::message.currency_converter_not_available'));
-                }
                 event(new EditedAd($before_editing, $adv));
+            }
+
+            try {
+                $this->adv_model->foreignCurrency($this->request->currency, $this->request->price, $this->request->update_id, $this->settings_repository, false);
+            } catch (\Exception $exception) {
+                $this->messages->error(trans('visiosoft.module.advs::message.currency_converter_not_available'));
             }
 
             if (config('adv.preview_mode')) {
