@@ -6,10 +6,6 @@ interface AdvInterface extends EntryInterface
 {
     public function getTransNameAttribute();
 
-    public function is_enabled($slug);
-
-    public function is_enabled_extension($slug);
-
     public function is_active($id);
 
     public function getAdv($id = null, $nullable_ad = false, $trashed = false);

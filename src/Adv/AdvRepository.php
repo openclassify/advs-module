@@ -39,8 +39,7 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
     )
     {
         $isSort = !empty($param['sort_by']);
-        $isActiveDopings = new AdvModel();
-        $isActiveDopings = $isActiveDopings->is_enabled('dopings');
+        $isActiveDopings = is_module_installed('visiosoft.module.dopings');
 
         $query = $this->model;
         $query = $query->where('advs_advs.slug', '!=', "");
@@ -154,7 +153,7 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
             }
         }
 
-        if ($this->model->is_enabled('customfields')) {
+        if (is_module_installed('visiosoft.module.customfields')) {
             $query = app('Visiosoft\CustomfieldsModule\Http\Controller\CustomFieldsController')->filterSearch($customParameters, $param, $query);
         }
 

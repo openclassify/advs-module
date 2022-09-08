@@ -119,25 +119,6 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
         return $this->name;
     }
 
-    public function is_enabled($slug)
-    {
-        if ($addon = app('module.collection')->get($slug)) {
-            return $addon->installed;
-        }
-
-        return false;
-    }
-
-    public function is_enabled_extension($slug)
-    {
-        $isActive = DB::table('addons_extensions')->where('namespace', 'visiosoft.extension.' . $slug . '_provider')->first();
-        if ($isActive == null) {
-            return 0;
-        }
-
-        return $isActive->enabled;
-    }
-
     public function is_active($id)
     {
         $isActive = $this->query()

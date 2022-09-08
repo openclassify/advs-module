@@ -99,12 +99,6 @@ class AdvCriteria extends EntryCriteria
 	    return trans('streams::locale.' . config('app.locale') . '.name');
     }
 
-    public function isEnabled($slug)
-    {
-        $advModel = new AdvModel();
-        return $advModel->is_enabled($slug);
-    }
-
     public function getAdvById($id)
     {
         $advModel = new AdvModel();

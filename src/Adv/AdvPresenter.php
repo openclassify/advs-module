@@ -38,8 +38,7 @@ class AdvPresenter extends EntryPresenter
 
     public function isAdVideo()
     {
-        $isActive = new AdvModel();
-        $isActiveCloudinary = $isActive->is_enabled('cloudinary');
+        $isActiveCloudinary = is_module_installed('visiosoft.module.cloudinary');
         if ($isActiveCloudinary) {
             $cloudinaryModel = new CloudinaryVideoEntryModel();
             $adVideo = $cloudinaryModel::query()->where('adv', $this->getObject()->id)->first();

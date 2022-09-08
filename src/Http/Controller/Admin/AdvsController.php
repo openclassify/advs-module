@@ -66,14 +66,14 @@ class AdvsController extends AdminController
         }
     }
 
-    public function actions($id, $type, AdvModel $advModel)
+    public function actions($id, $type)
     {
         $ad = $this->advRepository->find($id);
 
         $this->dispatch(new UpdateClassifiedStatus($ad, $type));
 
         // Algolia Search Module
-        $isActiveAlgolia = $advModel->is_enabled('algolia');
+        $isActiveAlgolia = is_module_installed('visiosoft.module.algolia');
         if ($isActiveAlgolia) {
             $algolia = new SearchModel();
             $algolia->updateStatus($id, $type);
