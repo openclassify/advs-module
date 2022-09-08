@@ -23,7 +23,6 @@ use Visiosoft\AdvsModule\Option\Contract\OptionRepositoryInterface;
 use Visiosoft\AdvsModule\OptionConfiguration\Contract\OptionConfigurationRepositoryInterface;
 use Visiosoft\AdvsModule\OptionConfiguration\OptionConfigurationModel;
 use Visiosoft\CatsModule\Category\Contract\CategoryRepositoryInterface;
-use Visiosoft\GlobalHelperExtension\GlobalHelperExtension;
 use Visiosoft\LocationModule\City\CityModel;
 use Visiosoft\LocationModule\City\CityRepository;
 use Visiosoft\LocationModule\Country\Contract\CountryRepositoryInterface;
@@ -69,7 +68,6 @@ class AdvsController extends PublicController
     private $event;
 
     private $optionRepository;
-    private $helper;
 
     public function __construct(
         UserRepositoryInterface                $userRepository,
@@ -101,9 +99,7 @@ class AdvsController extends PublicController
 
         Dispatcher                             $events,
 
-        Request                                $request,
-
-        GlobalHelperExtension                  $helper
+        Request                                $request
     )
     {
         $this->userRepository = $userRepository;
@@ -137,8 +133,6 @@ class AdvsController extends PublicController
 
         $this->optionRepository = $optionRepository;
 
-        $this->helper = $helper;
-
         parent::__construct();
     }
 
@@ -159,7 +153,7 @@ class AdvsController extends PublicController
         $param = $this->requestHttp->toArray();
         $countries = $this->country_repository->newQuery()->get();
 
-        $isActiveDopings = $this->helper->is_enabled('module','dopings');
+        $isActiveDopings = is_module_installed('visiosoft.module.dopings');
 
         // Search by category slug
         if ($category) { // Slug
@@ -309,7 +303,7 @@ class AdvsController extends PublicController
         }
 
 
-        $isActiveCustomFields = $this->helper->is_enabled('module','customfields');
+        $isActiveCustomFields = is_module_installed('visiosoft.module.customfields');
         $advs = $this->adv_repository->searchAdvs(
             'list', $param, $customParameters, null, $category, $cityId, false
         );
@@ -642,7 +636,7 @@ class AdvsController extends PublicController
 
         if ($adv and ((auth()->user() and auth()->user()->hasRole('admin')) or ((!$adv->expired() && $adv->getStatus() === 'approved') || $adv->created_by_id === \auth()->id()))) {
 
-            if ($this->helper->is_enabled('module','store')) {
+            if (is_module_installed('visiosoft.module.store')) {
                 $id = $adv->id;
                 $adv->similar_ads = [];
                 $storeRepository = app(StoreRepositoryInterface::class);
@@ -659,7 +653,7 @@ class AdvsController extends PublicController
             }
 
             $complaints = null;
-            if ($this->helper->is_enabled('module','complaints')) {
+            if (is_module_installed('visiosoft.module.complaints')) {
                 $complaints = ComplaintsComplainTypesEntryModel::all();
             }
 
@@ -689,12 +683,12 @@ class AdvsController extends PublicController
             }
 
             $features = null;
-            if ($this->helper->is_enabled('module','customfields')) {
+            if (is_module_installed('visiosoft.module.customfields')) {
                 $features = app('Visiosoft\CustomfieldsModule\Http\Controller\CustomFieldsController')->view($adv);
             }
 
             $adv->video_url = null;
-            if ($this->helper->is_enabled('module','cloudinary')) {
+            if (is_module_installed('visiosoft.module.cloudinary')) {
                 $adv->video_url = app('Visiosoft\CloudinaryModule\Http\Controller\VideoController')->getVideoUrl($adv->id);
             }
 
@@ -795,11 +789,11 @@ class AdvsController extends PublicController
         }
 
         $features = array();
-        if ($this->helper->is_enabled('module','customfields')) {
+        if (is_module_installed('visiosoft.module.customfields')) {
             $features = app('Visiosoft\CustomfieldsModule\Http\Controller\CustomFieldsController')->view($adv);
         }
 
-        $isActiveDopings = $this->helper->is_enabled('module','dopings');
+        $isActiveDopings = is_module_installed('visiosoft.module.dopings');
 
         $this->template->set('meta_title', trans('visiosoft.module.advs::field.preview') . " $adv->name" . ' ' . setting_value('streams::domain'));
 
@@ -848,7 +842,7 @@ class AdvsController extends PublicController
 
     public function getCatsForNewAd($id)
     {
-        if ($this->helper->is_enabled('module','packages') and !setting_value('visiosoft.module.packages::move_the_buy_package_to_the_end')) {
+        if (is_module_installed('visiosoft.module.packages') and !setting_value('visiosoft.module.packages::move_the_buy_package_to_the_end')) {
             $cats = app('Visiosoft\PackagesModule\Http\Controller\PackageFEController')->AdLimitForCategorySelection($id);
         } else {
             $cats = $this->getCats($id);
@@ -883,7 +877,7 @@ class AdvsController extends PublicController
             $cat = $repository->find($cats['cat' . $plus1]);
             $cats_d['cat' . $plus1] = $cat->name;
         }
-        if ($this->helper->is_enabled('module','customfields')) {
+        if (is_module_installed('visiosoft.module.customfields')) {
             $custom_fields = app('Visiosoft\CustomfieldsModule\Http\Controller\CustomFieldsController')->create($categories);
         }
 
@@ -1124,7 +1118,7 @@ class AdvsController extends PublicController
         $categories = array_keys($cats);
 
         $custom_fields = array();
-        if ($this->helper->is_enabled('module','customfields')) {
+        if (is_module_installed('visiosoft.module.customfields')) {
             $custom_fields = app('Visiosoft\CustomfieldsModule\Http\Controller\CustomFieldsController')
                 ->edit($adv, $categories, $cats);
         }

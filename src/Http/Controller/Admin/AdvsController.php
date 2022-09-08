@@ -16,7 +16,6 @@ use Visiosoft\AdvsModule\Option\Contract\OptionRepositoryInterface;
 use Visiosoft\AlgoliaModule\Search\SearchModel;
 use Maatwebsite\Excel\Facades\Excel;
 use Visiosoft\AdvsModule\Adv\AdvsExport;
-use Visiosoft\GlobalHelperExtension\GlobalHelperExtension;
 
 class AdvsController extends AdminController
 {
@@ -24,14 +23,12 @@ class AdvsController extends AdminController
     private $advRepository;
     private $advsEntryTranslationsModel;
     private $optionRepository;
-    private $helper;
 
     public function __construct(
         AdvModel $model,
         AdvRepositoryInterface $advRepository,
         AdvsAdvsEntryTranslationsModel $advsEntryTranslationsModel,
-        OptionRepositoryInterface $optionRepository,
-        GlobalHelperExtension  $helper
+        OptionRepositoryInterface $optionRepository
     )
     {
         parent::__construct();
@@ -39,7 +36,6 @@ class AdvsController extends AdminController
         $this->advRepository = $advRepository;
         $this->advsEntryTranslationsModel = $advsEntryTranslationsModel;
         $this->optionRepository = $optionRepository;
-        $this->helper=$helper;
     }
     public function index(AdvTableBuilder $table)
     {
@@ -77,7 +73,7 @@ class AdvsController extends AdminController
         $this->dispatch(new UpdateClassifiedStatus($ad, $type));
 
         // Algolia Search Module
-        $isActiveAlgolia = $this->helper->is_enabled('module','algolia');
+        $isActiveAlgolia = is_module_installed('visiosoft.module.algolia');
         if ($isActiveAlgolia) {
             $algolia = new SearchModel();
             $algolia->updateStatus($id, $type);

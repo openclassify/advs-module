@@ -3,8 +3,6 @@
 use Anomaly\FilesModule\File\Contract\FileRepositoryInterface;
 use Anomaly\Streams\Platform\Entry\EntryPresenter;
 use Anomaly\Streams\Platform\Model\Cloudinary\CloudinaryVideoEntryModel;
-use Visiosoft\GlobalHelperExtension\GlobalHelperExtension;
-
 
 class AdvPresenter extends EntryPresenter
 {
@@ -40,7 +38,7 @@ class AdvPresenter extends EntryPresenter
 
     public function isAdVideo()
     {
-        $isActiveCloudinary = app(GlobalHelperExtension::class)->is_enabled('module','cloudinary');
+        $isActiveCloudinary = is_module_installed('visiosoft.module.cloudinary');
         if ($isActiveCloudinary) {
             $cloudinaryModel = new CloudinaryVideoEntryModel();
             $adVideo = $cloudinaryModel::query()->where('adv', $this->getObject()->id)->first();

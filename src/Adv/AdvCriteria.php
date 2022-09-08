@@ -6,7 +6,6 @@ use Anomaly\Streams\Platform\Entry\EntryCriteria;
 use Anomaly\Streams\Platform\Image\Image;
 use Illuminate\Support\Facades\Auth;
 use Visiosoft\AdvsModule\Adv\Contract\AdvRepositoryInterface;
-use Visiosoft\GlobalHelperExtension\GlobalHelperExtension;
 use Visiosoft\RecentlyviewedadsModule\Recently\RecentlyModel;
 use Visiosoft\SubscriptionsModule\User\UserModel;
 
@@ -98,11 +97,6 @@ class AdvCriteria extends EntryCriteria
     public function getCurrentLocale()
     {
 	    return trans('streams::locale.' . config('app.locale') . '.name');
-    }
-
-    public function isEnabled($slug)
-    {
-        return app(GlobalHelperExtension::class)->is_enabled('module',$slug);
     }
 
     public function getAdvById($id)
