@@ -329,6 +329,10 @@ return [
         'name' => 'Enter Ad Note When Creating',
         'instructions' => 'Just the ad owner can see this note !'
     ],
+    'show_min_order_limit' => [
+        'name' => 'Show Minimum Order Limit',
+        'instructions' => 'This setting enables order limit.'
+    ],
     'showDetailedAddress' => [
         'name' => 'Show Detailed Address Info In List',
         'instructions' => 'Enable for see detailed address information in listing page.'

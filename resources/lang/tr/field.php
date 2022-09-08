@@ -391,6 +391,9 @@ return [
 
         'name' => 'KDV Oranı'
     ],
+    'min_order_limit' => [
+        'name' => 'Minimum Sipariş Limiti'
+    ],
     'name_a_z' => 'İlan Başlığı (A\'dan Z\'ye)',
     'name_z_a' => 'İlan Başlığı (Z\'den A\'ya)',
     'select_lang_ads' => 'İlan dilini seçiniz',

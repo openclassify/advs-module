@@ -75,6 +75,7 @@ return [
                     'show_post_ad_agreement',
                     'show_input_flag',
                     'show_order_note',
+                    'show_min_order_limit',
                 ],
             ],
             'ads_image' => [
