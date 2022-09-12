@@ -338,5 +338,9 @@ return [
     ],
     'location_data_type_second' => [
         'name' => 'Listing Location Second Type',
+    ],
+    'update_publish_at' => [
+        'name' => 'Update Created Date Of Ads (Once 30 days)',
+        'instructions' => 'This setting directly updates all ads created_at field from database !'
     ]
 ];
