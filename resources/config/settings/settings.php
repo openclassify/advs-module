@@ -574,6 +574,12 @@ return [
             ],
             'default_value' => 'city'
         ]
+    ],
+    'update_publish_at' => [
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => false
+        ]
     ]
 
 ];

@@ -7,6 +7,7 @@ use Anomaly\Streams\Platform\Support\Currency;
 use Anomaly\UsersModule\User\Contract\UserRepositoryInterface;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Http\Request;
+use \Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Visiosoft\AdvsModule\Adv\AdvModel;
@@ -1442,5 +1443,16 @@ class AdvsController extends PublicController
     public function showDetailedAddress($param, $cFArray)
     {
         return $this->detailAddress(['district', 'neighborhood', 'village'], $param, $cFArray,\request());
+    }
+
+    public function updateCreatedAtDates(){
+        if (setting_value("visiosoft.module.advs::update_publish_at")) {
+        $this->adv_repository
+             ->newQuery()
+             ->update([
+                'created_at' => Date::now()->toDateTimeString(),
+                'publish_at' => Date::now()->toDateTimeString()
+             ]);
+        }
     }
 }

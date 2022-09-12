@@ -44,6 +44,7 @@ return [
                     'listing_page_image',
                     'show_ads_count',
                     'show_subcats_mobile',
+                    'update_publish_at'
                 ],
             ],
 	        'ads_detail' => [

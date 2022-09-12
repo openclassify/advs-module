@@ -337,5 +337,9 @@ return [
     ],
     'location_data_type_second' => [
         'name' => 'Listeleme Lokasyon İkinci Veri',
+    ],
+    'update_publish_at' => [
+        'name' => 'İlanların Yayınlanma Tarihini Güncelle (30 günde bir)',
+        'instructions' => 'Bu ayar ilanların oluşturulma tarihini günceller !',
     ]
 ];
