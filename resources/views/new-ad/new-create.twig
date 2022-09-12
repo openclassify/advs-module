@@ -196,6 +196,19 @@
                                     </div>
                                 {% endif %}
 
+                                {% if setting_value('visiosoft.module.advs::show_min_order_limit') %}
+                                    <div class="min-order-limit">
+                                        <div class="row form-group">
+                                            <div class="col-md-4">
+                                                <div class="field-group">
+                                                    {{ form.fields.min_order_limit.setAttributes({
+                                                        'class': 'mt-3 border-0 text-right form-control flex-fill'
+                                                    }).render({'form': form})|raw }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
 
                                 {% if not setting_value('visiosoft.module.advs::hide_options_field') %}
                                     {% if not setting_value('visiosoft.module.advs::detailed_product_options') %}

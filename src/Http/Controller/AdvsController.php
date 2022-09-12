@@ -1359,11 +1359,16 @@ class AdvsController extends PublicController
                 }
 
                 $response = array();
+                //Range status of the quantity
                 if ($status == 1) {
                     $response['newQuantity'] = $advRepository->getQuantity($quantity, $type, $adv);
 
                 } else {
-                    $response['newQuantity'] = $adv->stock;
+                    if (setting_value("visiosoft.module.advs::show_min_order_limit")) {
+                        $response['newQuantity'] = $quantity > $adv->stock ? $adv->stock : $adv->min_order_limit;
+                    } else {
+                        $response['newQuantity'] = $adv->stock;
+                    }
                 }
 
                 $response['newPrice'] = $adv->price * $response['newQuantity'];
@@ -1371,6 +1376,9 @@ class AdvsController extends PublicController
                 $response['newPrice'] = app(Currency::class)->format($response['newPrice'], strtoupper($adv->currency));
                 $response['status'] = $status;
                 $response['maxQuantity'] = $adv->stock;
+                if (setting_value("visiosoft.module.advs::show_min_order_limit")) {
+                    $response['minQuantity'] = $adv->min_order_limit;
+                }
                 return $response;
             }
         }

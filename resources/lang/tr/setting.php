@@ -323,6 +323,10 @@ return [
         'name' => 'İlan Oluştururken Not Girilsin',
         'instructions' => 'Girilen notu yalnızca ilanın sahibi görebilir !'
     ],
+    'show_min_order_limit' => [
+        'name' => 'Minimum Sipariş Limitini Göster',
+        'instructions' => 'Bu ayar minimum sipariş limitini aktif eder.'
+    ],
     'top_right' => 'Sağ Üst',
     'top_left' => 'Sol Üst',
     'bottom_right' => 'Sağ Alt',

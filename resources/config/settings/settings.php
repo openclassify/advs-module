@@ -545,6 +545,12 @@ return [
             'default_value' => false,
         ],
     ],
+    'show_min_order_limit' =>[
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => false,
+        ],
+    ],
     'showDetailedAddress' => [
         'type' => 'anomaly.field_type.boolean',
         'config' => [

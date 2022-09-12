@@ -367,8 +367,8 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
         if ($adv = $this->getAdv($id)) {
             $stock = $adv->stock;
 
-            if ($stock and $stock >= $quantity) {
-                return 1;
+            if ($stock and $stock >= $quantity and !setting_value("visiosoft.module.advs::show_min_order_limit") || $adv->min_order_limit <= $quantity) {
+                 return 1;
             }
         }
         return 0;

@@ -65,6 +65,7 @@ class AdvFormBuilder extends FormBuilder
             'tax',
             'online_payment',
             'stock',
+            'min_order_limit',
             'country' => [
                 'class' => 'form-control countryselect'
             ],
