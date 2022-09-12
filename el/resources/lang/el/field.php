@@ -387,6 +387,9 @@ return [
     'tax' => [
         'name' => 'Tax'
     ],
+    'min_order_limit' => [
+        'name' => 'Minimum Order Limit'
+    ],
     'name_a_z' => 'Name (A to Z)',
     'name_z_a' => 'Name (Z to A)',
     'select_lang_ads' => 'select the language of the ads',
