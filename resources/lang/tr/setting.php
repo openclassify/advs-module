@@ -345,5 +345,9 @@ return [
     'update_publish_at' => [
         'name' => 'İlanların Yayınlanma Tarihini Güncelle (30 günde bir)',
         'instructions' => 'Bu ayar ilanların oluşturulma tarihini günceller !',
+    ],
+    'show_gifs_listing_main_pages' => [
+        'name' => 'Listeleme Ve Anasayfada İlan Resmi Yerine Gif Göster',
+        'instructions' => 'Bu ayar sadece ilana Bulut (Cloudinary) Modülü aracılığıyla video yüklenirse çalışır.'
     ]
 ];

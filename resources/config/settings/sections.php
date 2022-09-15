@@ -27,6 +27,7 @@ return [
                 'fields' => [
                     'extend_ad',
                     'preview_mode',
+                    'show_gifs_listing_main_pages',
                     'show_finish_and_publish_date',
                     'latest-limit',
                     'popular_ads_limit',

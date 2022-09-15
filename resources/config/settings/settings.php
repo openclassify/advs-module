@@ -586,6 +586,12 @@ return [
         'config' => [
             'default_value' => false
         ]
+    ],
+    'show_gifs_listing_main_pages' => [
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => false
+        ]
     ]
 
 ];
