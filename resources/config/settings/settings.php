@@ -590,7 +590,7 @@ return [
     'show_gifs_listing_main_pages' => [
         'type' => 'anomaly.field_type.boolean',
         'config' => [
-            'default_value' => false
+            'default_value' => true
         ]
     ]
 

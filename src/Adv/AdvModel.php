@@ -11,6 +11,7 @@ use Anomaly\Streams\Platform\Model\Advs\AdvsAdvsEntryModel;
 use Visiosoft\AdvsModule\OptionConfiguration\OptionConfigurationModel;
 use Visiosoft\AdvsModule\Support\Command\Currency;
 use Visiosoft\CatsModule\Category\Contract\CategoryRepositoryInterface;
+use Visiosoft\CloudinaryModule\Http\Controller\VideoController;
 use Visiosoft\CustomfieldsModule\CustomField\Contract\CustomFieldRepositoryInterface;
 use Visiosoft\LocationModule\City\CityModel;
 use Visiosoft\LocationModule\Country\CountryModel;
@@ -81,6 +82,13 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
 
     public function getThumbnailAttribute()
     {
+        // setting thumbnail with video if any video exists
+        if (is_module_installed('visiosoft.module.cloudinary')
+            and app(VideoController::class)->getVideoUrl($this->id)
+            and setting_value("visiosoft.module.advs::show_gifs_listing_main_pages")) {
+            return app(VideoController::class)->getGifVideoUrl($this->id);
+        }
+
         if ($this->cover_photo == null) {
             return $this->dispatch(new MakeImageInstance('visiosoft.theme.base::images/no-image.png', 'img'))->url();
         }

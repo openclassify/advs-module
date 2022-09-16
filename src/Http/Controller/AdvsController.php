@@ -349,11 +349,6 @@ class AdvsController extends PublicController
                 $advs[$index]->price = $foreign_currencies[$_COOKIE['currency']];
             }
 
-            // Adding gif_url if any video exists
-            $ad->gif_url = null;
-            if (is_module_installed('visiosoft.module.cloudinary')) {
-                $ad->gif_url = app('Visiosoft\CloudinaryModule\Http\Controller\VideoController')->getGifVideoUrl($ad->id);
-            }
         }
         $seenList = array();
         if ($isActiveCustomFields) {

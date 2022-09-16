@@ -1,6 +1,11 @@
 // Init tooltip
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
+    // Setting the order arrow visible.
+    let sortParam = new URLSearchParams(window.location.search).get('sort_by');
+    if (sortParam) {
+        $(`th[data-sort-asc=${sortParam}] > svg,th[data-sort-desc=${sortParam}] > svg`).show();
+    }
 })
 
 // Handle table header sorting
