@@ -346,5 +346,9 @@ return [
     'update_publish_at' => [
         'name' => 'Update Created Date Of Ads (Once 30 days)',
         'instructions' => 'This setting directly updates all ads created_at field from database !'
+    ],
+    'show_gifs_listing_main_pages' => [
+        'name' => 'Show Gifs On Listing And Main Pages For Ad Thumbnails',
+        'instructions' => 'This setting works only if any video uploaded to ad by cloudinary module.'
     ]
 ];
