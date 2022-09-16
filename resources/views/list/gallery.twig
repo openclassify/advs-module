@@ -17,12 +17,12 @@
                             {% set slicedPhotos = adv.getViewPhotoUrl|slice(0,3) %}
 
                             {%  for key,photo in slicedPhotos %}
-                                    <img src="{{ photo }}" class="product-image-in ads-img img-{{ adv.id ~ '-' ~ key }}" alt="">
+                                <img src="{{ photo }}" class="product-image-in ads-img img-{{ adv.id ~ '-' ~ key }}" alt="">
 
-                                {% endfor %}
-                            <div class="hover-area">
+                            {% endfor %}
+                            <div class="d-none d-sm-flex hover-area">
                                 {% for key, photo in slicedPhotos %}
-                                        <div class="hover-{{ key }}" data-parent="{{ adv.id }}" data-id="img-{{ adv.id ~ '-' ~ key }}"></div>
+                                    <div class="hover-{{ key }}" data-parent="{{ adv.id }}" data-id="img-{{ adv.id ~ '-' ~ key }}"></div>
                                 {% endfor %}
                             </div>
                         </a>

@@ -7,9 +7,10 @@
 
 {% block content %}
 
-    {% include "visiosoft.module.advs::list/partials/mobile-list" %}
+    {#    {% include "visiosoft.module.advs::list/partials/mobile-list" %}#}
 
-    <div id="listingPage" class="d-none d-sm-block">
+    {#    <div id="listingPage" class="d-none d-sm-block">#}
+    <div id="listingPage" class="">
 
         {% include "visiosoft.module.advs::list/partials/breadcrumb" %}
 
@@ -17,8 +18,8 @@
 
             {% include "visiosoft.module.advs::list/partials/list-filter" %}
 
-            <div id="listingContainer" class="flex-fill ml-4">
-                <div id="pageTitle" class="d-flex justify-content-between border-bottom pb-2 px-3 mb-3">
+            <div id="listingContainer" class="flex-fill ml-sm-4">
+                <div id="pageTitle" class="d-none d-sm-flex justify-content-between border-bottom pb-2 px-3 mb-3">
                     <p>
                         {{ trans('visiosoft.module.advs::field.search_ad_result_text', {
                             'count': (advs.total+featured_advs.total),
@@ -31,6 +32,26 @@
                         {{ img('visiosoft.module.advs::images/listing/save-search.svg').data|raw }}
                     </a>
                 </div>
+                {% if setting_value('visiosoft.module.advs::show_subcats_mobile') %}
+                    {% include "visiosoft.module.advs::list/partials/sub-categories-mobile" %}
+                {% endif %}
+                {% if not hideActions %}
+                    <div id="mobileListNav" class="d-sm-none d-flex p-2 align-items-center mb-1">
+                        <div id="filter_modal_btn" class="d-flex flex-column align-items-center mobile-list-nav-item">
+                            {{ img('visiosoft.module.advs::images/listing/mobile-filter.svg').data|raw }}
+                            <p class="mt-1">{{ trans('visiosoft.module.advs::field.filter') }}</p>
+                        </div>
+                        <div class="divider"></div>
+                        <div id="sort_modal_btn" class="d-flex flex-column align-items-center mobile-list-nav-item">
+                            {{ img('visiosoft.module.advs::images/listing/mobile-sort.svg').data|raw }}
+                            <p class="mt-1">{{ trans('visiosoft.module.advs::field.sort') }}</p>
+                        </div>
+                        <div class="divider"></div>
+
+                        {{ addBlock('ads-list/mobile/action-bar')|raw }}
+
+                    </div>
+                {% endif %}
 
                 {% if count(cFArray) %}
                     <div id="queryBar" class="px-3 border py-2 filter-tabs d-flex flex-wrap mb-3">

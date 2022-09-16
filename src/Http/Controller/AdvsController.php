@@ -348,6 +348,7 @@ class AdvsController extends PublicController
                 $advs[$index]->currency = $_COOKIE['currency'];
                 $advs[$index]->price = $foreign_currencies[$_COOKIE['currency']];
             }
+
         }
         $seenList = array();
         if ($isActiveCustomFields) {

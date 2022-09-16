@@ -39,11 +39,11 @@
 
                 {% for listingCF in listingCFs %}
                     {% set feature = adv.features[listingCF.slug.value] %}
-                    <td class="location-data">{{ feature ? feature.custom_field_value : '-' }}</td>
+                    <td class="location-data d-none d-sm-table-cell">{{ feature ? feature.custom_field_value : '-' }}</td>
                 {% endfor %}
 
                 {% if listLocation %}
-                    <td class="location-data">
+                    <td class="location-data d-none d-sm-table-cell">
                         {% set firstLocationType = setting_value('visiosoft.module.advs::location_data_type_first') %}
                         {% set secondLocationType = setting_value('visiosoft.module.advs::location_data_type_second') %}
                         <p>{{getListingLocation(firstLocationType,adv)}}</p>
@@ -51,7 +51,7 @@
                     </td>
                 {% endif %}
                 {% if setting_value('visiosoft.module.advs::market_place') and showDate%}
-                    <td class="date-data">
+                    <td class="date-data d-none d-sm-table-cell">
                         <p>{{ adv.publish_at.value|date('d/m') }}</p>
                         <p>{{ adv.publish_at.value|date('Y') }}</p>
                     </td>

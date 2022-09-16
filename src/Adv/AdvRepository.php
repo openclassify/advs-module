@@ -421,6 +421,7 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
             ->limit(setting_value('visiosoft.module.advs::latest-limit'))
             ->get();
 
+
         if (setting_value('visiosoft.module.advs::hide_out_of_stock_products_without_listing')) {
             $latest_advs = $this->hideAdsWithoutOutOfStock($latest_advs);
         }
