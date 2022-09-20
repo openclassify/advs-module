@@ -279,7 +279,7 @@
                             </div>
                             {% endif %}
                             <h5 class="mt-5 pb-1 border-bottom upload-photos-title">
-                                {{ trans('visiosoft.module.advs::field.upload_photos') }}
+                                {{ trans('visiosoft.module.advs::field.upload_photos') }} {{ setting_value('visiosoft.module.advs::is_image_required') ? '*' : '' }}
                             </h5>
                             <div class="bg-light p-4 upload-photos-wrapper">
                                 <div class="row form-group images">
