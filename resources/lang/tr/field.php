@@ -137,7 +137,7 @@ return [
     'home' => 'Anasayfa',
     'list-page' => 'Liste Sayfası',
     'search' => 'Arama',
-	'reset' => 'Reset',
+	'reset' => 'Sıfırla',
     'recommended' => 'Sizin için Önerilen İlanlar',
     'filter' => 'Filtre',
     'sort' => 'Çeşit',
