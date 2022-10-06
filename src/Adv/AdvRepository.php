@@ -245,6 +245,7 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
     {
         $cat1 = CategoryModel::query()->where('cats_category.id', $adv->cat1)->first();
         $cat2 = CategoryModel::query()->where('cats_category.id', $adv->cat2)->first();
+        $cat3 = CategoryModel::query()->where('cats_category.id', $adv->cat3)->first();
 
         if (!is_null($cat1))
             $adv->setAttribute('cat1_name', $cat1->name);
@@ -256,6 +257,13 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
 
         else
             $adv->setAttribute('cat2_name', "");
+
+
+        if (!is_null($cat3))
+            $adv->setAttribute('cat3_name', $cat3->name);
+
+        else
+            $adv->setAttribute('cat3_name', "");
 
 
         return $adv;
