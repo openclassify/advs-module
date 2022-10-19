@@ -1,5 +1,35 @@
 {% extends layout('list') %}
 
+
+{% block dataBreadcrumb %}
+    {% set cats = getCategoriesLevel3() %}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+            {% for main_cats in cats.maincats %}
+                {
+                    "@type": "ListItem",
+                    "position": {{ main_cats.id }},
+                    "name": "{{ main_cats.name }}",
+                    "item": "{{ url_route('adv_list_seo', [main_cats.slug]) }}"
+                }{{loop.index == loop.last ? "" : "," }}
+                {% for sub_cats in cats.subcats %}
+                    {% if sub_cats.c2_parent_category_id == main_cats.id %}
+                        {
+                            "@type": "ListItem",
+                            "position": {{ sub_cats.c2_id }},
+                            "name": "{{ sub_cats.c2_name }}",
+                            "item": "{{ url_route('adv_list_seo', [sub_cats.c2_slug]) }}"
+                        },
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            ]
+        }
+    </script>
+{% endblock %}
 {% block styles %}
     {{ asset_style("visiosoft.module.advs::css/list.css") }}
     {{ asset_style("visiosoft.module.advs::css/list-new.scss") }}
