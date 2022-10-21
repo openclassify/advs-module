@@ -733,8 +733,33 @@ class AdvsController extends PublicController
             $this->template->set('og_url', $this->adv_model->getAdvDetailLinkByModel($adv, 'list'));
 
             $this->template->set('meta_image', $ogImage);
-            $this->template->set('meta_keywords', implode(',', explode(' ', $adv->name)));
-            $this->template->set('meta_description', $metaDesc);
+
+            //create custom keywords metatags
+            $keywords=[$adv->city_name];
+            $adv->district_name ? array_push($keywords,$adv->district_name) : '';
+            $adv->neighborhood_name ? array_push($keywords,$adv->neighborhood_name) : '';
+            $metaKeywords='';
+            foreach ($keywords as $keyword){
+                foreach ($categories as $category){
+                    if (count($categories) <= 2){
+                        $metaKeywords=$metaKeywords.' '.$keyword.' '.$category['name'].',';
+                    }
+                }
+            }
+            $this->template->set('meta_keywords', $metaKeywords);
+
+            // create custom description metatag
+            $metaDescTags=$adv->city_name.' / ' . $adv->district_name . ' / ' . $adv->neighborhood_name . ', ';;
+            if (!$adv->neighborhood_name){
+                $metaDescTags = $adv->city_name. ' / '.$adv->district_name.', ';
+            }
+            if (!$adv->district_name) {
+                $metaDescTags = $adv->city_name.', ';
+            }
+            $metaDescTags= $metaDescTags.$categories['cat1']['name'].' '.$categories['cat2']['name'].' '.trans('visiosoft.module.advs::field.adv_desc_metaTags');
+            $this->template->set('meta_description', $metaDescTags);
+
+
             $this->template->set('showTitle', false);
             $this->template->set('meta_title', $metaTitle);
 
