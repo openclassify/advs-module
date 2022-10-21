@@ -1274,11 +1274,14 @@ class AdvsController extends PublicController
         return $this->redirect->back();
     }
 
-    public function extendSingle($adId, PackageRepositoryInterface $packageRepository, UserentryRepositoryInterface $userentryRepository, AdvsLogRepositoryInterface $advsLogRepository)
+    public function extendSingle($adId)
     {
         $extendedAdMsg = 'visiosoft.module.advs::message.extended';
         $extendedFailAdMsg = 'visiosoft.module.advs::message.extend_package_fail';
         if (is_module_installed('visiosoft.module.packages')) {
+            $packageRepository =  app(PackageRepositoryInterface::class);
+            $userentryRepository = app(UserentryRepositoryInterface::class);
+            $advsLogRepository = app(AdvsLogRepositoryInterface::class);
             if ($packageRepository->getMyPackages()->count()) {
                 foreach ($packageRepository->getMyPackages() as $myPackage) {
 
