@@ -14,6 +14,7 @@ use Visiosoft\CatsModule\Category\Contract\CategoryRepositoryInterface;
 use Visiosoft\LocationModule\City\CityModel;
 use Visiosoft\LocationModule\Country\CountryModel;
 use Visiosoft\LocationModule\District\DistrictModel;
+use Visiosoft\LocationModule\Neighborhood\NeighborhoodModel;
 use Visiosoft\MediaFieldType\Http\Controller\UploadController;
 
 class AdvRepository extends EntryRepository implements AdvRepositoryInterface
@@ -229,6 +230,7 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
         $country = CountryModel::query()->where('location_countries.id', $adv->country_id)->first();
         $city = CityModel::query()->where('location_cities.id', $adv->city)->first();
         $district = DistrictModel::query()->where('location_districts.id', $adv->district)->first();
+        $neighborhood = NeighborhoodModel::query()->where('location_neighborhoods.id', $adv->neighborhood)->first();
         if ($country != null) {
             $adv->setAttribute('country_name', $country->name);
         }
@@ -237,6 +239,9 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
         }
         if ($district != null) {
             $adv->setAttribute('district_name', $district->name);
+        }
+        if ($neighborhood != null) {
+            $adv->setAttribute('neighborhood_name', $neighborhood->name);
         }
         return $adv;
     }
