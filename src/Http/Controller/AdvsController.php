@@ -756,8 +756,8 @@ class AdvsController extends PublicController
             if (!$adv->district_name) {
                 $metaDescTags = $adv->city_name.', ';
             }
-            $cat1_name=$categories['cat1']['name'] ?? null;
-            $cat2_name=$categories['cat2']['name'] ?? null;
+            $cat1_name=$categories['cat1']['name'] ?? '';
+            $cat2_name=$categories['cat2']['name'] ?? '';
             $metaDescTags= $metaDescTags.$cat1_name.' '.$cat2_name.' '.trans('visiosoft.module.advs::field.adv_desc_metaTags');
             $this->template->set('meta_description', $metaDescTags);
 
