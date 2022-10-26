@@ -143,12 +143,12 @@ class AdvsController extends PublicController
         $featured_advs = array();
         $subCats = array();
 
-        $districtSlug=null;
-        if(str_contains($city,'-')){
-            $routeParameters=explode('-',$city);
-            $neighborhoodSlug= count($routeParameters)== 3 ? $routeParameters[2]:null;
-            $districtSlug=$routeParameters[1];
-            $city=$routeParameters[0];
+        $districtSlug = null;
+        if (str_contains($city, '-')) {
+            $routeParameters = explode('-', $city);
+            $neighborhoodSlug = count($routeParameters) == 3 ? $routeParameters[2] : null;
+            $districtSlug = $routeParameters[1];
+            $city = $routeParameters[0];
         }
 
         $param = $this->requestHttp->toArray();
@@ -249,7 +249,7 @@ class AdvsController extends PublicController
                 $param,
                 route('adv_list_seo', [$category->slug, $cityId->slug . '-' . $district->slug])
             ));
-        }elseif ( $isSingleDistrict && empty($param['district'][0])){
+        } elseif ($isSingleDistrict && empty($param['district'][0])) {
             unset($param['district']);
             unset($param['neighborhood']);
             return redirect(fullLink(
@@ -259,44 +259,44 @@ class AdvsController extends PublicController
         }
 
         //change root by single neighborhood
-        $isSingleNeighborhood=($isSingleDistrict || !is_null($districtSlug))
+        $isSingleNeighborhood = ($isSingleDistrict || !is_null($districtSlug))
             && isset($param['neighborhood'])
-            && !strpos($param['neighborhood'][0],',') === true;
+            && !strpos($param['neighborhood'][0], ',') === true;
 
-        if ($isSingleNeighborhood && !empty($param['neighborhood'][0])){
-            $neighborhood=$this->neighborhoodRepository->find($param['neighborhood'][0]);
+        if ($isSingleNeighborhood && !empty($param['neighborhood'][0])) {
+            $neighborhood = $this->neighborhoodRepository->find($param['neighborhood'][0]);
             unset($param['neighborhood']);
             return redirect(fullLink(
                 $param,
-                route('adv_list_seo', [$category->slug, $cityId->slug . '-' . $districtSlug. '-'.$neighborhood->slug])
+                route('adv_list_seo', [$category->slug, $cityId->slug . '-' . $districtSlug . '-' . $neighborhood->slug])
             ));
-        }elseif ($isSingleNeighborhood && empty($param['neighborhood'][0])){
+        } elseif ($isSingleNeighborhood && empty($param['neighborhood'][0])) {
             unset($param['neighborhood']);
-            return redirect(fullLink($param,\request()->url()));
+            return redirect(fullLink($param, \request()->url()));
         }
 
         //control district and neighborhood params
-        if (isset($routeParameters) && count($routeParameters) >= 2 ){
-            if ( isset($param['district']) && !strpos($param['district'][0],',') || !isset($param['district'])){
-                $district=$this->districtRepository->findBySlug($districtSlug);
-                if (!empty($district[0])){
-                    $this->request->offsetSet('district',[$district->toArray()[0]['id']]);
-                    $param['district']=[$district->toArray()[0]['id']];
-                }else{
+        if (isset($routeParameters) && count($routeParameters) >= 2) {
+            if (isset($param['district']) && !strpos($param['district'][0], ',') || !isset($param['district'])) {
+                $district = $this->districtRepository->findBySlug($districtSlug);
+                if (!empty($district[0])) {
+                    $this->request->offsetSet('district', [$district->toArray()[0]['id']]);
+                    $param['district'] = [$district->toArray()[0]['id']];
+                } else {
                     return redirect(fullLink(
                         $param,
                         route('adv_list_seo', [$category->slug, $cityId->slug])
                     ));
                 }
-                if (count($routeParameters) >= 3 ){
-                    $neighborhood=$this->neighborhoodRepository->findBySlug($neighborhoodSlug);
-                    if (!empty($neighborhood[0])){
-                        $this->request->offsetSet('neighborhood',[$neighborhood->toArray()[0]['id']]);
-                        $param['neighborhood']=[$neighborhood->toArray()[0]['id']];
-                    }else{
+                if (count($routeParameters) >= 3) {
+                    $neighborhood = $this->neighborhoodRepository->findBySlug($neighborhoodSlug);
+                    if (!empty($neighborhood[0])) {
+                        $this->request->offsetSet('neighborhood', [$neighborhood->toArray()[0]['id']]);
+                        $param['neighborhood'] = [$neighborhood->toArray()[0]['id']];
+                    } else {
                         return redirect(fullLink(
                             $param,
-                            route('adv_list_seo', [$category->slug, $cityId->slug.'-'.$districtSlug])
+                            route('adv_list_seo', [$category->slug, $cityId->slug . '-' . $districtSlug])
                         ));
                     }
                 }
@@ -384,7 +384,7 @@ class AdvsController extends PublicController
             $selectImage = $returnvalues['selectImage'];
             $ranges = $returnvalues['ranges'];
             $radio = $returnvalues['radio'];
-            $text = array_merge($returnvalues['date-text'],$returnvalues['text']);
+            $text = array_merge($returnvalues['date-text'], $returnvalues['text']);
 
             $main_list_CFS = app('Visiosoft\CustomfieldsModule\CustomField\Contract\CustomFieldRepositoryInterface')
                 ->getSeenCustomFieldsWithCategory(null);
@@ -735,28 +735,30 @@ class AdvsController extends PublicController
             $this->template->set('meta_image', $ogImage);
 
             //create custom keywords metatags
-            $keywords=[$adv->city_name];
-            $adv->district_name ? array_push($keywords,$adv->district_name) : '';
-            $adv->neighborhood_name ? array_push($keywords,$adv->neighborhood_name) : '';
-            $metaKeywords='';
-            foreach ($keywords as $keyword){
-                foreach ($categories as $category){
-                    if (count($categories) <= 2){
-                        $metaKeywords=$metaKeywords.' '.$keyword.' '.$category['name'].',';
+            $keywords = [$adv->city_name];
+            $adv->district_name ? array_push($keywords, $adv->district_name) : '';
+            $adv->neighborhood_name ? array_push($keywords, $adv->neighborhood_name) : '';
+            $metaKeywords = '';
+            foreach ($keywords as $keyword) {
+                foreach ($categories as $category) {
+                    if (count($categories) <= 2) {
+                        $metaKeywords = $metaKeywords . ' ' . $keyword . ' ' . $category['name'] . ',';
                     }
                 }
             }
             $this->template->set('meta_keywords', $metaKeywords);
 
             // create custom description metatag
-            $metaDescTags=$adv->city_name.' / ' . $adv->district_name . ' / ' . $adv->neighborhood_name . ', ';;
-            if (!$adv->neighborhood_name){
-                $metaDescTags = $adv->city_name. ' / '.$adv->district_name.', ';
+            $metaDescTags = $adv->city_name . ' / ' . $adv->district_name . ' / ' . $adv->neighborhood_name . ', ';;
+            if (!$adv->neighborhood_name) {
+                $metaDescTags = $adv->city_name . ' / ' . $adv->district_name . ', ';
             }
             if (!$adv->district_name) {
-                $metaDescTags = $adv->city_name.', ';
+                $metaDescTags = $adv->city_name . ', ';
             }
-            $metaDescTags= $metaDescTags.$categories['cat1']['name'].' '.$categories['cat2']['name'].' '.trans('visiosoft.module.advs::field.adv_desc_metaTags');
+            $cat1_name = $categories['cat1']['name'] ?? '';
+            $cat2_name = $categories['cat2']['name'] ?? '';
+            $metaDescTags = $metaDescTags . $cat1_name . ' ' . $cat2_name . ' ' . trans('visiosoft.module.advs::field.adv_desc_metaTags');
             $this->template->set('meta_description', $metaDescTags);
 
 
@@ -1279,7 +1281,7 @@ class AdvsController extends PublicController
         $extendedAdMsg = 'visiosoft.module.advs::message.extended';
         $extendedFailAdMsg = 'visiosoft.module.advs::message.extend_package_fail';
         if (is_module_installed('visiosoft.module.packages')) {
-            $packageRepository =  app(PackageRepositoryInterface::class);
+            $packageRepository = app(PackageRepositoryInterface::class);
             $userentryRepository = app(UserentryRepositoryInterface::class);
             $advsLogRepository = app(AdvsLogRepositoryInterface::class);
             if ($packageRepository->getMyPackages()->count()) {
@@ -1367,8 +1369,7 @@ class AdvsController extends PublicController
         $id = $request->id;
         $type = $request->type;
 
-        if ($id)
-        {
+        if ($id) {
             //Check Ad or Ad Option
             if ($request->dataType === 'ad-configuration') {
                 $optionConf = new  OptionConfigurationModel();
@@ -1378,8 +1379,7 @@ class AdvsController extends PublicController
                 $adv = $advmodel->getAdv($id);
             }
 
-            if ($adv)
-            {
+            if ($adv) {
                 //Check Quantity
                 if ($request->dataType === 'ad-configuration') {
                     $status = $adv->stockControl($id, $quantity);
@@ -1433,7 +1433,7 @@ class AdvsController extends PublicController
         }
     }
 
-    public function detailedAddressInfo($param,$fields,$fieldName,$fieldIDs)
+    public function detailedAddressInfo($param, $fields, $fieldName, $fieldIDs)
     {
         $value = array();
         foreach ($fields as $field) {
@@ -1443,7 +1443,7 @@ class AdvsController extends PublicController
             $removalLink = fullLink(
                 $removalLink,
                 \request()->url(),
-                [$fieldName.'[]' => implode(
+                [$fieldName . '[]' => implode(
                     ',',
                     array_filter($fieldIDs, function ($singleField) use ($field) {
                         return $singleField != $field->id;
@@ -1458,18 +1458,19 @@ class AdvsController extends PublicController
         }
 
         return $cFArray[] = [
-            'name' => trans('visiosoft.module.advs::field.'.$fieldName.'.name'),
+            'name' => trans('visiosoft.module.advs::field.' . $fieldName . '.name'),
             'value' => $value
         ];
 
     }
 
-    public function detailAddress ($repositories, $param, $cFArray,$request){
+    public function detailAddress($repositories, $param, $cFArray, $request)
+    {
         foreach ($repositories as $repository) {
             if ($item = $request[$repository]) {
                 $itemIDs = explode(',', $item[0]);
 
-                $repoPath = 'Visiosoft\\LocationModule\\' . ucfirst($repository) .'\\' . ucfirst($repository) . 'Repository';
+                $repoPath = 'Visiosoft\\LocationModule\\' . ucfirst($repository) . '\\' . ucfirst($repository) . 'Repository';
                 $items = app($repoPath)->findAllByIDs($itemIDs);
                 $cFArray[] = $this->detailedAddressInfo($param, $items, $repository, $itemIDs);
             }
@@ -1479,17 +1480,18 @@ class AdvsController extends PublicController
 
     public function showDetailedAddress($param, $cFArray)
     {
-        return $this->detailAddress(['district', 'neighborhood', 'village'], $param, $cFArray,\request());
+        return $this->detailAddress(['district', 'neighborhood', 'village'], $param, $cFArray, \request());
     }
 
-    public function updateCreatedAtDates(){
+    public function updateCreatedAtDates()
+    {
         if (setting_value("visiosoft.module.advs::update_publish_at")) {
-        $this->adv_repository
-             ->newQuery()
-             ->update([
-                'created_at' => Date::now()->toDateTimeString(),
-                'publish_at' => Date::now()->toDateTimeString()
-             ]);
+            $this->adv_repository
+                ->newQuery()
+                ->update([
+                    'created_at' => Date::now()->toDateTimeString(),
+                    'publish_at' => Date::now()->toDateTimeString()
+                ]);
         }
     }
 }
