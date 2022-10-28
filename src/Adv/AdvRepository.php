@@ -57,11 +57,12 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
             if (is_numeric($param['keyword'])) {
                 $query = $query->where('advs_advs.id', $param['keyword']);
             } else {
-                $delimiter = '_';
-                $keyword = str_slug($param['keyword'], $delimiter);
-                $query = $query->where(function ($query) use ($keyword) {
-                    $query->where('slug', 'like', '%' . $keyword . '%')
-                        ->orWhere('advs_advs_translations.name', 'like', '%' . $keyword . '%');
+                $keywords = explode(' ',$param['keyword']);
+                $query = $query->where(function ($query) use ($keywords) {
+                    foreach ($keywords as $keyword) {
+                        $query->orWhere('slug', 'like', '%' . $keyword . '%')
+                              ->orWhere('advs_advs_translations.name', 'like', '%%' . $keyword . '%%');
+                    }
                 });
             }
         }
