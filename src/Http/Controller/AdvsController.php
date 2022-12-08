@@ -156,6 +156,7 @@ class AdvsController extends PublicController
 
         $isActiveDopings = is_module_installed('visiosoft.module.dopings');
 
+
         // Search by category slug
         if ($category) { // Slug
             $category = $this->category_repository->findBy('slug', $category);
@@ -547,11 +548,13 @@ class AdvsController extends PublicController
             $seo_description = $category->getMetaDescription();
             $metaTitle = $category->name;
             $metaDesc = $seo_description;
-
-            $this->template->set('meta_keywords', implode(', ', $seo_keywords));
+            $keywords = '';
 
             if ($city) {
-                $catText = "$city->name $catText";
+                $catText = $city->name . ' ' . $mainCats->last()->name ?: $catText;
+                foreach ($mainCats as $mainCat){
+                    $keywords = $keywords . $city->name . ' ' . $mainCat->name . ', ';
+                }
             } elseif (count($mainCats) == 1 || count($mainCats) == 2) {
                 $catText = $mainCats->last()->name;
             } elseif (count($mainCats) > 2) {
@@ -575,6 +578,12 @@ class AdvsController extends PublicController
 
             $this->template->set('og_description', $metaDesc);
             $this->template->set('meta_description', $metaDesc);
+
+            if (empty($seo_keywords)){
+                $this->template->set('meta_keywords', $keywords);
+            }else{
+                $this->template->set('meta_keywords', implode(', ', $seo_keywords));
+            }
 
             $showTitle = false;
         }
