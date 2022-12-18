@@ -156,6 +156,48 @@ class AdvsController extends PublicController
 
         $isActiveDopings = is_module_installed('visiosoft.module.dopings');
 
+        $keywordParams = '';
+
+        if (isset($param['keyword'])){
+            $keywordParams = str_contains($param['keyword'],' ') ?
+                explode(' ',$param['keyword']) :
+                $param['keyword'];
+        }
+
+        $cityKeywordParam = array();
+        $districtKeywordParam = array();
+
+        if (!empty($keywordParams)){
+            if (str_contains($param['keyword'],' ')){
+                foreach ($keywordParams as $key => $keywordParam){
+                    $tempCityParam = $this->cityRepository->findBy('name',$keywordParam);
+                    $tempDistrictParam = $this->districtRepository->findBy('name',$keywordParam);
+                    if (!is_null($tempDistrictParam)){
+                        $districtKeywordParam[$key] = $tempDistrictParam->id;
+                    }
+                    if (!is_null($tempCityParam)){
+                        $cityKeywordParam[$key] = $tempCityParam->id;
+                    }
+                }
+            }else{
+                $cityKeywordParam = $this->cityRepository->findBy('name',$keywordParams);
+                $districtKeywordParam = $this->districtRepository->findBy('name',$keywordParams);
+            }
+        }
+
+//        dd($keywordParams);
+        if (!empty($cityKeywordParam)){
+//            dd($cityKeywordParam[0]);
+//            foreach ($cityKeywordParam as $keywordCity){
+//                $this->request->offsetSet('city', $cityKeywordParam);
+//                $param['city'] = $cityKeywordParam;
+//            }
+            $this->request->offsetSet('city', array($cityKeywordParam->id));
+//            dd($cityKeywordParam->id);
+        }
+
+//        $this->cityRepository->findBy('name','istanbul');
+
 
         // Search by category slug
         if ($category) { // Slug
