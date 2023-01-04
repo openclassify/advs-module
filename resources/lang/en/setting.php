@@ -350,5 +350,8 @@ return [
     'show_gifs_listing_main_pages' => [
         'name' => 'Show Gifs On Listing And Main Pages For Ad Thumbnails',
         'instructions' => 'This setting works only if any video uploaded to ad by cloudinary module.'
+    ],
+    'add_ad_tags' => [
+        'name' => 'Show Ad Tags'
     ]
 ];

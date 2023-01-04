@@ -398,5 +398,8 @@ return [
     'name_z_a' => 'İlan Başlığı (Z\'den A\'ya)',
     'select_lang_ads' => 'İlan dilini seçiniz',
     'user' => 'Kullanıcı',
-    'adv_desc_metaTags' => 'ilanlarımızı listelemek için web sitemizi ziyaret ediniz.'
+    'adv_desc_metaTags' => 'ilanlarımızı listelemek için web sitemizi ziyaret ediniz.',
+    'tags' => [
+        'name' => 'Eklentiler'
+    ]
 ];

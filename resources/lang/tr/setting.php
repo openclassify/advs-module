@@ -349,5 +349,8 @@ return [
     'show_gifs_listing_main_pages' => [
         'name' => 'Listeleme Ve Anasayfada İlan Resmi Yerine Gif Göster',
         'instructions' => 'Bu ayar sadece ilana Bulut (Cloudinary) Modülü aracılığıyla video yüklenirse çalışır.'
+    ],
+    'add_ad_tags' => [
+        'name' => 'Etiket Eklemeyi Göster'
     ]
 ];

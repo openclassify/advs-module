@@ -78,6 +78,7 @@ return [
                     'show_input_flag',
                     'show_order_note',
                     'show_min_order_limit',
+                    'add_ad_tags'
                 ],
             ],
             'ads_image' => [
