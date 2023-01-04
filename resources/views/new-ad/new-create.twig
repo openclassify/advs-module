@@ -312,6 +312,17 @@
                                     {{ other_fields|raw }}
                                 </div>
                             {% endif %}
+                            {% if setting_value('visiosoft.module.advs::add_ad_tags') %}
+                                <div class="bg-light p-4 row form-group">
+                                    <div class="col-12">
+                                        <div class="field-group">
+                                            {{ form.fields.tags.setAttributes({
+                                                'class': 'mt-3 border-0 text-right form-control flex-fill'
+                                            }).render({'form': form})|raw }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
 
                             {% if setting_value('visiosoft.module.location::create_ad_page_location') %}
                                 <h5 class="mt-5 pb-1 border-bottom">

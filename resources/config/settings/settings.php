@@ -592,6 +592,12 @@ return [
         'config' => [
             'default_value' => true
         ]
+    ],
+    'add_ad_tags' => [
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => false
+        ]
     ]
 
 ];
