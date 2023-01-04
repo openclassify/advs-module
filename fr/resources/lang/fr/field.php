@@ -413,5 +413,8 @@ return [
     'approved_ads'       => 'Approved Ads',
     'outdated_ads'       => 'Outdated Ads',
     'passive_ads'       => 'Passive Ads',
-    'adv_desc_metaTags' => 'visit our website to list our listings.'
+    'adv_desc_metaTags' => 'visit our website to list our listings.',
+    'tags' => [
+        'name' => 'Tags'
+    ]
 ];
