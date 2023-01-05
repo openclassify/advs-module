@@ -1,13 +1,19 @@
 <?php namespace Visiosoft\AdvsModule\Adv\Form;
 
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
+use Illuminate\Contracts\Events\Dispatcher;
 use Visiosoft\AdvsModule\Adv\Contract\AdvRepositoryInterface;
+use Visiosoft\AdvsModule\Adv\Event\PriceChange;
 use Visiosoft\LocationModule\Country\Contract\CountryRepositoryInterface;
 use Visiosoft\LocationModule\Country\CountryModel;
 
 class SimpleAdvFormHandler
 {
-    public function handle(FormBuilder $builder, AdvRepositoryInterface $advRepository)
+    public function handle(
+        FormBuilder $builder,
+        AdvRepositoryInterface $advRepository,
+        Dispatcher $event
+    )
     {
         if (!$builder->canSave()) {
             return;
@@ -25,6 +31,7 @@ class SimpleAdvFormHandler
         if (!$builder->getFormValue('status') && $ad->status !== 'approved') {
             $ad->approve();
         }
+        $event->dispatch(new PriceChange($ad));
 
         $advRepository->cover_image_update($ad);
     }
