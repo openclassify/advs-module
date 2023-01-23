@@ -1,6 +1,6 @@
 <?php namespace Visiosoft\AdvsModule\Adv\Support\MultipleFieldType;
 
-class ValueTableBuilder extends \Anomaly\MultipleFieldType\Table\ValueTableBuilder
+class ValueTableBuilder extends \Visiosoft\MultipleFieldType\Table\ValueTableBuilder
 {
     protected $columns = [
         'name',
