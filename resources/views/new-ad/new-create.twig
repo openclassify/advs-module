@@ -81,6 +81,22 @@
                                     {% endfor %}
                                 </label>
 
+                                <label class="w-100 mb-2">
+                                    {% for field in form.fields.translations('seo_title') %}
+                                        {{ field.setAttributes({
+                                            'class': 'd-block mt-3 w-100 border-0',
+                                        }).setValue((form_params[field.field~"_"~field.getLocale()]) ?? field.value).render({'form': form})|raw }}
+                                    {% endfor %}
+                                </label>
+
+                                <label class="w-100 mb-2">
+                                    {% for field in form.fields.translations('seo_description') %}
+                                        {{ field.setAttributes({
+                                            'class': 'd-block mt-3 w-100 border-0',
+                                        }).setValue((form_params[field.field~"_"~field.getLocale()]) ?? field.value).render({'form': form})|raw }}
+                                    {% endfor %}
+                                </label>
+
                                 {% if setting_value('visiosoft.module.advs::market_place') %}
                                     {{ addBlock('new-ad/fields', {'adv': adv, 'rawClassified': rawClassified})|raw }}
                                 {% endif %}

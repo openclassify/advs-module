@@ -93,7 +93,9 @@ class AdvFormBuilder extends FormBuilder
             'popular_adv',
             'adv_day',
             'product_options_value',
-            'show_phone_number'
+            'show_phone_number',
+            'seo_title',
+            'seo_description'
         ];
 
         if (setting_value('visiosoft.module.advs::show_finish_and_publish_date')) {

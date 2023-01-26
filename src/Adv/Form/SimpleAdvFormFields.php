@@ -10,7 +10,9 @@ class SimpleAdvFormFields
         $statuses = $statusRepository->all()->pluck('name', 'slug')->all();
 
         $form_fields = [
+            'seo_title',
             'name',
+            'seo_description',
             'price',
             'currency',
             'advs_desc',
