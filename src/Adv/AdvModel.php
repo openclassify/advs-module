@@ -440,12 +440,34 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
     public function getRecommended($id)
     {
         $adv = $this->find($id);
+        $catLevel=10;
+        $catNo = 'cat'.$catLevel;
+
+        for ($i = 10; $i>=1; $i--) {
+            if (!($adv->$catNo)) {
+                $catLevel = $i;
+                $catNo = 'cat'.$catLevel;
+
+                $catParentLevel = $i === 1 ? $catParentLevel: $catLevel-1;
+                $catParentNo = $i === 1 ? $catParentNo : 'cat'.$catParentLevel ;
+            }
+        }
         if (!is_null($adv)) {
-            return $this->where('advs_advs.slug', '!=', "")
+            $result = $this->where('advs_advs.slug', '!=', "")
                 ->where('advs_advs.status', 'approved')
                 ->where('advs_advs.id', '!=', $id)
                 ->where('advs_advs.finish_at', '>', date('Y-m-d H:i:s'))
-                ->where('advs_advs.cat1', $adv->cat1)->get();
+                ->where('cat'.$catLevel, $adv->$catNo)
+                ->inRandomOrder()->get();
+            if (count($result) == 0){
+                $result = $this->where('advs_advs.slug', '!=', "")
+                    ->where('advs_advs.status', 'approved')
+                    ->where('advs_advs.id', '!=', $id)
+                    ->where('advs_advs.finish_at', '>', date('Y-m-d H:i:s'))
+                    ->where('cat'.$catParentLevel , $adv->$catParentNo)
+                    ->inRandomOrder()->get();
+            }
+            return $result;
         }
         return null;
     }
