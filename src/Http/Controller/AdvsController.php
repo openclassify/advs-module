@@ -596,6 +596,10 @@ class AdvsController extends PublicController
             }
         }
 
+        if (\request()->keyword) {
+            $metaTitle .= ($metaTitle ? " | " : "") . \request()->keyword;
+        }
+
         if (\request()->page) {
             $metaTitle .= ($metaTitle ? " | " : "") . \request()->page;
         }
