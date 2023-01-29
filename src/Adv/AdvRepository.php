@@ -159,9 +159,6 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
             $query = app('Visiosoft\CustomfieldsModule\Http\Controller\CustomFieldsController')->filterSearch($customParameters, $param, $query);
         }
 
-//        //UPDATE `default_advs_advs` SET `coor` = (PointFromText('POINT(41.085022 28.804754)')) WHERE `default_advs_advs`.`id` = 8
-//        //SELECT * FROM `default_advs_advs` WHERE ST_DISTANCE(ST_GeomFromText('POINT(41.0709052 28.829627)'), coor) < 20
-
         if (!empty($param['dlong']) && !empty($param['dlat']) && !empty($param['distance'])) {
             $query = $query->whereNotNull('coor');
             $query = $query->whereRaw("ST_DISTANCE(ST_GeomFromText('POINT(" . $param['dlong'] . " " . $param['dlat'] . ")'), coor) < " . $param['distance']);

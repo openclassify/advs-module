@@ -401,5 +401,11 @@ return [
     'adv_desc_metaTags' => 'ilanlarımızı listelemek için web sitemizi ziyaret ediniz.',
     'tags' => [
         'name' => 'Eklentiler'
+    ],
+    'seo_title' => [
+        'name' => 'Seo Başlık'
+    ],
+    'seo_description' => [
+        'name' => 'Seo Açıklaması'
     ]
 ];

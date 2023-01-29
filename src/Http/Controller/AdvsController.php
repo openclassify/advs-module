@@ -596,6 +596,10 @@ class AdvsController extends PublicController
             }
         }
 
+        if (\request()->keyword) {
+            $metaTitle .= ($metaTitle ? " | " : "") . \request()->keyword;
+        }
+
         if (\request()->page) {
             $metaTitle .= ($metaTitle ? " | " : "") . \request()->page;
         }
@@ -768,10 +772,16 @@ class AdvsController extends PublicController
             $cat1_name = $categories['cat1']['name'] ?? '';
             $cat2_name = $categories['cat2']['name'] ?? '';
             $metaDescTags = $metaDescTags . $cat1_name . ' ' . $cat2_name . ' ' . trans('visiosoft.module.advs::field.adv_desc_metaTags');
+            if ($adv->seo_description) {
+                $metaDescTags = $adv->seo_description;
+            }
             $this->template->set('meta_description', $metaDescTags);
 
 
             $this->template->set('showTitle', false);
+            if ($adv->seo_title) {
+                $metaTitle = $adv->seo_title;
+            }
             $this->template->set('meta_title', $metaTitle);
 
             $configurations = $this->optionConfigurationRepository->getConf($adv->id);
