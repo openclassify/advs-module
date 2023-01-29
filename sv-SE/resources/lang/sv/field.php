@@ -416,5 +416,11 @@ return [
     'adv_desc_metaTags' => 'visit our website to list our listings.',
     'tags' => [
         'name' => 'Tags'
+    ],
+    'seo_title' => [
+        'name' => 'Seo Title'
+    ],
+    'seo_description' => [
+        'name' => 'Seo Description'
     ]
 ];
