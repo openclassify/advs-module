@@ -437,7 +437,7 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
         $ad->update(['count_show_ad' => intval($ad->count_show_ad) + 1]);
     }
 
-    public function getRecommended($id)
+    public function getRecommended($id, $limit = 3)
     {
         $adv = $this->find($id);
         $catLevel=10;
@@ -452,20 +452,22 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
                 $catParentNo = $i === 1 ? $catParentNo : 'cat'.$catParentLevel ;
             }
         }
+
+        $result = $this->where('advs_advs.slug', '!=', "")
+            ->where('advs_advs.status', 'approved')
+            ->where('advs_advs.id', '!=', $id)
+            ->where('advs_advs.finish_at', '>', date('Y-m-d H:i:s'));
+
         if (!is_null($adv)) {
-            $result = $this->where('advs_advs.slug', '!=', "")
-                ->where('advs_advs.status', 'approved')
-                ->where('advs_advs.id', '!=', $id)
-                ->where('advs_advs.finish_at', '>', date('Y-m-d H:i:s'))
-                ->where('cat'.$catLevel, $adv->$catNo)
-                ->inRandomOrder()->get();
+            $result = $result->where('cat'.$catLevel, $adv->$catNo)
+                ->inRandomOrder()
+                ->limit($limit)
+                ->get();
             if (count($result) == 0){
-                $result = $this->where('advs_advs.slug', '!=', "")
-                    ->where('advs_advs.status', 'approved')
-                    ->where('advs_advs.id', '!=', $id)
-                    ->where('advs_advs.finish_at', '>', date('Y-m-d H:i:s'))
-                    ->where('cat'.$catParentLevel , $adv->$catParentNo)
-                    ->inRandomOrder()->get();
+                $result = $result->where('cat'.$catParentLevel , $adv->$catParentNo)
+                    ->inRandomOrder()
+                    ->limit($limit)
+                    ->get();
             }
             return $result;
         }
