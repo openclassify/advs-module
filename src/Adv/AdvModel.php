@@ -447,27 +447,27 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
             if (!($adv->$catNo)) {
                 $catLevel = $i;
                 $catNo = 'cat'.$catLevel;
-
-                $catParentLevel = $i === 1 ? $catParentLevel: $catLevel-1;
-                $catParentNo = $i === 1 ? $catParentNo : 'cat'.$catParentLevel ;
             }
         }
-
-        $result = $this->where('advs_advs.slug', '!=', "")
+        $advs = $this->where('advs_advs.slug', '!=', "")
             ->where('advs_advs.status', 'approved')
             ->where('advs_advs.id', '!=', $id)
             ->where('advs_advs.finish_at', '>', date('Y-m-d H:i:s'));
-
+        $featuredAdvsQuery = clone $advs;
         if (!is_null($adv)) {
-            $result = $result->where('cat'.$catLevel, $adv->$catNo)
+            $result = $advs->where('cat'.$catLevel, $adv->$catNo)
                 ->inRandomOrder()
                 ->limit($limit)
                 ->get();
-            if (count($result) == 0){
-                $result = $result->where('cat'.$catParentLevel , $adv->$catParentNo)
+            if (count($result) < $limit){
+                $result2 = $featuredAdvsQuery->where('cat1' , $adv->cat1)
                     ->inRandomOrder()
-                    ->limit($limit)
+                    ->limit($limit - count($result))
                     ->get();
+            }
+            if(!empty($result2)){
+                $total = $result->merge($result2);
+                return $total;
             }
             return $result;
         }
