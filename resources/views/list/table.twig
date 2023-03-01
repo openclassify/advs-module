@@ -26,7 +26,7 @@
             {% for adv in advs %}
                 <tr class="text-center clickable-row{% if adv.doping != null %} doping_type4 {% endif %}" data-href='{{ adv.detail_url }}'>
                     <td class="justify-content-center align-middle text-center td-image">
-                        <a href="">
+                        <a href="{{ adv.detail_url }}">
                             <img class="img-thumbnail" src="{{ adv.thumbnail }}" alt="{{ adv.name }}">
                         </a>
                     </td>
