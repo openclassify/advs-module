@@ -38,6 +38,10 @@ class SimpleAdvFormFields
             'files',
         ];
 
+        if(config("advs::is_changeable_slug",false)){
+            $form_fields = array_merge($form_fields,['slug']);
+        }
+
         $eventFields = event(new ReadySimpleAdvFormFields($form_fields));
 
         foreach ($eventFields as $field_array) {

@@ -9,10 +9,6 @@ class AdvFormBuilder extends FormBuilder
 
     protected $category = null;
 
-    protected $skips = [
-        'slug'
-    ];
-
     protected $buttons = [
         'cancel',
     ];
@@ -110,5 +106,11 @@ class AdvFormBuilder extends FormBuilder
         }
 
         return $fields;
+    }
+    public function setSkips($skips)
+    {
+        if (!config("advs::is_changeable_slug",false)){
+            return ['slug'];
+        }
     }
 }
