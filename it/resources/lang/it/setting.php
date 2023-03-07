@@ -353,5 +353,9 @@ return [
     ],
     'add_ad_tags' => [
         'name' => 'Show Ad Tags'
+    ],
+    'is_changeable_slug' => [
+        'name' => 'Is Changeable Slug',
+        'instructions' => 'Indicates the changeability of the ad\'s custom domain name'
     ]
 ];
