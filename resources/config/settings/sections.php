@@ -59,6 +59,7 @@ return [
             'create_ad' => [
                 'title' => 'visiosoft.module.advs::section.create_ad',
                 'fields' => [
+                    'is_changeable_slug',
                 	'hide_contact_created_at',
                     'show_tax_field',
                     'detailed_product_options',

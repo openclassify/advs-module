@@ -352,5 +352,9 @@ return [
     ],
     'add_ad_tags' => [
         'name' => 'Etiket Eklemeyi Göster'
+    ],
+    'is_changeable_slug' => [
+        'name' => 'Değiştirilebilir Özel İsim (Slug)',
+        'instructions' => 'İlanın özel isminin değiştirilebilir olma durumu'
     ]
 ];

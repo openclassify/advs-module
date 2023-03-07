@@ -598,6 +598,13 @@ return [
         'config' => [
             'default_value' => false
         ]
-    ]
+    ],
+    'is_changeable_slug' => [
+        'type' => 'anomaly.field_type.boolean',
+        'bind' => "advs::is_changeable_slug",
+        'config' => [
+            'default_value' => false
+        ]
+    ],
 
 ];
