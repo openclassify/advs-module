@@ -38,7 +38,7 @@
                         </div>
                     </td>
                     <td class="justify-content-center align-middle td-price">
-                        <b>{{ currency_format(adv.price,adv.currency) }}</b>
+                        <b>{{ currency_format(adv.price,adv.currency, {'decimals' : setting_value('visiosoft.field_type.decimal::decimal_length')}) }}</b>
                     </td>
                     {% if not setting_value('visiosoft.module.advs::ads_date_hidden') %}
                         <td class="justify-content-center align-middle td-date">

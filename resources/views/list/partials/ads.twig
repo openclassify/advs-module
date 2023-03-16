@@ -60,12 +60,12 @@
                     {% if not hideStandard %}
                         <p class="text-nowrap">
                             <s>
-                                {{ adv.standard_price != adv.price and adv.standard_price != '0' ? currency_format(adv.standard_price,adv.currency) : '' }}
+                                {{ adv.standard_price != adv.price and adv.standard_price != '0' ? currency_format(adv.standard_price,adv.currency, {'decimals' : setting_value('visiosoft.field_type.decimal::decimal_length')}) : '' }}
                             </s>
                         </p>
                     {% endif %}
                     <p class="text-nowrap">
-                        {{ adv.price != '0' ? currency_format(adv.price,adv.currency) : setting_value("visiosoft.module.advs::hide_zero_price") ? '-' : trans('visiosoft.module.advs::field.free') }}
+                        {{ adv.price != '0' ? currency_format(adv.price,adv.currency, {'decimals' : setting_value('visiosoft.field_type.decimal::decimal_length')}) : setting_value("visiosoft.module.advs::hide_zero_price") ? '-' : trans('visiosoft.module.advs::field.free') }}
                     </p>
                 </td>
             </tr>

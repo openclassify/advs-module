@@ -35,7 +35,7 @@
                     {% if listLocation %}
                         <p class="mb-1">{{ adv.country_name }} / {{ adv.city_name }}</p>
                     {% endif %}
-                    <p>{{ adv.price != '0' ? currency_format(adv.price,adv.currency) : trans('visiosoft.module.advs::field.free') }}</p>
+                    <p>{{ adv.price != '0' ? currency_format(adv.price,adv.currency, {'decimals' : setting_value('visiosoft.field_type.decimal::decimal_length')}) : trans('visiosoft.module.advs::field.free') }}</p>
                 </div>
             </a>
         {% endfor %}

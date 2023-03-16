@@ -37,7 +37,7 @@
                         <tr id="configuration-{{ key }}">
                             <td>{{ configuration.name }}</td>
                             <td>{{ configuration.stock }}</td>
-                            <td>{{ currency_format(configuration.price,configuration.currency) }}</td>
+                            <td>{{ currency_format(configuration.price,configuration.currency, {'decimals' : setting_value('visiosoft.field_type.decimal::decimal_length')}) }}</td>
                             <td class="text-right">
                                 <a href="javascript:void(0)" class="btn btn-sm remove-conf"
                                    data-id="{{ key }}">{{ img('visiosoft.module.advs::images/create/close.svg').data|raw }}</a>
