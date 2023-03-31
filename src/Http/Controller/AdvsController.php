@@ -546,7 +546,7 @@ class AdvsController extends PublicController
         if ($category) {
             $seo_keywords = $category->getMetaKeywords();
             $seo_description = $category->getMetaDescription();
-            $metaTitle = $category->name;
+            $metaTitle = $category->getMetaTitle();
             $metaDesc = $seo_description;
             $keywords = '';
 
@@ -565,7 +565,7 @@ class AdvsController extends PublicController
                     $loop++;
                 }
             }
-            $metaTitle = $catText ?: $metaTitle;
+            $metaTitle = $metaTitle ?: $catText;
 
             if (is_module_installed('visiosoft.module.seo')) {
                 $metaData = dispatch_now(new AddMetaData($category->id, 'category'));
