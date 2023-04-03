@@ -1,12 +1,10 @@
 {% extends "visiosoft.module.advs::list/list" %}
 {% block listContent %}
-<div class="col-md-12 mb-2 bg-dark">
-    <div id="map"></div>
-</div>
+    <div class="col-md-12 mb-2 bg-dark">
+        <div id="map"></div>
+    </div>
     <script>
         function QueryString(URL) {
-            // This function is anonymous, is executed immediately and
-            // the return value is assigned to QueryString!
             var query_string = {};
             var usefulParam = URL.split("?")[1] || "";
             var query = usefulParam || "";
@@ -15,14 +13,13 @@
             for (var i = 0; i < vars.length; i++) {
                 var pair = vars[i].split("=");
 
-                // If first entry with this name
                 if (typeof query_string[pair[0]] === "undefined") {
                     query_string[pair[0]] = decodeURIComponent(pair[1]);
-                    // If second entry with this name
+
                 } else if (typeof query_string[pair[0]] === "string") {
                     var arr = [query_string[pair[0]], decodeURIComponent(pair[1])];
                     query_string[pair[0]] = arr;
-                    // If third or later entry with this name
+
                 } else {
                     query_string[pair[0]].push(decodeURIComponent(pair[1]));
                 }
@@ -74,7 +71,7 @@
                             scaledSize: new google.maps.Size(64, 64),
                             origin: new google.maps.Point(0, 0),
                             anchor: new google.maps.Point(0, 32)
-                        }
+                        };
                         var mark = new google.maps.Marker({
                             position: {lat: location.lat, lng: location.lng},
                             animation: google.maps.Animation.DROP,
@@ -114,11 +111,24 @@
                 }
             });
 
+            if ({{setting_value('visiosoft.module.advs::get_by_current_position') ? 1 : 0 }}){
+                google.maps.event.addListenerOnce(map, 'idle', function(){
+                    navigator.geolocation.getCurrentPosition(getCoords);
+
+                    function getCoords(data) {
+                        const position = new google.maps.LatLng(data.coords.latitude,data.coords.longitude);
+                        map.setCenter(position);
+                        map.setZoom(10);
+                    };
+                });
+            };
+
+
             if (countMap == 0) {
                 $('.listMap').html("<h3>{{ trans('visiosoft.module.advs::field.no_ads') }}</h3>");
             } else {
-                $('#map').attr('display', 'block')
-                $('#listAdvs').css('display', 'block')
+                $('#map').attr('display', 'block');
+                $('#listAdvs').css('display', 'block');
             }
             $('.showListBtn').attr('href', window.location.origin + "/advs/list" + window.location.search);
         }

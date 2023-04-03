@@ -606,5 +606,11 @@ return [
             'default_value' => false
         ]
     ],
+    'get_by_current_position' => [
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => false,
+        ],
+    ],
 
 ];

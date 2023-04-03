@@ -356,5 +356,8 @@ return [
     'is_changeable_slug' => [
         'name' => 'Değiştirilebilir Özel İsim (Slug)',
         'instructions' => 'İlanın özel isminin değiştirilebilir olma durumu'
+    ],
+    'get_by_current_position' => [
+        'name' => 'Yakınımdaki ilanları getir'
     ]
 ];
