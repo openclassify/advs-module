@@ -40,5 +40,6 @@ return [
     'do_you_want_to_save_the_option' => 'Seçeneği kaydetmek istiyor musunuz?',
     'you_can_not_delete_a_system_status' => 'Sistem durumunu silemezsiniz!',
 
-    'error_select_related_category' => 'Lütfen ilgili bir kategori seçin!'
+    'error_select_related_category' => 'Lütfen ilgili bir kategori seçin!',
+    'error_select_ad' => "Hiçbir ilan seçmediniz. Lütfen bir veya birden fazla ilan seçin!"
 ];
