@@ -213,8 +213,10 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
 
         if (!empty($param['cats'])) {
             $query = $query
-                ->whereIn('cat2', $param['cats'])
-                ->orWhereIn('cat1', $param['cats']);
+                ->where(function ($q) use ($param) {
+                    return $q->whereIn('cat2', $param['cats'])
+                        ->orWhereIn('cat1', $param['cats']);
+                });
         }
 
         if ($type == "list") {
