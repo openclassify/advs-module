@@ -203,6 +203,7 @@ return [
     'online_shopping' => 'GET',
     'approved' => 'Approved Successfully',
     'extended' => 'Extended Successfully',
+    'deleted' => 'Deleted Successfully',
     'declined' => 'Declined Successfully',
     'search_on_map' => 'Search on Map',
     'post_free_ad' => 'Post Free Ad',
