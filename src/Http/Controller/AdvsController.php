@@ -872,17 +872,21 @@ class AdvsController extends PublicController
     public function  multipleOperations(Request $request){
         $ads_array = $request->input('check');
         $action = $request->input('action');
+        $msg = trans('visiosoft.module.advs::message.error_select_ad');
+        $status = 'error';
         if(!is_null($ads_array)){
+            $query = $this->adv_model->newQuery()->whereIn('advs_advs.id', $ads_array);
             if ($action == 'delete'){
-                $this->adv_model->newQuery()->whereIn('advs_advs.id', $ads_array)->delete();
-                return redirect()->route('profile::ads')->with('alert_message',  trans('visiosoft.module.advs::field.deleted'))->with('status', 'success');
+                $query->delete();
+                $msg = trans('visiosoft.module.advs::field.deleted');
             } elseif ($action == 'extend') {
                 $newDate = date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s') . ' + ' . setting_value('visiosoft.module.advs::default_published_time') . ' day'));
-                $this->adv_model->newQuery()->whereIn('advs_advs.id', $ads_array)->update(['finish_at' => $newDate]);
-                return redirect()->route('profile::ads')->with('alert_message', trans('visiosoft.module.advs::field.extended'))->with('status', 'success');
+                $query->update(['finish_at' => $newDate]);
+                $msg = trans('visiosoft.module.advs::field.extended');
             }
+            $status = 'success';
         }
-        return redirect()->route('profile::ads')->with('alert_message',  trans('visiosoft.module.advs::message.error_select_ad'))->with('status', 'error');
+        return redirect()->route('profile::ads')->with('alert_message',  $msg)->with('status', $status);
     }
 
     public function deleteAd(AdvRepositoryInterface $advs, $id)
