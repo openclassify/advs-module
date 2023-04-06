@@ -144,6 +144,12 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
             'middleware' => 'auth',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@deleteAd',
         ],
+
+        'advs/multiple_operations' => [
+          'as' => 'multiple_operations' ,
+            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@multipleOperations',
+        ],
+
         'adv/addCart/{id}' => [
             'as' => 'adv_AddCart',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@advAddCart',

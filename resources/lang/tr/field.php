@@ -204,6 +204,7 @@ return [
     'online_shopping' => 'Güvenle Satın Al',
     'approved' => 'Başarıyla Onaylandı',
     'extended' => 'Başarıyla Uzatıldı',
+    'deleted' => 'Başarıyla Silindi',
     'declined' => 'Başarıyla Reddedildi',
     'search_on_map' => 'Haritada Ara',
     'post_free_ad' => 'Ücretsiz İlan Ver',
