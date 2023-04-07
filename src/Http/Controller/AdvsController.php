@@ -875,6 +875,13 @@ class AdvsController extends PublicController
         $msg = trans('visiosoft.module.advs::message.error_select_ad');
         $status = 'error';
         if(!is_null($ads_array)){
+            foreach ($ads_array as $ad_id) {
+                $adv = $this->adv_model::find($ad_id);
+                if (!Auth::user()->hasRole('admin') and  $adv->created_by_id != Auth::id()) {
+                    $msg= trans('visiosoft.module.advs::message.error_operations_author');
+                    return redirect()->route('profile::ads')->with('alert_message',  $msg)->with('status', $status);
+                }
+            }
             $query = $this->adv_model->newQuery()->whereIn('advs_advs.id', $ads_array);
             if ($action == 'delete'){
                 $query->delete();

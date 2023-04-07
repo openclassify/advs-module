@@ -41,5 +41,6 @@ return [
     'you_can_not_delete_a_system_status' => 'Sistem durumunu silemezsiniz!',
 
     'error_select_related_category' => 'Lütfen ilgili bir kategori seçin!',
-    'error_select_ad' => "Hiçbir ilan seçmediniz. Lütfen bir veya birden fazla ilan seçin!"
+    'error_select_ad' => "Hiçbir ilan seçmediniz. Lütfen bir veya birden fazla ilan seçin!",
+    'error_operations_author' => "Size ait olmayan ilan veya ilanlar üzernide işlem yapamazsınız!"
 ];

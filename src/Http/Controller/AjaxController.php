@@ -61,6 +61,7 @@ class AjaxController extends PublicController
     {
         $my_advs = new AdvModel();
         $type = $request->type;
+        $keyword = $request->keyword;
 
         if (!$request->simple) {
             if ($type === 'pending') {
@@ -79,9 +80,12 @@ class AjaxController extends PublicController
                     return $q;
                 });
         } else {
-            $my_advs = $my_advs
-                ->userAdv()
-                ->select(['id', 'cover_photo', 'slug', 'price', 'currency', 'city', 'country_id', 'cat1', 'cat2', 'status', 'created_at']);
+
+            $my_advs = $my_advs->userAdv()
+                ->leftJoin('advs_advs_translations', function ($join) {
+                    $join->on('advs_advs.id', '=', 'advs_advs_translations.entry_id');
+                    $join->where('advs_advs_translations.locale', '=', Request()->session()->get('_locale', setting_value('streams::default_locale')));
+                })->select(['advs_advs.id', 'advs_advs.cover_photo', 'advs_advs.slug', 'price', 'currency', 'city', 'country_id', 'cat1', 'cat2', 'status', 'advs_advs.created_at', 'ad_note']);
 
             if ($type == 'approved') {
                 $page_title = trans('visiosoft.module.advs::field.my_adv.name');
@@ -102,9 +106,20 @@ class AjaxController extends PublicController
                     ->where('advs_advs.created_by_id', Auth::id());
             }
         }
-
+        if (!empty($keyword)){
+            if (is_numeric($keyword)) {
+                $my_advs = $my_advs->where('advs_advs.id', $keyword);
+            } else {
+                $keywords = explode(' ',$keyword);
+                $my_advs = $my_advs->where(function ($query) use ($keywords) {
+                    foreach ($keywords as $keyword) {
+                        $query->orWhere('slug', 'like', '%' . $keyword . '%')
+                            ->orWhere('advs_advs_translations.name', 'like', '%%' . $keyword . '%%');
+                    }
+                });
+            }
+        }
         $my_advs = $my_advs->orderByDesc('id');
-
 
         if (\request()->paginate === 'true') {
             $my_advs = $advRepository->addAttributes($my_advs->paginate(setting_value('streams::per_page')));
