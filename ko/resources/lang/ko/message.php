@@ -41,5 +41,6 @@ return [
     'product_added_to_cart' => 'Product added to cart!',
 
     'error_select_related_category' => 'Please select a related category!',
-    'error_select_ad' => 'You have not selected any ads. Please select one or more ads!'
+    'error_select_ad' => 'You have not selected any ads. Please select one or more ads!',
+    'error_operations_author' => "You cannot perform operations a post that do not belong to you!"
 ];
