@@ -107,7 +107,7 @@ class AdvFormBuilder extends FormBuilder
 
         return $fields;
     }
-    public function setSkips($skips)
+    public function getSkips()
     {
         if (!config("advs::is_changeable_slug",false)){
             return ['slug'];

@@ -211,6 +211,14 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
                 'advs_advs_translations.advs_desc as advs_desc');
         }
 
+        if (!empty($param['cats'])) {
+            $query = $query
+                ->where(function ($q) use ($param) {
+                    return $q->whereIn('cat2', $param['cats'])
+                        ->orWhereIn('cat1', $param['cats']);
+                });
+        }
+
         if ($type == "list") {
             return $paginate ? $query->paginate(setting_value('streams::per_page')) : $query;
         } else {
