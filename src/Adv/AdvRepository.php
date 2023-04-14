@@ -12,6 +12,7 @@ use Visiosoft\AdvsModule\Support\Command\Currency;
 use Visiosoft\CatsModule\Category\CategoryModel;
 use Visiosoft\CatsModule\Category\Contract\CategoryRepositoryInterface;
 use Visiosoft\LocationModule\City\CityModel;
+use Visiosoft\LocationModule\City\CityRepository;
 use Visiosoft\LocationModule\Country\CountryModel;
 use Visiosoft\LocationModule\District\DistrictModel;
 use Visiosoft\LocationModule\Neighborhood\NeighborhoodModel;
@@ -22,16 +23,19 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
     protected $model;
     private $fileRepository;
     private $folderRepository;
+    private $cityRepository;
 
     public function __construct(
         AdvModel                  $model,
         FileRepositoryInterface   $fileRepository,
-        FolderRepositoryInterface $folderRepository
+        FolderRepositoryInterface $folderRepository,
+        CityRepository            $cityRepository
     )
     {
         $this->model = $model;
         $this->fileRepository = $fileRepository;
         $this->folderRepository = $folderRepository;
+        $this->cityRepository = $cityRepository;
     }
 
     public function searchAdvs(
@@ -59,8 +63,7 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
             } else {
                 $keywords = explode(' ', $param['keyword']);
                 if(setting_value('visiosoft.module.advs::search_with_location')){
-                    $searchCity = DB::table('location_cities_translations')
-                        ->whereIn('name', $keywords)->first();
+                    $searchCity = $this->cityRepository->newQuery()->whereIn('name', $keywords)->first();
                     if ($searchCity){
                         $query = $query->where('advs_advs.city', $searchCity->id);
                         foreach ($keywords as $key  => $keyword) {
