@@ -357,5 +357,8 @@ return [
     'is_changeable_slug' => [
         'name' => 'Is Changeable Slug',
         'instructions' => 'Indicates the changeability of the ad\'s custom domain name'
-    ]
+    ],
+    'search_with_location' => [
+        'name' => 'Search with location for keywords'
+    ],
 ];

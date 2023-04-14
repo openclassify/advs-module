@@ -356,5 +356,8 @@ return [
     'is_changeable_slug' => [
         'name' => 'Değiştirilebilir Özel İsim (Slug)',
         'instructions' => 'İlanın özel isminin değiştirilebilir olma durumu'
+    ],
+    'search_with_location' => [
+        'name' => 'Arama barında konum ile arama'
     ]
 ];

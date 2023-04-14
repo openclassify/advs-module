@@ -33,6 +33,12 @@ return [
             'default_value' => false,
         ],
     ],
+    'search_with_location' => [
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => false,
+        ],
+    ],
     'auto_approve' => [
         'type' => 'anomaly.field_type.boolean',
         'bind' => 'adv.auto_approve',

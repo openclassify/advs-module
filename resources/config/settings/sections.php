@@ -113,7 +113,7 @@ return [
                 'fields' => [
                     'hide_filter_section', 'hide_price_filter', 'hide_date_filter', 'hide_photo_filter', 'hide_map_filter',
 	                'hide_listing_header', 'user_filter_limit','hide_out_of_stock_products_without_listing', 'location_data_type_first'
-                    , 'location_data_type_second'
+                    , 'location_data_type_second', 'search_with_location'
                 ],
             ],
             'translations' => [

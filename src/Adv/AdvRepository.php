@@ -57,11 +57,25 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
             if (is_numeric($param['keyword'])) {
                 $query = $query->where('advs_advs.id', $param['keyword']);
             } else {
-                $keywords = explode(' ',$param['keyword']);
+                $keywords = explode(' ', $param['keyword']);
+                if(setting_value('visiosoft.module.advs::search_with_location')){
+                    $searchCity = DB::table('location_cities_translations')
+                        ->whereIn('name', $keywords)->first();
+                    if ($searchCity){
+                        $query = $query->where('advs_advs.city', $searchCity->id);
+                        foreach ($keywords as $key  => $keyword) {
+                            if ($searchCity && mb_strtolower($keyword) == mb_strtolower($searchCity->name)) {
+                                unset($keywords[$key]);
+                            }
+                        }
+                    }
+                }
                 $query = $query->where(function ($query) use ($keywords) {
-                    foreach ($keywords as $keyword) {
-                        $query->orWhere('slug', 'like', '%' . $keyword . '%')
-                              ->orWhere('advs_advs_translations.name', 'like', '%%' . $keyword . '%%');
+                    foreach ($keywords as  $keyword) {
+                        $query->where(function ($query) use ($keyword) {
+                            $query->orWhere('slug', 'like', '%' . $keyword . '%')
+                                ->orWhere('advs_advs_translations.name', 'like', '%' . $keyword . '%');
+                        });
                     }
                 });
             }
