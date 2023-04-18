@@ -28,6 +28,10 @@ class VisiosoftModuleAdvsUpdatePriceDigitLength extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('advs_advs', function (Blueprint $table) {
+            $table->decimal('price', 11, 2)->change();
+            $table->decimal('standard_price', 11, 2)->change();
+            $table->decimal('old_price', 11, 2)->change();
+        });
     }
 }
