@@ -218,11 +218,11 @@ $(document).ready(function () {
         'radixPoint': ",",
         'digitsOptional': false,
         'allowMinus': false,
-        'placeholder': '0'
+        'placeholder': '00'
 
     });
 
-    $(".priceDecimalField, .standard-price-decimal-field").inputmask('99', {
+    $(".priceDecimalField, .standard-price-decimal-field, .decimal-price").inputmask('9999', {
         rightAlign: true,
         prefix: "",
         autoUnmask: true,

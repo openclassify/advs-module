@@ -13,7 +13,12 @@ class SimpleAdvFormFields
             'seo_title',
             'name',
             'seo_description',
-            'price',
+            'price' => [
+                'type' => 'anomaly.field_type.decimal',
+                "config" => [
+                    "decimals"  => setting_value('visiosoft.field_type.decimal::decimal_length'),
+                ]
+            ],
             'currency',
             'advs_desc',
             'cat1',
