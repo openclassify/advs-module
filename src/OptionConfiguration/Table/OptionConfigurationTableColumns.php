@@ -19,7 +19,7 @@ class OptionConfigurationTableColumns
 				                     AdvRepositoryInterface $advRepository) {
 
 					$adv = $advRepository->find($entry->parent_adv_id);
-					return "<span><a href='" . route('adv_detail', [$entry->parent_adv_id]) . "'>$adv->name</a></span>";
+					return "<span><a href='" . route('adv_detail', [trans('visiosoft.module.advs::slug.detail_adv'),$entry->parent_adv_id]) . "'>$adv->name</a></span>";
 				}
 			],
 			'option_json' => [

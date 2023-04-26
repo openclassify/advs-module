@@ -6,6 +6,7 @@ use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 use Anomaly\Streams\Platform\Model\Advs\AdvsStatusEntryModel;
 use Anomaly\Streams\Platform\Model\Location\LocationVillageEntryModel;
 use Anomaly\Streams\Platform\Ui\Table\Event\TableIsQuerying;
+use Illuminate\Contracts\Config\Repository;
 use Visiosoft\AdvsModule\Adv\Contract\AdvRepositoryInterface;
 use Visiosoft\AdvsModule\Adv\AdvRepository;
 use Anomaly\Streams\Platform\Model\Advs\AdvsAdvsEntryModel;
@@ -76,17 +77,33 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
         ],
 
         // AdvsController
-        'advs/list' => [
+        '{path}' => [
             'as' => 'visiosoft.module.advs::list',
-            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@index'
+            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug'
         ],
-        'advs/list?user={id}' => [
+        '{path}/{seo}/{id}' => [
+            'as' => 'adv_detail_seo',
+            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug'
+        ],
+        '{path}/{id}' => [
+            'as' => 'adv_detail',
+            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug'
+        ],
+        '{path}/{category?}/{city?}' => [
+            'as' => 'adv_list_seo',
+            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug'
+        ],
+        '{path}?user={id}' => [
             'as' => 'visiosoft.module.advs::list_user_ad',
-            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@index',
+            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
         ],
-        'advs/list?cat={id}' => [
+        '{path}?cat={id}' => [
             'as' => 'visiosoft.module.advs::list_cat',
-            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@index',
+            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
+        ],
+        '{path}/map?country={country}&city[]={city}&district={districts}' => [
+            'as' => 'visiosoft.module.advs::show_ad_map_location',
+            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug'
         ],
         'advs/adv/{id}' => [
             'as' => 'adv_detail_backup',
@@ -96,25 +113,9 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
             'as' => 'adv_detail_seo_backup',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@view'
         ],
-        'ad/{id}' => [
-            'as' => 'adv_detail',
-            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@view'
-        ],
-        'ad/{seo}/{id}' => [
-            'as' => 'adv_detail_seo',
-            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@view'
-        ],
         'advs/preview/{id}' => [
             'as' => 'advs_preview',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@preview'
-        ],
-        'advs/map?country={country}&city[]={city}&district={districts}' => [
-            'as' => 'visiosoft.module.advs::show_ad_map_location',
-            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@index'
-        ],
-        'c/{category?}/{city?}' => [
-            'as' => 'adv_list_seo',
-            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@index'
         ],
         'advs/create_adv' => [
             'as' => "advs::create_adv",

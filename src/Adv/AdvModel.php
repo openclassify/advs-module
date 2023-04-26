@@ -335,11 +335,11 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
         if ($type != null) {
             $id = $object->id;
             $seo = $object->slug;
-            return \route('adv_detail_seo', [$seo, $id]);
+            return \route('adv_detail_seo', [trans('visiosoft.module.advs::slug.detail_adv'),$seo, $id]);
         }
         $id = $object->getObject()->id;
         $seo = $object->getObject()->slug;
-        return \route('adv_detail_seo', [$seo, $id]);
+        return \route('adv_detail_seo', [trans('visiosoft.module.advs::slug.detail_adv'),$seo, $id]);
     }
 
     public function getAdvDetailLinkByAdId($id)
@@ -348,7 +348,7 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
         if ($adv != null) {
             $id = $adv->id;
             $seo = $adv->slug;
-            return \route('adv_detail_seo', [$seo, $id]);
+            return \route('adv_detail_seo', [trans('visiosoft.module.advs::slug.detail_adv'),$seo, $id]);
         }
     }
 

@@ -1,7 +1,7 @@
 {% set pathInfo = app.request.pathinfo|split('/') %}
 {% set catSlug = pathInfo[1] == 'c' ? pathInfo[2] : null %}
 {% set citySlug = pathInfo|length is same as(4) ? pathInfo[3] : null %}
-{% set formAction = catSlug ? url_route('adv_list_seo', [catSlug, citySlug]) : url_route('visiosoft.module.advs::list') %}
+{% set formAction = catSlug ? url_route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),catSlug, citySlug]) : url_route('visiosoft.module.advs::list',[trans('visiosoft.module.advs::slug.category')]) %}
 <form action="{{ formAction }}" method="get" id="{{ (filter_id) ? filter_id : "listFilterForm" }}" rel="nofollow"
       class="flex-shrink-0 d-none d-sm-block">
     <input type="hidden" name="cat" value="{{ app.request.get('cat') }}">
