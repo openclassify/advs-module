@@ -55,7 +55,10 @@ class AdvPresenter extends EntryPresenter
 
     public function getAdvsList($attributes)
     {
-        return \route('visiosoft.module.advs::list', [trans('visiosoft.module.advs::slug.category'),$attributes]);
+        if(setting_value('visiosoft.module.advs::translatable_slug')) {
+            return \route('visiosoft.module.advs::list_mlang', [trans('visiosoft.module.advs::slug.category'),$attributes]);
+        }
+            return \route('visiosoft.module.advs::list', $attributes);
     }
 
     public function isCorporate()

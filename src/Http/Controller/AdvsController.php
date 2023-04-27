@@ -159,9 +159,11 @@ class AdvsController extends PublicController
         foreach (config('streams::locales.enabled') as $lang) {
             if ($path == trans('visiosoft.module.advs::slug.category', [], $lang)) {
                 return $this->adListSlug($path,$param1,$param2, $request);
+            }elseif($path == trans('visiosoft.module.advs::slug.detail_adv', [], $lang) && $param1){
+                return $this->adDetailSlug($path,$param1,$param2,$request);
             }
         }
-        return $this->adDetailSlug($path,$param1,$param2,$request);
+        abort(404);
     }
     public function adDetailSlug($path,$seo,$id = null, Request $request) {
         return $this->adRouteResolver($request, $path, null,null, $seo, $id, 'detail');
@@ -223,9 +225,15 @@ class AdvsController extends PublicController
             }
             if (isset($param['cat'])) {
                 unset($param['cat']);
+                if (setting_value('visiosoft.module.advs::translatable_slug')){
+                    return redirect(fullLink(
+                        $param,
+                        route('adv_list_seo_mlang', [trans('visiosoft.module.advs::slug.category'),$category->slug])
+                    ));
+                }
                 return redirect(fullLink(
                     $param,
-                    route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),$category->slug])
+                    route('adv_list_seo', [$category->slug])
                 ));
             }
         } elseif (isset($param['cat']) && !empty($param['cat'])) { // Only Param
@@ -235,9 +243,16 @@ class AdvsController extends PublicController
                 return redirect('/');
             }
             unset($param['cat']);
+
+            if (setting_value('visiosoft.module.advs::translatable_slug')){
+                return redirect(fullLink(
+                    $param,
+                    route('adv_list_seo_mlang', [trans('visiosoft.module.advs::slug.category'),$category->slug])
+                ));
+            }
             return redirect(fullLink(
                 $param,
-                route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),$category->slug])
+                route('adv_list_seo', [$category->slug])
             ));
         }
         // Search by city slug
@@ -253,20 +268,39 @@ class AdvsController extends PublicController
             if (is_null($city) && $isOneCity) { // Param and no slug
                 $cityId = $this->cityRepository->find($param['city'][0]);
                 unset($param['city']);
+                if (setting_value('visiosoft.module.advs::translatable_slug')){
+                    return redirect(fullLink(
+                        $param,
+                        route('adv_list_seo_mlang', [trans('visiosoft.module.advs::slug.category'),$category->slug, $cityId->slug])
+                    ));
+                }
                 return redirect(fullLink(
                     $param,
-                    route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),$category->slug, $cityId->slug])
+                    route('adv_list_seo', [$category->slug, $cityId->slug])
                 ));
             } elseif ($isOneCity) { // Param and slug
                 $cityId = $this->cityRepository->find($param['city'][0]);
                 if ($city !== $cityId->slug) {
                     unset($param['city']);
+                    if (setting_value('visiosoft.module.advs::translatable_slug')){
+                        return redirect(fullLink(
+                            $param,
+                            route('adv_list_seo_mlang', [trans('visiosoft.module.advs::slug.category'),$category->slug, $cityId->slug])
+                        ));
+                    }
                     return redirect(fullLink(
                         $param,
-                        route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),$category->slug, $cityId->slug])
+                        route('adv_list_seo', [$category->slug, $cityId->slug])
                     ));
                 }
             } elseif ($city && $isMultipleCity) { // Slug and multiple param cities
+                if (setting_value('visiosoft.module.advs::translatable_slug')){
+                    return redirect(fullLink(
+                        $param,
+                        route('adv_list_seo_mlang', [$category->slug]),
+                        array()
+                    ));
+                }
                 return redirect(fullLink(
                     $param,
                     route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),$category->slug]),
@@ -277,16 +311,28 @@ class AdvsController extends PublicController
                     unset($param['city']);
                     unset($param['district']);
                     unset($param['neighborhood']);
+                    if (setting_value('visiosoft.module.advs::translatable_slug')){
+                        return redirect(fullLink(
+                            $param,
+                            route('adv_list_seo_mlang', [trans('visiosoft.module.advs::slug.category'),$category->slug])
+                        ));
+                    }
                     return redirect(fullLink(
                         $param,
-                        route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),$category->slug])
+                        route('adv_list_seo', [$category->slug])
                     ));
                 } else { // Only slug
                     $cityId = $this->cityRepository->findBy('slug', $city);
                     if (!$cityId) {
+                        if (setting_value('visiosoft.module.advs::translatable_slug')){
+                            return redirect(fullLink(
+                                $param,
+                                route('adv_list_seo_mlang', [trans('visiosoft.module.advs::slug.category'),$category->slug])
+                            ), 301);
+                        }
                         return redirect(fullLink(
                             $param,
-                            route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),$category->slug])
+                            route('adv_list_seo', [$category->slug])
                         ), 301);
                     }
                 }
@@ -303,16 +349,28 @@ class AdvsController extends PublicController
             $district = $this->districtRepository->find($param['district'][0]);
             unset($param['city']);
             unset($param['district']);
+            if (setting_value('visiosoft.module.advs::translatable_slug')){
+                return redirect(fullLink(
+                    $param,
+                    route('adv_list_seo_mlang', [trans('visiosoft.module.advs::slug.category'),$category->slug, $cityId->slug . '-' . $district->slug])
+                ));
+            }
             return redirect(fullLink(
                 $param,
-                route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),$category->slug, $cityId->slug . '-' . $district->slug])
+                route('adv_list_seo', [$category->slug, $cityId->slug . '-' . $district->slug])
             ));
         } elseif ($isSingleDistrict && empty($param['district'][0])) {
             unset($param['district']);
             unset($param['neighborhood']);
+            if (setting_value('visiosoft.module.advs::translatable_slug')){
+                return redirect(fullLink(
+                    $param,
+                    route('adv_list_seo_mlang', [trans('visiosoft.module.advs::slug.category'),$category->slug, $cityId->slug])
+                ));
+            }
             return redirect(fullLink(
                 $param,
-                route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),$category->slug, $cityId->slug])
+                route('adv_list_seo', [$category->slug, $cityId->slug])
             ));
         }
 
@@ -324,10 +382,14 @@ class AdvsController extends PublicController
         if ($isSingleNeighborhood && !empty($param['neighborhood'][0])) {
             $neighborhood = $this->neighborhoodRepository->find($param['neighborhood'][0]);
             unset($param['neighborhood']);
-            return redirect(fullLink(
+            if(setting_value('visiosoft.module.advs::translatable_slug')) {
+                return redirect(fullLink(
+                    $param,
+                    route('adv_list_seo_mlang', [trans('visiosoft.module.advs::slug.category'),$category->slug, $cityId->slug . '-' . $districtSlug . '-' . $neighborhood->slug])));
+            }
+                return redirect(fullLink(
                 $param,
-                route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),$category->slug, $cityId->slug . '-' . $districtSlug . '-' . $neighborhood->slug])
-            ));
+                route('adv_list_seo', [$category->slug, $cityId->slug . '-' . $districtSlug . '-' . $neighborhood->slug])));
         } elseif ($isSingleNeighborhood && empty($param['neighborhood'][0])) {
             unset($param['neighborhood']);
             return redirect(fullLink($param, \request()->url()));
@@ -341,9 +403,15 @@ class AdvsController extends PublicController
                     $this->request->offsetSet('district', [$district->toArray()[0]['id']]);
                     $param['district'] = [$district->toArray()[0]['id']];
                 } else {
+                    if(setting_value('visiosoft.module.advs::translatable_slug')){
+                        return redirect(fullLink(
+                            $param,
+                            route('adv_list_seo_mlang', [trans('visiosoft.module.advs::slug.category'),$category->slug, $cityId->slug])
+                        ));
+                    }
                     return redirect(fullLink(
                         $param,
-                        route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),$category->slug, $cityId->slug])
+                        route('adv_list_seo', [$category->slug, $cityId->slug])
                     ));
                 }
                 if (count($routeParameters) >= 3) {
@@ -352,9 +420,15 @@ class AdvsController extends PublicController
                         $this->request->offsetSet('neighborhood', [$neighborhood->toArray()[0]['id']]);
                         $param['neighborhood'] = [$neighborhood->toArray()[0]['id']];
                     } else {
+                        if(setting_value('visiosoft.module.advs::translatable_slug')){
+                            return redirect(fullLink(
+                                $param,
+                                route('adv_list_seo_mlang', [trans('visiosoft.module.advs::slug.category'),$category->slug, $cityId->slug . '-' . $districtSlug])
+                            ));
+                        }
                         return redirect(fullLink(
                             $param,
-                            route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),$category->slug, $cityId->slug . '-' . $districtSlug])
+                            route('adv_list_seo', [$category->slug, $cityId->slug . '-' . $districtSlug])
                         ));
                     }
                 }
@@ -694,7 +768,10 @@ class AdvsController extends PublicController
     public function viewType($type)
     {
         Cookie::queue(Cookie::make('viewType', $type, 84000));
-        return redirect($this->request->headers->get('referer') ?: route('visiosoft.module.advs::list',[trans('visiosoft.module.advs::slug.category')]));
+        if(setting_value('visiosoft.module.advs::translatable_slug')){
+            return redirect($this->request->headers->get('referer') ?: route('visiosoft.module.advs::list_mlang',[trans('visiosoft.module.advs::slug.category')]));
+        }
+        return redirect($this->request->headers->get('referer') ?: route('visiosoft.module.advs::list'));
     }
 
     public function view($seo, $id = null)
@@ -721,7 +798,10 @@ class AdvsController extends PublicController
             // Check if created by exists
             if ((auth()->user() and !auth()->user()->hasRole('admin')) and !$adv->created_by) {
                 $this->messages->error('visiosoft.module.advs::message.this_ad_is_not_valid_anymore');
-                return $this->redirect->route('visiosoft.module.advs::list',[trans('visiosoft.module.advs::slug.category')]);
+                if(setting_value('visiosoft.module.advs::translatable_slug')){
+                    return $this->redirect->route('visiosoft.module.advs::list_mlang',[trans('visiosoft.module.advs::slug.category')]);
+                }
+                return $this->redirect->route('visiosoft.module.advs::list');
             }
 
             $complaints = null;
@@ -863,7 +943,10 @@ class AdvsController extends PublicController
             }
         } else {
             $this->messages->error(trans('visiosoft.module.advs::message.ad_doesnt_exist'));
-            return redirect()->route('visiosoft.module.advs::list',[trans('visiosoft.module.advs::slug.category')]);
+            if(setting_value('visiosoft.module.advs::translatable_slug')){
+                return redirect()->route('visiosoft.module.advs::list_mlang',[trans('visiosoft.module.advs::slug.category')]);
+            }
+            return redirect()->route('visiosoft.module.advs::list');
         }
     }
 
@@ -1185,7 +1268,10 @@ class AdvsController extends PublicController
                 return redirect(route('advs_preview', [$this->request->update_id]));
             }
 
-            return redirect(route('adv_detail_seo', [trans('visiosoft.module.advs::slug.detail_adv') ,$adv->slug, $adv->id]));
+            if(setting_value('visiosoft.module.advs::translatable_slug')) {
+                return redirect(route('adv_detail_seo_mlang', [trans('visiosoft.module.advs::slug.detail_adv') ,$adv->slug, $adv->id]));
+            }
+                return redirect(route('adv_detail_seo', [$adv->slug, $adv->id]));
 
         }
 

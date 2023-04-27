@@ -13,7 +13,7 @@
                     "@type": "ListItem",
                     "position": {{ main_cats.id }},
                     "name": "{{ main_cats.name }}",
-                    "item": "{{ url_route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),main_cats.slug]) }}"
+                    "item": "{{ url_route('adv_list_seo', [main_cats.slug]) }}"
                 }{{loop.index == loop.last ? "" : "," }}
                 {% for sub_cats in cats.subcats %}
                     {% if sub_cats.c2_parent_category_id == main_cats.id %}
@@ -21,7 +21,7 @@
                             "@type": "ListItem",
                             "position": {{ sub_cats.c2_id }},
                             "name": "{{ sub_cats.c2_name }}",
-                            "item": "{{ url_route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),sub_cats.c2_slug]) }}"
+                            "item": "{{ url_route('adv_list_seo', [sub_cats.c2_slug]) }}"
                         },
                     {% endif %}
                 {% endfor %}
@@ -102,7 +102,7 @@
                             {% endif %}
                         {% endfor %}
                         <div class="d-flex align-items-center">
-                            <a href="{{ url_route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),category.slug]) }}"
+                            <a href="{{ url_route('adv_list_seo', [category.slug]) }}"
                                class="text-truncate d-flex align-items-center mr-1">
                                 {{ trans('visiosoft.module.advs::field.clear_all') }}
                             </a>

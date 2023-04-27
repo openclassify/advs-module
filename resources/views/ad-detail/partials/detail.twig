@@ -29,10 +29,18 @@
                     <!-- Author with Block -->
 
                     {{ trans('visiosoft.module.advs::field.offered_by') }}:
-                    <a id="owner"
-                       href="{{ url_route('visiosoft.module.advs::list_user_ad', [trans('visiosoft.module.advs::slug.category'),adv.created_by_id]) }}"
-                       data-content="{{ adv.owner_id }}"> {{ adv.first_name }} {{ adv.last_name }}
-                    </a>
+                    {% if setting_value('visiosoft.module.advs::translatable_slug') %}
+                        <a id="owner"
+                           href="{{ url_route('visiosoft.module.advs::list_user_ad_mlang', [trans('visiosoft.module.advs::slug.category'),adv.created_by_id]) }}"
+                           data-content="{{ adv.owner_id }}"> {{ adv.first_name }} {{ adv.last_name }}
+                        </a>
+                    {% else %}
+                        <a id="owner"
+                           href="{{ url_route('visiosoft.module.advs::list_user_ad', [adv.created_by_id]) }}"
+                           data-content="{{ adv.owner_id }}"> {{ adv.first_name }} {{ adv.last_name }}
+                        </a>
+                    {% endif %}
+
                     {{ addBlock('ad-detail/seller/action',{'seller_id':adv.owner_id})|raw }}
                 </div>
                 {% if setting_value('visiosoft.module.advs::market_place') %}
@@ -55,7 +63,7 @@
                     <div class="col-md-12 m-2">
                         <i class="fa fa-suitcase"></i>
                         <a href="{{ url_route('visiosoft.module.advs::list_user_ad',
-                            [trans('visiosoft.module.advs::slug.category'),adv.created_by_id]) }}"> {{ adv.first_name }} {{ adv.last_name }}</a>
+                            [adv.created_by_id]) }}"> {{ adv.first_name }} {{ adv.last_name }}</a>
                     </div>
                 {% endif %}
             </div>
