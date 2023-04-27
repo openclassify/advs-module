@@ -335,17 +335,15 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
         if ($type != null) {
             $id = $object->id;
             $seo = $object->slug;
-            if(setting_value('visiosoft.module.advs::translatable_slug')){
-                return \route('adv_detail_seo_mlang', [trans('visiosoft.module.advs::slug.detail_adv'),$seo, $id]);
-            }
-            return \route('adv_detail_seo', [$seo, $id]);
+        } else {
+            $id = $object->getObject()->id;
+            $seo = $object->getObject()->slug;
         }
-        $id = $object->getObject()->id;
-        $seo = $object->getObject()->slug;
-        if(setting_value('visiosoft.module.advs::translatable_slug')) {
-            return \route('adv_detail_seo_mlang', [trans('visiosoft.module.advs::slug.detail_adv'),$seo, $id]);
+
+        if (setting_value('visiosoft.module.advs::translatable_slug')) {
+            return \route('adv_detail_seo_mlang', [trans('visiosoft.module.advs::slug.detail_adv'), $seo, $id]);
         }
-            return \route('adv_detail_seo', [$seo, $id]);
+        return \route('adv_detail_seo', [$seo, $id]);
     }
 
     public function getAdvDetailLinkByAdId($id)
