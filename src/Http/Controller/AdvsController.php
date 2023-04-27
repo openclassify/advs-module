@@ -167,11 +167,9 @@ class AdvsController extends PublicController
     }
     public function adDetailSlug($path,$seo,$id = null, Request $request) {
         return $this->adRouteResolver($request, $path, null,null, $seo, $id, 'detail');
-        abort(404);
     }
     public function adListSlug($path,$category=null,$city=null, Request $request){
         return $this->adRouteResolver($request, $path, $category,$city, null, null, 'list');
-        abort(404);
     }
 
     // $route should be 'detail' or 'list'
