@@ -189,7 +189,7 @@ class AdvsController extends PublicController
                 return $route == 'detail' ? $this->view($seo, $id) : $this->index($category,$city);
             }else{
                 session()->put('_locale', $current_lang);
-                return redirect($request->getRequestUri());
+                return redirect()->refresh();
             }
         }
     }
@@ -295,13 +295,13 @@ class AdvsController extends PublicController
                 if (setting_value('visiosoft.module.advs::translatable_slug')){
                     return redirect(fullLink(
                         $param,
-                        route('adv_list_seo_mlang', [$category->slug]),
+                        route('adv_list_seo_mlang', [trans('visiosoft.module.advs::slug.category'),$category->slug]),
                         array()
                     ));
                 }
                 return redirect(fullLink(
                     $param,
-                    route('adv_list_seo', [trans('visiosoft.module.advs::slug.category'),$category->slug]),
+                    route('adv_list_seo', [$category->slug]),
                     array()
                 ));
             } elseif ($city) {
