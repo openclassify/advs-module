@@ -31,9 +31,9 @@ class appendRequestURL
     public function handle()
     {
 
-        $request = $this->removeParameters($this->request);
+        $request = $this->request ? $this->removeParameters($this->request) : $this->request ;
         $count_newParameters = count($this->new_parameters);
-        $count_request = count($this->request);
+        $count_request =$this->request ?  count($this->request) : $this->request;
 
         if ($count_newParameters > 0) {
             return ($count_request > 0) ? $this->createURL(array_merge($request, $this->new_parameters)) : $this->createURL($this->new_parameters);
