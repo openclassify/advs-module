@@ -19,7 +19,8 @@ return [
                     'tcmb_exchange_url',
                     'enabled_currencies',
 	                'hide_ad_cat',
-                    'showDetailedAddress'
+                    'showDetailedAddress',
+                    'translatable_slug'
                 ],
             ],
             'ads' => [

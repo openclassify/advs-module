@@ -29,10 +29,10 @@
                     <!-- Author with Block -->
 
                     {{ trans('visiosoft.module.advs::field.offered_by') }}:
-                    <a id="owner"
-                       href="{{ url_route('visiosoft.module.advs::list_user_ad', [adv.created_by_id]) }}"
-                       data-content="{{ adv.owner_id }}"> {{ adv.first_name }} {{ adv.last_name }}
-                    </a>
+                        <a id="owner"
+                           href="{{ url_route('visiosoft.module.advs::list_user_ad', [adv.created_by_id]) }}"
+                           data-content="{{ adv.owner_id }}"> {{ adv.first_name }} {{ adv.last_name }}
+                        </a>
                     {{ addBlock('ad-detail/seller/action',{'seller_id':adv.owner_id})|raw }}
                 </div>
                 {% if setting_value('visiosoft.module.advs::market_place') %}

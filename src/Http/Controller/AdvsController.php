@@ -34,13 +34,12 @@ use Visiosoft\LocationModule\Neighborhood\NeighborhoodRepository;
 use Visiosoft\LocationModule\Village\VillageModel;
 use Visiosoft\LocationModule\Village\VillageRepository;
 use Visiosoft\PackagesModule\AdvsLog\Contract\AdvsLogRepositoryInterface;
-use Visiosoft\PackagesModule\Http\Controller\PackageFEController;
 use Visiosoft\PackagesModule\Package\Contract\PackageRepositoryInterface;
 use Visiosoft\PackagesModule\Userentry\Contract\UserentryRepositoryInterface;
 use Visiosoft\ProfileModule\Adress\Contract\AdressRepositoryInterface;
 use Visiosoft\SeoModule\Legend\Command\AddMetaData;
 use Visiosoft\StoreModule\Store\Contract\StoreRepositoryInterface;
-use function React\Promise\Stream\first;
+use Illuminate\Support\Str;
 
 class AdvsController extends PublicController
 {
@@ -70,6 +69,7 @@ class AdvsController extends PublicController
 
     private $optionRepository;
 
+    private $translatableSlug;
     public function __construct(
         UserRepositoryInterface                $userRepository,
 
@@ -134,9 +134,69 @@ class AdvsController extends PublicController
 
         $this->optionRepository = $optionRepository;
 
+        $this->translatableSlug = setting_value('visiosoft.module.advs::translatable_slug');
+
         parent::__construct();
     }
 
+    private function getSlugLang($path, $seo = null){
+        $enabled_langs = config('streams::locales.enabled');
+        $current_lang = null;
+
+        foreach ($enabled_langs as $lang) {
+            $translatable_path = trans('visiosoft.module.advs::slug.detail_adv', [], $lang);
+            if(!$seo){
+                $translatable_path = trans('visiosoft.module.advs::slug.category', [], $lang);
+            }
+            if ($path == $translatable_path) {
+                return $lang;
+            }
+        }
+        return null;
+
+    }
+
+    public function changeableAdSlug($path,$param1=null, $param2=null, Request $request) {
+        foreach (config('streams::locales.enabled') as $lang) {
+            if ($path == trans('visiosoft.module.advs::slug.category', [], $lang)) {
+                return $this->adRouteResolver($request, $path, $param1,$param2, null, null, 'list');
+            }elseif($path == trans('visiosoft.module.advs::slug.detail_adv', [], $lang) && $param1){
+                return $this->adRouteResolver($request, $path, null,null, $param1, $param2, 'detail');
+            }
+        }
+        abort(404);
+    }
+
+    // $route should be 'detail' or 'list'
+    public function adRouteResolver(Request $request, $path, $category = null, $city = null, $seo = null, $id = null, $route) {
+        $current_lang = $this->getSlugLang($path,  $route == 'detail' ? $seo : '');
+        // $request_locale is used to switch slug with languageswitcher.
+        $request_locale = Request::create(session()->previousUrl())->query('_locale');
+        if($request_locale &&  $request_locale !== $current_lang) {
+            $newPath = trans($route == 'detail' ? 'visiosoft.module.advs::slug.detail_adv' : 'visiosoft.module.advs::slug.category', [], $request_locale);
+            $newUrl = Str::replaceFirst($path, $newPath, $request->path());
+            return redirect($newUrl);
+        }
+
+        if ($current_lang) {
+            if(session()->get('_locale') == $current_lang){
+                return $route == 'detail' ? $this->view($seo, $id) : $this->index($category,$city);
+            }else{
+                session()->put('_locale', $current_lang);
+                return redirect()->refresh();
+            }
+        }
+    }
+    private function redirectFunc($setting=false,$routeName,$param, $routeParams, $routeType){
+        $key = $setting ? $routeName.'_mlang' : $routeName;
+        $routeParam = trans($routeType == 'list' ? 'visiosoft.module.advs::slug.category' : 'visiosoft.module.advs::slug.detail_adv');
+        $setting ? array_unshift($routeParams,$routeParam) : null;
+
+        return redirect(fullLink(
+            $param,
+            route($key, $routeParams)
+        ),$setting ? 302 : 301 );
+    }
     public function index($category = null, $city = null)
     {
         $customParameters = array();
@@ -166,10 +226,8 @@ class AdvsController extends PublicController
             }
             if (isset($param['cat'])) {
                 unset($param['cat']);
-                return redirect(fullLink(
-                    $param,
-                    route('adv_list_seo', [$category->slug])
-                ));
+
+                return $this->redirectFunc($this->translatableSlug,'adv_list_seo',$param, [$category->slug], 'list');
             }
         } elseif (isset($param['cat']) && !empty($param['cat'])) { // Only Param
             $category = $this->category_repository->find($param['cat']);
@@ -178,10 +236,9 @@ class AdvsController extends PublicController
                 return redirect('/');
             }
             unset($param['cat']);
-            return redirect(fullLink(
-                $param,
-                route('adv_list_seo', [$category->slug])
-            ));
+
+            return $this->redirectFunc($this->translatableSlug,'adv_list_seo',$param, [$category->slug], 'list');
+
         }
         // Search by city slug
         $cityId = null;
@@ -196,41 +253,31 @@ class AdvsController extends PublicController
             if (is_null($city) && $isOneCity) { // Param and no slug
                 $cityId = $this->cityRepository->find($param['city'][0]);
                 unset($param['city']);
-                return redirect(fullLink(
-                    $param,
-                    route('adv_list_seo', [$category->slug, $cityId->slug])
-                ));
+
+                return $this->redirectFunc($this->translatableSlug,'adv_list_seo',$param, [$category->slug, $cityId->slug], 'list');
+
             } elseif ($isOneCity) { // Param and slug
                 $cityId = $this->cityRepository->find($param['city'][0]);
                 if ($city !== $cityId->slug) {
                     unset($param['city']);
-                    return redirect(fullLink(
-                        $param,
-                        route('adv_list_seo', [$category->slug, $cityId->slug])
-                    ));
+
+                    return $this->redirectFunc($this->translatableSlug,'adv_list_seo',$param, [$category->slug, $cityId->slug], 'list');
                 }
             } elseif ($city && $isMultipleCity) { // Slug and multiple param cities
-                return redirect(fullLink(
-                    $param,
-                    route('adv_list_seo', [$category->slug]),
-                    array()
-                ));
+                return $this->redirectFunc($this->translatableSlug,'adv_list_seo',$param, [$category->slug], 'list');
+
             } elseif ($city) {
                 if (isset($param['city'][0]) && empty($param['city'][0])) { // Slug and empty param
                     unset($param['city']);
                     unset($param['district']);
                     unset($param['neighborhood']);
-                    return redirect(fullLink(
-                        $param,
-                        route('adv_list_seo', [$category->slug])
-                    ));
+
+                    return $this->redirectFunc($this->translatableSlug,'adv_list_seo',$param, [$category->slug], 'list');
+
                 } else { // Only slug
                     $cityId = $this->cityRepository->findBy('slug', $city);
                     if (!$cityId) {
-                        return redirect(fullLink(
-                            $param,
-                            route('adv_list_seo', [$category->slug])
-                        ), 301);
+                        return $this->redirectFunc($this->translatableSlug,'adv_list_seo',$param, [$category->slug], 'list');
                     }
                 }
             }
@@ -246,17 +293,15 @@ class AdvsController extends PublicController
             $district = $this->districtRepository->find($param['district'][0]);
             unset($param['city']);
             unset($param['district']);
-            return redirect(fullLink(
-                $param,
-                route('adv_list_seo', [$category->slug, $cityId->slug . '-' . $district->slug])
-            ));
+
+            return $this->redirectFunc($this->translatableSlug,'adv_list_seo',$param, [$category->slug, $cityId->slug . '-' . $district->slug], 'list');
+
         } elseif ($isSingleDistrict && empty($param['district'][0])) {
             unset($param['district']);
             unset($param['neighborhood']);
-            return redirect(fullLink(
-                $param,
-                route('adv_list_seo', [$category->slug, $cityId->slug])
-            ));
+
+            return $this->redirectFunc($this->translatableSlug,'adv_list_seo',$param, [$category->slug, $cityId->slug], 'list');
+
         }
 
         //change root by single neighborhood
@@ -267,10 +312,9 @@ class AdvsController extends PublicController
         if ($isSingleNeighborhood && !empty($param['neighborhood'][0])) {
             $neighborhood = $this->neighborhoodRepository->find($param['neighborhood'][0]);
             unset($param['neighborhood']);
-            return redirect(fullLink(
-                $param,
-                route('adv_list_seo', [$category->slug, $cityId->slug . '-' . $districtSlug . '-' . $neighborhood->slug])
-            ));
+
+            return $this->redirectFunc($this->translatableSlug,'adv_list_seo',$param, [$category->slug, $cityId->slug . '-' . $districtSlug . '-' . $neighborhood->slug], 'list');
+
         } elseif ($isSingleNeighborhood && empty($param['neighborhood'][0])) {
             unset($param['neighborhood']);
             return redirect(fullLink($param, \request()->url()));
@@ -284,10 +328,9 @@ class AdvsController extends PublicController
                     $this->request->offsetSet('district', [$district->toArray()[0]['id']]);
                     $param['district'] = [$district->toArray()[0]['id']];
                 } else {
-                    return redirect(fullLink(
-                        $param,
-                        route('adv_list_seo', [$category->slug, $cityId->slug])
-                    ));
+
+                    return $this->redirectFunc($this->translatableSlug,'adv_list_seo',$param, [$category->slug, $cityId->slug], 'list');
+
                 }
                 if (count($routeParameters) >= 3) {
                     $neighborhood = $this->neighborhoodRepository->findBySlug($neighborhoodSlug);
@@ -295,10 +338,9 @@ class AdvsController extends PublicController
                         $this->request->offsetSet('neighborhood', [$neighborhood->toArray()[0]['id']]);
                         $param['neighborhood'] = [$neighborhood->toArray()[0]['id']];
                     } else {
-                        return redirect(fullLink(
-                            $param,
-                            route('adv_list_seo', [$category->slug, $cityId->slug . '-' . $districtSlug])
-                        ));
+
+                        return $this->redirectFunc($this->translatableSlug,'adv_list_seo',$param, [$category->slug, $cityId->slug . '-' . $districtSlug], 'list');
+
                     }
                 }
             }
@@ -637,6 +679,9 @@ class AdvsController extends PublicController
     public function viewType($type)
     {
         Cookie::queue(Cookie::make('viewType', $type, 84000));
+        if($this->translatableSlug){
+            return redirect($this->request->headers->get('referer') ?: route('visiosoft.module.advs::list_mlang',[trans('visiosoft.module.advs::slug.category')]));
+        }
         return redirect($this->request->headers->get('referer') ?: route('visiosoft.module.advs::list'));
     }
 
@@ -650,7 +695,6 @@ class AdvsController extends PublicController
         }
 
         if ($adv and ((auth()->user() and auth()->user()->hasRole('admin')) or ((!$adv->expired() && $adv->getStatus() === 'approved') || $adv->created_by_id === \auth()->id()))) {
-
             if (is_module_installed('visiosoft.module.store')) {
                 $id = $adv->id;
                 $adv->similar_ads = [];
@@ -664,7 +708,9 @@ class AdvsController extends PublicController
             // Check if created by exists
             if ((auth()->user() and !auth()->user()->hasRole('admin')) and !$adv->created_by) {
                 $this->messages->error('visiosoft.module.advs::message.this_ad_is_not_valid_anymore');
-                return $this->redirect->route('visiosoft.module.advs::list');
+
+                return $this->redirectFunc($this->translatableSlug,'visiosoft.module.advs::list',null, [], 'list');
+
             }
 
             $complaints = null;
@@ -806,7 +852,7 @@ class AdvsController extends PublicController
             }
         } else {
             $this->messages->error(trans('visiosoft.module.advs::message.ad_doesnt_exist'));
-            return redirect()->route('visiosoft.module.advs::list');
+            return $this->redirectFunc($this->translatableSlug,'visiosoft.module.advs::list',null, [], 'list');
         }
     }
 
@@ -1128,7 +1174,8 @@ class AdvsController extends PublicController
                 return redirect(route('advs_preview', [$this->request->update_id]));
             }
 
-            return redirect(route('adv_detail_seo', [$adv->slug, $adv->id]));
+
+            return $this->redirectFunc($this->translatableSlug,'adv_detail_seo',null, [$adv->slug, $adv->id], 'detail');
 
         }
 
