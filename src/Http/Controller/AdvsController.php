@@ -164,7 +164,7 @@ class AdvsController extends PublicController
                 return $this->adRouteResolver($request, $path, null,null, $param1, $param2, 'detail');
             }
         }
-        abort(404);
+        return $this->index($path,$param1);
     }
 
     // $route should be 'detail' or 'list'
