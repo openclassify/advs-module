@@ -357,5 +357,9 @@ return [
     'is_changeable_slug' => [
         'name' => 'Is Changeable Slug',
         'instructions' => 'Indicates the changeability of the ad\'s custom domain name'
+    ],
+    'translatable_slug' => [
+    'name' => 'Is Translatable Slug',
+    'warning' => 'Under Development. It may cause bugs in some themes.',
     ]
 ];
