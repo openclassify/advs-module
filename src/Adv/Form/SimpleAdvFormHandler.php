@@ -28,7 +28,8 @@ class SimpleAdvFormHandler
         }
 
         $ad = $advRepository->find($builder->getFormEntryId());
-        if (!$builder->getFormValue('status') && $ad->status !== 'approved') {
+        $status = $builder->getFormValue('status');
+        if (empty($status) || $status === 'approved') {
             $ad->approve();
         }
         $event->dispatch(new PriceChange($ad));
