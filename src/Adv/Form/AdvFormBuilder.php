@@ -112,5 +112,7 @@ class AdvFormBuilder extends FormBuilder
         if (!config("advs::is_changeable_slug",false)){
             return ['slug'];
         }
+        
+        return array();
     }
 }
