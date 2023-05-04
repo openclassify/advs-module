@@ -15,6 +15,7 @@ use Visiosoft\AdvsModule\Adv\Form\AdvFormBuilder;
 use Visiosoft\AdvsModule\Console\Commands\DeleteNonExistingCoverPhotos;
 use Visiosoft\AdvsModule\Http\Middleware\redirectDiffrentLang;
 use Visiosoft\AdvsModule\Http\Middleware\SetLang;
+use Visiosoft\AdvsModule\Http\Middleware\Pages;
 use Visiosoft\AdvsModule\Listener\AddAdvsSettingsScript;
 use Visiosoft\AdvsModule\Listener\AddTotalSales;
 use Visiosoft\AdvsModule\Option\Contract\OptionRepositoryInterface;
@@ -315,6 +316,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
         '{path}' => [
             'as' => 'visiosoft.module.advs::list_mlang',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
+            'middleware' => Pages::class,
             'where' => [
                 'path' => '^(?!admin(?:\/|$))[\w\-\/]+$'
             ],
