@@ -170,8 +170,9 @@ class AdvsController extends PublicController
     // $route should be 'detail' or 'list'
     public function adRouteResolver(Request $request, $path, $category = null, $city = null, $seo = null, $id = null, $route) {
         $current_lang = $this->getSlugLang($path,  $route == 'detail' ? $seo : '');
-        // $request_locale is used to switch slug with languageswitcher.
-        $request_locale = Request::create(session()->previousUrl())->query('_locale');
+        // $request_locale is used to switch url path with languageswitcher.
+        $request_locale = Request::create(session()->previousUrl())->query('_setLang');;
+
         if($request_locale &&  $request_locale !== $current_lang) {
             $newPath = trans($route == 'detail' ? 'visiosoft.module.advs::slug.detail_adv' : 'visiosoft.module.advs::slug.category', [], $request_locale);
             $newUrl = Str::replaceFirst($path, $newPath, $request->path());
@@ -189,8 +190,11 @@ class AdvsController extends PublicController
     }
     private function redirectFunc($setting=false,$routeName,$param, $routeParams, $routeType){
         $key = $setting ? $routeName.'_mlang' : $routeName;
+        if ($key == 'adv_list_seo_mlang' && count($routeParams) == 1){
+            $key = 'visiosoft.module.advs::list_mlang';
+        }
         $routeParam = trans($routeType == 'list' ? 'visiosoft.module.advs::slug.category' : 'visiosoft.module.advs::slug.detail_adv');
-        $setting ? array_unshift($routeParams,$routeParam) : null;
+
 
         return redirect(fullLink(
             $param,
@@ -221,6 +225,9 @@ class AdvsController extends PublicController
         if ($category) { // Slug
             $category = $this->category_repository->findBy('slug', $category);
             if (!$category) {
+                if ($this->translatableSlug){
+                    return abort(404);
+                }
                 $this->messages->error(trans('visiosoft.module.advs::message.category_not_exist'));
                 return redirect('/');
             }
@@ -232,6 +239,9 @@ class AdvsController extends PublicController
         } elseif (isset($param['cat']) && !empty($param['cat'])) { // Only Param
             $category = $this->category_repository->find($param['cat']);
             if (!$category) {
+                if ($this->translatableSlug){
+                    return abort(404);
+                }
                 $this->messages->error(trans('visiosoft.module.advs::message.category_not_exist'));
                 return redirect('/');
             }
@@ -851,8 +861,11 @@ class AdvsController extends PublicController
                 return back();
             }
         } else {
+            if ($this->translatableSlug){
+                return abort(404);
+            }
             $this->messages->error(trans('visiosoft.module.advs::message.ad_doesnt_exist'));
-            return $this->redirectFunc($this->translatableSlug,'visiosoft.module.advs::list',null, [], 'list');
+            return redirect()->route('visiosoft.module.advs::list');
         }
     }
 

@@ -303,20 +303,15 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
                 'path' => '^(?!admin(?:\/|$))[\w\/]+$'
             ],
         ],
-        '{path}/{id}' => [
-            'as' => 'adv_detail_mlang',
-            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
-            'where' => [
-                'path' => '^(?!admin(?:\/|$))[\w\/]+$'
-            ],
-        ],
-        '{path}/{category?}/{city?}' => [
+        '{category}/{city}' => [
             'as' => 'adv_list_seo_mlang',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
             'where' => [
-                'path' => '^(?!admin(?:\/|$))[\w\/]+$'
+                'category' => '^(?!admin(?:\/|$))[\w\-\/]+$',
             ],
         ],
+
+//         category_list_route --> /restate  /vehicle
         '{path}' => [
             'as' => 'visiosoft.module.advs::list_mlang',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
