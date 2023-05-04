@@ -225,25 +225,16 @@ class AdvsController extends PublicController
         if ($category) { // Slug
             $category = $this->category_repository->findBy('slug', $category);
             if (!$category) {
-                if ($this->translatableSlug){
-                    return abort(404);
-                }
-                $this->messages->error(trans('visiosoft.module.advs::message.category_not_exist'));
-                return redirect('/');
+                 return abort(404);
             }
             if (isset($param['cat'])) {
                 unset($param['cat']);
-
                 return $this->redirectFunc($this->translatableSlug,'adv_list_seo',$param, [$category->slug], 'list');
             }
         } elseif (isset($param['cat']) && !empty($param['cat'])) { // Only Param
             $category = $this->category_repository->find($param['cat']);
             if (!$category) {
-                if ($this->translatableSlug){
-                    return abort(404);
-                }
-                $this->messages->error(trans('visiosoft.module.advs::message.category_not_exist'));
-                return redirect('/');
+                 return abort(404);
             }
             unset($param['cat']);
 
