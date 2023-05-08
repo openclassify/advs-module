@@ -308,17 +308,16 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
             'as' => 'adv_list_seo_mlang',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
             'where' => [
-                'category' => '^(?!api|admin|ajax)([\w\/-]*)$',
+                'category' => '^(?!api|admin|ajax|doping)([\w\/-]*)$',
             ],
         ],
 
-//         category_list_route --> /restate  /vehicle
         '{path}' => [
             'as' => 'visiosoft.module.advs::list_mlang',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
             'middleware' => Pages::class,
             'where' => [
-                'path' => '^(?!api|admin|ajax)([\w\/-]*)$'
+                'path' => '^(?!api|admin|ajax|doping)([\w\/-]*)$'
             ],
         ],
 
