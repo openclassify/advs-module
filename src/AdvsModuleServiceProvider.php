@@ -301,14 +301,14 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
             'as' => 'adv_detail_seo_mlang',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
             'where' => [
-                'path' => '^(?!admin(?:\/|$))[\w\/]+$'
+                'path' => '^(?!api|admin(?:\/|$))[\w\/]+$'
             ],
         ],
         '{category}/{city}' => [
             'as' => 'adv_list_seo_mlang',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
             'where' => [
-                'category' => '^(?!api|admin|ajax|doping)([\w\/-]*)$',
+                'category' => '^(?!api|admin|ajax|doping|cart)([\w\/-]*)$',
             ],
         ],
 
@@ -317,7 +317,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
             'middleware' => Pages::class,
             'where' => [
-                'path' => '^(?!api|admin|ajax|doping)([\w\/-]*)$'
+                'path' => '^(?!api|admin|ajax|doping|cart)([\w\/-]*)$'
             ],
         ],
 
