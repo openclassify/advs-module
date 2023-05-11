@@ -297,6 +297,9 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
             'as' => 'visiosoft.module.advs::show_ad_map_location_mlang',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug'
         ],
+
+        '/' => '',
+
         '{path}/{seo}/{id}' => [
             'as' => 'adv_detail_seo_mlang',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
