@@ -171,7 +171,12 @@ class AdvsController extends PublicController
     public function adRouteResolver(Request $request, $path, $category = null, $city = null, $seo = null, $id = null, $route) {
         $current_lang = $this->getSlugLang($path,  $route == 'detail' ? $seo : '');
         // $request_locale is used to switch url path with languageswitcher.
-        $request_locale = Request::create(session()->previousUrl())->query('_setLang');;
+        $prev_request = Request::create(session()->previousUrl());
+        $request_locale = $prev_request->query('_setLang');
+
+        if (!$request_locale){
+            $request_locale = $prev_request->query('_locale');
+        }
 
         if($request_locale &&  $request_locale !== $current_lang) {
             $newPath = trans($route == 'detail' ? 'visiosoft.module.advs::slug.detail_adv' : 'visiosoft.module.advs::slug.category', [], $request_locale);
