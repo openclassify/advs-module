@@ -156,7 +156,7 @@ class AdvsController extends PublicController
 
     }
 
-    public function changeableAdSlug($path,$param1=null, $param2=null, Request $request) {
+    public function changeableAdSlug(Request $request, $path,$param1=null, $param2=null) {
         foreach (config('streams::locales.enabled') as $lang) {
             if ($path == trans('visiosoft.module.advs::slug.category', [], $lang)) {
                 return $this->adRouteResolver($request, $path, $param1,$param2, null, null, 'list');
