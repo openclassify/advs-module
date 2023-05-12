@@ -303,7 +303,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
             'as' => 'adv_detail_seo_mlang',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
             'where' => [
-                'path' => '^(?!admin(?:\/|$))[\w\/]+$'
+                'path' => '^(?!api|admin|ajax|form)([\w\/-]*)$'
             ],
         ],
         '{category}/{city}' => [
@@ -317,7 +317,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
         '{path}' => [
             'as' => 'visiosoft.module.advs::list_mlang',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
-            'middleware' => SetLang::class, Pages::class,
+            'middleware' => [SetLang::class, Pages::class],
             'where' => [
                 'path' => '^(?!api|admin|ajax|form)([\w\/-]*)$'
             ],
