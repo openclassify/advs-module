@@ -139,67 +139,23 @@ class AdvsController extends PublicController
         parent::__construct();
     }
 
-    private function getSlugLang($path, $seo = null){
-        $enabled_langs = config('streams::locales.enabled');
-        $current_lang = null;
-
-        foreach ($enabled_langs as $lang) {
-            $translatable_path = trans('visiosoft.module.advs::slug.detail_adv', [], $lang);
-            if(!$seo){
-                $translatable_path = trans('visiosoft.module.advs::slug.category', [], $lang);
-            }
-            if ($path == $translatable_path) {
-                return $lang;
-            }
-        }
-        return null;
-
-    }
-
     public function changeableAdSlug(Request $request, $path,$param1=null, $param2=null) {
         foreach (config('streams::locales.enabled') as $lang) {
             if ($path == trans('visiosoft.module.advs::slug.category', [], $lang)) {
-                return $this->adRouteResolver($request, $path, $param1,$param2, null, null, 'list');
+                return $this->index();
             }elseif($path == trans('visiosoft.module.advs::slug.detail_adv', [], $lang) && $param1){
-                return $this->adRouteResolver($request, $path, null,null, $param1, $param2, 'detail');
+                return $this->view($param1, $param2);
             }
         }
         return $this->index($path,$param1);
     }
 
-    // $route should be 'detail' or 'list'
-    public function adRouteResolver(Request $request, $path, $category = null, $city = null, $seo = null, $id = null, $route) {
-        $current_lang = $this->getSlugLang($path,  $route == 'detail' ? $seo : '');
-        // $request_locale is used to switch url path with languageswitcher.
-        $prev_request = Request::create(session()->previousUrl());
-        $request_locale = $prev_request->query('_setLang');
 
-        if (!$request_locale){
-            $request_locale = $prev_request->query('_locale');
-        }
-
-        if($request_locale &&  $request_locale !== $current_lang) {
-            $newPath = trans($route == 'detail' ? 'visiosoft.module.advs::slug.detail_adv' : 'visiosoft.module.advs::slug.category', [], $request_locale);
-            $newUrl = Str::replaceFirst($path, $newPath, $request->path());
-            return redirect($newUrl);
-        }
-
-        if ($current_lang) {
-            if(session()->get('_locale') == $current_lang){
-                return $route == 'detail' ? $this->view($seo, $id) : $this->index($category,$city);
-            }else{
-                session()->put('_locale', $current_lang);
-                return redirect()->refresh();
-            }
-        }
-    }
     private function redirectFunc($setting=false,$routeName,$param, $routeParams, $routeType){
         $key = $setting ? $routeName.'_mlang' : $routeName;
         if ($key == 'adv_list_seo_mlang' && count($routeParams) == 1){
             $key = 'visiosoft.module.advs::list_mlang';
         }
-        $routeParam = trans($routeType == 'list' ? 'visiosoft.module.advs::slug.category' : 'visiosoft.module.advs::slug.detail_adv');
-
 
         return redirect(fullLink(
             $param,
