@@ -57,7 +57,7 @@ class SetLang
 
         $current_lang = $this->getSlugLang($path,  $seo);
 
-        if($current_lang && ($request->session()->get('_locale') != $current_lang) or ($request->get('_setLang'))) {
+        if($current_lang && (($request->session()->get('_locale') != $current_lang) or ($request->get('_setLang')))) {
             if ($request->get('_setLang')){
                 $current_lang = $request->get('_setLang');
             }
