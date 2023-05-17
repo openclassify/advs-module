@@ -317,7 +317,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
         '{path}' => [
             'as' => 'visiosoft.module.advs::list_mlang',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
-            'middleware' => [SetLang::class, Pages::class],
+            'middleware' => [Pages::class,SetLang::class],
             'where' => [
                 'path' => '^(?!api|admin|ajax|form)([\w\/-]*)$'
             ],
