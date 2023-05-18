@@ -7,6 +7,8 @@ use Anomaly\Streams\Platform\Model\Advs\AdvsStatusEntryModel;
 use Anomaly\Streams\Platform\Model\Location\LocationVillageEntryModel;
 use Anomaly\Streams\Platform\Ui\Table\Event\TableIsQuerying;
 use Illuminate\Contracts\Config\Repository;
+use Illuminate\Routing\Router;
+use Laravel\Passport\Passport;
 use Visiosoft\AdvsModule\Adv\Contract\AdvRepositoryInterface;
 use Visiosoft\AdvsModule\Adv\AdvRepository;
 use Anomaly\Streams\Platform\Model\Advs\AdvsAdvsEntryModel;
@@ -150,7 +152,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
         ],
 
         'advs/multiple_operations' => [
-          'as' => 'multiple_operations' ,
+            'as' => 'multiple_operations',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@multipleOperations',
         ],
 
@@ -285,44 +287,6 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
 
         // Cron Routes
         'cron/update-created-at-date' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@updateCreatedAtDates',
-        '{path}?user={id}' => [
-            'as' => 'visiosoft.module.advs::list_user_ad_mlang',
-            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
-        ],
-        '{path}?cat={id}' => [
-            'as' => 'visiosoft.module.advs::list_cat_mlang',
-            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
-        ],
-        '{path}/map?country={country}&city[]={city}&district={districts}' => [
-            'as' => 'visiosoft.module.advs::show_ad_map_location_mlang',
-            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug'
-        ],
-
-
-        '{path}/{seo}/{id}' => [
-            'as' => 'adv_detail_seo_mlang',
-            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
-            'where' => [
-                'path' => '^(?!api|admin|ajax|form)([\w\/-]*)$'
-            ],
-        ],
-        '{category}/{city}' => [
-            'as' => 'adv_list_seo_mlang',
-            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
-            'where' => [
-                'category' => '^(?!api|admin|ajax|form)([\w\/-]*)$',
-            ],
-        ],
-
-        '{path}' => [
-            'as' => 'visiosoft.module.advs::list_mlang',
-            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
-            'middleware' => [Pages::class,SetLang::class],
-            'where' => [
-                'path' => '^(?!api|admin|ajax|form)([\w\/-]*)$'
-            ],
-        ],
-
     ];
 
     protected $middleware = [
@@ -402,5 +366,74 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
 
         // Disable file versioning
         $fileModel->disableVersioning();
+    }
+
+    public function mapRouters(Router $router)
+    {
+        $router->options(
+            '{path}?user={id}',
+            [
+                'as' => 'visiosoft.module.advs::list_user_ad_mlang',
+                'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
+            ]
+        );
+
+        $router->options(
+            '{path}?cat={id}',
+            [
+                'as' => 'visiosoft.module.advs::list_cat_mlang',
+                'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
+            ]
+        );
+
+        $router->options(
+            '{path}/map?country={country}&city[]={city}&district={districts}',
+            [
+                'as' => 'visiosoft.module.advs::show_ad_map_location_mlang',
+                'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug'
+            ]
+        );
+
+
+        $router->options(
+            '{path}/{seo}/{id}',
+            [
+                'as' => 'adv_detail_seo_mlang',
+                'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
+                'where' => [
+                    'path' => '^(?!api|admin|ajax|form)([\w\/-]*)$'
+                ],
+            ]
+        );
+
+        $router->options(
+            '{category}/{city}',
+            [
+                'as' => 'adv_list_seo_mlang',
+                'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
+                'where' => [
+                    'category' => '^(?!api|admin|ajax|form)([\w\/-]*)$',
+                ],
+            ]
+        );
+
+
+        $router->options(
+            '{path}',
+            [
+                'as' => 'visiosoft.module.advs::list_mlang',
+                'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@changeableAdSlug',
+                'middleware' => [SetLang::class],
+                'where' => [
+                    'path' => '^(?!api|admin|ajax|form)([\w\/-]*)$'
+                ],
+            ]
+        );
+
+    }
+
+    public function map(Router $router)
+    {
+        $this->mapRouters($router);
     }
 }
