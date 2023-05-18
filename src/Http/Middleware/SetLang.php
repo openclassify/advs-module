@@ -50,7 +50,7 @@ class SetLang
         $seo = isset($parameters['seo']) ? $parameters['seo'] : null;
         $path = isset($parameters['path']) ? $parameters['path'] : null;
 
-        if(!empty($parameters['category'])){
+        if(!empty($parameters['city'])){
             $path = $parameters['category'];
             $seo = $parameters['city'];
         }
