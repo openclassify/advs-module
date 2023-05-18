@@ -370,7 +370,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
 
     public function mapRouters(Router $router)
     {
-        $router->options(
+        $router->get(
             '{path}?user={id}',
             [
                 'as' => 'visiosoft.module.advs::list_user_ad_mlang',
@@ -378,7 +378,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
             ]
         );
 
-        $router->options(
+        $router->get(
             '{path}?cat={id}',
             [
                 'as' => 'visiosoft.module.advs::list_cat_mlang',
@@ -386,7 +386,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
             ]
         );
 
-        $router->options(
+        $router->get(
             '{path}/map?country={country}&city[]={city}&district={districts}',
             [
                 'as' => 'visiosoft.module.advs::show_ad_map_location_mlang',
@@ -395,7 +395,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
         );
 
 
-        $router->options(
+        $router->get(
             '{path}/{seo}/{id}',
             [
                 'as' => 'adv_detail_seo_mlang',
@@ -406,7 +406,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
             ]
         );
 
-        $router->options(
+        $router->get(
             '{category}/{city}',
             [
                 'as' => 'adv_list_seo_mlang',
@@ -418,7 +418,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
         );
 
 
-        $router->options(
+        $router->get(
             '{path}',
             [
                 'as' => 'visiosoft.module.advs::list_mlang',
