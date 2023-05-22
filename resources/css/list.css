@@ -330,3 +330,22 @@ a.sort-by-open-dropdown:hover {
         color: #1064bc !important;
     }
 }
+
+.map_detail_btn{
+    margin-top: 10px;
+    outline: 0 !important;
+    box-shadow: none !important;
+    border:none !important;
+}
+
+.map_detail_btn:focus{
+    box-shadow: none !important;
+    border:none !important;
+}
+.map_subject{
+    font-size: 13px !important;
+    margin: 5px 0 !important;
+}
+.gm-ui-hover-effect{
+    outline: 0 !important;
+}
