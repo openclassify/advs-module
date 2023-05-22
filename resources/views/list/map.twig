@@ -71,9 +71,9 @@
                     var marker = locations.map(function (location, i) {
                         var image = {
                             url: 'https://svgshare.com/i/BpV.svg',
-                            scaledSize: new google.maps.Size(64, 64),
+                            scaledSize: new google.maps.Size(32, 32),
                             origin: new google.maps.Point(0, 0),
-                            anchor: new google.maps.Point(0, 32)
+                            anchor: new google.maps.Point(0, 16)
                         }
                         var mark = new google.maps.Marker({
                             position: {lat: location.lat, lng: location.lng},
@@ -89,7 +89,7 @@
                                 '<p> <img class="map_image w-100" src="' + location.cover_photo + '" height="auto"/> </p>' +
                                 '<h6 class="map_subject text-truncate text-primary">' + location.title + '</h6>' +
                                 '<p class="map_price">' + location.price + ' ' + location.currency + '</p>' +
-                                '<p><a href="' + location.seoLink + '" class="btn btn-info w-100" target="_blank"><small>{{ trans('visiosoft.module.advs::field.show_details') }}</small></a> </p>' +
+                                '<p><a href="' + location.seoLink + '" class="btn btn-info w-100 map_detail_btn" target="_blank"><small>{{ trans('visiosoft.module.advs::field.show_details') }}</small></a> </p>' +
                                 '</div>' +
                                 '</div>');
                             infoWin.open(map, mark);
