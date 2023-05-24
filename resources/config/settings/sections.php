@@ -80,7 +80,11 @@ return [
                     'show_input_flag',
                     'show_order_note',
                     'show_min_order_limit',
-                    'add_ad_tags'
+                    'add_ad_tags',
+                    'make_country_required',
+                    'make_city_required',
+                    'make_district_required',
+                    'make_neighborhood_required',
                 ],
             ],
             'ads_image' => [

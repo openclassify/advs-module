@@ -359,7 +359,23 @@ return [
         'instructions' => 'Indicates the changeability of the ad\'s custom domain name'
     ],
     'translatable_slug' => [
-    'name' => 'Is Translatable Slug',
-    'warning' => 'Under Development. It may cause bugs in some themes.',
-    ]
+        'name' => 'Is Translatable Slug',
+        'warning' => 'Under Development. It may cause bugs in some themes.',
+    ],
+    'make_country_required' => [
+        'name' => 'Make Country Required',
+        'instructions' => 'Require country to be selected when creating an ad',
+    ],
+    'make_city_required' => [
+        'name' => 'Make City Required',
+        'instructions' => 'Require city to be selected when creating an ad',
+    ],
+    'make_district_required' => [
+        'name' => 'Make District Required',
+        'instructions' => 'Require district to be selected when creating an ad',
+    ],
+    'make_neighborhood_required' => [
+        'name' => 'Make Neighborhood Required',
+        'instructions' => 'Require neighborhood to be selected when creating an ad',
+    ],
 ];
