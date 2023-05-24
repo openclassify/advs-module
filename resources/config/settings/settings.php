@@ -612,25 +612,25 @@ return [
             'default_value' => false
         ]
     ],
-    'make_country_required' => [
+    'is_country_required' => [
         'type' => 'anomaly.field_type.boolean',
         'config' => [
             'default_value' => false
         ]
     ],
-    'make_city_required' => [
+    'is_city_required' => [
         'type' => 'anomaly.field_type.boolean',
         'config' => [
             'default_value' => false
         ]
     ],
-    'make_district_required' => [
+    'is_district_required' => [
         'type' => 'anomaly.field_type.boolean',
         'config' => [
             'default_value' => false
         ]
     ],
-    'make_neighborhood_required' => [
+    'is_neighborhood_required' => [
         'type' => 'anomaly.field_type.boolean',
         'config' => [
             'default_value' => false

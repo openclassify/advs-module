@@ -357,19 +357,19 @@ return [
         'name' => 'Değiştirilebilir Özel İsim (Slug)',
         'instructions' => 'İlanın özel isminin değiştirilebilir olma durumu'
     ],
-    'make_country_required' => [
+    'is_country_required' => [
         'name' => 'Ülke Seçimini Zorunlu Yap',
         'instructions' => 'Ürün/İlan oluştururken kullanıcının ülke seçmesini zorunlu kılın',
     ],
-    'make_city_required' => [
+    'is_city_required' => [
         'name' => 'Şehir Seçimini Zorunlu Yap',
         'instructions' => 'Ürün/İlan oluştururken kullanıcının şehir seçmesini zorunlu kılın',
     ],
-    'make_district_required' => [
+    'is_district_required' => [
         'name' => 'İlçe Seçimini Zorunlu Yap',
         'instructions' => 'Ürün/İlan oluştururken kullanıcının ilçe seçmesini zorunlu kılın',
     ],
-    'make_neighborhood_required' => [
+    'is_neighborhood_required' => [
         'name' => 'Mahalle Seçimini Zorunlu Yap',
         'instructions' => 'Ürün/İlan oluştururken kullanıcının mahalle seçmesini zorunlu kılın ',
     ],

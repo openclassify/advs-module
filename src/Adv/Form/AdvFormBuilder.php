@@ -65,19 +65,19 @@ class AdvFormBuilder extends FormBuilder
             'tags',
             'country' => [
                 'class' => 'form-control countryselect',
-                'required' => setting_value('visiosoft.module.advs::make_country_required')
+                'required' => setting_value('visiosoft.module.advs::is_country_required')
             ],
             'city' => [
                 'class' => 'form-control cityselect',
-                'required' => setting_value('visiosoft.module.advs::make_city_required')
+                'required' => setting_value('visiosoft.module.advs::is_city_required')
             ],
             'district' => [
                 'class' => 'form-control districtselect',
-                'required' => setting_value('visiosoft.module.advs::make_district_required'),
+                'required' => setting_value('visiosoft.module.advs::is_district_required'),
             ],
             'neighborhood' => [
                 'class' => 'form-control neighborhoodselect',
-                'required' => setting_value('visiosoft.module.advs::make_neighborhood_required')
+                'required' => setting_value('visiosoft.module.advs::is_neighborhood_required')
             ],
             'village' => [
                 'class' => 'form-control villageselect'

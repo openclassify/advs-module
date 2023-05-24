@@ -362,20 +362,20 @@ return [
         'name' => 'Is Translatable Slug',
         'warning' => 'Under Development. It may cause bugs in some themes.',
     ],
-    'make_country_required' => [
-        'name' => 'Make Country Required',
-        'instructions' => 'Require country to be selected when creating an ad',
+    'is_country_required' => [
+        'name' => 'Required Ad Country?',
+        'instructions' => 'Is ad country required ?',
     ],
-    'make_city_required' => [
-        'name' => 'Make City Required',
-        'instructions' => 'Require city to be selected when creating an ad',
+    'is_city_required' => [
+        'name' => 'Required Ad City?',
+        'instructions' => 'Is ad city required ?',
     ],
-    'make_district_required' => [
-        'name' => 'Make District Required',
-        'instructions' => 'Require district to be selected when creating an ad',
+    'is_district_required' => [
+        'name' => 'Required Ad District?',
+        'instructions' => 'Is ad district required ?',
     ],
-    'make_neighborhood_required' => [
-        'name' => 'Make Neighborhood Required',
-        'instructions' => 'Require neighborhood to be selected when creating an ad',
+    'is_neighborhood_required' => [
+        'name' => 'Required Ad Neighborhood?',
+        'instructions' => 'Is ad neighborhood required ?',
     ],
 ];
