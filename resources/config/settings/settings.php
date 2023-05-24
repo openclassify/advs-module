@@ -612,5 +612,28 @@ return [
             'default_value' => false
         ]
     ],
-
+    'is_country_required' => [
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => false
+        ]
+    ],
+    'is_city_required' => [
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => false
+        ]
+    ],
+    'is_district_required' => [
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => false
+        ]
+    ],
+    'is_neighborhood_required' => [
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => false
+        ]
+    ],
 ];
