@@ -127,10 +127,12 @@ class AjaxController extends PublicController
             $my_advs = $advRepository->addAttributes($my_advs->get());
         }
 
+        $currencyOptions = $request->currencyOptions ?: [];
+
         foreach ($my_advs as $ad) {
             $ad->detail_url = $this->adv_model->getAdvDetailLinkByModel($ad, 'list');
             $ad = $this->adv_model->AddAdsDefaultCoverImage($ad);
-            $ad->formatted_price = app(Currency::class)->format($ad->price, $ad->currency);
+            $ad->formatted_price = app(Currency::class)->format($ad->price, $ad->currency, $currencyOptions);
             $ad->date = Carbon::create($ad->created_at)->format('d.m.Y');
         }
 
