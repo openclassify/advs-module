@@ -30,6 +30,8 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
 	    'category2',
         'thumbnail',
         'video',
+        'city_info',
+        'district_info'
     ];
 
     protected $cascades = [
@@ -78,6 +80,15 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
     public function getCategory2Attribute()
     {
         return $this->hasMany('Visiosoft\CatsModule\Category\CategoryModel', 'id', 'cat1')->first();
+    }
+    public function getCityInfoAttribute()
+    {
+        return $this->hasMany(CityModel::class, 'id', 'city')->first();
+    }
+
+    public function getDistrictInfoAttribute()
+    {
+        return $this->hasMany(DistrictModel::class, 'id', 'district')->first();
     }
 
     public function getThumbnailAttribute()
