@@ -161,7 +161,7 @@ return [
     'add_to_favorites' => "Favorilere Ekle",
     'add_to_cart'=> "Sepete Ekle",
     'send' => 'Gönder',
-    'search_name' => 'Arama Adı',
+    'search_name' => 'Liste Adı',
     'my_favorite_searches' => 'Favori Aramalar',
     'search_desc' => 'Burada favori arama seçimlerinizi ekleyebilir ve yönetebilirsiniz.',
     'complaint_placeholder' => 'Şikayet ayrıntılarınızı buraya yazın.',
