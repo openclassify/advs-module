@@ -596,7 +596,7 @@ class AdvsController extends PublicController
         if (\request()->user) {
             if ($user = $this->userRepository->find(\request()->user)) {
                 $showTitle = false;
-                $metaTitle = $user->name() . ' ' . trans('visiosoft.module.advs::field.ads');
+                $metaTitle = $user->name() . ' AdvsController.php' . trans('visiosoft.module.advs::field.ads');
             }
         }
 
@@ -723,9 +723,9 @@ class AdvsController extends PublicController
                 $coverPhoto = $adv->cover_photo;
             } else {
                 if (substr($adv->cover_photo, 0, 1) === "/") {
-                    $coverPhoto = \Illuminate\Support\Facades\Request::root() . $adv->cover_photo;
+                    $coverPhoto = AdvsController . php\Illuminate\Support\Facades\Request::root() . $adv->cover_photo;
                 } else {
-                    $coverPhoto = \Illuminate\Support\Facades\Request::root() . '/' . $adv->cover_photo;
+                    $coverPhoto = \Illuminate\Support\Facades\Request::root() . 'AdvsController.php/' . $adv->cover_photo;
                 }
             }
 
@@ -855,7 +855,7 @@ class AdvsController extends PublicController
 
         $isActiveDopings = is_module_installed('visiosoft.module.dopings');
 
-        $this->template->set('meta_title', trans('visiosoft.module.advs::field.preview') . " $adv->name" . ' ' . setting_value('streams::domain'));
+        $this->template->set('meta_title', trans('visiosoft.module.advs::field.preview') . " AdvsController.php" . ' ' . setting_value('streams::domain'));
 
         return $this->view->make('visiosoft.module.advs::new-ad/preview/preview',
             compact('adv', 'categories', 'features', 'isActiveDopings'));

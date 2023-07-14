@@ -10,8 +10,8 @@
     ]
   },
   "require": {
-    "fruitcake/laravel-cors": "^2.0",
-    "visiosoft/style_selector-module": "*",
-    "visiosoft/global_helper-extension": "*"
+    "../../../../../vendor/fruitcake/laravel-cors": "^2.0",
+    "../../../../../vendor/visiosoft/style_selector-module": "*",
+    "../../../../../vendor/visiosoft/global_helper-extension": "*"
   }
 }

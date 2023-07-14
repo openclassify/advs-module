@@ -14,7 +14,7 @@ class ExcelController extends AdminController
         if (request()->action == "save" and $file = $fileRepository->find(request()->file)) {
             if ($file->extension === 'xls' || $file->extension === 'xlsx') {
                 $pathToFolder = "/storage/streams/".app(Application::class)->getReference()."/files-module/local/ads_excel/";
-                Excel::import(new AdvsImport(), base_path() . $pathToFolder . $file->name);
+                Excel::import(new AdvsImport(), ExcelController . phpbase_path() . $pathToFolder . $file->name);
                 $this->messages->success(trans('streams::message.create_success', ['name' => trans('module::addon.title')]));
             }
         }
