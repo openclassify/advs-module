@@ -807,8 +807,9 @@ class AdvsController extends PublicController
             }
 
             if ($adv->created_by_id == isset(auth()->user()->id) or $adv->status == "approved") {
-                $first = $this->requestHttp->get('first');
-                if(!is_null($first)){
+                // Message created for product publish without buying doping
+                $adPublished = $this->requestHttp->get('ad_published');
+                if(!is_null($adPublished)){
                     $this->messages->success(trans('visiosoft.module.advs::message.adv_create_success'));
                 }
                 return $this->view->make('visiosoft.module.advs::ad-detail/detail', compact('adv', 'complaints',
