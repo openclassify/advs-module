@@ -1,10 +1,8 @@
 <?php namespace Visiosoft\AdvsModule\Adv\Table;
 
-use Anomaly\Streams\Platform\Ui\Table\Component\Action\Handler\ForceDelete;
 use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
 use Visiosoft\AdvsModule\Adv\Table\Handler\RestoreMultiple;
 use Visiosoft\AdvsModule\Adv\Table\Views\All;
-use Visiosoft\AdvsModule\Adv\Table\Views\Trash;
 use Visiosoft\AdvsModule\Adv\Table\Views\unfinished;
 
 class AdvTableBuilder extends TableBuilder

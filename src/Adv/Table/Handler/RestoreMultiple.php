@@ -2,7 +2,6 @@
 
 use Anomaly\Streams\Platform\Ui\Table\Component\Action\ActionHandler;
 use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
-use InvalidArgumentException;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Visiosoft\AdvsModule\Adv\Contract\AdvRepositoryInterface;
