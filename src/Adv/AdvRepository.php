@@ -33,6 +33,11 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
         $this->fileRepository = $fileRepository;
         $this->folderRepository = $folderRepository;
     }
+    public function restoreMultiple($ids){
+        return $this->model->withTrashed()->newQuery()
+            ->whereIn('advs_advs.id',$ids)
+            ->update(['deleted_at' => NULL]);
+    }
 
     public function searchAdvs(
         $type, $param = null, $customParameters = [],

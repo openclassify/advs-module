@@ -43,6 +43,8 @@ return [
     'error_select_related_category' => 'Lütfen ilgili bir kategori seçin!',
     'error_select_ad' => "Hiçbir ilan seçmediniz. Lütfen bir veya birden fazla ilan seçin!",
     'error_operations_author' => "Size ait olmayan ilan veya ilanlar üzernide işlem yapamazsınız!",
+    'error_general' => 'Bir hatayla karşılaşıldı. Yöneticiyle iletişime geçin!',
+
 
     'adv_create_success' => 'Ürün başarıyla oluşturuldu'
 ];

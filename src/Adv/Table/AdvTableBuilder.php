@@ -1,6 +1,7 @@
 <?php namespace Visiosoft\AdvsModule\Adv\Table;
 
 use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
+use Visiosoft\AdvsModule\Adv\Table\Handler\RestoreMultiple;
 use Visiosoft\AdvsModule\Adv\Table\Views\All;
 use Visiosoft\AdvsModule\Adv\Table\Views\unfinished;
 
@@ -17,14 +18,23 @@ class AdvTableBuilder extends TableBuilder
             'slug' => 'advanced',
             'text' => 'module::view.advanced',
         ],
-        'trash',
+
+        'trash' => [
+            'actions' => [
+                'restore_multiple' => [
+                    'handler' => RestoreMultiple::class,
+                    'text'    => 'streams::button.restore',
+                    'type'    => 'success',
+                    'icon'    => 'repeat',
+                ],
+            ],
+        ],
         'unfinished' => [
             'view' => unfinished::class
         ],
 
     ];
 
-    protected $buttons = [];
 
     protected $actions = [
         'delete' => [
