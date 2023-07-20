@@ -80,4 +80,6 @@ interface AdvRepositoryInterface extends EntryRepositoryInterface
     public function getClassifiedsByCatsIDsAndLevels($categories, $limit = 10);
 
     public function getSimilarAd($id,array $userIds,$limit = 10);
+
+    public function restoreMultiple(array $ids);
 }

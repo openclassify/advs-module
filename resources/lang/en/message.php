@@ -43,6 +43,7 @@ return [
     'error_select_related_category' => 'Please select a related category!',
     'error_select_ad' => 'You have not selected any ads. Please select one or more ads!',
     'error_operations_author' => "You cannot perform operations a post that do not belong to you!",
+    'error_general' => 'An error was encountered. Contact the admin!',
 
     'adv_create_success' => 'The ad has been successfully created'
 ];
