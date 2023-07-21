@@ -423,5 +423,8 @@ return [
     ],
     'seo_description' => [
         'name' => 'Seo Description'
-    ]
+    ],
+
+    'empty_title' => 'If empty, filled by title',
+    'empty_description' => 'If empty, filled by description',
 ];

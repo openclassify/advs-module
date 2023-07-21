@@ -408,5 +408,11 @@ return [
     ],
     'seo_description' => [
         'name' => 'Seo Açıklaması'
-    ]
+    ],
+
+    'empty_title' => 'Boşsa, başlığa göre doldurulur',
+    'empty_description' => 'Boşsa, açıklamaya göre doldurulur',
+
+
+
 ];

@@ -90,7 +90,7 @@
                                     {% for field in form.fields.translations('seo_title') %}
                                         {{ field.setAttributes({
                                             'class': 'd-block mt-3 w-100 border rounded'
-                                        }).setPlaceholder('If empty, filled by title').setValue((form_params[field.field~"_"~field.getLocale()]) ?? field.value).render({'form': form})|raw }}
+                                        }).setPlaceholder(trans('visiosoft.module.advs::field.empty_title')).setValue((form_params[field.field~"_"~field.getLocale()]) ?? field.value).render({'form': form})|raw }}
                                     {% endfor %}
                                 </label>
                                 {% endif %}
@@ -100,7 +100,7 @@
                                     {% for field in form.fields.translations('seo_description') %}
                                         {{ field.setAttributes({
                                             'class': 'd-block mt-3 w-100 border rounded',
-                                        }).setPlaceholder('If empty, filled by description').setValue((form_params[field.field~"_"~field.getLocale()]) ?? field.value).render({'form': form})|raw }}
+                                        }).setPlaceholder(trans('visiosoft.module.advs::field.empty_description')).setValue((form_params[field.field~"_"~field.getLocale()]) ?? field.value).render({'form': form})|raw }}
                                     {% endfor %}
                                 </label>
                                 {% endif %}
@@ -410,6 +410,6 @@
     {{ asset_add("scripts.js", "streams::js/form/form.js") }}
     {{ asset_add("scripts.js", "streams::js/form/translations.js") }}
     {{ asset_add("scripts.js", "visiosoft.theme.base::js/vendor/jquery-ui.min.js") }}
-    {{ asset_add("scripts.js", "visiosoft.theme.base::js/new-ads.js") }}
+    {{ asset_add("scripts.js", "visiosoft.module.advs::js/new-ads.js") }}
 
 {% endblock %}
