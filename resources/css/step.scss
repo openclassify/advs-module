@@ -9,7 +9,7 @@
       .bullet {
         background-color: #fff;
         @media only screen and (min-width: 768px) {
-          border-width: .3rem;
+          border-width: .2rem;
         }
       }
 
@@ -35,15 +35,15 @@
       height: .16rem;
       top: 0.96rem;
       left: 0;
-      z-index: -1;
+      z-index: 1;
       width: 100%;
       @media only screen and (min-width: 768px) {
         height: .3rem;
-        top: 1.4rem;
       }
     }
 
     .bullet {
+      z-index: 2;
       height: 2rem;
       width: 2rem;
       border-radius: 100%;
@@ -52,8 +52,8 @@
       position: relative;
       line-height: 20px;
       @media only screen and (min-width: 768px) {
-        height: 3rem;
-        width: 3rem;
+        height: 2.5rem;
+        width: 2.5rem;
       }
 
         &::before {
@@ -62,16 +62,16 @@
         font-size: 14px;
         font-weight: 600;
         @media only screen and (min-width: 768px) {
-          font-size: 20px;
+          font-size: 16px;
         }
       }
     }
 
     .step-text  {
       color: #999;
-      font-size: 12px;
+      font-size: 14px;
       @media only screen and (min-width: 768px) {
-        font-size: initial;
+        font-size: 14px;
       }
     }
   }

@@ -1,6 +1,6 @@
 {% if (setting_value('visiosoft.module.advs::hide_contact_created_at') != true) %}
-    <div id="contactInfo" class="mb-3">
-        <h3>{{ trans('visiosoft.module.advs::field.contact_info') }}</h3>
+    <h5 class="mt-3 pb-1 border-bottom">{{ trans('visiosoft.module.advs::field.contact_info') }}</h5>
+    <div id="contactInfo" class="mb-3 shadow-sm">
         <div id="reachInfo">
             {% set showPhoneNumber = form.fields.show_phone_number.value %}
             <p>{{ trans('visiosoft.module.advs::field.how_can_you_be_contacted') }}</p>
@@ -18,17 +18,17 @@
         <div id="contactSummary" class="d-flex justify-content-between flex-wrap">
             <label>
                 {{ trans('visiosoft.module.profile::field.name.name') }}
-                <input type="text" class="d-block mt-3 w-100 border-0 bg-white infoName" value="{{ auth_user().name }}"
+                <input type="text" class="d-block mt-3 w-100 border rounded bg-white infoName" value="{{ auth_user().name }}"
                        disabled>
             </label>
             <label>
                 {{ trans('visiosoft.module.profile::field.gsm_phone.name') }}
-                <input type="text" class="d-block mt-3 w-100 border-0 bg-white infoGsmPhone" disabled
+                <input type="text" class="d-block mt-3 w-100 border rounded bg-white infoGsmPhone" disabled
                        value="{{ auth_user().gsm_phone }}">
             </label>
             <label>
                 {{ trans('visiosoft.module.profile::field.office_phone.name') }}
-                <input type="text" class="d-block mt-3 w-100 border-0 bg-white infoOfficePhone" disabled
+                <input type="text" class="d-block mt-3 w-100 border rounded bg-white infoOfficePhone" disabled
                        value="{{ auth_user().office_phone }}">
             </label>
         </div>

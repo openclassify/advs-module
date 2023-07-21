@@ -14,13 +14,13 @@
 
 {% block content %}
     {% set form_params = app.request.session.get('_old_input') %}
-    <section class="clearfix home-default">
+    <section id="new_ads" class="clearfix home-default">
 
         {% include 'visiosoft.module.advs::new-ad/partials/steps' with {'step': 'new-create'} %}
 
         <div>
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
+                <ol class="breadcrumb shadow-sm">
                     {% for cat in cats_d %}
                         <li class="breadcrumb-item text-primary">{{ cat }}</li>
                     {% endfor %}
@@ -31,11 +31,6 @@
                     </li>
                 </ol>
             </nav>
-
-            <div id="pageTitle" class="text-center">
-                <h1 class="mb-3">{{ trans('visiosoft.module.advs::field.listing_details') }}</h1>
-                <h2>{{ trans('visiosoft.module.advs::field.create_page_subtitle') }}</h2>
-            </div>
 
             <div class="adpost-details">
                 <div class="row">
@@ -68,14 +63,13 @@
 
                             {% include 'visiosoft.module.advs::new-ad/partials/contact-info' %}
 
-                            <div id="mainInfo">
-                                <h3>{{ trans('visiosoft.module.advs::field.ad_info') }}</h3>
-
+                            <h5 class="mt-5 pb-1 border-bottom">{{ trans('visiosoft.module.advs::field.ad_info') }}</h5>
+                            <div id="mainInfo" class="shadow-sm">
                                 <label class="w-100 mb-2">
                                     {% set fields = form.fields.base().pluck('field_name').all() %}
                                     {% for field in form.fields.translations('name') %}
                                         {{ field.setAttributes({
-                                            'class': 'd-block mt-3 w-100 border-0',
+                                            'class': 'd-block mt-3 w-100 border rounded',
                                             'maxlength': setting_value('visiosoft.module.advs::title_length')
                                         }).setValue((form_params[field.field~"_"~field.getLocale()]) ?? field.value).render({'form': form})|raw }}
                                     {% endfor %}
@@ -85,33 +79,37 @@
                                     <label class="w-100 mb-2">
                                         {% for field in form.fields.translations('slug') %}
                                             {{ field.setAttributes({
-                                                'class': 'd-block mt-3 w-100 border-0',
+                                                'class': 'd-block mt-3 w-100 border rounded',
                                             }).setValue((form_params[field.field~"_"~field.getLocale()]) ?? field.value).render({'form': form})|raw }}
                                         {% endfor %}
                                     </label>
                                 {% endif %}
 
+                                {% if setting_value('visiosoft.module.advs::show_seo_title') %}
                                 <label class="w-100 mb-2">
                                     {% for field in form.fields.translations('seo_title') %}
                                         {{ field.setAttributes({
-                                            'class': 'd-block mt-3 w-100 border-0',
-                                        }).setValue((form_params[field.field~"_"~field.getLocale()]) ?? field.value).render({'form': form})|raw }}
+                                            'class': 'd-block mt-3 w-100 border rounded'
+                                        }).setPlaceholder('If empty, filled by title').setValue((form_params[field.field~"_"~field.getLocale()]) ?? field.value).render({'form': form})|raw }}
                                     {% endfor %}
                                 </label>
+                                {% endif %}
 
+                                {% if setting_value('visiosoft.module.advs::show_seo_description') %}
                                 <label class="w-100 mb-2">
                                     {% for field in form.fields.translations('seo_description') %}
                                         {{ field.setAttributes({
-                                            'class': 'd-block mt-3 w-100 border-0',
-                                        }).setValue((form_params[field.field~"_"~field.getLocale()]) ?? field.value).render({'form': form})|raw }}
+                                            'class': 'd-block mt-3 w-100 border rounded',
+                                        }).setPlaceholder('If empty, filled by description').setValue((form_params[field.field~"_"~field.getLocale()]) ?? field.value).render({'form': form})|raw }}
                                     {% endfor %}
                                 </label>
+                                {% endif %}
 
                                 {% if setting_value('visiosoft.module.advs::market_place') %}
                                     {{ addBlock('new-ad/fields', {'adv': adv, 'rawClassified': rawClassified})|raw }}
                                 {% endif %}
 
-                                <div id="priceInput" class="d-flex justify-content-between mb-4 flex-wrap">
+                                <div id="priceInput" class="d-flex mb-4 flex-wrap">
                                     <div class="mb-3 mb-sm-0 select-price{{ hidePrice ? ' hidden' }}">
                                         <label>
                                             {{ form.fields.price.label|raw }}
@@ -127,10 +125,10 @@
                                         <div class="d-flex">
                                             {% set PriceValue = form.fields.price.value|split('.') %}
                                             <input type="text"
-                                                   class="mt-3 border-0 text-right priceField whole-price flex-fill"
+                                                   class="mt-3 border rounded text-right priceField whole-price"
                                                    placeholder="0" value="{{ PriceValue|first }}">
                                             {% if setting_value('visiosoft.field_type.decimal::showDecimal') %}
-                                                <input class="mt-3 border-0 ml-2 text-center priceDecimalField decimal-price"
+                                                <input class="mt-3 border rounded ml-2 text-center priceDecimalField decimal-price"
                                                        placeholder="00" type="text" value="{{ PriceValue[1] }}">
                                             {% endif %}
                                         </div>
@@ -152,19 +150,19 @@
                                         </div>
 
                                         <div class="d-flex">
-                                            <div class=" flex-fill {{ (HideStandardPrice) ? HideStandardPrice : 'd-flex' }}">
+                                            <div class="{{ (HideStandardPrice) ? HideStandardPrice : 'd-flex' }}">
                                                 {% set standardPriceValue = form.fields.standard_price.value|split('.') %}
-                                                <input class="mt-3 border-0 text-right standard-price-field whole-price flex-fill"
+                                                <input class="mt-3 border rounded text-right standard-price-field whole-price flex-fill"
                                                        placeholder="0" value="{{ standardPriceValue|first }}"
                                                        type="text">
                                                 {% if setting_value('visiosoft.field_type.decimal::showDecimal') %}
-                                                    <input class="mt-3 border-0 ml-2 text-center standard-price-decimal decimal-price"
+                                                    <input class="mt-3 border rounded ml-3 text-center standard-price-decimal decimal-price"
                                                            placeholder="00" type="text"
                                                            value="{{ standardPriceValue[1] }}"
                                                            >
                                                 {% endif %}
                                             </div>
-                                            <select name="currency" class="mt-3 border-0 ml-2 flex-fill" id="currency" required>
+                                            <select name="currency" class="mt-3 border rounded ml-3" id="currency" required>
                                                 {% for currency in config_get('streams::currencies.enabled') %}
                                                     <option value="{{ currency }}">
                                                         {{ currency == "TRY" ? currency_symbol(currency) : currency }}
@@ -278,12 +276,8 @@
                                         {% endif %}
                                     {% endif %}
                                 {% endif %}
-                            </div>
-
-                            <h5 class="mt-5 pb-1 border-bottom">{{ trans('visiosoft.module.advs::field.ad_desc') }}</h5>
-                            <div class="bg-light p-4">
                                 <div class="row form-group brand-name">
-                                    <div class="col-md-12">
+                                    <div class="w-100">
                                         <div class="field-group advs_desc">
                                             {% for field in form.fields.translations('advs_desc') %}
                                                 {{ field.setValue(form_params[field.field~"_"~field.getLocale()] ?? field.value).render({'form': form})|raw }}
@@ -292,10 +286,11 @@
                                     </div>
                                 </div>
                             </div>
+
                             {% if setting_value('visiosoft.module.advs::show_ad_note') %}
-                                <div class="bg-light p-4">
+                                <div class="p-4">
                                 <div class="row form-group brand-name">
-                                    <div class="col-md-12">
+                                    <div class="w-100">
                                         <div class="field-group advs_desc">
                                             {{ form.fields.ad_note.setAttributes({
                                                 'class': 'form-control w-100 borderThree focusBorder outlineNone p-2 rounded shadow-none'
@@ -308,7 +303,7 @@
                             <h5 class="mt-5 pb-1 border-bottom upload-photos-title">
                                 {{ trans('visiosoft.module.advs::field.upload_photos') }} {{ setting_value('visiosoft.module.advs::is_image_required') ? '*' : '' }}
                             </h5>
-                            <div class="bg-light p-4 upload-photos-wrapper">
+                            <div class="p-4 upload-photos-wrapper shadow-sm">
                                 <div class="row form-group images">
                                     <div class="col-md-12">
                                         {{ form.fields.files.setAttributes({
@@ -335,12 +330,12 @@
                                 <h5 class="mt-5 pb-1 border-bottom">
                                     {{ trans('visiosoft.module.advs::field.additional_fields') }}
                                 </h5>
-                                <div class="bg-light p-4 row">
+                                <div class="bg-white p-4 row shadow-sm">
                                     {{ other_fields|raw }}
                                 </div>
                             {% endif %}
                             {% if setting_value('visiosoft.module.advs::add_ad_tags') %}
-                                <div class="bg-light p-4 row form-group">
+                                <div class="bg-white p-4 row form-group">
                                     <div class="col-12">
                                         <div class="field-group">
                                             {{ form.fields.tags.setAttributes({
@@ -355,7 +350,7 @@
                                 <h5 class="mt-5 pb-1 border-bottom">
                                     {{ trans('visiosoft.module.advs::field.ad_location') }}
                                 </h5>
-                                <div class="bg-light px-4 pb-4 pt-0 mb-4">
+                                <div class="bg-white px-4 pb-1 pt-2 mb-4 shadow-sm">
                                     {% include "visiosoft.module.location::new-ad/map" %}
 
                                     <input value="{{ adv.map_Val }}" name="map_Val" data-max="255" data-mask=""
@@ -415,5 +410,6 @@
     {{ asset_add("scripts.js", "streams::js/form/form.js") }}
     {{ asset_add("scripts.js", "streams::js/form/translations.js") }}
     {{ asset_add("scripts.js", "visiosoft.theme.base::js/vendor/jquery-ui.min.js") }}
+    {{ asset_add("scripts.js", "visiosoft.theme.base::js/new-ads.js") }}
 
 {% endblock %}

@@ -636,4 +636,16 @@ return [
             'default_value' => false
         ]
     ],
+    'show_seo_title' => [
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => false
+        ]
+    ],
+    'show_seo_description' => [
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => false
+        ]
+    ],
 ];

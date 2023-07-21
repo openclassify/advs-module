@@ -378,4 +378,10 @@ return [
         'name' => 'Required Ad Neighborhood?',
         'instructions' => 'Is ad neighborhood required ?',
     ],
+    'show_seo_title' => [
+        'name' => 'Show Seo Title',
+    ],
+    'show_seo_description' => [
+        'name' => 'Show Seo Decription',
+    ],
 ];
