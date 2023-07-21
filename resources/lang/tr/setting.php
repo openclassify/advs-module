@@ -373,4 +373,10 @@ return [
         'name' => 'Mahalle Seçimini Zorunlu Yap',
         'instructions' => 'Ürün/İlan oluştururken kullanıcının mahalle seçmesini zorunlu kılın ',
     ],
+    'show_seo_title' => [
+        'name' => 'Seo Başlığı Göster',
+    ],
+    'show_seo_description' => [
+        'name' => 'Seo Açıklamayı Göster',
+    ],
 ];

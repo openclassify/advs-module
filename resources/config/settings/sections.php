@@ -85,6 +85,8 @@ return [
                     'is_city_required',
                     'is_district_required',
                     'is_neighborhood_required',
+                    'show_seo_title',
+                    'show_seo_description',
                 ],
             ],
             'ads_image' => [
