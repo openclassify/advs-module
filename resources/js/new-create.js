@@ -379,4 +379,11 @@ $(document).ready(function () {
             getIdsOfImages();
         }
     });
+
+    let newAdsElement = $('#new_ads');
+    let bodyElement = newAdsElement.closest('body');
+    let mainElement = newAdsElement.closest('#main');
+    $(mainElement).attr('style','background-color: #f3f3f3 !important');
+    $(bodyElement).attr('style','background-color: #f3f3f3 !important');
+
 });
