@@ -210,11 +210,6 @@ label {
       }
 
       &:first-child {
-        width: 100%;
-        @media only screen and (min-width: 576px) {
-          width: 23%;
-        }
-
         input {
           &.decimal-price {
             width: 20%;
@@ -224,14 +219,17 @@ label {
 
       &:last-child {
         width: 100%;
-        @media only screen and (min-width: 576px) {
-          width: 13%;
+        @media only screen and (min-width: 800px) {
+          width: 50%;
         }
 
 
         select {
           padding: 0.7rem 1.5rem;
-          margin-left: 5px;
+          margin-left: 3px;
+          @media only screen and (min-width: 800px) {
+            width: 30%;
+          }
         }
       }
     }
@@ -352,6 +350,10 @@ h5 {
 .checkboxes_container{
   border: 1px solid #bbbbbb !important;
   box-shadow: 0 0 0 0 !important;
+}
+
+.dropdown-text{
+  font-size: 14px;
 }
 
 
