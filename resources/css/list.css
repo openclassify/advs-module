@@ -349,3 +349,8 @@ a.sort-by-open-dropdown:hover {
 .gm-ui-hover-effect{
     outline: 0 !important;
 }
+
+.table-price{
+    width: fit-content;
+    margin: 0 auto;
+}
