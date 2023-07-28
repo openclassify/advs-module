@@ -284,6 +284,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
         'admin/api/classified/report/unexplained' => 'Visiosoft\AdvsModule\Http\Controller\Admin\ReportController@unexplained',
         'admin/api/classified/report/no-image' => 'Visiosoft\AdvsModule\Http\Controller\Admin\ReportController@noImage',
         'admin/api/classified/report/page' => 'Visiosoft\AdvsModule\Http\Controller\Admin\ReportController@page',
+        'admin/api/query-advs' => 'Visiosoft\AdvsModule\Http\Controller\Admin\AdvsController@queryAdvs',
 
         // Cron Routes
         'cron/update-created-at-date' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@updateCreatedAtDates',
