@@ -228,7 +228,7 @@ $(document).ready(function () {
         autoUnmask: true,
         allowPlus: false,
         allowMinus: false,
-        placeholder: "00"
+        placeholder: ""
 
     });
 

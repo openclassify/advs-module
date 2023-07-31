@@ -129,7 +129,7 @@
                                                    placeholder="0" value="{{ PriceValue|first }}">
                                             {% if setting_value('visiosoft.field_type.decimal::showDecimal') %}
                                                 <input class="mt-3 border rounded text-center priceDecimalField decimal-price"
-                                                       placeholder="00" type="text" value="{{ PriceValue[1] }}">
+                                                       placeholder="00" type="text" maxlength="{{ setting_value('visiosoft.field_type.decimal::decimal_length') }}" value="{{ PriceValue[1] }}">
                                             {% endif %}
                                         </div>
                                     </div>
