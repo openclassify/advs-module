@@ -211,11 +211,8 @@ label {
 
       &:first-child {
         input {
-          &.whole-price {
-            width: 60%;
-          }
           &.decimal-price {
-            width: 30%;
+            width: 100px;
           }
         }
       }
