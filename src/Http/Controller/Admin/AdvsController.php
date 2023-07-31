@@ -6,6 +6,7 @@ use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
 use Anomaly\UsersModule\User\Contract\UserRepositoryInterface;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
+use Visiosoft\AdvsModule\Adv\AdvRepository;
 use Visiosoft\AdvsModule\Adv\Command\UpdateClassifiedStatus;
 use Visiosoft\AdvsModule\Adv\Contract\AdvRepositoryInterface;
 use Visiosoft\AdvsModule\Adv\AdvModel;
@@ -25,10 +26,10 @@ class AdvsController extends AdminController
     private $optionRepository;
 
     public function __construct(
-        AdvModel $model,
-        AdvRepositoryInterface $advRepository,
+        AdvModel                       $model,
+        AdvRepositoryInterface         $advRepository,
         AdvsAdvsEntryTranslationsModel $advsEntryTranslationsModel,
-        OptionRepositoryInterface $optionRepository
+        OptionRepositoryInterface      $optionRepository
     )
     {
         parent::__construct();
@@ -37,6 +38,7 @@ class AdvsController extends AdminController
         $this->advsEntryTranslationsModel = $advsEntryTranslationsModel;
         $this->optionRepository = $optionRepository;
     }
+
     public function index(AdvTableBuilder $table)
     {
         $table->addAsset("styles.css", "visiosoft.module.advs::css/custom.css");
@@ -203,6 +205,23 @@ class AdvsController extends AdminController
                 $entry->setAttribute($column, $value);
                 $entry->save();
             }
+        }
+    }
+
+
+    public function queryAdvs(AdvRepository $advRepository, AdvModel $advModel)
+    {
+        $term = request()->term;
+        if ($term) {
+            $keywords = explode(' ', $term);
+            $advs = $advRepository->newQuery()->where(function ($query) use ($keywords) {
+                foreach ($keywords as $keyword) {
+                    $query->orWhere('slug', 'like', '%' . $keyword . '%')
+                        ->orWhere('advs_advs_translations.name', 'like', '%%' . $keyword . '%%');
+                }
+            })->get()->pluck('name', 'id');
+
+            return $advs;
         }
     }
 }
