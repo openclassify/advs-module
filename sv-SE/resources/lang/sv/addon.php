@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'title'       => 'Ads',
-    'name'        => 'Ads Module',
-    'description' => 'Ads Module',
-    'info' => 'This is the screen where you can add, delete and edit ads from the Ads page. On this page, you can simply do the operations such as post management and ad configuration.'
+    'title'       => 'Annonser',
+    'name'        => 'Annonsmodul',
+    'description' => 'Annonsmodul',
+    'info' => 'Det här är skärmen där du kan lägga till, ta bort och redigera annonser från sidan Annonser. På den här sidan kan du helt enkelt göra operationer som posthantering och annonskonfiguration.'
 ];
