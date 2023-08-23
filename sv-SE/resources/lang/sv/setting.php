@@ -2,86 +2,86 @@
 
 return [
     'auto_approve' => [
-        'name' => 'Auto Approve',
+        'name' => 'Autogodkänn',
     ],
     'default_view_type' => [
-        'name' => 'Default View Type',
+        'name' => 'Standardvytyp',
     ],
     'hide_zero_price' => [
-        'name' => 'Hide Price if Zero',
-        'instructions' => 'Hide the price if the ad price is 0',
+        'name' => 'Dölj pris om noll',
+        'instructions' => 'Dölj priset om annonspriset är 0',
     ],
     'estimated_pending_time' => [
-        'name' => 'Estimated Pending Time',
-        'instructions' => 'In Hours',
+        'name' => 'Beräknad väntande tid',
+        'instructions' => 'På timmar',
     ],
     'default_published_time' => [
-        'name' => 'Default Publish Time',
+        'name' => 'Standardpubliceringstid',
     ],
     'address' => [
-        'name' => 'Contact Adress',
+        'name' => 'Kontaktadress',
     ],
     'phone' => [
-        'name' => 'Contact Phone',
+        'name' => 'Kontakt Telefon',
     ],
     'favicon' => [
-        'name' => 'Favicon',
+        'name' => 'Favoritikon',
     ]
     , 'map_coordinates_long' => [
-        'name' => 'Map Long Coordinate',
+        'name' => 'Karta Long Coordinate',
     ],
     'map_coordinates_lat' => [
-        'name' => 'Map Lat Coordinate',
+        'name' => 'Karta Lat Coordinate',
     ],
     'iban_numbers' => [
         'name' => 'IBAN',
     ],
     'logo' => [
-        'name' => 'Logo',
+        'name' => 'Logotyp',
     ],
     'ogImage' => [
-        'name' => 'Social Share Logo',
-        'warning' => 'It should be at a resolution of 1200 x 630. ',
+        'name' => 'Social Share Logotyp',
+        'warning' => 'Den ska ha en upplösning på 1200 x 630. ',
 
     ],
     'currencies' => [
-        'name' => 'Active Currencies',
+        'name' => 'Aktiva valutor',
     ],
     'latest-limit' => [
-        'name' => 'Latest Limit',
+        'name' => 'Senaste gränsen',
     ],
     'site_address' => [
-        'name' => 'Site address',
-        'warning' => 'Auto added www.  www.<strong>sitename.com</strong> ',
+        'name' => 'Webbplatsens adress',
+        'warning' => 'Auto har lagt till www. www.<strong>sitename.com</strong> ',
     ],
     'google_map_key' => [
         'name' => 'Google Map Api Key',
     ],
 
     'default_country' => [
-        'name' => 'Default Ad Country',
+        'name' => 'Standardannonsland',
     ],
     'hide_price_categories' => [
-        'name' => 'Hide Price On Categories',
-        'instructions' => 'The price will be hidden when you create an ad or view an ad under these categories.'
+        'name' => 'Dölj pris på kategorier',
+        'instructions' => 'Priset kommer att döljas när du skapar en annons eller visar en annons under dessa kategorier.'
     ],
     'free_currencyconverterapi_key' => [
-        'name' => 'Currency Converter API Key'
+        'name' => 'Valutaomvandlare API-nyckel'
     ],
     'default_city' => [
-        'name' => 'Default Ad City',
+        'name' => 'Standard annonsstad',
     ],
     'default_district' => [
-        'name' => 'Default Ad District',
+        'name' => 'Standardannonsdistrikt',
     ],
     'default_neighborhood' => [
-        'name' => 'Default Ad Neighborhood',
+        'name' => 'Standardannonskvarter',
     ],
     'default_currency' => [
-        'name' => 'Default Ad Currency',
+        'name' => 'Annonsens standardvaluta',
     ],
     'default_GET' => [
-        'name' => 'Default Ad GET',
+        'name' => 'Standardannons GET',
     ],
     'twitter' => [
         'name' => 'Twitter',
@@ -96,292 +96,292 @@ return [
         'name' => 'Google',
     ],
     'listing_page_image' => [
-        'name' => 'Listing Page Image',
+        'name' => 'Bild på listningssidan',
     ],
     'hide_standard_price_field' => [
-        'name' => 'Hide Standard Price Field',
+        'name' => 'Dölj standardprisfält',
     ],
     'hide_options_field' => [
-        'name' => 'Hide Options Field',
+        'name' => 'Göm alternativfält',
     ],
     'hide_village_field' => [
-        'name' => 'Hide Village Field',
+        'name' => 'Göm byfältet',
     ],
     'hide_configurations' => [
-        'name' => 'Hide the Configurations Button',
-        'instructions' => 'Hide the Configurations Button in the Ad Preview Page',
+        'name' => 'Göm konfigurationsknappen',
+        'instructions' => 'Dölj knappen Konfigurationer på sidan för förhandsgranskning av annonser',
     ],
     'make_all_fields_required' => [
-        'name' => 'Make All Fields Required',
-        'instructions' => 'Require the user to fill the Price and Description fields when creating an ad',
+        'name' => 'Gör alla fält obligatoriska',
+        'instructions' => 'Kräv att användaren fyller i fälten Pris och Beskrivning när du skapar en annons',
     ],
     'make_map_required' => [
-        'name' => 'Make Map Required',
-        'instructions' => 'Require the user to place a pin on the map when creating an ad',
+        'name' => 'Gör karta obligatorisk',
+        'instructions' => 'Kräv att användaren placerar en nål på kartan när du skapar en annons',
     ],
     'hide_listing_standard_price' => [
-        'name' => 'Hide Listing Standard Price',
+        'name' => 'Dölj notering Standardpris',
     ],
     'enabled_currencies' => [
-        'name' => 'Enabled Currencies',
+        'name' => 'Aktiverade valutor',
     ],
     'google_statistic_code' => [
-        'name' => 'Google Statistic Code',
+        'name' => 'Googles statistikkod',
     ],
     'body_custom_space' => [
         'name' => 'Body Custom Space',
     ],
     'register_email_field' => [
-        'name' => 'Member Registration Email Requirement',
+        'name' => 'Medlemsregistrering E-postkrav',
     ],
     'market_place' => [
-        'name' => 'Market Place',
-        'instructions' => 'If the marketplace is down, your site will act as ecommerce. For example,
-	        some fields in the profile such as ads, dopings, messages, sale, packages and store are not visible and
-	        removes corporate membership.'
+        'name' => 'Marknadsplats',
+        'instructions' => 'Om marknadsplatsen är nere kommer din webbplats att fungera som e-handel. Till exempel
+	        vissa fält i profilen som annonser, doping, meddelanden, rea, paket och butik inte synliga och
+	        tar bort företagsmedlemskap.'
     ],
     'price_area_hidden' => [
-        'name' => 'Price Area Hidden',
+        'name' => 'Prisområde Dold',
     ],
     'hide_price_filter' => [
-        'name' => 'Hide Price Filter',
+        'name' => 'Dölj prisfilter',
     ],
     'hide_date_filter' => [
-        'name' => 'Hide Date Filter',
+        'name' => 'Dölj datumfilter',
     ],
     'hide_photo_filter' => [
-        'name' => 'Hide Photo Filter',
+        'name' => 'Dölj fotofilter',
     ],
     'hide_map_filter' => [
-        'name' => 'Hide Map Filter',
+        'name' => 'Dölj kartfilter',
     ],
     'show_lang_url' => [
-        'name' => 'Show Lang Parameter For URL',
+        'name' => 'Visa språkparameter för URL',
     ],
     'popular_ads_limit' => [
-        'name' => 'Popular Ads Limit',
+        'name' => 'Populära annonsgräns',
     ],
 
     //Image
 
     'image_resize_backend' => [
-        'name' => 'Image Resize Backend',
+        'name' => 'Ändra storlek på backend',
     ],
     'full_image_width' => [
-        'name' => 'Full Image Width',
+        'name' => 'Full bildbredd',
     ],
     'full_image_height' => [
-        'name' => 'Full Image Height',
+        'name' => 'Full bildhöjd',
     ],
     'medium_image_width' => [
-        'name' => 'Medium Image Width',
+        'name' => 'Medium bildbredd',
     ],
     'medium_image_height' => [
-        'name' => 'Medium Image Height',
+        'name' => 'Medium bildhöjd',
     ],
     'thumbnail_width' => [
-        'name' => 'Thumbnail Width',
+        'name' => 'Miniatyrbildsbredd',
     ],
     'thumbnail_height' => [
-        'name' => 'Thumbnail Height',
+        'name' => 'Miniatyrhöjd',
     ],
     'add_canvas' => [
-        'name' => 'Add Canvas',
+        'name' => 'Lägg till Canvas',
     ],
     'image_canvas_width' => [
-        'name' => 'Image Canvas Width',
+        'name' => 'Bild Canvas Bredd',
     ],
     'image_canvas_height' => [
-        'name' => 'Image Canvas Height',
+        'name' => 'Bild Canvas Höjd',
     ],
     'watermark_type' => [
-        'name' => 'Watermark Type',
+        'name' => 'Typ av vattenstämpel',
     ],
     'watermark_text' => [
-        'name' => 'Watermark Text',
+        'name' => 'Vattenstämpel text',
     ],
     'watermark_image' => [
-        'name' => 'Watermark Image',
+        'name' => 'Vattenstämpelbild',
     ],
     'watermark_position' => [
-        'name' => 'Watermark Position',
+        'name' => 'Vattenstämpelns position',
     ],
     'user_filter_limit' => [
-        'name' => 'User Filter Limit',
-        'instructions' => 'In the admin panel'
+        'name' => 'Användarfiltergräns',
+        'instructions' => 'I adminpanelen'
     ],
     'show_breadcrumb_when_creating_ad' => [
-        'name' => 'Show Breadcrumb When Creating an Ad',
+        'name' => 'Visa brödsmulor när du skapar en annons',
     ],
     'show_ads_count' => [
-        'name' => 'Show Ads Count',
-        'instructions' => 'Show ads count on the left categories list',
+        'name' => 'Visa annonser',
+        'instructions' => 'Visa annonser räknas i den vänstra kategorilistan',
     ],
     'ads_date_hidden' => [
-        'name' => 'Hide Created Date',
-        'instructions' => 'Hide created date in ads detail page',
+        'name' => 'Dölj skapat datum',
+        'instructions' => 'Dölj skapat datum på annonsens detaljsida',
     ],
     'hide_listing_header' => [
-        'name' => 'Hide Listing Header',
-        'instructions' => 'Hiding to ordering and view types',
+        'name' => 'Dölj listningshuvud',
+        'instructions' => 'Döljer sig för att beställa och visa typer',
     ],
     'hide_filter_section' => [
-        'name' => 'Hide Filter Section',
-        'instructions' => 'Hiding to left filter area in listing page',
+        'name' => 'Dölj filtersektionen',
+        'instructions' => 'Döljer sig till vänster filterområde på listsidan',
     ],
     'hide_seller_info' => [
-        'name' => 'Hide Seller Information',
-        'instructions' => 'Hiding to seller infos in ads detail page',
+        'name' => 'Dölj säljarens information',
+        'instructions' => 'Döljer information om säljaren på annonsens detaljsida',
     ],
     'hide_seller_info_by_category' => [
-        'name' => 'Hide Seller Information By Category',
-        'instructions' => 'Hiding to seller infos by selected main categories in ads detail page',
+        'name' => 'Dölj säljarinformation efter kategori',
+        'instructions' => 'Döljer för säljarinformation efter valda huvudkategorier på annonsens detaljsida',
     ],
     'show_post_ad_agreement' => [
-        'name' => 'Show Post Ad Agreement',
-        'instructions' => 'Turn this on if you want to display a privacy policy agreement on the ad creation page',
+        'name' => 'Visa avtal om inläggsannons',
+        'instructions' => 'Aktivera detta om du vill visa ett sekretesspolicyavtal på sidan för att skapa annonser',
     ],
     'override_text' => [
-        'name' => 'Override Text',
-        'instructions' => 'Old Value:New Value'
+        'name' => 'Åsidosätt text',
+        'instructions' => 'Gammalt värde: Nytt värde'
     ],
     'steps_color' => [
-        'name' => 'Steps Color',
-        'instructions' => 'Changes the progressive steps color.'
+        'name' => 'Steg Färg',
+        'instructions' => 'Ändrar färgen för progressiva steg.'
     ],
     'create_ad_button_color' => [
-        'name' => 'Create Ad Button Color',
-        'instructions' => 'Changes the button that shows up when the new ad category selection is finished.'
+        'name' => 'Skapa annonsknappsfärg',
+        'instructions' => 'Ändrar knappen som visas när det nya valet av annonskategori är klart.'
     ],
     'lang_switcher_for_browser' => [
-        'name' => 'Lang Switcher For Browser',
-        'instructions' => 'Allows you to choose browser language as active language'
+        'name' => 'Lang Switcher för webbläsare',
+        'instructions' => 'Låter dig välja webbläsarspråk som aktivt språk'
     ],
     'get_categories' => [
-        'name' => 'GET Categories',
-        'instructions' => 'It represents the categories in which the GET property will be valid.'
+        'name' => 'Hämta kategorier',
+        'instructions' => 'Den representerar de kategorier där GET-egenskapen kommer att vara giltig.'
     ],
     'watermark' => [
-        'name' => 'Watermark',
-        'instructions' => 'Is watermark active?'
+        'name' => 'Vattenstämpel',
+        'instructions' => 'Är vattenstämpeln aktiv?'
     ],
     'detailed_product_options' => [
-        'name' => 'Detailed Product Options',
-        'instructions' => 'Allows you to enter stock and price information for the product'
+        'name' => 'Detaljerade produktalternativ',
+        'instructions' => 'Låter dig ange lager- och prisinformation för produkten'
     ],
     'show_subcats_mobile' => [
-        'name' => 'Show subcategories on mobile view',
+        'name' => 'Visa underkategorier i mobilvy',
     ],
     'show_price_to_members_only' => [
-        'name' => 'Show Price To Members Only',
+        'name' => 'Visa pris endast för medlemmar',
     ],
     'hide_ad_cat' => [
-        'name' => 'Hide Categories',
-        'instructions' => 'Hide categories in ads list'
+        'name' => 'Dölj kategorier',
+        'instructions' => 'Dölj kategorier i annonslistan'
     ],
     'show_finish_and_publish_date' => [
-        'name' => 'Show Finish Date And Publish Date For Create',
-        'instructions' => 'Displays the publish_at and finish_at fields on the ad creation page.'
+        'name' => 'Visa slutdatum och publiceringsdatum för att skapa',
+        'instructions' => 'Visar fälten publish_at och finish_at på sidan för att skapa annonser.'
     ],
     'show_tax_field' => [
-        'name' => 'Show Tax Field',
-        'instructions' => 'When this option is enabled, you can set the tax rate on the ad creation page.'
+        'name' => 'Visa momsfält',
+        'instructions' => 'När det här alternativet är aktiverat kan du ställa in skattesatsen på sidan för att skapa annonser.'
     ],
     'hide_contact_created_at' => [
-        'name' => 'Hide Contact Fields For in Create New Ad'
+        'name' => 'Dölj kontaktfält för i Skapa ny annons'
     ],
     'show_input_flag' => [
-        'name' => 'Show Flags on Input',
-        'instructions' => 'Show flag and description on translatable inputs'
+        'name' => 'Visa flaggor vid ingång',
+        'instructions' => 'Visa flagga och beskrivning på översättbara indata'
     ],
     'hide_out_of_stock_products_without_listing' => [
-        'name' => 'Hide out of stock products without listing',
-        'instructions' => 'Hides out-of-stock GET products from listing and homepage'
+        'name' => 'Göm produkter som inte finns i lager utan listning',
+        'instructions' => 'Döljer GET-produkter som inte finns i lager från listning och hemsida'
     ],
     'only_email_login' => [
-        'name' => 'Only Email Login'
+        'name' => 'Endast e-postinloggning'
     ],
     'preview_mode' => [
-        'name' => 'Preview Mode',
-        'instructions' => 'When this mode is enabled, the ad is previewed by the user.'
+        'name' => 'Förhandsgranskningsläge',
+        'instructions' => 'När detta läge är aktiverat förhandsgranskas annonsen av användaren.'
     ],
     'show_order_note' => [
-        'name' => 'Show Order Note',
-        'instructions' => "Show the order note field which is used to show the customers custom text when their order's payment is approved."
+        'name' => 'Visa beställningsanmärkning',
+        'instructions' => "Visa ordernotisfältet som används för att visa kundens anpassade text när deras orders betalning godkänns."
     ],
     'extend_ad' => [
-        'name' => 'Extend Ad',
-        'instructions' => 'It represents the active state of the time extension feature on the My Ads screen.'
+        'name' => 'Förläng annons',
+        'instructions' => 'Det representerar det aktiva tillståndet för tidsförlängningsfunktionen på skärmen Mina annonser.'
     ],
     'title_length' => [
-        'name' => 'Title Length',
-        'instructions' => 'Length of the charaters of title when creating any ad.'
+        'name' => 'Titellängd',
+        'instructions' => 'Längden på rubriken när du skapar en annons.'
     ],
     'is_desc_required' => [
-        'name' => 'Required Ad Description ?',
-        'instructions' => 'Is ad description required ?'
+        'name' => 'Obligatorisk annonsbeskrivning?',
+        'instructions' => 'Krävs annonsbeskrivning?'
     ],
     'is_image_required' => [
-        'name' => 'Required Ad Image ?',
-        'instructions' => 'Is ad image required ?'
+        'name' => 'Obligatorisk annonsbild?',
+        'instructions' => 'Krävs annonsbild?'
     ],
     'show_ad_note' => [
-        'name' => 'Enter Ad Note When Creating',
-        'instructions' => 'Just the ad owner can see this note !'
+        'name' => 'Ange annonsnotering när du skapar',
+        'instructions' => 'Bara annonsägaren kan se denna anteckning!'
     ],
     'show_min_order_limit' => [
-        'name' => 'Show Minimum Order Limit',
-        'instructions' => 'This setting enables order limit.'
+        'name' => 'Visa minimibeställningsgräns',
+        'instructions' => 'Den här inställningen aktiverar ordergräns.'
     ],
     'showDetailedAddress' => [
-        'name' => 'Show Detailed Address Info In List',
-        'instructions' => 'Enable for see detailed address information in listing page.'
+        'name' => 'Visa detaljerad adressinformation i listan',
+        'instructions' => 'Aktivera för att se detaljerad adressinformation på listsidan.'
     ],
     'location_data_type_first' => [
-        'name' => 'Listing Location First Type',
+        'name' => 'Lista Plats Första typen',
     ],
     'location_data_type_second' => [
-        'name' => 'Listing Location Second Type',
+        'name' => 'Noteringsplats Andra typ',
     ],
     'update_publish_at' => [
-        'name' => 'Update Created Date Of Ads (Once 30 days)',
-        'instructions' => 'This setting directly updates all ads created_at field from database !'
+        'name' => 'Uppdatera skapat datum för annonser (en gång 30 dagar)',
+        'instructions' => 'Den här inställningen uppdaterar direkt alla annonser skapade_at-fältet från databasen!'
     ],
     'show_gifs_listing_main_pages' => [
-        'name' => 'Show Gifs On Listing And Main Pages For Ad Thumbnails',
-        'instructions' => 'This setting works only if any video uploaded to ad by cloudinary module.'
+        'name' => 'Visa gifs på listor och huvudsidor för annonsminiatyrer',
+        'instructions' => 'Den här inställningen fungerar bara om någon video laddas upp till annonsen via molnmodulen.'
     ],
     'add_ad_tags' => [
-        'name' => 'Show Ad Tags'
+        'name' => 'Visa annonstaggar'
     ],
     'is_changeable_slug' => [
-        'name' => 'Is Changeable Slug',
-        'instructions' => 'Indicates the changeability of the ad\'s custom domain name'
+        'name' => 'Är Changeable Slug',
+        'instructions' => 'Indikerar möjligheten att ändra annonsens anpassade domännamn'
     ],
     'translatable_slug' => [
-        'name' => 'Is Translatable Slug',
-        'warning' => 'Under Development. It may cause bugs in some themes.',
+        'name' => 'Är översättbar snigel',
+        'warning' => 'Under utveckling. Det kan orsaka buggar i vissa teman.',
     ],
     'is_country_required' => [
-        'name' => 'Required Ad Country?',
-        'instructions' => 'Is ad country required ?',
+        'name' => 'Obligatoriskt annonsland?',
+        'instructions' => 'Är annonsland obligatoriskt?',
     ],
     'is_city_required' => [
-        'name' => 'Required Ad City?',
-        'instructions' => 'Is ad city required ?',
+        'name' => 'Obligatorisk annonsstad?',
+        'instructions' => 'Krävs annonsort?',
     ],
     'is_district_required' => [
-        'name' => 'Required Ad District?',
-        'instructions' => 'Is ad district required ?',
+        'name' => 'Obligatoriskt annonsdistrikt?',
+        'instructions' => 'Krävs annonsdistrikt?',
     ],
     'is_neighborhood_required' => [
-        'name' => 'Required Ad Neighborhood?',
-        'instructions' => 'Is ad neighborhood required ?',
+        'name' => 'Obligatoriskt annonskvarter?',
+        'instructions' => 'Krävs annonskvarter?',
     ],
     'show_seo_title' => [
-        'name' => 'Show Seo Title',
+        'name' => 'Visa SEO-titel',
     ],
     'show_seo_description' => [
-        'name' => 'Show Seo Decription',
+        'name' => 'Visa SEO-beskrivning',
     ],
 ];
