@@ -2,263 +2,263 @@
 
 return [
     'name' => [
-        'name' => 'Title'
+        'name' => 'Titel'
     ],
     'order' => [
-        'name' => 'Order'
+        'name' => 'Beställa'
     ],
     'slug' => [
-        'name' => 'Slug'
+        'name' => 'Snigel'
     ],
     'parent_category' => [
-        'name' => 'Parent'
+        'name' => 'Förälder'
     ],
     'category' => [
-        'name' => 'Category Title'
+        'name' => 'Kategorititel'
     ],
     'price' => [
-        'name' => 'Price'
+        'name' => 'Pris'
     ],
     'standard_price' => [
-        'name' => 'Standard Price'
+        'name' => 'Standard pris'
     ],
     'date' => [
-        'name' => 'Date'
+        'name' => 'Datum'
     ],
     'photo' => [
-        'name' => 'Photo'
+        'name' => 'Foto'
     ],
     'video' => [
         'name' => 'Video'
     ],
     'map' => [
-        'name' => 'Map'
+        'name' => 'Karta'
     ],
     'stock' => [
         'name' => 'Stock'
     ],
     'advs_desc' => [
-        'name' => 'Description'
+        'name' => 'Beskrivning'
     ],
     'online_payment' => [
-        'name' => 'Online Payment'
+        'name' => 'Online betalning'
     ],
     'city' => [
-        'name' => 'City'
+        'name' => 'Stad'
     ],
     'country' => [
-        'name' => 'Country'
+        'name' => 'Land'
     ],
     'district' => [
-        'name' => 'District'
+        'name' => 'Distrikt'
     ],
     'neighborhood' => [
-        'name' => 'Neighborhood'
+        'name' => 'Grannskap'
     ],
     'village' => [
-        'name' => 'Village'
+        'name' => 'By'
     ],
     'files' => [
-        'name' => 'Images'
+        'name' => 'Bilder'
     ],
     'cat1' => [
-        'name' => 'Main Category'
+        'name' => 'huvud kategorin'
     ],
     'cat2' => [
-        'name' => 'Sub Category 1'
+        'name' => 'Underkategori 1'
     ],
     'cat3' => [
-        'name' => 'Sub Category 2'
+        'name' => 'Underkategori 2'
     ],
     'cat4' => [
-        'name' => 'Sub Category 3'
+        'name' => 'Underkategori 3'
     ],
     'cat5' => [
-        'name' => 'Sub Category 4'
+        'name' => 'Underkategori 4'
     ],
     'cat6' => [
-        'name' => 'Sub Category 5'
+        'name' => 'Underkategori 5'
     ],
     'cat7' => [
-        'name' => 'Sub Category 6'
+        'name' => 'Underkategori 6'
     ],
     'cat8' => [
-        'name' => 'Sub Category 7'
+        'name' => 'Underkategori 7'
     ],
     'cat9' => [
-        'name' => 'Sub Category 8'
+        'name' => 'Underkategori 8'
     ],
     'cat10' => [
-        'name' => 'Sub Category 9'
+        'name' => 'Underkategori 9'
     ],
     'currency' => [
-        'name' => 'Currency'
+        'name' => 'Valuta'
     ],
     'status' => [
         'name' => 'Status',
         'option' => [
-            'approved' => 'Approved',
-            'expired' => 'Expired',
-            'unpublished' => 'Unpublished',
-            'pending_admin' => 'Pending Admin',
-            'pending_user' => 'Pending User'
+            'approved' => 'Godkänd',
+            'expired' => 'Utgånget',
+            'unpublished' => 'Opublicerad',
+            'pending_admin' => 'Väntande admin',
+            'pending_user' => 'Väntande användare'
         ]
     ],
     'pending_adv' => [
-        'name' => 'Unpublished'
+        'name' => 'Opublicerad'
     ],
     'finish_at' => [
-        'name' => 'Finish Date'
+        'name' => 'Slutdatum'
     ],
     'cover_photo' => [
-        'name' => 'Cover Photo'
+        'name' => 'Omslagsfoto'
     ],
     'favs_adv' => [
-        'name' => 'Fav Ads'
+        'name' => 'Favoritannonser'
     ],
     'my_adv' => [
         'name' => 'ADVS'
     ],
-    'description' =>  'Description',
-    'explanation' =>  'Explanation',
+    'description' =>  'Beskrivning',
+    'explanation' =>  'Förklaring',
     'type' => [
-        'name' => 'Type'
+        'name' => 'Typ'
     ],
     'parent_adv' => [
-        'name' => 'Related Ad'
+        'name' => 'Relaterad annons'
     ],
     'value' => [
-        'name' => 'Value'
+        'name' => 'Värde'
     ],
     'ad_note' => [
-        'name' => 'Ad Note ( Just the ad owner can see. )'
+        'name' => 'Annonsnotering (Bara annonsägaren kan se.)'
     ],
-    'list' => 'List',
-    'home' => 'Home',
-    'list-page' => 'List Page',
-    'search' => 'Search',
-	'reset' => 'Reset',
-    'recommended' => 'Recommended Ads for You',
-    'filter' => 'Filter',
-    'sort' => 'Sort',
-    'sort_by' => 'Sort By',
-    'pick_option' => 'Pick an option',
-    'pick_ordering' => 'Ordering',
-    'price_high' => 'Price High to Low',
-    'price_low' => 'Price Low to High',
-    'newest' => 'Newest',
-    'oldest' => 'Oldest',
-    'address_a_z' => 'Address (A to Z)',
-    'address_z_a' => 'Address (Z to A)',
+    'list' => 'Lista',
+    'home' => 'Hem',
+    'list-page' => 'Listsida',
+    'search' => 'Sök',
+	'reset' => 'Återställa',
+    'recommended' => 'Rekommenderade annonser för dig',
+    'filter' => 'Filtrera',
+    'sort' => 'Sortera',
+    'sort_by' => 'Sortera efter',
+    'pick_option' => 'Välj ett alternativ',
+    'pick_ordering' => 'Beställning',
+    'price_high' => 'Pris högt till lågt',
+    'price_low' => 'Pris lågt till högt',
+    'newest' => 'Nyaste',
+    'oldest' => 'Äldst',
+    'address_a_z' => 'Adress (A till Ö)',
+    'address_z_a' => 'Adress (Z till A)',
 	'categories' => [
-		'name' => 'Categories'
+		'name' => 'Kategorier'
 	],
-    'all_categories' => 'All Categories',
-    'location' => 'Location',
-    'send_message' => 'Send Message',
-    'phone_gsm' => 'Gsm Phone',
-    'phone_office' => 'Office Phone',
-    'add_to_favorites' => "Add to Favorites",
-    'add_to_cart'=> "Add to Cart",
-    'send' => 'Send',
-    'search_name' => 'Search Name',
-    'my_favorite_searches' => 'Favorite Searches',
-    'search_desc' => 'You can add and manage your favorite search selections here.',
-    'complaint_placeholder' => 'Type your complaint details here.',
-    'show_details' => 'Show Details',
-    'ad_actions' => 'Ad Actions',
-    'edit' => 'Edit',
-    'approve' => 'Approve',
-    'passive' => "Passive",
-	'sold' => 'Sold',
-    'offered_by' => 'Offered By',
-    'more_ads_by' => 'More Ads By',
-    'click_phone' => 'Show phone number',
-    'share' => 'Share',
-    'report' => 'Report this ad',
-    'features' => 'Features',
-    "streetview" => "Street View",
-    'recommended_ads' => 'Recommended Ads for You',
-    'new' => 'New',
-    'short_info' => 'Short Info',
-    'secure_trading' => 'Secure Trading',
-    '24/7' => '24/7 Support',
-    'easy_trading' => 'Easy Trading',
-    'need_help' => 'Need help?',
-    'give_a_call' => 'Give a call on',
-    'message_sent' => 'Message Sent!',
-    'asap' => 'Message sent, seller will contact you asap.',
-    'ad_id' => 'Ad Id',
-    'contact_with' => 'Contact With',
-    'create_adv' => 'Create Ad',
-    'edit_adv' => 'Edit Ad',
-    'mandatory_fields' => 'Mandatory Fields',
-    'ad_post' => 'Ad Post',
-    'sell_item' => 'Sell an item or service',
-    'search_save' => 'Favorite search saved successfully',
-    'address' => 'Address',
-    'email' => 'E-Mail',
-    'phone' => 'Phone',
-    'send_us_your_feedback' => 'Send Us Your Feedback',
-    'online_shopping' => 'GET',
-    'approved' => 'Approved Successfully',
-    'extended' => 'Extended Successfully',
-    'deleted' => 'Deleted Successfully',
-    'declined' => 'Declined Successfully',
-    'search_on_map' => 'Search on Map',
-    'post_free_ad' => 'Post Free Ad',
-    'select_a_category' => 'Select a Category',
-    'select_a_sub_category' => 'Select a Sub Category',
-    'all_dopings_added' => 'All doping types are added for this ad.',
+    'all_categories' => 'alla kategorier',
+    'location' => 'Plats',
+    'send_message' => 'Skicka meddelande',
+    'phone_gsm' => 'Gsm telefon',
+    'phone_office' => 'Kontorstelefon',
+    'add_to_favorites' => "Lägg till i favoriter",
+    'add_to_cart'=> "Lägg till i kundvagn",
+    'send' => 'Skicka',
+    'search_name' => 'Sök namn',
+    'my_favorite_searches' => 'Favoritsökningar',
+    'search_desc' => 'Du kan lägga till och hantera dina favoritsökningsval här.',
+    'complaint_placeholder' => 'Ange dina klagomålsuppgifter här.',
+    'show_details' => 'Visa detaljer',
+    'ad_actions' => 'Annonsåtgärder',
+    'edit' => 'Redigera',
+    'approve' => 'Godkänna',
+    'passive' => "Passiv",
+	'sold' => 'Såld',
+    'offered_by' => 'Erbjuds av',
+    'more_ads_by' => 'Fler annonser av',
+    'click_phone' => 'Visa telefonnummer',
+    'share' => 'Dela med sig',
+    'report' => 'Rapportera denna annons',
+    'features' => 'Funktioner',
+    "streetview" => "gatuvy",
+    'recommended_ads' => 'Rekommenderade annonser för dig',
+    'new' => 'Ny',
+    'short_info' => 'Kort info',
+    'secure_trading' => 'Säker handel',
+    '24/7' => '24/7 support',
+    'easy_trading' => 'Enkel handel',
+    'need_help' => 'Behövs hjälp?',
+    'give_a_call' => 'Ring på',
+    'message_sent' => 'Meddelande skickat!',
+    'asap' => 'Meddelande skickat, säljaren kommer att kontakta dig snarast.',
+    'ad_id' => 'Annons-id',
+    'contact_with' => 'Kontakt med',
+    'create_adv' => 'Skapa annons',
+    'edit_adv' => 'Redigera annons',
+    'mandatory_fields' => 'Obligatoriska fält',
+    'ad_post' => 'Annonsinlägg',
+    'sell_item' => 'Sälj en vara eller tjänst',
+    'search_save' => 'Favoritsökningen har sparats',
+    'address' => 'Adress',
+    'email' => 'E-post',
+    'phone' => 'Telefon',
+    'send_us_your_feedback' => 'Skicka oss din feedback',
+    'online_shopping' => 'SKAFFA SIG',
+    'approved' => 'Godkänd framgångsrikt',
+    'extended' => 'Förlängd framgångsrikt',
+    'deleted' => 'Raderad framgångsrikt',
+    'declined' => 'Avvisades framgångsrikt',
+    'search_on_map' => 'Sök på kartan',
+    'post_free_ad' => 'Lägg upp gratis annons',
+    'select_a_category' => 'Välj en kategori',
+    'select_a_sub_category' => 'Välj en underkategori',
+    'all_dopings_added' => 'Alla dopingtyper läggs till för denna annons.',
     'is_get_adv' => [
-        'name' => 'GET'
+        'name' => 'SKAFFA SIG'
     ],
-    'corporate_info' => 'Corporate Info',
-    'featured_ads' => "Featured Ads",
-    'trending_ads' => 'Trendind Ads',
-    'search_ad_result_prefix' => 'on',
-    'search_ad_result_text' => '<strong>:count</strong> ads were found in your <strong>:name</strong> search',
+    'corporate_info' => 'Företagsinformation',
+    'featured_ads' => "Utvalda annonser",
+    'trending_ads' => 'Trendiga annonser',
+    'search_ad_result_prefix' => 'på',
+    'search_ad_result_text' => '<strong>:count</strong> annonser hittades i din <strong>:name</strong> -sökning',
     'search_ads_result_message' => [
-        'name' => ':count ads found for :name search',
+        'name' => ':count annonser hittades för :name-sökning',
     ],
     'total' => 'Total',
-    'quantity' => 'Quantity',
-    'view_cart' => 'View Cart',
-    'no_ads' => 'No Ads found.',
+    'quantity' => 'Kvantitet',
+    'view_cart' => 'Visa kundvagn',
+    'no_ads' => 'Inga annonser hittades.',
     'show_display_mode' => [
-        'map' => 'Map',
-        'list' => 'List',
+        'map' => 'Karta',
+        'list' => 'Lista',
     ],
     'advs_list_table_thead' => [
-        'name' => 'Ad Name',
-        'price' => 'Price',
-        'publish_at' => 'Ad Date',
-        'location_city' => 'City',
-        'location_country' => 'Country',
+        'name' => 'Annonsens namn',
+        'price' => 'Pris',
+        'publish_at' => 'Annonsdatum',
+        'location_city' => 'Stad',
+        'location_country' => 'Land',
     ],
     'show_list_view' => [
-        'name' => 'List',
+        'name' => 'Lista',
     ],
     'show_table_view' => [
-        'name' => 'Table',
+        'name' => 'Tabell',
     ],
     'showcase' => [
-        'name' => 'Showcase',
+        'name' => 'Monter',
     ],
     'new_ad' => [
-        'name' => 'New Ad',
+        'name' => 'Ny annons',
     ],
     'profile' => [
-        'name' => 'Profile',
+        'name' => 'Profil',
     ],
     'my_ads' => [
-        'name' => 'My Ads',
+        'name' => 'Mina annonser',
     ],
     'sold_out' => [
-        'name' => 'Sold out',
+        'name' => 'Utsåld',
     ],
-    'edit_category' => 'Edit Category',
-    'set_category' => 'Set Category',
+    'edit_category' => 'Redigera kategori',
+    'set_category' => 'Ställ in kategori',
     'max' => [
         'name' => 'Max',
     ],
@@ -266,165 +266,165 @@ return [
         'name' => 'Min',
     ],
     'in_the_last_24_hours' => [
-        'name' => 'In The Last 24 Hours'
+        'name' => 'Under de senaste 24 timmarna'
     ],
     'in_the_last_day' => [
-        'name' => 'In The Last 24 Hours'
+        'name' => 'Under de senaste 24 timmarna'
     ],
     'in_the_last_week' => [
-        'name' => 'In The Last Week'
+        'name' => 'Under den senaste veckan'
     ],
     'in_the_last_month' => [
-        'name' => 'In The Last Month'
+        'name' => 'I Sista Månaden'
     ],
     'in_the_last_two_days' => [
-        'name' => 'In The Last Two Days'
+        'name' => 'Under de två sista dagarna'
     ],
     'ads_with_photo' => [
-        'name' => 'Ads With Photo'
+        'name' => 'Annonser med foto'
     ],
     'ads_with_video' => [
-        'name' => 'Ads With Video'
+        'name' => 'Annonser med video'
     ],
     'yes' => [
-        'name' => 'Yes'
+        'name' => 'Ja'
     ],
     'no' => [
-        'name' => 'No'
+        'name' => 'Nej'
     ],
     'is_system' => [
-        'name' => 'Is System',
-        'instructions' => 'System status are required and should not be changed',
+        'name' => 'är System',
+        'instructions' => 'Systemstatus krävs och bör inte ändras',
     ],
     'user_access' => [
-        'name' => 'User Access',
-        'instructions' => 'Can a user use this status on his ads?',
+        'name' => 'Användaråtkomst',
+        'instructions' => 'Kan en användare använda denna status på sina annonser?',
     ],
-    "no_location" => "No location is selected.",
-    "continue" => 'Continue',
-    "gallery" => 'Gallery',
+    "no_location" => "Ingen plats har valts.",
+    "continue" => 'Fortsätta',
+    "gallery" => 'Galleri',
     "ad" => 'Ad',
-    "ads" => 'Ads',
-    "were_found" => 'were found.',
+    "ads" => 'Annonser',
+    "were_found" => 'hittades.',
 
     // Pending screen
-    'pending_message_1' => 'The Ad is in the Approval Process',
-    'pending_message_2' => "Ad's Update Date",
-    'pending_message_3' => 'Estimated Waiting Time',
-    'pending_message_4' => 'The time spent in the approval process will be added to the doping time.',
-    'pending_message_5' => 'No transactions can be made from the call center regarding the ad in the approval process.',
-    'hours' => 'hours',
+    'pending_message_1' => 'Annonsen är under godkännandeprocess',
+    'pending_message_2' => "Annonsens uppdateringsdatum",
+    'pending_message_3' => 'Beräknad väntetid',
+    'pending_message_4' => 'Den tid som spenderas i godkännandeprocessen kommer att läggas till dopningstiden.',
+    'pending_message_5' => 'Inga transaktioner kan göras från callcentret angående annonsen i godkännandeprocessen.',
+    'hours' => 'timmar',
 
     // Preview page
     'preview_text' => [
-        'part_1' => 'If the following information about your ad is correct, click the "Continue" button and go to the next step.',
-        'part_2' => 'If not, click the "Edit" button.',
+        'part_1' => 'Om följande information om din annons är korrekt klickar du på knappen "Fortsätt" och går till nästa steg.',
+        'part_2' => 'Om inte, klicka på knappen "Redigera".',
     ],
-    'views' => 'Views',
+    'views' => 'Visningar',
 
     // Detail page
-    "no_street_view" => "No street view image in this location",
-    'edit_my_contact_info' => 'Edit My Contact Information',
-    'update_my_contact_info' => 'update my contact info',
-    'contact_info' => 'Contact information',
-    'ad_info' => 'Ad Information',
+    "no_street_view" => "Ingen gatuvy på den här platsen",
+    'edit_my_contact_info' => 'Redigera min kontaktinformation',
+    'update_my_contact_info' => 'uppdatera mina kontaktuppgifter',
+    'contact_info' => 'Kontaktinformation',
+    'ad_info' => 'Annonsinformation',
 
     // Select cat
-    'select_category_step_by_step' => 'Select Category Step by Step',
+    'select_category_step_by_step' => 'Välj kategori steg för steg',
 
     // New create page
-    'options' => 'Options',
-    'category_selection' => 'Category Selection',
-    'listing_details' => 'Listing Details',
-    'preview' => 'Preview',
-    'congratulations' => 'Congratulations',
-    'ad_desc' => 'Ad Description',
-    'upload_photos' => 'Upload Photos',
-    'upload_files' => 'Upload Files',
-    'additional_fields' => 'Additional Fields',
-    'ad_location' => 'Ad Location',
-    'owner' => 'Owner',
-    'default_owner_instruction' => 'The owner will default to the current user if no user is selected',
-    'create_page_subtitle' => 'Create the ad flawlessly by entering detailed information about your ad.',
-    'with_my_phone_numbers' => 'With my phone numbers',
-    'not_with_my_phone_numbers' => "I don't want to be reached by phone",
-    'how_can_you_be_contacted' => "How can you be contacted?",
+    'options' => 'alternativ',
+    'category_selection' => 'Kategorival',
+    'listing_details' => 'Lista detaljer',
+    'preview' => 'Förhandsvisning',
+    'congratulations' => 'Grattis',
+    'ad_desc' => 'Annonsbeskrivning',
+    'upload_photos' => 'Ladda upp foton',
+    'upload_files' => 'Ladda upp filer',
+    'additional_fields' => 'Ytterligare fält',
+    'ad_location' => 'Annonsplats',
+    'owner' => 'Ägare',
+    'default_owner_instruction' => 'Ägaren kommer som standard till den nuvarande användaren om ingen användare är vald',
+    'create_page_subtitle' => 'Skapa annonsen felfritt genom att ange detaljerad information om din annons.',
+    'with_my_phone_numbers' => 'Med mina telefonnummer',
+    'not_with_my_phone_numbers' => "Jag vill inte nås på telefon",
+    'how_can_you_be_contacted' => "Hur kan du bli kontaktad?",
 
     // Listing page
-    'ad_title' => 'Ad title',
-    'listing_date' => 'Listing Date',
-    'view' => 'View',
-    'ads_with_map' => 'Ads With Map',
-    'advanced_sorting' => 'Advanced Sorting',
-    'filter_by_word' => 'Filter by word',
-    'filter_by' => 'Filter by :name',
+    'ad_title' => 'Lägg till titel',
+    'listing_date' => 'Noteringsdatum',
+    'view' => 'Se',
+    'ads_with_map' => 'Annonser Med Karta',
+    'advanced_sorting' => 'Avancerad sortering',
+    'filter_by_word' => 'Filtrera efter ord',
+    'filter_by' => 'Filtrera efter :namn',
 
-    'free' => 'Free',
-    'ad_date' => 'Ad Date',
-    'photo_video' => 'Photo, Video',
-    'and_above' => 'and above',
-    'and_below' => 'and below',
-    'clear_all' => 'Clear All',
-    'balances' => 'Balances',
-    'packages' => 'Packages',
-    'dopings' => 'Dopings',
+    'free' => 'Fri',
+    'ad_date' => 'Annonsdatum',
+    'photo_video' => 'Foto, video',
+    'and_above' => 'och ovan',
+    'and_below' => 'och under',
+    'clear_all' => 'Rensa alla',
+    'balances' => 'Balanser',
+    'packages' => 'Paket',
+    'dopings' => 'Doping',
     'advs' => 'Advs',
-    'site' => 'Site',
-    'subscription' => 'Subscription',
-	'created' => 'Created',
+    'site' => 'Webbplats',
+    'subscription' => 'Prenumeration',
+	'created' => 'Skapad',
 	'product_option' => [
-		'name' => 'Product Option'
+		'name' => 'Produktalternativ'
 	],
 	'option_json' => [
-		'name' => 'Option'
+		'name' => 'Alternativ'
 	],
     'old_price' => [
-        'name' => 'Old Price'
+        'name' => 'Gammalt pris'
     ],
-	'save_search' => 'Save Search',
+	'save_search' => 'Spara sökning',
     'publish_at' => [
-        'name' => 'Publish Date'
+        'name' => 'Utgivningsdatum'
     ],
     'tax' => [
-        'name' => 'Tax'
+        'name' => 'Beskatta'
     ],
     'min_order_limit' => [
-        'name' => 'Minimum Order Limit'
+        'name' => 'Minsta ordergräns'
     ],
-    'name_a_z' => 'Name (A to Z)',
-    'name_z_a' => 'Name (Z to A)',
-    'select_lang_ads' => 'select the language of the ads',
+    'name_a_z' => 'Namn (A till Ö)',
+    'name_z_a' => 'Namn (Z till A)',
+    'select_lang_ads' => 'välj språk för annonserna',
 
     // Report
-    'product_stock_report' => 'Product Stock Report',
-    'active_passive_products_report' => 'Active-Passive Products Report',
-    'unexplained_products_report' => 'Unexplained Products Report',
-    'non_image_products_report' => 'Non-Image Products Report',
-    'product' => 'Product',
-    'count' => 'Count',
-    'undefined_product' => 'Undefined Product',
-    'pages_without_meta_information_report' => 'Pages Without Meta Information Report',
-    'page' => 'Page',
-    'undefined_page' => 'Undefined Page',
+    'product_stock_report' => 'Produktlagerrapport',
+    'active_passive_products_report' => 'Rapport för aktiva-passiva produkter',
+    'unexplained_products_report' => 'Rapport om oförklarliga produkter',
+    'non_image_products_report' => 'Rapport om icke-bildprodukter',
+    'product' => 'Produkt',
+    'count' => 'Räkna',
+    'undefined_product' => 'Odefinierad produkt',
+    'pages_without_meta_information_report' => 'Sidor utan metainformationsrapport',
+    'page' => 'Sida',
+    'undefined_page' => 'Odefinierad sida',
     'id' => 'ID',
-    'custom_field' => 'Custom Field',
+    'custom_field' => 'Anpassat fält',
 
     // ads_bar_widget
-    'pending_ads'       => 'Pending Ads',
-    'approved_ads'       => 'Approved Ads',
-    'outdated_ads'       => 'Outdated Ads',
-    'passive_ads'       => 'Passive Ads',
-    'adv_desc_metaTags' => 'visit our website to list our listings.',
+    'pending_ads'       => 'Väntande annonser',
+    'approved_ads'       => 'Godkända annonser',
+    'outdated_ads'       => 'Föråldrade annonser',
+    'passive_ads'       => 'Passiva annonser',
+    'adv_desc_metaTags' => 'besök vår hemsida för att lista våra listor.',
     'tags' => [
-        'name' => 'Tags'
+        'name' => 'Taggar'
     ],
     'seo_title' => [
-        'name' => 'Seo Title'
+        'name' => 'SEO-titel'
     ],
     'seo_description' => [
-        'name' => 'Seo Description'
+        'name' => 'Seo Beskrivning'
     ],
 
-    'empty_title' => 'If empty, filled by title',
-    'empty_description' => 'If empty, filled by description',
+    'empty_title' => 'Om tom, fylld med titel',
+    'empty_description' => 'Om tom, fylld med beskrivning',
 ];
