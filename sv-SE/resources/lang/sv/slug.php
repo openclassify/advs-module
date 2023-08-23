@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'detail_adv' => 'advertise',
-    'category' => 'category',
+    'detail_adv' => 'annonsera',
+    'category' => 'kategori',
 ];
