@@ -2,63 +2,63 @@
 
 return [
     'advs' => [
-        'title' => 'Ads',
+        'title' => 'Annonser',
     ],
     'categories' => [
-        'title' => 'Categories',
+        'title' => 'Kategorier',
     ],
     'countries' => [
-        'title' => 'Countries',
+        'title' => 'Länder',
     ],
     'cities' => [
-        'title' => 'Cities',
+        'title' => 'Städer',
     ],
     'districts' => [
-        'title' => 'Districts',
+        'title' => 'distrikt',
     ],
     'neighborhoods' => [
-        'title' => 'Neighborhoods',
+        'title' => 'Grannskap',
     ],
     'village' => [
-        'title' => 'Village',
+        'title' => 'By',
     ],
     'custom_fields' => [
-        'title' => 'Custom fields',
+        'title' => 'Anpassade fält',
     ],
     'custom_field_advs' => [
-        'title' => 'Custom field ads',
+        'title' => 'Anpassade fältannonser',
     ],
     'cf_values' => [
-        'title' => 'Cf values',
+        'title' => 'Jfr värden',
     ],
     'fields' => [
-        'title' => 'Custom Fields'
+        'title' => 'Anpassade fält'
     ],
     'assets_clear' => [
-        'name' => 'Assets Clear'
+        'name' => 'Tillgångar Rensa'
     ],
-    'general' => 'General',
-    'ads' => 'Ads',
-    'user' => 'User',
-    'filter' => 'Filter',
-    'create_ad' => 'Create Ad',
+    'general' => 'Allmän',
+    'ads' => 'Annonser',
+    'user' => 'Användare',
+    'filter' => 'Filtrera',
+    'create_ad' => 'Skapa annons',
     'options' => [
-        'title' => 'Options',
+        'title' => 'alternativ',
     ],
-    'ads_image' => 'Ads Image',
+    'ads_image' => 'Annonsbild',
     'product_options' => [
-        'title' => 'Options',
+        'title' => 'alternativ',
     ],
     'productoptions_value' => [
-        'title' => 'Options Value',
+        'title' => 'Valvärde',
     ],
     'option_configuration' => [
-        'title' => 'Configuration',
+        'title' => 'Konfiguration',
     ],
-    'translations' => 'Translations',
+    'translations' => 'Översättningar',
     'status' => [
         'title' => 'Status',
     ],
-	'ads_detail' => 'Ads Detail',
+	'ads_detail' => 'Annonsdetaljer',
 
 ];
