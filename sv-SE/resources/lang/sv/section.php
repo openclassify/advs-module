@@ -14,13 +14,13 @@ return [
         'title' => 'Städer',
     ],
     'districts' => [
-        'title' => 'distrikt',
+        'title' => 'Område (kommun)',
     ],
     'neighborhoods' => [
         'title' => 'Grannskap',
     ],
     'village' => [
-        'title' => 'By',
+        'title' => 'Ort',
     ],
     'custom_fields' => [
         'title' => 'Anpassade fält',
