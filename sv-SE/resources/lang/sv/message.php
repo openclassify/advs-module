@@ -2,7 +2,7 @@
 
 return [
     'error_added_cart' => 'Den begärda produkten saknas för närvarande eller är inaktiv',
-    'please_payment' => 'Var snäll och betala',
+    'please_payment' => 'Var vänlig och betala',
     'bank_account_info' => 'Bankkontoinformation',
     'agreement' => 'Genom att klicka på Publicera godkänner du våra användarvillkor och sekretesspolicyn bekräftar att du är den rättmätige ägaren till detta föremål.',
     'update_category_msg' => 'Den klassificerade kategorin kommer att uppdateras.',
@@ -10,7 +10,7 @@ return [
     'create_ad_with_post_cat' => [
         'title' => "Kategorival har slutförts.",
         'success' => true,
-        'continueBtn' => "Fortsätta",
+        'continueBtn' => "Fortsätt",
     ],
     'update_category_info' => 'Uppdatera kategori.',
     'filter_by_search_msg' => 'Filtrera efter sökning.',
