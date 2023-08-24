@@ -2,12 +2,12 @@
 
 return [
     'add' => 'Lägg till',
-    'new_adv' => 'Ny hemligstämplad',
-    'new_classified' => 'Ny hemligstämplad',
+    'new_adv' => 'Ny lista',
+    'new_classified' => 'Ny lista',
     'new_category' => 'Ny kategori',
     'new_country' => 'Nytt land',
     'new_city' => 'Ny stad',
-    'new_district' => 'Nytt distrikt',
+    'new_district' => 'Nytt område',
     'new_neighborhood' => 'Nytt grannskap',
     'new_village' => 'Ny by',
     'edit' => "Redigera",
