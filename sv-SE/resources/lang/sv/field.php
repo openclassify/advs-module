@@ -8,10 +8,10 @@ return [
         'name' => 'Beställa'
     ],
     'slug' => [
-        'name' => 'Snigel'
+        'name' => 'Url slug'
     ],
     'parent_category' => [
-        'name' => 'Förälder'
+        'name' => 'Parent'
     ],
     'category' => [
         'name' => 'Kategorititel'
@@ -50,13 +50,13 @@ return [
         'name' => 'Land'
     ],
     'district' => [
-        'name' => 'Distrikt'
+        'name' => 'Område (kommun)'
     ],
     'neighborhood' => [
         'name' => 'Grannskap'
     ],
     'village' => [
-        'name' => 'By'
+        'name' => 'Ort'
     ],
     'files' => [
         'name' => 'Bilder'
