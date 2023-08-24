@@ -8,7 +8,7 @@ return [
         'name' => 'Kategorier',
     ],
     'village' => [
-        'name' => 'By',
+        'name' => 'Ort',
     ],
     'custom_fields' => [
         'name' => 'Anpassade fält',
