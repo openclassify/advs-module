@@ -13,7 +13,7 @@ return [
     ],
     'estimated_pending_time' => [
         'name' => 'Beräknad väntande tid',
-        'instructions' => 'På timmar',
+        'instructions' => 'Timmar',
     ],
     'default_published_time' => [
         'name' => 'Standardpubliceringstid',
@@ -25,7 +25,7 @@ return [
         'name' => 'Kontakt Telefon',
     ],
     'favicon' => [
-        'name' => 'Favoritikon',
+        'name' => 'Favicon',
     ]
     , 'map_coordinates_long' => [
         'name' => 'Karta Long Coordinate',
