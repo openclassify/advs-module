@@ -2,25 +2,25 @@
 
 return [
     'advs' => [
-        'title' => 'annonser',
+        'title' => 'Annonser',
     ],
     'categories' => [
-        'title' => 'kategorier',
+        'title' => 'Kategorier',
     ],
     'countries' => [
         'title' => 'Länder',
     ],
     'cities' => [
-        'title' => 'städer',
+        'title' => 'Städer',
     ],
     'districts' => [
-        'title' => 'distrikt',
+        'title' => 'Område (kommun)',
     ],
     'neighborhoods' => [
-        'title' => 'stadsdelar',
+        'title' => 'Grannskap',
     ],
     'village' => [
-        'title' => 'By',
+        'title' => 'Ort',
     ],
     'custom_fields' => [
         'title' => 'Anpassade fält',
@@ -29,16 +29,16 @@ return [
         'title' => 'Anpassade fältannonser',
     ],
     'cf_values' => [
-        'title' => 'Cf-värden',
+        'title' => 'Jfr värden',
     ],
     'fields' => [
         'title' => 'Anpassade fält'
     ],
     'assets_clear' => [
-        'name' => 'Tillgångar tydliga'
+        'name' => 'Tillgångar Rensa'
     ],
     'general' => 'Allmän',
-    'ads' => 'annonser',
+    'ads' => 'Annonser',
     'user' => 'Användare',
     'filter' => 'Filtrera',
     'create_ad' => 'Skapa annons',
@@ -50,7 +50,7 @@ return [
         'title' => 'alternativ',
     ],
     'productoptions_value' => [
-        'title' => 'Alternativvärde',
+        'title' => 'Valvärde',
     ],
     'option_configuration' => [
         'title' => 'Konfiguration',

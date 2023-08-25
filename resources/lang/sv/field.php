@@ -8,10 +8,10 @@ return [
         'name' => 'Beställa'
     ],
     'slug' => [
-        'name' => 'Snigel'
+        'name' => 'Url slug'
     ],
     'parent_category' => [
-        'name' => 'Förälder'
+        'name' => 'Parent'
     ],
     'category' => [
         'name' => 'Kategorititel'
@@ -50,13 +50,13 @@ return [
         'name' => 'Land'
     ],
     'district' => [
-        'name' => 'Distrikt'
+        'name' => 'Område (kommun)'
     ],
     'neighborhood' => [
         'name' => 'Grannskap'
     ],
     'village' => [
-        'name' => 'By'
+        'name' => 'Ort'
     ],
     'files' => [
         'name' => 'Bilder'
@@ -100,7 +100,7 @@ return [
             'approved' => 'Godkänd',
             'expired' => 'Utgånget',
             'unpublished' => 'Opublicerad',
-            'pending_admin' => 'Väntande administratör',
+            'pending_admin' => 'Väntande admin',
             'pending_user' => 'Väntande användare'
         ]
     ],
@@ -108,7 +108,7 @@ return [
         'name' => 'Opublicerad'
     ],
     'finish_at' => [
-        'name' => 'Avsluta kl'
+        'name' => 'Slutdatum'
     ],
     'cover_photo' => [
         'name' => 'Omslagsfoto'
@@ -130,11 +130,14 @@ return [
     'value' => [
         'name' => 'Värde'
     ],
+    'ad_note' => [
+        'name' => 'Annonsnotering (Bara annonsägaren kan se.)'
+    ],
     'list' => 'Lista',
     'home' => 'Hem',
-    'list-page' => 'Lista sida',
+    'list-page' => 'Listsida',
     'search' => 'Sök',
-	'reset' => 'Reset',
+	'reset' => 'Återställa',
     'recommended' => 'Rekommenderade annonser för dig',
     'filter' => 'Filtrera',
     'sort' => 'Sortera',
@@ -144,7 +147,7 @@ return [
     'price_high' => 'Pris högt till lågt',
     'price_low' => 'Pris lågt till högt',
     'newest' => 'Nyaste',
-    'oldest' => 'äldsta',
+    'oldest' => 'Äldst',
     'address_a_z' => 'Adress (A till Ö)',
     'address_z_a' => 'Adress (Z till A)',
 	'categories' => [
@@ -153,14 +156,15 @@ return [
     'all_categories' => 'alla kategorier',
     'location' => 'Plats',
     'send_message' => 'Skicka meddelande',
-    'phone_gsm' => 'Gsm-telefon',
+    'phone_gsm' => 'Gsm telefon',
     'phone_office' => 'Kontorstelefon',
     'add_to_favorites' => "Lägg till i favoriter",
+    'add_to_cart'=> "Lägg till i kundvagn",
     'send' => 'Skicka',
-    'search_name' => 'Söknamn',
-    'my_favorite_searches' => 'Favorit sökningar',
-    'search_desc' => 'Du kan lägga till och hantera dina favorit sökval här.',
-    'complaint_placeholder' => 'Skriv dina klagomålsdetaljer här.',
+    'search_name' => 'Sök namn',
+    'my_favorite_searches' => 'Favoritsökningar',
+    'search_desc' => 'Du kan lägga till och hantera dina favoritsökningsval här.',
+    'complaint_placeholder' => 'Ange dina klagomålsuppgifter här.',
     'show_details' => 'Visa detaljer',
     'ad_actions' => 'Annonsåtgärder',
     'edit' => 'Redigera',
@@ -183,14 +187,14 @@ return [
     'need_help' => 'Behövs hjälp?',
     'give_a_call' => 'Ring på',
     'message_sent' => 'Meddelande skickat!',
-    'asap' => 'Meddelandet skickas, säljaren kommer att kontakta dig så fort som möjligt.',
+    'asap' => 'Meddelande skickat, säljaren kommer att kontakta dig snarast.',
     'ad_id' => 'Annons-id',
     'contact_with' => 'Kontakt med',
     'create_adv' => 'Skapa annons',
     'edit_adv' => 'Redigera annons',
     'mandatory_fields' => 'Obligatoriska fält',
-    'ad_post' => 'Annons post',
-    'sell_item' => 'Sälj en artikel eller tjänst',
+    'ad_post' => 'Annonsinlägg',
+    'sell_item' => 'Sälj en vara eller tjänst',
     'search_save' => 'Favoritsökningen har sparats',
     'address' => 'Adress',
     'email' => 'E-post',
@@ -198,23 +202,24 @@ return [
     'send_us_your_feedback' => 'Skicka oss din feedback',
     'online_shopping' => 'SKAFFA SIG',
     'approved' => 'Godkänd framgångsrikt',
-    'extended' => 'Utökat framgångsrikt',
-    'declined' => 'Avvisade framgångsrikt',
+    'extended' => 'Förlängd framgångsrikt',
+    'deleted' => 'Raderad framgångsrikt',
+    'declined' => 'Avvisades framgångsrikt',
     'search_on_map' => 'Sök på kartan',
-    'post_free_ad' => 'Post gratis annons',
+    'post_free_ad' => 'Lägg upp gratis annons',
     'select_a_category' => 'Välj en kategori',
     'select_a_sub_category' => 'Välj en underkategori',
-    'all_dopings_added' => 'Alla dopningstyper läggs till för denna annons.',
+    'all_dopings_added' => 'Alla dopingtyper läggs till för denna annons.',
     'is_get_adv' => [
         'name' => 'SKAFFA SIG'
     ],
-    'corporate_info' => 'Företagsinfo',
+    'corporate_info' => 'Företagsinformation',
     'featured_ads' => "Utvalda annonser",
-    'trending_ads' => 'Trendind-annonser',
+    'trending_ads' => 'Trendiga annonser',
     'search_ad_result_prefix' => 'på',
-    'search_ad_result_text' => '<strong>: räkna</strong> annonser hittades i din sökning <strong>: namn</strong>',
+    'search_ad_result_text' => '<strong>:count</strong> annonser hittades i din <strong>:name</strong> -sökning',
     'search_ads_result_message' => [
-        'name' => ': räkna annonser som hittades för: namnsökning',
+        'name' => ':count annonser hittades för :name-sökning',
     ],
     'total' => 'Total',
     'quantity' => 'Kvantitet',
@@ -225,7 +230,7 @@ return [
         'list' => 'Lista',
     ],
     'advs_list_table_thead' => [
-        'name' => 'Annonsnamn',
+        'name' => 'Annonsens namn',
         'price' => 'Pris',
         'publish_at' => 'Annonsdatum',
         'location_city' => 'Stad',
@@ -258,7 +263,7 @@ return [
         'name' => 'Max',
     ],
     'min' => [
-        'name' => 'min',
+        'name' => 'Min',
     ],
     'in_the_last_24_hours' => [
         'name' => 'Under de senaste 24 timmarna'
@@ -267,10 +272,13 @@ return [
         'name' => 'Under de senaste 24 timmarna'
     ],
     'in_the_last_week' => [
-        'name' => 'Under den sista veckan'
+        'name' => 'Under den senaste veckan'
     ],
     'in_the_last_month' => [
-        'name' => 'Under den sista månaden'
+        'name' => 'I Sista Månaden'
+    ],
+    'in_the_last_two_days' => [
+        'name' => 'Under de två sista dagarna'
     ],
     'ads_with_photo' => [
         'name' => 'Annonser med foto'
@@ -285,26 +293,26 @@ return [
         'name' => 'Nej'
     ],
     'is_system' => [
-        'name' => 'Är System',
+        'name' => 'är System',
         'instructions' => 'Systemstatus krävs och bör inte ändras',
     ],
     'user_access' => [
         'name' => 'Användaråtkomst',
-        'instructions' => 'Kan en användare använda denna status i sina annonser?',
+        'instructions' => 'Kan en användare använda denna status på sina annonser?',
     ],
     "no_location" => "Ingen plats har valts.",
     "continue" => 'Fortsätta',
     "gallery" => 'Galleri',
-    "ad" => 'Annons',
-    "ads" => 'annonser',
+    "ad" => 'Ad',
+    "ads" => 'Annonser',
     "were_found" => 'hittades.',
 
     // Pending screen
-    'pending_message_1' => 'Annonsen är i godkännandeprocessen',
-    'pending_message_2' => "Annonsuppdateringsdatum",
-    'pending_message_3' => 'Uppskattad väntetid',
-    'pending_message_4' => 'Tiden för godkännandeprocessen läggs till dopningstiden.',
-    'pending_message_5' => 'Inga transaktioner kan göras från callcenter om annonsen i godkännandeprocessen.',
+    'pending_message_1' => 'Annonsen är under godkännandeprocess',
+    'pending_message_2' => "Annonsens uppdateringsdatum",
+    'pending_message_3' => 'Beräknad väntetid',
+    'pending_message_4' => 'Den tid som spenderas i godkännandeprocessen kommer att läggas till dopningstiden.',
+    'pending_message_5' => 'Inga transaktioner kan göras från callcentret angående annonsen i godkännandeprocessen.',
     'hours' => 'timmar',
 
     // Preview page
@@ -315,9 +323,9 @@ return [
     'views' => 'Visningar',
 
     // Detail page
-    "no_street_view" => "Ingen gatuvybild på den här platsen",
+    "no_street_view" => "Ingen gatuvy på den här platsen",
     'edit_my_contact_info' => 'Redigera min kontaktinformation',
-    'update_my_contact_info' => 'uppdatera min kontaktinformation',
+    'update_my_contact_info' => 'uppdatera mina kontaktuppgifter',
     'contact_info' => 'Kontaktinformation',
     'ad_info' => 'Annonsinformation',
 
@@ -326,8 +334,8 @@ return [
 
     // New create page
     'options' => 'alternativ',
-    'category_selection' => 'Kategorivalg',
-    'listing_details' => 'Listningsinformation',
+    'category_selection' => 'Kategorival',
+    'listing_details' => 'Lista detaljer',
     'preview' => 'Förhandsvisning',
     'congratulations' => 'Grattis',
     'ad_desc' => 'Annonsbeskrivning',
@@ -336,20 +344,20 @@ return [
     'additional_fields' => 'Ytterligare fält',
     'ad_location' => 'Annonsplats',
     'owner' => 'Ägare',
-    'default_owner_instruction' => 'Ägaren kommer som standard att använda den nuvarande användaren om ingen användare har valts',
+    'default_owner_instruction' => 'Ägaren kommer som standard till den nuvarande användaren om ingen användare är vald',
     'create_page_subtitle' => 'Skapa annonsen felfritt genom att ange detaljerad information om din annons.',
-    'with_my_phone_numbers' => 'With my phone numbers',
-    'not_with_my_phone_numbers' => "I don't want to be reached by phone",
-    'how_can_you_be_contacted' => "How can you be contacted?",
+    'with_my_phone_numbers' => 'Med mina telefonnummer',
+    'not_with_my_phone_numbers' => "Jag vill inte nås på telefon",
+    'how_can_you_be_contacted' => "Hur kan du bli kontaktad?",
 
     // Listing page
     'ad_title' => 'Lägg till titel',
     'listing_date' => 'Noteringsdatum',
     'view' => 'Se',
-    'ads_with_map' => 'Annonser med karta',
+    'ads_with_map' => 'Annonser Med Karta',
     'advanced_sorting' => 'Avancerad sortering',
     'filter_by_word' => 'Filtrera efter ord',
-    'filter_by' => 'Filtrera efter: namn',
+    'filter_by' => 'Filtrera efter :namn',
 
     'free' => 'Fri',
     'ad_date' => 'Annonsdatum',
@@ -359,8 +367,8 @@ return [
     'clear_all' => 'Rensa alla',
     'balances' => 'Balanser',
     'packages' => 'Paket',
-    'dopings' => 'Dopings',
-    'advs' => 'Adv',
+    'dopings' => 'Doping',
+    'advs' => 'Advs',
     'site' => 'Webbplats',
     'subscription' => 'Prenumeration',
 	'created' => 'Skapad',
@@ -378,8 +386,45 @@ return [
         'name' => 'Utgivningsdatum'
     ],
     'tax' => [
-        'name' => 'Tax'
+        'name' => 'Beskatta'
     ],
-    'name_a_z' => 'Name (A to Z)',
-    'name_z_a' => 'Name (Z to A)',
+    'min_order_limit' => [
+        'name' => 'Minsta ordergräns'
+    ],
+    'name_a_z' => 'Namn (A till Ö)',
+    'name_z_a' => 'Namn (Z till A)',
+    'select_lang_ads' => 'välj språk för annonserna',
+
+    // Report
+    'product_stock_report' => 'Produktlagerrapport',
+    'active_passive_products_report' => 'Rapport för aktiva-passiva produkter',
+    'unexplained_products_report' => 'Rapport om oförklarliga produkter',
+    'non_image_products_report' => 'Rapport om icke-bildprodukter',
+    'product' => 'Produkt',
+    'count' => 'Räkna',
+    'undefined_product' => 'Odefinierad produkt',
+    'pages_without_meta_information_report' => 'Sidor utan metainformationsrapport',
+    'page' => 'Sida',
+    'undefined_page' => 'Odefinierad sida',
+    'id' => 'ID',
+    'custom_field' => 'Anpassat fält',
+
+    // ads_bar_widget
+    'pending_ads'       => 'Väntande annonser',
+    'approved_ads'       => 'Godkända annonser',
+    'outdated_ads'       => 'Föråldrade annonser',
+    'passive_ads'       => 'Passiva annonser',
+    'adv_desc_metaTags' => 'besök vår hemsida för att lista våra listor.',
+    'tags' => [
+        'name' => 'Taggar'
+    ],
+    'seo_title' => [
+        'name' => 'SEO-titel'
+    ],
+    'seo_description' => [
+        'name' => 'Seo Beskrivning'
+    ],
+
+    'empty_title' => 'Om tom, fylld med titel',
+    'empty_description' => 'Om tom, fylld med beskrivning',
 ];
