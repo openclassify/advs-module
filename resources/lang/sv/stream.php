@@ -5,19 +5,19 @@ return [
         'name' => 'Advs',
     ],
     'categories' => [
-        'name' => 'kategorier',
+        'name' => 'Kategorier',
     ],
     'village' => [
-        'name' => 'By',
+        'name' => 'Ort',
     ],
     'custom_fields' => [
         'name' => 'Anpassade fält',
     ],
     'custom_field_advs' => [
-        'name' => 'Anpassat fält advs',
+        'name' => 'Anpassade fältannonser',
     ],
     'cf_values' => [
-        'name' => 'Cf-värden',
+        'name' => 'Jfr värden',
     ],
     'options' => [
         'name' => 'alternativ',
@@ -26,7 +26,7 @@ return [
         'name' => 'Produktalternativ',
     ],
     'productoptions_value' => [
-        'name' => 'Alternativvärde',
+        'name' => 'Valvärde',
     ],
     'option_configuration' => [
         'name' => 'Konfiguration',
