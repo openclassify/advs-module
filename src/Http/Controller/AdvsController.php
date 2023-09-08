@@ -641,8 +641,8 @@ class AdvsController extends PublicController
     public function viewType($type)
     {
         Cookie::queue(Cookie::make('viewType', $type, 84000));
-        if($this->translatableSlug){
-            return redirect($this->request->headers->get('referer') ?: route('visiosoft.module.advs::list_mlang',[trans('visiosoft.module.advs::slug.category')]));
+        if ($this->translatableSlug) {
+            return redirect($this->request->headers->get('referer') ?: route('visiosoft.module.advs::list_mlang', [trans('visiosoft.module.advs::slug.category')]));
         }
         return redirect($this->request->headers->get('referer') ?: route('visiosoft.module.advs::list'));
     }
@@ -1038,12 +1038,15 @@ class AdvsController extends PublicController
             }
 
             //Get Categories Settings
-            $get_categories_status = false;
-            if ($get_categories = setting_value('visiosoft.module.advs::get_categories') and $get_categories = in_array($adv->cat1, $get_categories)) {
-                $get_categories_status = true;
+            if (!$before_editing->is_get_adv) {
+                $get_categories_status = false;
+                $get_categories = setting_value('visiosoft.module.advs::get_categories');
+                if (in_array($adv->cat1, $get_categories)) {
+                    $get_categories_status = true;
+                }
+                $adv->is_get_adv = ($this->request->is_get_adv and $get_categories_status) ? true : false;
             }
 
-            $adv->is_get_adv = ($this->request->is_get_adv and $get_categories_status) ? true : false;
             $adv->save();
 
             if ($adv->is_get_adv) {
@@ -1081,6 +1084,10 @@ class AdvsController extends PublicController
                 }
 
                 $adv->update($update);
+            }
+
+            if ($before_editing->stock) {
+                $form->setSkips(['stock']);
             }
 
             $form->render($this->request->update_id);

@@ -17,6 +17,7 @@ class AdvFormBuilder extends FormBuilder
     {
         parent::__construct($form);
         $this->fields = $this->settingFields();
+        $skips = [];
     }
 
     private function settingFields()
@@ -111,12 +112,18 @@ class AdvFormBuilder extends FormBuilder
 
         return $fields;
     }
+
+    public function setSkips($skips)
+    {
+        $this->skips = $skips;
+    }
+
     public function getSkips()
     {
+        $allSkips = $this->skips;
         if (!config("advs::is_changeable_slug",false)){
-            return ['slug'];
+            $allSkips = array_merge($this->skips, ['slug']);
         }
-        
-        return array();
+        return $allSkips;
     }
 }
