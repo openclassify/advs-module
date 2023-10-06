@@ -166,7 +166,7 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
 
         if (!empty($param['dlong']) && !empty($param['dlat']) && !empty($param['distance'])) {
             $query = $query->whereNotNull('coor');
-            $query = $query->whereRaw("ST_DISTANCE(ST_GeomFromText('POINT(" . $param['dlong'] . " " . $param['dlat'] . ")'), coor) < " . $param['distance']);
+            $query = $query->whereRaw("ST_DISTANCE(ST_GeomFromText('POINT(" . $param['dlat'] . " " . $param['dlong'] . ") '), coor) * 100 < " . $param['distance']);
         }
 
         if ($isActiveDopings && !$isSort) {

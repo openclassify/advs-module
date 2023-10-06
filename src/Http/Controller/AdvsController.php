@@ -15,6 +15,7 @@ use Visiosoft\AdvsModule\Adv\Command\IsOptionsByCategory;
 use Visiosoft\AdvsModule\Adv\Command\UpdateClassifiedStatus;
 use Visiosoft\AdvsModule\Adv\Contract\AdvRepositoryInterface;
 use Visiosoft\AdvsModule\Adv\Event\CreatedAd;
+use Visiosoft\AdvsModule\Adv\Event\EditCoorAd;
 use Visiosoft\AdvsModule\Adv\Event\EditedAd;
 use Visiosoft\AdvsModule\Adv\Event\EditedAdCategory;
 use Visiosoft\AdvsModule\Adv\Event\PriceChange;
@@ -1134,6 +1135,9 @@ class AdvsController extends PublicController
             } else {
                 event(new EditedAd($before_editing, $adv));
             }
+
+            //map_Val --> coor
+            event(new EditCoorAd($adv));
 
             try {
                 $this->adv_model->foreignCurrency($this->request->currency, $this->request->price, $this->request->update_id, $this->settings_repository, false);
