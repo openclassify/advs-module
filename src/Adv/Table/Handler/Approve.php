@@ -10,7 +10,7 @@ class Approve extends ActionHandler
     {
         foreach ($selected as $id) {
             if ($classified = $advRepository->find($id)) {
-                $this->dispatch(new UpdateClassifiedStatus($classified, 'approved'));
+                $this->dispatchSync(new UpdateClassifiedStatus($classified, 'approved'));
             }
         }
 

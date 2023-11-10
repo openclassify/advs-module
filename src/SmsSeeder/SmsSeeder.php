@@ -45,7 +45,7 @@ class SmsSeeder extends Seeder
             ];
 
             foreach ($templates as $template) {
-                $this->dispatch(new SmsTemplateCreator($template));
+                $this->dispatchSync(new SmsTemplateCreator($template));
             }
         }
     }

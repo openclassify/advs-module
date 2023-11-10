@@ -572,7 +572,7 @@ class AdvsController extends PublicController
             $metaTitle = $metaTitle ?: $catText;
 
             if (is_module_installed('visiosoft.module.seo')) {
-                $metaData = dispatch_now(new AddMetaData($category->id, 'category'));
+                $metaData = dispatch_sync(new AddMetaData($category->id, 'category'));
                 if ($metaData) {
                     list('metaTitle' => $seoMetaTitle, 'metaDesc' => $seoMetaDesc) = $metaData;
                     $metaTitle = $seoMetaTitle ?: $metaTitle;
@@ -734,7 +734,7 @@ class AdvsController extends PublicController
             $metaDesc = strip_tags($adv->advs_desc, '');
 
             if (is_module_installed('visiosoft.module.seo')) {
-                $metaData = dispatch_now(new AddMetaData($adv->cat1, 'ad', $adv->id));
+                $metaData = dispatch_sync(new AddMetaData($adv->cat1, 'ad', $adv->id));
                 if ($metaData) {
                     list('metaTitle' => $seoMetaTitle, 'metaDesc' => $seoMetaDesc) = $metaData;
                     $metaTitle = $seoMetaTitle ?: $metaTitle;
@@ -1227,7 +1227,7 @@ class AdvsController extends PublicController
         /* Check Options
          * Added to query if there are product options.
          */
-        $is_options = dispatch_now(new IsOptionsByCategory($adv['cat1']));
+        $is_options = dispatch_sync(new IsOptionsByCategory($adv['cat1']));
         $configurations = app(OptionConfigurationRepositoryInterface::class)->getConf($adv['id']);
 
         return $this->view->make(
@@ -1252,7 +1252,7 @@ class AdvsController extends PublicController
             $type = "pending_admin";
         }
 
-        $this->dispatch(new UpdateClassifiedStatus($ad, $type));
+        $this->dispatchSync(new UpdateClassifiedStatus($ad, $type));
 
         if ($type === 'approved') {
             $message = trans('visiosoft.module.advs::message.approve_status_change');
