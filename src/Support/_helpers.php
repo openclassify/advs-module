@@ -14,7 +14,7 @@ if (!function_exists('fullLink'))
 if (!function_exists('get_buyables'))
 {
 	function get_buyables() {
-		return dispatch_now(new GetBuyables());
+		return dispatch_sync(new GetBuyables());
 	}
 }
 

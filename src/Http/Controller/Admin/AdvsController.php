@@ -72,7 +72,7 @@ class AdvsController extends AdminController
     {
         $ad = $this->advRepository->find($id);
 
-        $this->dispatch(new UpdateClassifiedStatus($ad, $type));
+        $this->dispatchSync(new UpdateClassifiedStatus($ad, $type));
 
         // Algolia Search Module
         $isActiveAlgolia = is_module_installed('visiosoft.module.algolia');

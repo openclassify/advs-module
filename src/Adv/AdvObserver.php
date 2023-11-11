@@ -11,14 +11,14 @@ class AdvObserver extends EntryObserver
 {
     public function updating(EntryInterface $entry)
     {
-        $this->dispatch(new AddSlug($entry));
+        $this->dispatchSync(new AddSlug($entry));
 
         parent::updating($entry);
     }
 
     public function deleting(EntryInterface $entry)
     {
-        $this->dispatch(new DeleteOptionConfiguration($entry));
+        $this->dispatchSync(new DeleteOptionConfiguration($entry));
 
         event(new DeletingAd($entry));
 

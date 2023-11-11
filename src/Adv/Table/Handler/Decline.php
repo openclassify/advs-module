@@ -11,7 +11,7 @@ class Decline extends ActionHandler
         foreach ($selected as $id) {
             $classified = $advRepository->find($id);
 
-            $this->dispatch(new UpdateClassifiedStatus($classified, 'declined'));
+            $this->dispatchSync(new UpdateClassifiedStatus($classified, 'declined'));
         }
 
         if ($selected) {

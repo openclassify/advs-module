@@ -25,7 +25,7 @@ class AdvsModulePlugin extends Plugin
                 'adDetail',
                 function ($id) {
 
-                    if (!$ad = $this->dispatch(new GetAd($id))) {
+                    if (!$ad = $this->dispatchSync(new GetAd($id))) {
                         return null;
                     }
 
@@ -34,7 +34,7 @@ class AdvsModulePlugin extends Plugin
             ), new \Twig_SimpleFunction(
                 'latestAds',
                 function () {
-                    if (!$latestAds = $this->dispatch(new LatestAds())) {
+                    if (!$latestAds = $this->dispatchSync(new LatestAds())) {
                         return 0;
                     }
                     return $latestAds;
@@ -49,7 +49,7 @@ class AdvsModulePlugin extends Plugin
             new \Twig_SimpleFunction(
                 'appendRequestURL',
                 function ($request, $url, $new_parameters, $removeParams = []) {
-                    return $this->dispatch(new appendRequestURL($request, $url, $new_parameters, $removeParams));
+                    return $this->dispatchSync(new appendRequestURL($request, $url, $new_parameters, $removeParams));
                 }
             ),
             new \Twig_SimpleFunction(
@@ -68,13 +68,13 @@ class AdvsModulePlugin extends Plugin
             new \Twig_SimpleFunction(
                 'getUserAds',
                 function ($userID = null, $status = "approved") {
-                    return $this->dispatch(new GetUserAds($userID, $status));
+                    return $this->dispatchSync(new GetUserAds($userID, $status));
                 }
             ),
             new \Twig_SimpleFunction(
                 'getListingLocation',
                 function ($locationInfo, $currentAdv) {
-                    return $this->dispatch(new GetListingLocation($locationInfo, $currentAdv));
+                    return $this->dispatchSync(new GetListingLocation($locationInfo, $currentAdv));
                 }
             ),
             new \Twig_SimpleFunction(
@@ -103,7 +103,7 @@ class AdvsModulePlugin extends Plugin
             ), new \Twig_SimpleFunction(
                 'getPopular',
                 function () {
-                    if (!$popular = $this->dispatch(new getPopular())) {
+                    if (!$popular = $this->dispatchSync(new getPopular())) {
                         return null;
                     }
                     return $popular;

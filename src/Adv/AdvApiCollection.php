@@ -32,7 +32,7 @@ class AdvApiCollection extends AdvRepository
 
         $this->checkGet($params);
 
-        $this->dispatch(new CheckRequiredParams(['name', 'price', 'standard_price', 'currency', 'advs_desc'], $params));
+        $this->dispatchSync(new CheckRequiredParams(['name', 'price', 'standard_price', 'currency', 'advs_desc'], $params));
 
         $defaultAdPublishTime = setting_value('visiosoft.module.advs::default_published_time', 30);
 
@@ -48,7 +48,7 @@ class AdvApiCollection extends AdvRepository
             'status' => setting_value('visiosoft.module.advs::auto_approve', true) ? 'approved' : 'pending_user',
         ]);
 
-        $create_parameters = $this->dispatch(new CreateTranslatableValues($create_parameters));
+        $create_parameters = $this->dispatchSync(new CreateTranslatableValues($create_parameters));
 
         return $this->create($create_parameters);
     }
@@ -56,7 +56,7 @@ class AdvApiCollection extends AdvRepository
     public function checkGet($params)
     {
         if (!empty($params['is_get_adv'])) {
-            $this->dispatch(new CheckRequiredParams(['stock'], $params));
+            $this->dispatchSync(new CheckRequiredParams(['stock'], $params));
         }
     }
 
@@ -107,7 +107,7 @@ class AdvApiCollection extends AdvRepository
 
     public function checkSubCategories($params, $level = 1)
     {
-        $this->dispatch(new CheckRequiredParams(['cat' . $level], $params));
+        $this->dispatchSync(new CheckRequiredParams(['cat' . $level], $params));
 
         $category_repository = app(CategoryRepository::class);
 
@@ -129,7 +129,7 @@ class AdvApiCollection extends AdvRepository
 
     public function remove(array $params)
     {
-        $this->dispatch(new CheckRequiredParams(['id'], $params));
+        $this->dispatchSync(new CheckRequiredParams(['id'], $params));
 
         if (!$advs = $this->find($params['id'])) {
             throw new \Exception(trans('visiosoft.module.connect::message.not_found', ['name' => 'Ad']), 404);
@@ -150,7 +150,7 @@ class AdvApiCollection extends AdvRepository
 
     public function edit(array $params)
     {
-        $this->dispatch(new CheckRequiredParams(['id'], $params));
+        $this->dispatchSync(new CheckRequiredParams(['id'], $params));
 
         if (!$advs = $this->find($params['id'])) {
             throw new \Exception(trans('visiosoft.module.connect::message.not_found', ['name' => 'Ad']), 404);
@@ -180,7 +180,7 @@ class AdvApiCollection extends AdvRepository
             unset($params['created_by_id']);
         }
 
-        $params = $this->dispatch(new CreateTranslatableValues($params));
+        $params = $this->dispatchSync(new CreateTranslatableValues($params));
 
         $advs->update(array_merge([
             'updated_by_id' => Auth::id(),
@@ -207,7 +207,7 @@ class AdvApiCollection extends AdvRepository
 
     public function addImage(array $params)
     {
-        $this->dispatch(new CheckRequiredParams(['id'], $params));
+        $this->dispatchSync(new CheckRequiredParams(['id'], $params));
 
         if (!$advs = $this->find($params['id'])) {
             throw new \Exception(trans('visiosoft.module.connect::message.not_found', ['name' => 'Ad']), 404);
@@ -247,7 +247,7 @@ class AdvApiCollection extends AdvRepository
 
     public function listImages(array $params)
     {
-        $this->dispatch(new CheckRequiredParams(['id'], $params));
+        $this->dispatchSync(new CheckRequiredParams(['id'], $params));
 
         if (!$advs = $this->find($params['id'])) {
             throw new \Exception(trans('visiosoft.module.connect::message.not_found', ['name' => 'Ad']), 404);
@@ -263,7 +263,7 @@ class AdvApiCollection extends AdvRepository
 
     public function removeImage(array $params)
     {
-        $this->dispatch(new CheckRequiredParams(['id', 'image_id'], $params));
+        $this->dispatchSync(new CheckRequiredParams(['id', 'image_id'], $params));
 
         if (!$advs = $this->find($params['id'])) {
             throw new \Exception(trans('visiosoft.module.connect::message.not_found', ['name' => 'Ad']), 404);

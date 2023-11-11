@@ -101,7 +101,7 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
         }
 
         if ($this->cover_photo == null) {
-            return $this->dispatch(new MakeImageInstance('visiosoft.theme.base::images/no-image.png', 'img'))->url();
+            return $this->dispatchSync(new MakeImageInstance('visiosoft.theme.base::images/no-image.png', 'img'))->url();
         }
 
         return url($this->cover_photo);
@@ -335,9 +335,9 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
 
     public function addCart($item, $quantity = 1, $name = null)
     {
-        $cart = $this->dispatch(new GetCart());
+        $cart = $this->dispatchSync(new GetCart());
         $cart->add($item, $quantity, $name);
-        return $this->dispatch(new GetCart());
+        return $this->dispatchSync(new GetCart());
     }
 
 
@@ -431,7 +431,7 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
     public function AddAdsDefaultCoverImage($ad)
     {
         if ($ad->cover_photo == null) {
-            $ad->cover_photo = $this->dispatch(new MakeImageInstance('visiosoft.theme.base::images/no-image.png', 'img'))->url();
+            $ad->cover_photo = $this->dispatchSync(new MakeImageInstance('visiosoft.theme.base::images/no-image.png', 'img'))->url();
         } else {
             $ad->cover_photo = url($ad->cover_photo);
         }
@@ -442,7 +442,7 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
     {
         $adv = $this->find($id);
         if ($adv == null or $adv->cover_photo == null) {
-            $cover_photo = $this->dispatch(new MakeImageInstance('visiosoft.theme.base::images/no-image.png', 'img'))->url();
+            $cover_photo = $this->dispatchSync(new MakeImageInstance('visiosoft.theme.base::images/no-image.png', 'img'))->url();
         } else {
             $cover_photo = url($adv->cover_photo);
         }
