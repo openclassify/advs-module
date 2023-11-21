@@ -227,7 +227,7 @@ class AdvRepository extends EntryRepository implements AdvRepositoryInterface
         if ($type == "list") {
             return $paginate ? $query->paginate(setting_value('streams::per_page')) : $query;
         } else {
-            return $query->get();
+            return $query->limit(100)->get();
         }
     }
 
