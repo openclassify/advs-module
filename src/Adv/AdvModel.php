@@ -452,7 +452,9 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
     public function viewed_Ad($id)
     {
         $ad = $this->find($id);
-        $ad->update(['count_show_ad' => intval($ad->count_show_ad) + 1]);
+        if ($ad) {
+            $ad->update(['count_show_ad' => intval($ad->count_show_ad) + 1]);
+        }
     }
 
     public function getRecommended($id, $limit = 3)
