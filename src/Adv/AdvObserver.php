@@ -6,6 +6,7 @@ use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
 use Anomaly\Streams\Platform\Entry\EntryObserver;
 use Visiosoft\AdvsModule\Adv\Event\DeletedAd;
 use Visiosoft\AdvsModule\Adv\Event\DeletingAd;
+use Illuminate\Support\Facades\DB;
 
 class AdvObserver extends EntryObserver
 {
