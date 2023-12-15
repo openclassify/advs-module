@@ -43,11 +43,14 @@ class AdvObserver extends EntryObserver
         $this->translateFixer($entry->getId());
     }
 
+    public function updated(EntryInterface $entry)
+    {
+        $this->translateFixer($entry->getId());
+    }
+
     public function updating(EntryInterface $entry)
     {
         $this->dispatchSync(new AddSlug($entry));
-        $this->translateFixer($entry->getId());
-
         parent::updating($entry);
     }
 
