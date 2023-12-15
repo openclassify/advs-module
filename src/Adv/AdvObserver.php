@@ -11,6 +11,7 @@ class AdvObserver extends EntryObserver
 {
     private function translateFixer($entryId)
     {
+        //TODO:: Use single query
         $defaultLocale = setting_value('streams::default_locale');
         $translations = DB::table('advs_advs_translations')
             ->select(['locale', 'name'])
