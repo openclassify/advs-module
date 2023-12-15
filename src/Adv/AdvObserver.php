@@ -12,31 +12,21 @@ class AdvObserver extends EntryObserver
 {
     private function translateFixer($entryId)
     {
-        //TODO:: Use single query
-        $defaultLocale = setting_value('streams::default_locale');
-        $translations = DB::table('advs_advs_translations')
-            ->select(['locale', 'name'])
+
+        //TODO TEMP LANG FIX WITH FATIH.
+        $transCount = DB::table('advs_advs_translations')
+            ->select('id')
+            ->whereNull('name')
             ->where('entry_id', $entryId)
-            ->whereNotNull('locale')
-            ->get();
+            ->count();
 
-        if ($translations) {
-            $name = "";
-            foreach ($translations as $translation) {
-                if ($translation->locale == $defaultLocale && !empty($translation->name)) {
-                    $name = $translation->name;
-                    break;
-                } else if (!empty($translation->name)) {
-                    $name = $translation->name;
-                }
-            }
 
+        if ($transCount > 1) {
             DB::table('advs_advs_translations')
                 ->whereNull('name')
                 ->where('entry_id', $entryId)
-                ->update(['name' => $name]);
+                ->delete();
         }
-
     }
 
     public function created(EntryInterface $entry)
