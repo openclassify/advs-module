@@ -46,5 +46,6 @@ return [
     'error_general' => 'Bir hatayla karşılaşıldı. Yöneticiyle iletişime geçin!',
 
 
-    'adv_create_success' => 'Ürün başarıyla oluşturuldu'
+    'adv_create_success' => 'Ürün başarıyla oluşturuldu',
+    'out_of_stock' => 'Stoklarımız tükenmiştir.'
 ];
