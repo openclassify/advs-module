@@ -45,5 +45,6 @@ return [
     'error_operations_author' => "You cannot perform operations a post that do not belong to you!",
     'error_general' => 'An error was encountered. Contact the admin!',
 
-    'adv_create_success' => 'The ad has been successfully created'
+    'adv_create_success' => 'The ad has been successfully created',
+    'out_of_stock' => 'The product is out of stock.',
 ];
