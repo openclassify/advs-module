@@ -45,5 +45,6 @@ return [
     'error_operations_author' => "Du kan inte utföra operationer ett inlägg som inte tillhör dig!",
     'error_general' => 'Ett fel uppstod. Kontakta administratören!',
 
-    'adv_create_success' => 'Annonsen har skapats'
+    'adv_create_success' => 'Annonsen har skapats',
+    'out_of_stock' => 'The product is out of stock.',
 ];
