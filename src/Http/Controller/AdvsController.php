@@ -41,6 +41,7 @@ use Visiosoft\ProfileModule\Adress\Contract\AdressRepositoryInterface;
 use Visiosoft\SeoModule\Legend\Command\AddMetaData;
 use Visiosoft\StoreModule\Store\Contract\StoreRepositoryInterface;
 use Illuminate\Support\Str;
+use Visiosoft\CartsModule\Cart\Command\GetCart;
 
 class AdvsController extends PublicController
 {
@@ -1414,6 +1415,10 @@ class AdvsController extends PublicController
         }
     }
 
+    function getCartItemById($id){
+        return $this->dispatchSync(new GetCart())->getItemById($id);
+    }
+
     public function addCart(Request $request)
     {
         $id = $request->id;
@@ -1422,11 +1427,20 @@ class AdvsController extends PublicController
         $thisModel = new AdvModel();
         $adv = $thisModel->isAdv($id);
         $response = array();
-        if(!$adv->inStock()) {
+
+        $check_stock_by_cart_count = true;
+        $cart_item = $thisModel->getCartItemById($id);
+
+        if($cart_item && $cart_item->quantity >= $adv->stock) {
+            $check_stock_by_cart_count = false;
+        }
+
+        if(!$adv->inStock() || !$check_stock_by_cart_count) {
             $response['status'] = "error";
             $response['msg'] = trans('visiosoft.module.advs::message.out_of_stock');
             return $response;
         }
+
         if ($adv and $adv->getStatus() == "approved") {
             $cart = $thisModel->addCart($adv, $quantity, $name);
             $response['status'] = "success";
