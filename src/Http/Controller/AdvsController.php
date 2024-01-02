@@ -1429,7 +1429,7 @@ class AdvsController extends PublicController
         $response = array();
 
         $check_stock_by_cart_count = true;
-        $cart_item = $thisModel->getCartItemById($id);
+        $cart_item = $this->getCartItemById($id);
 
         if($cart_item && $cart_item->quantity >= $adv->stock) {
             $check_stock_by_cart_count = false;
