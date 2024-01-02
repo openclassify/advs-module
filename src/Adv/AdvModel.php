@@ -340,15 +340,6 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
         return $this->dispatchSync(new GetCart());
     }
 
-
-    public function getCartItemById($id){
-        $cart = $this->dispatchSync(new GetCart());
-        return $cart->getItems()->first(function ($item) use ($id) {
-            return $item->entry_id == $id;
-        });
-    }
-
-
     public function getAdvDetailLinkByModel($object, $type = null)
     {
         if ($type != null) {
