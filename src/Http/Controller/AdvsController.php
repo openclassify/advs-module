@@ -1423,14 +1423,14 @@ class AdvsController extends PublicController
         $adv = $thisModel->isAdv($id);
         $response = array();
 
-        $last_stock_control = true;
+        $check_stock_by_cart_count = true;
         $cart_item = $thisModel->getCartItemById($id);
 
         if($cart_item && $cart_item->quantity >= $adv->stock) {
-            $last_stock_control = false;
+            $check_stock_by_cart_count = false;
         }
 
-        if(!$adv->inStock() || !$last_stock_control) {
+        if(!$adv->inStock() || !$check_stock_by_cart_count) {
             $response['status'] = "error";
             $response['msg'] = trans('visiosoft.module.advs::message.out_of_stock');
             return $response;
