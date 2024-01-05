@@ -54,6 +54,13 @@ class AdvModel extends AdvsAdvsEntryModel implements AdvInterface
         );
     }
 
+    public function restore()
+    {
+        // added this for fix restore from admin panel, it has given an error about configurations relation.
+        $this->setAttribute('deleted_at', null);
+        return $this->save();
+    }
+
     public function getConfigurations()
     {
         return $this->getAttribute('configurations');
