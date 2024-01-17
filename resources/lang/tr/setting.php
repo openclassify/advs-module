@@ -35,6 +35,7 @@ return [
     ],
     'iban_numbers' => [
         'name' => 'IBAN',
+        'instructions' => 'Havale ile ödeme alındığında bu alan gösterilecektir.',
     ],
     'logo' => [
         'name' => 'Logo',
