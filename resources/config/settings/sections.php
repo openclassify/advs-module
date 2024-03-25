@@ -7,7 +7,7 @@ return [
             'general' => [
                 'title' => 'visiosoft.module.advs::section.general',
                 'fields' => [
-                	'favicon',
+                    'favicon',
                     'market_place',
                     'show_lang_url',
                     'iban_numbers',
@@ -18,7 +18,7 @@ return [
                     'hide_price_categories',
                     'tcmb_exchange_url',
                     'enabled_currencies',
-	                'hide_ad_cat',
+                    'hide_ad_cat',
                     'showDetailedAddress',
                     'translatable_slug'
                 ],
@@ -34,7 +34,7 @@ return [
                     'popular_ads_limit',
                     'ads_image_limit',
                     'default_view_type',
-	                'show_price_to_members_only',
+                    'show_price_to_members_only',
                     'price_area_hidden',
                     'hide_listing_standard_price',
                     'hide_zero_price',
@@ -49,19 +49,19 @@ return [
                     'update_publish_at'
                 ],
             ],
-	        'ads_detail' => [
-	        	'title' => 'visiosoft.module.advs::section.ads_detail',
-		        'fields' => [
-			        'ads_date_hidden',
-			        'hide_seller_info',
+            'ads_detail' => [
+                'title' => 'visiosoft.module.advs::section.ads_detail',
+                'fields' => [
+                    'ads_date_hidden',
+                    'hide_seller_info',
                     'hide_seller_info_by_category',
-		        ]
-	        ],
+                ]
+            ],
             'create_ad' => [
                 'title' => 'visiosoft.module.advs::section.create_ad',
                 'fields' => [
                     'is_changeable_slug',
-                	'hide_contact_created_at',
+                    'hide_contact_created_at',
                     'show_tax_field',
                     'detailed_product_options',
                     'steps_color',
@@ -119,7 +119,7 @@ return [
                 'title' => 'visiosoft.module.advs::section.filter',
                 'fields' => [
                     'hide_filter_section', 'hide_price_filter', 'hide_date_filter', 'hide_photo_filter', 'hide_map_filter',
-	                'hide_listing_header', 'user_filter_limit','hide_out_of_stock_products_without_listing', 'location_data_type_first'
+                    'hide_listing_header', 'user_filter_limit', 'hide_out_of_stock_products_without_listing', 'location_data_type_first'
                     , 'location_data_type_second'
                 ],
             ],
@@ -130,6 +130,13 @@ return [
                     'override_text',
                 ],
             ],
+            'eids' => [
+                'title' => "Eids",
+                'fields' => [
+                    'is_eids_verification_required',
+                    'eids_verification_url'
+                ]
+            ]
         ],
     ],
 ];

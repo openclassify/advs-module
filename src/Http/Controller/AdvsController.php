@@ -21,6 +21,7 @@ use Visiosoft\AdvsModule\Adv\Event\EditedAdCategory;
 use Visiosoft\AdvsModule\Adv\Event\PriceChange;
 use Visiosoft\AdvsModule\Adv\Event\ViewAd;
 use Visiosoft\AdvsModule\Adv\Form\AdvFormBuilder;
+use Visiosoft\AdvsModule\EidsService;
 use Visiosoft\AdvsModule\Option\Contract\OptionRepositoryInterface;
 use Visiosoft\AdvsModule\OptionConfiguration\Contract\OptionConfigurationRepositoryInterface;
 use Visiosoft\AdvsModule\OptionConfiguration\OptionConfigurationModel;
@@ -1285,8 +1286,13 @@ class AdvsController extends PublicController
         return back();
     }
 
+
     public function cats()
     {
+        if (EidsService::isEidsRequired() && !EidsService::isUserVerified()) {
+            return EidsService::redirectToLogin();
+        }
+
         $main_cats = $this->category_repository->getMainCategories();
 
         return $this->view->make('visiosoft.module.advs::new-ad/post-cat', compact('main_cats'));
@@ -1426,11 +1432,11 @@ class AdvsController extends PublicController
         $check_stock_by_cart_count = true;
         $cart_item = $thisModel->getCartItemById($id);
 
-        if($cart_item && $cart_item->quantity >= $adv->stock) {
+        if ($cart_item && $cart_item->quantity >= $adv->stock) {
             $check_stock_by_cart_count = false;
         }
 
-        if(!$adv->inStock() || !$check_stock_by_cart_count) {
+        if (!$adv->inStock() || !$check_stock_by_cart_count) {
             $response['status'] = "error";
             $response['msg'] = trans('visiosoft.module.advs::message.out_of_stock');
             return $response;

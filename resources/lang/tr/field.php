@@ -122,8 +122,8 @@ return [
     'my_adv' => [
         'name' => 'İlan'
     ],
-    'description' =>  'Detaylar',
-    'explanation' =>  'Açıklama',
+    'description' => 'Detaylar',
+    'explanation' => 'Açıklama',
     'type' => [
         'name' => 'Tip'
     ],
@@ -137,7 +137,7 @@ return [
     'home' => 'Anasayfa',
     'list-page' => 'Liste Sayfası',
     'search' => 'Arama',
-	'reset' => 'Sıfırla',
+    'reset' => 'Sıfırla',
     'recommended' => 'Sizin için Önerilen İlanlar',
     'filter' => 'Filtre',
     'sort' => 'Çeşit',
@@ -150,16 +150,16 @@ return [
     'oldest' => 'En eski',
     'address_a_z' => 'Adres (A\'dan Z\'ye)',
     'address_z_a' => 'Adres (Z\'den A\'ya)',
-	'categories' => [
-		'name' => 'Kategoriler'
-	],
+    'categories' => [
+        'name' => 'Kategoriler'
+    ],
     'all_categories' => 'Tüm Kategoriler',
     'location' => 'Lokasyon',
     'send_message' => 'Mesaj Gönder',
     'phone_gsm' => 'Cep Telefonu',
     'phone_office' => 'Sabit telefon',
     'add_to_favorites' => "Favorilere Ekle",
-    'add_to_cart'=> "Sepete Ekle",
+    'add_to_cart' => "Sepete Ekle",
     'send' => 'Gönder',
     'search_name' => 'Arama Adı',
     'my_favorite_searches' => 'Favori Aramalar',
@@ -170,7 +170,7 @@ return [
     'edit' => 'Düzenle',
     'approve' => 'Onayla',
     'passive' => "Pasif",
-	'sold' => 'Satıldı',
+    'sold' => 'Satıldı',
     'offered_by' => 'İlan Sahibi',
     'more_ads_by' => 'Diğer İlanlar',
     'click_phone' => 'Telefon Numarasını Göster',
@@ -374,17 +374,17 @@ return [
     'advs' => 'Advs',
     'site' => 'Site',
     'subscription' => 'Abonelik',
-	'created' => 'Oluşturuldu',
-	'product_option' => [
-		'name' => 'İlan Seçeneği'
-	],
-	'option_json' => [
-		'name' => 'Seçenek'
-	],
+    'created' => 'Oluşturuldu',
+    'product_option' => [
+        'name' => 'İlan Seçeneği'
+    ],
+    'option_json' => [
+        'name' => 'Seçenek'
+    ],
     'old_price' => [
         'name' => 'Eski fiyat'
     ],
-	'save_search' => 'Aramayı Kaydet',
+    'save_search' => 'Aramayı Kaydet',
     'publish_at' => [
         'name' => 'Yayın tarihi'
     ],
@@ -413,6 +413,8 @@ return [
     'empty_title' => 'Boşsa, başlığa göre doldurulur',
     'empty_description' => 'Boşsa, açıklamaya göre doldurulur',
 
+    'is_eids_verified' => ['name' => "Eids ile doğrulanmış"],
+    'eids_auth_code' => ['name' => "Eids Yetki kodu"]
 
 
 ];
