@@ -119,8 +119,8 @@ return [
     'my_adv' => [
         'name' => 'ADVS'
     ],
-    'description' =>  'Beskrivning',
-    'explanation' =>  'Förklaring',
+    'description' => 'Beskrivning',
+    'explanation' => 'Förklaring',
     'type' => [
         'name' => 'Typ'
     ],
@@ -137,7 +137,7 @@ return [
     'home' => 'Hem',
     'list-page' => 'Listsida',
     'search' => 'Sök',
-	'reset' => 'Återställa',
+    'reset' => 'Återställa',
     'recommended' => 'Rekommenderade annonser för dig',
     'filter' => 'Filtrera',
     'sort' => 'Sortera',
@@ -150,16 +150,16 @@ return [
     'oldest' => 'Äldst',
     'address_a_z' => 'Adress (A till Ö)',
     'address_z_a' => 'Adress (Z till A)',
-	'categories' => [
-		'name' => 'Kategorier'
-	],
+    'categories' => [
+        'name' => 'Kategorier'
+    ],
     'all_categories' => 'alla kategorier',
     'location' => 'Plats',
     'send_message' => 'Skicka meddelande',
     'phone_gsm' => 'Gsm telefon',
     'phone_office' => 'Kontorstelefon',
     'add_to_favorites' => "Lägg till i favoriter",
-    'add_to_cart'=> "Lägg till i kundvagn",
+    'add_to_cart' => "Lägg till i kundvagn",
     'send' => 'Skicka',
     'search_name' => 'Sök namn',
     'my_favorite_searches' => 'Favoritsökningar',
@@ -170,7 +170,7 @@ return [
     'edit' => 'Redigera',
     'approve' => 'Godkänna',
     'passive' => "Passiv",
-	'sold' => 'Såld',
+    'sold' => 'Såld',
     'offered_by' => 'Erbjuds av',
     'more_ads_by' => 'Fler annonser av',
     'click_phone' => 'Visa telefonnummer',
@@ -371,17 +371,17 @@ return [
     'advs' => 'Advs',
     'site' => 'Webbplats',
     'subscription' => 'Prenumeration',
-	'created' => 'Skapad',
-	'product_option' => [
-		'name' => 'Produktalternativ'
-	],
-	'option_json' => [
-		'name' => 'Alternativ'
-	],
+    'created' => 'Skapad',
+    'product_option' => [
+        'name' => 'Produktalternativ'
+    ],
+    'option_json' => [
+        'name' => 'Alternativ'
+    ],
     'old_price' => [
         'name' => 'Gammalt pris'
     ],
-	'save_search' => 'Spara sökning',
+    'save_search' => 'Spara sökning',
     'publish_at' => [
         'name' => 'Utgivningsdatum'
     ],
@@ -410,10 +410,10 @@ return [
     'custom_field' => 'Anpassat fält',
 
     // ads_bar_widget
-    'pending_ads'       => 'Väntande annonser',
-    'approved_ads'       => 'Godkända annonser',
-    'outdated_ads'       => 'Föråldrade annonser',
-    'passive_ads'       => 'Passiva annonser',
+    'pending_ads' => 'Väntande annonser',
+    'approved_ads' => 'Godkända annonser',
+    'outdated_ads' => 'Föråldrade annonser',
+    'passive_ads' => 'Passiva annonser',
     'adv_desc_metaTags' => 'besök vår hemsida för att lista våra listor.',
     'tags' => [
         'name' => 'Taggar'
@@ -427,4 +427,7 @@ return [
 
     'empty_title' => 'Om tom, fylld med titel',
     'empty_description' => 'Om tom, fylld med beskrivning',
+
+    'is_eids_verified' => ['name' => "Is eids verified"],
+    'eids_verification_url' => ['name' => "Eids Verification Url"]
 ];
