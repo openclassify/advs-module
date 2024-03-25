@@ -1596,9 +1596,4 @@ class AdvsController extends PublicController
                 ]);
         }
     }
-
-    public function eids()
-    {
-        dd($this->request);
-    }
 }
