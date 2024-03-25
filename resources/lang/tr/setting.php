@@ -380,4 +380,10 @@ return [
     'show_seo_description' => [
         'name' => 'Seo Açıklamayı Göster',
     ],
+    'is_eids_verification_required' => [
+        'name' => "Eids doğrulaması zorunlu"
+    ],
+    'eids_verification_url' => [
+        'name' => "Eids Doğrulama Adresi"
+    ]
 ];

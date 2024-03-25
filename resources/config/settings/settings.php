@@ -484,12 +484,12 @@ return [
             'default_value' => false,
         ],
     ],
-	'hide_contact_created_at' => [
-		'type' => 'anomaly.field_type.boolean',
-		'config' => [
-			'default_value' => false,
-		]
-	],
+    'hide_contact_created_at' => [
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => false,
+        ]
+    ],
     'show_input_flag' => [
         'type' => 'anomaly.field_type.boolean',
         'config' => [
@@ -539,13 +539,13 @@ return [
             'default_value' => true,
         ],
     ],
-    'show_ad_note' =>[
+    'show_ad_note' => [
         'type' => 'anomaly.field_type.boolean',
         'config' => [
             'default_value' => false,
         ],
     ],
-    'show_min_order_limit' =>[
+    'show_min_order_limit' => [
         'type' => 'anomaly.field_type.boolean',
         'config' => [
             'default_value' => false,
@@ -648,4 +648,14 @@ return [
             'default_value' => false
         ]
     ],
+    'is_eids_verification_required' => [
+        'type' => 'anomaly.field_type.boolean',
+        'config' => [
+            'default_value' => false
+        ]
+    ],
+    'eids_verification_url' => [
+        'type' => 'anomaly.field_type.text',
+        'placeholder' => "https://eids.ticaret.gov.tr/oturum?firmaKodu=test-firma-kodu"
+    ]
 ];

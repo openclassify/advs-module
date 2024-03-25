@@ -288,6 +288,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
 
         // Cron Routes
         'cron/update-created-at-date' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@updateCreatedAtDates',
+        '/eidsReturn' => 'Visiosoft\AdvsModule\Http\Controller\EidsController@eidsReturn'
     ];
 
     protected $middleware = [
