@@ -119,8 +119,8 @@ return [
     'my_adv' => [
         'name' => 'ADVS'
     ],
-    'description' =>  'Description',
-    'explanation' =>  'Explanation',
+    'description' => 'Description',
+    'explanation' => 'Explanation',
     'type' => [
         'name' => 'Type'
     ],
@@ -137,7 +137,7 @@ return [
     'home' => 'Home',
     'list-page' => 'List Page',
     'search' => 'Search',
-	'reset' => 'Reset',
+    'reset' => 'Reset',
     'recommended' => 'Recommended Ads for You',
     'filter' => 'Filter',
     'sort' => 'Sort',
@@ -150,16 +150,16 @@ return [
     'oldest' => 'Oldest',
     'address_a_z' => 'Address (A to Z)',
     'address_z_a' => 'Address (Z to A)',
-	'categories' => [
-		'name' => 'Categories'
-	],
+    'categories' => [
+        'name' => 'Categories'
+    ],
     'all_categories' => 'All Categories',
     'location' => 'Location',
     'send_message' => 'Send Message',
     'phone_gsm' => 'Gsm Phone',
     'phone_office' => 'Office Phone',
     'add_to_favorites' => "Add to Favorites",
-    'add_to_cart'=> "Add to Cart",
+    'add_to_cart' => "Add to Cart",
     'send' => 'Send',
     'search_name' => 'Search Name',
     'my_favorite_searches' => 'Favorite Searches',
@@ -170,7 +170,7 @@ return [
     'edit' => 'Edit',
     'approve' => 'Approve',
     'passive' => "Passive",
-	'sold' => 'Sold',
+    'sold' => 'Sold',
     'offered_by' => 'Offered By',
     'more_ads_by' => 'More Ads By',
     'click_phone' => 'Show phone number',
@@ -371,17 +371,17 @@ return [
     'advs' => 'Advs',
     'site' => 'Site',
     'subscription' => 'Subscription',
-	'created' => 'Created',
-	'product_option' => [
-		'name' => 'Product Option'
-	],
-	'option_json' => [
-		'name' => 'Option'
-	],
+    'created' => 'Created',
+    'product_option' => [
+        'name' => 'Product Option'
+    ],
+    'option_json' => [
+        'name' => 'Option'
+    ],
     'old_price' => [
         'name' => 'Old Price'
     ],
-	'save_search' => 'Save Search',
+    'save_search' => 'Save Search',
     'publish_at' => [
         'name' => 'Publish Date'
     ],
@@ -410,10 +410,10 @@ return [
     'custom_field' => 'Custom Field',
 
     // ads_bar_widget
-    'pending_ads'       => 'Pending Ads',
-    'approved_ads'       => 'Approved Ads',
-    'outdated_ads'       => 'Outdated Ads',
-    'passive_ads'       => 'Passive Ads',
+    'pending_ads' => 'Pending Ads',
+    'approved_ads' => 'Approved Ads',
+    'outdated_ads' => 'Outdated Ads',
+    'passive_ads' => 'Passive Ads',
     'adv_desc_metaTags' => 'visit our website to list our listings.',
     'tags' => [
         'name' => 'Tags'
@@ -427,4 +427,7 @@ return [
 
     'empty_title' => 'If empty, filled by title',
     'empty_description' => 'If empty, filled by description',
+
+    'is_eids_verified' => ['name' => "Is eids verified"],
+    'eids_verification_url' => ['name' => "Eids Verification Url"]
 ];
