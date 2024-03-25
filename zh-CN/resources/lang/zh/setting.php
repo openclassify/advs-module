@@ -384,4 +384,10 @@ return [
     'show_seo_description' => [
         'name' => 'Show Seo Decription',
     ],
+    'is_eids_verification_required' => [
+        'name' => "Is eids verification required"
+    ],
+    'eids_verification_url' => [
+        'name' => "Eids Verification Url"
+    ]
 ];
