@@ -94,10 +94,6 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
             'as' => 'adv_detail',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@view'
         ],
-        'c/{category?}/{city?}' => [
-            'as' => 'adv_list_seo',
-            'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@index'
-        ],
         'advs/list?user={id}' => [
             'as' => 'visiosoft.module.advs::list_user_ad',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@index',
@@ -405,6 +401,14 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
                 'where' => [
                     'path' => '^(?!api|admin|ajax|form)([\w\/-]*)$'
                 ],
+            ]
+        );
+
+        $router->get(
+            '{category?}/{city?}',
+            [
+                'as' => 'adv_list_seo',
+                'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@index',
             ]
         );
 
