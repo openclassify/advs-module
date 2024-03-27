@@ -94,7 +94,7 @@ class AdvsModuleServiceProvider extends AddonServiceProvider
             'as' => 'adv_detail',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@view'
         ],
-        'c/{category?}/{city?}' => [
+        '{category?}/{city?}' => [
             'as' => 'adv_list_seo',
             'uses' => 'Visiosoft\AdvsModule\Http\Controller\AdvsController@index'
         ],
