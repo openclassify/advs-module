@@ -662,7 +662,11 @@ class AdvsController extends PublicController
             $adv = $this->adv_repository->getListItemAdv($id);
         }
 
-        if ($adv and ((auth()->user() and auth()->user()->hasRole('admin')) or ((!$adv->expired() && $adv->getStatus() === 'approved') || $adv->created_by_id === \auth()->id()))) {
+        if (!$adv){
+            echo "no ad";
+            exit;
+        }
+
             if (is_module_installed('visiosoft.module.store')) {
                 $id = $adv->id;
                 $adv->similar_ads = [];
@@ -823,13 +827,6 @@ class AdvsController extends PublicController
             } else {
                 return back();
             }
-        } else {
-            if ($this->translatableSlug) {
-                return abort(404);
-            }
-            $this->messages->error(trans('visiosoft.module.advs::message.ad_doesnt_exist'));
-            return redirect()->route('visiosoft.module.advs::list');
-        }
     }
 
     public function preview($id)
@@ -1162,13 +1159,16 @@ class AdvsController extends PublicController
 
         /* New Create Adv */
         $this->request->publish_at = date('Y-m-d H:i:s');
+
         $all = $this->request->all();
+
 
         if (is_module_installed('visiosoft.module.packages')) {
             unset($all['pack_id']);
         }
 
         $adv = $this->adv_repository->create($all);
+
 
         if (is_module_installed('visiosoft.module.packages')
             && \request()->pack_id
