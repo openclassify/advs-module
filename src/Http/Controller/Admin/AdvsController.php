@@ -103,7 +103,6 @@ class AdvsController extends AdminController
                     $adv['detail_url'],
                     $adv['currency_price'],
                     $adv['category1'],
-                    $adv['currency_standard_price'],
                     $adv['category2'],
                     $adv['thumbnail'],
                     $adv['video'],

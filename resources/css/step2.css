@@ -1,12 +1,12 @@
 {% set stepsColor = setting_value('visiosoft.module.advs::steps_color') %}
 
 #stepProgressBar .step.current .bullet {
-    color: {{ stepsColor }};
+    color: #209579;
     border: 0.2rem solid {{ stepsColor }};
 }
 
 #stepProgressBar .step .bullet {
-    background-color: {{ stepsColor }};
+    background-color: #209579;
 }
 
 #stepProgressBar .step.current::after {
@@ -14,5 +14,5 @@
 }
 
 #stepProgressBar .step::after {
-    background-color: {{ stepsColor }};
+    background-color: #dfdfdf;
 }

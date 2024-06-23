@@ -75,22 +75,16 @@ class AdvTableColumns
                 'attributes' => [
                     'html' => function (EntryModel $entry) {
                         $checked = ($entry->is_get_adv) ? 'checked' : '';
-                        return '<input style="min-width:120px" type="checkbox" class="form-control fast-update" ' . $checked . ' data-column="is_get_adv" data-entry_id="' . $entry->getId() . '">';
-                    }
-                ],
-                'class' => 'advs-price',
-            ];
-            $columns['standard_price'] = [
-                'attributes' => [
-                    'html' => function (EntryModel $entry) {
-                        return '<input style="min-width:120px" type="number" min="0" class="form-control fast-update" value="' . $entry->standard_price . '" data-column="standard_price" data-entry_id="' . $entry->getId() . '">';
+                        return '<input style="min-width:120px" type="checkbox" class="form-control 
+                        fast-update" ' . $checked . ' data-column="is_get_adv" data-entry_id="' . $entry->getId() . '">';
                     }
                 ],
                 'class' => 'advs-price',
             ];
             $columns['price']['attributes'] = [
                 'html' => function (EntryModel $entry) {
-                    return '<input style="min-width:120px" type="number" min="0" class="form-control fast-update" value="' . $entry->price . '" data-column="price" data-entry_id="' . $entry->getId() . '">';
+                    return '<input style="min-width:120px" type="number" min="0" class="form-control 
+                    fast-update" value="' . $entry->price . '" data-column="price" data-entry_id="' . $entry->getId() . '">';
                 }
             ];
         }

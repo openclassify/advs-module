@@ -66,9 +66,6 @@ return [
         'name' => 'Kategorilerdeki Fiyatı Gizle',
         'instructions' => 'Bu kategoriler altında bir reklam oluşturduğunuzda veya bir reklamı görüntülediğinizde fiyat gizlenecektir.'
     ],
-    'free_currencyconverterapi_key' => [
-        'name' => 'Para Birimi Dönüştürücü API Anahtarı'
-    ],
     'default_city' => [
         'name' => 'Varsayılan İlan Şehri',
     ],
@@ -99,9 +96,6 @@ return [
     'listing_page_image' => [
         'name' => 'Sayfa Resmi Listeleme',
     ],
-    'hide_standard_price_field' => [
-        'name' => 'Standart Fiyat Alanını Gizle',
-    ],
     'hide_options_field' => [
         'name' => 'Seçenekler Alanını Gizle',
     ],
@@ -119,9 +113,6 @@ return [
     'make_map_required' => [
         'name' => 'Haritayı Gerekli Yap',
         'instructions' => 'Ürün/İlan oluştururken kullanıcının haritaya nokta koymasını zorunlu kılın',
-    ],
-    'hide_listing_standard_price' => [
-        'name' => 'Liste Standart Fiyatını Gizle',
     ],
     'enabled_currencies' => [
         'name' => 'Etkin Para Birimleri',
@@ -141,9 +132,6 @@ return [
     ],
     'price_area_hidden' => [
         'name' => 'Fiyat Alanı Gizli',
-    ],
-    'hide_price_filter' => [
-        'name' => 'Fiyat Filtresini Gizle',
     ],
     'hide_date_filter' => [
         'name' => 'Tarih Filtresini Gizle',
@@ -244,10 +232,6 @@ return [
         'name' => 'Metni Geçersiz Kıl',
         'instructions' => 'Eski Değer: Yeni Değer'
     ],
-    'steps_color' => [
-        'name' => 'Adım Rengi',
-        'instructions' => 'Aşamalı adımların rengini değiştirir.'
-    ],
     'create_ad_button_color' => [
         'name' => 'Reklam Düğmesi Rengi Oluştur',
         'instructions' => 'Yeni reklam kategorisi seçimi bittiğinde görünen düğmeyi değiştirir.'
@@ -315,10 +299,6 @@ return [
     'is_desc_required' => [
         'name' => 'İlan Açıklaması Zorunlu Mu ?',
         'instructions' => 'İlan oluştururken girilen açıklamanın mecburi olması durumu.'
-    ],
-    'is_image_required' => [
-        'name' => 'İlan Resmi Zorunlu Mu ?',
-        'instructions' => 'İlan oluştururken yüklenen resmin mecburi olması durumu.'
     ],
     'show_ad_note' => [
         'name' => 'İlan Oluştururken Not Girilsin',
