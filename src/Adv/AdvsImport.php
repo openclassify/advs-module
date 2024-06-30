@@ -17,7 +17,6 @@ class AdvsImport implements ToModel, WithHeadingRow
 		        'name' => $row['name'],
 		        'slug' => Str::slug($row['name']),
 		        'advs_desc' => $row['description'] ?? null,
-		        'standard_price' => $row['standard_price'] ?? 0,
 		        'price' => $row['price'],
 		        'currency' => $row['currency'],
 		        'country' => $row['country'] ?? null,
