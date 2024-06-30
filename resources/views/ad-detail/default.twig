@@ -45,11 +45,7 @@
 
                 {% if setting_value('visiosoft.theme.base::ad_details_tab') %}
 
-                    {% if blocks('ad-item-content-block-area') is null %}
                         {% include "visiosoft.module.advs::ad-detail/partials/content" %}
-                    {% else %}
-                        {{ blocks('ad-item-content-block-area') }}
-                    {% endif %}
 
                     {{ addBlock('ad-detail/widget', {'price': adv.price, 'id': adv.id})|raw }}
                 {% endif %}
