@@ -65,9 +65,6 @@ return [
         'name' => 'Hide Price On Categories',
         'instructions' => 'The price will be hidden when you create an ad or view an ad under these categories.'
     ],
-    'free_currencyconverterapi_key' => [
-        'name' => 'Currency Converter API Key'
-    ],
     'default_city' => [
         'name' => 'Default Ad City',
     ],
@@ -98,9 +95,6 @@ return [
     'listing_page_image' => [
         'name' => 'Listing Page Image',
     ],
-    'hide_standard_price_field' => [
-        'name' => 'Hide Standard Price Field',
-    ],
     'hide_options_field' => [
         'name' => 'Hide Options Field',
     ],
@@ -118,9 +112,6 @@ return [
     'make_map_required' => [
         'name' => 'Make Map Required',
         'instructions' => 'Require the user to place a pin on the map when creating an ad',
-    ],
-    'hide_listing_standard_price' => [
-        'name' => 'Hide Listing Standard Price',
     ],
     'enabled_currencies' => [
         'name' => 'Enabled Currencies',
@@ -142,9 +133,6 @@ return [
     ],
     'price_area_hidden' => [
         'name' => 'Price Area Hidden',
-    ],
-    'hide_price_filter' => [
-        'name' => 'Hide Price Filter',
     ],
     'hide_date_filter' => [
         'name' => 'Hide Date Filter',
@@ -245,10 +233,6 @@ return [
         'name' => 'Override Text',
         'instructions' => 'Old Value:New Value'
     ],
-    'steps_color' => [
-        'name' => 'Steps Color',
-        'instructions' => 'Changes the progressive steps color.'
-    ],
     'create_ad_button_color' => [
         'name' => 'Create Ad Button Color',
         'instructions' => 'Changes the button that shows up when the new ad category selection is finished.'
@@ -320,10 +304,6 @@ return [
     'is_desc_required' => [
         'name' => 'Required Ad Description ?',
         'instructions' => 'Is ad description required ?'
-    ],
-    'is_image_required' => [
-        'name' => 'Required Ad Image ?',
-        'instructions' => 'Is ad image required ?'
     ],
     'show_ad_note' => [
         'name' => 'Enter Ad Note When Creating',

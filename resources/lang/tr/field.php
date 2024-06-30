@@ -19,9 +19,6 @@ return [
     'price' => [
         'name' => 'Fiyat'
     ],
-    'standard_price' => [
-        'name' => 'Liste Fiyatı'
-    ],
     'date' => [
         'name' => 'Tarih'
     ],

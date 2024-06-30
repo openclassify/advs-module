@@ -32,7 +32,7 @@ class AdvApiCollection extends AdvRepository
 
         $this->checkGet($params);
 
-        $this->dispatchSync(new CheckRequiredParams(['name', 'price', 'standard_price', 'currency', 'advs_desc'], $params));
+        $this->dispatchSync(new CheckRequiredParams(['name', 'price'], $params));
 
         $defaultAdPublishTime = setting_value('visiosoft.module.advs::default_published_time', 30);
 
