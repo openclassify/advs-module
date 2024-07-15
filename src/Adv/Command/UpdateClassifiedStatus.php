@@ -33,12 +33,10 @@ class UpdateClassifiedStatus
                     'status' => 'approved',
                 ];
 
-                if (!setting_value('visiosoft.module.advs::show_finish_and_publish_date')) {
-                    $update['publish_at'] = date('Y-m-d H:i:s');
+                $update['publish_at'] = date('Y-m-d H:i:s');
 
-                    if (is_null($this->classified->finish_at)) {
-                        $update['finish_at'] = date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s') . ' + ' . $defaultClassifiedPublishTime . ' day'));
-                    }
+                if (is_null($this->classified->finish_at)) {
+                    $update['finish_at'] = date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s') . ' + ' . $defaultClassifiedPublishTime . ' day'));
                 }
 
                 $this->classified->update($update);

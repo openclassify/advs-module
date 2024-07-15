@@ -14,7 +14,6 @@ return [
                     'google_statistic_code',
                     'body_custom_space',
                     'ogImage',
-                    'free_currencyconverterapi_key',
                     'hide_price_categories',
                     'tcmb_exchange_url',
                     'enabled_currencies',
@@ -29,14 +28,11 @@ return [
                     'extend_ad',
                     'preview_mode',
                     'show_gifs_listing_main_pages',
-                    'show_finish_and_publish_date',
                     'latest-limit',
                     'popular_ads_limit',
                     'ads_image_limit',
                     'default_view_type',
                     'show_price_to_members_only',
-                    'price_area_hidden',
-                    'hide_listing_standard_price',
                     'hide_zero_price',
                     'auto_approve',
                     'estimated_pending_time',
@@ -62,15 +58,11 @@ return [
                 'fields' => [
                     'is_changeable_slug',
                     'hide_contact_created_at',
-                    'show_tax_field',
                     'detailed_product_options',
-                    'steps_color',
                     'create_ad_button_color',
-                    'hide_standard_price_field',
                     'title_length',
                     'show_ad_note',
                     'is_desc_required',
-                    'is_image_required',
                     'hide_options_field',
                     'hide_village_field',
                     'make_all_fields_required',
@@ -118,7 +110,8 @@ return [
             'filter' => [
                 'title' => 'visiosoft.module.advs::section.filter',
                 'fields' => [
-                    'hide_filter_section', 'hide_price_filter', 'hide_date_filter', 'hide_photo_filter', 'hide_map_filter',
+                    'hide_filter_section',
+                    'hide_date_filter', 'hide_photo_filter', 'hide_map_filter',
                     'hide_listing_header', 'user_filter_limit', 'hide_out_of_stock_products_without_listing', 'location_data_type_first'
                     , 'location_data_type_second'
                 ],

@@ -1080,12 +1080,10 @@ class AdvsController extends PublicController
                     'status' => 'approved',
                 ];
 
-                if (!setting_value('visiosoft.module.advs::show_finish_and_publish_date')) {
-                    $update = array_merge($update, [
-                        'finish_at' => date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s') . ' + ' . $defaultAdPublishTime . ' day')),
-                        'publish_at' => date('Y-m-d H:i:s')
-                    ]);
-                }
+                $update = array_merge($update, [
+                    'finish_at' => date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s') . ' + ' . $defaultAdPublishTime . ' day')),
+                    'publish_at' => date('Y-m-d H:i:s')
+                ]);
 
                 $adv->update($update);
             }
@@ -1144,12 +1142,6 @@ class AdvsController extends PublicController
 
             //map_Val --> coor
             event(new EditCoorAd($adv));
-
-            try {
-                $this->adv_model->foreignCurrency($this->request->currency, $this->request->price, $this->request->update_id, $this->settings_repository, false);
-            } catch (\Exception $exception) {
-                $this->messages->error(trans('visiosoft.module.advs::message.currency_converter_not_available'));
-            }
 
             if (config('adv.preview_mode')) {
                 return redirect(route('advs_preview', [$this->request->update_id]));
@@ -1244,14 +1236,10 @@ class AdvsController extends PublicController
         $priceValue = array_first($priceArray);
         $priceDecimalValue = end($priceArray);
 
-        $standardPriceArray = explode('.', $adv['standard_price']);
-        $standardPriceValue = array_first($standardPriceArray);
-        $standardPriceDecimalValue = end($standardPriceArray);
-
         return $this->view->make(
             'visiosoft.module.advs::new-ad/new-create',
             compact(
-                'priceValue', 'priceDecimalValue', 'standardPriceValue', 'standardPriceDecimalValue',
+                'priceValue', 'priceDecimalValue',
                 'id', 'cats_d', 'cats', 'adv', 'custom_fields', 'options',
                 'hidePrice', 'is_options', 'configurations', 'rawClassified'
             )

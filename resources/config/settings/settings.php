@@ -100,14 +100,6 @@ return [
             'mode' => 'upload',
         ]
     ],
-    'free_currencyconverterapi_key' => [
-        "type" => "anomaly.field_type.text",
-        'bind' => 'adv.free_currencyconverterapi_key',
-        'env' => 'ADV_CURRENCY_CONVERT_API_KEY',
-        'config' => [
-            "default_value" => "1eea72940f3868c77420"
-        ]
-    ],
     'hide_price_categories' => [
         'type' => 'anomaly.field_type.checkboxes',
         'config' => [
@@ -132,12 +124,6 @@ return [
         'config' => [
             'folders' => ["adv_listing_page"],
             'mode' => 'upload',
-        ]
-    ],
-    'hide_standard_price_field' => [
-        'type' => 'anomaly.field_type.boolean',
-        'config' => [
-            'default_value' => false,
         ]
     ],
     'hide_options_field' => [
@@ -168,19 +154,6 @@ return [
             'mode' => 'checkbox'
         ]
     ],
-    'hide_listing_standard_price' => [
-        'type' => 'anomaly.field_type.boolean',
-        'config' => [
-            'default_value' => false,
-            'mode' => 'checkbox'
-        ]
-    ],
-    'price_area_hidden' => [
-        'type' => 'anomaly.field_type.boolean',
-        'config' => [
-            'default_value' => false,
-        ]
-    ],
     'enabled_currencies' => [
         'bind' => 'streams::currencies.enabled',
         'env' => 'ADV_ENABLED_CURRENCIES',
@@ -206,13 +179,6 @@ return [
         'config' => [
             'default_value' => true,
         ],
-    ],
-
-    'hide_price_filter' => [
-        'type' => 'anomaly.field_type.boolean',
-        'config' => [
-            'default_value' => false,
-        ]
     ],
 
     'hide_date_filter' => [
@@ -379,12 +345,6 @@ return [
         'bind' => 'override_text',
         'env' => 'OVERRIDE_TEXT',
     ],
-    'steps_color' => [
-        "type" => "anomaly.field_type.colorpicker",
-        "config" => [
-            "default_value" => '#209579',
-        ]
-    ],
     'create_ad_button_color' => [
         "type" => "anomaly.field_type.colorpicker",
         "config" => [
@@ -470,20 +430,6 @@ return [
             'default_value' => false,
         ]
     ],
-
-    'show_finish_and_publish_date' => [
-        'type' => 'anomaly.field_type.boolean',
-        'config' => [
-            'default_value' => false,
-        ],
-    ],
-
-    'show_tax_field' => [
-        'type' => 'anomaly.field_type.boolean',
-        'config' => [
-            'default_value' => false,
-        ],
-    ],
     'hide_contact_created_at' => [
         'type' => 'anomaly.field_type.boolean',
         'config' => [
@@ -531,12 +477,6 @@ return [
         'type' => 'anomaly.field_type.boolean',
         'config' => [
             'default_value' => false,
-        ],
-    ],
-    'is_image_required' => [
-        'type' => 'anomaly.field_type.boolean',
-        'config' => [
-            'default_value' => true,
         ],
     ],
     'show_ad_note' => [

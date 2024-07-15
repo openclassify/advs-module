@@ -1,5 +1,4 @@
 <div class="col-md-7 slider-box">
-    {% if blocks('ad-item-picture-block-area') is null %}
         <div class="fotorama"
              data-width="700"
              data-ratio="3/2"
@@ -19,9 +18,6 @@
 
             {% endif %}
         </div>
-    {% else %}
-        {{ blocks('ad-item-picture-block-area') }}
-    {% endif %}
 </div>
 
 {{ asset_add("scripts.js", "visiosoft.module.advs::js/fotorama.js") }}

@@ -21,7 +21,7 @@ class AdvsModulePlugin extends Plugin
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction(
+            new \Twig\TwigFunction(
                 'adDetail',
                 function ($id) {
 
@@ -31,7 +31,7 @@ class AdvsModulePlugin extends Plugin
 
                     return $ad;
                 }
-            ), new \Twig_SimpleFunction(
+            ), new \Twig\TwigFunction(
                 'latestAds',
                 function () {
                     if (!$latestAds = $this->dispatchSync(new LatestAds())) {
@@ -40,19 +40,19 @@ class AdvsModulePlugin extends Plugin
                     return $latestAds;
                 }
             ),
-	        new \Twig_SimpleFunction(
+	        new \Twig\TwigFunction(
 	            'bestsellerAds',
 		        function ($catId = null, $limit = 10) {
 	            	return app(AdvRepositoryInterface::class)->bestsellerAds($catId, $limit);
 		        }
 	        ),
-            new \Twig_SimpleFunction(
+            new \Twig\TwigFunction(
                 'appendRequestURL',
                 function ($request, $url, $new_parameters, $removeParams = []) {
                     return $this->dispatchSync(new appendRequestURL($request, $url, $new_parameters, $removeParams));
                 }
             ),
-            new \Twig_SimpleFunction(
+            new \Twig\TwigFunction(
                 'getUserAllAdvs',
                 function ($user = null) {
                     if (!$user) {
@@ -65,19 +65,19 @@ class AdvsModulePlugin extends Plugin
                         ->get();
                 }
             ),
-            new \Twig_SimpleFunction(
+            new \Twig\TwigFunction(
                 'getUserAds',
                 function ($userID = null, $status = "approved") {
                     return $this->dispatchSync(new GetUserAds($userID, $status));
                 }
             ),
-            new \Twig_SimpleFunction(
+            new \Twig\TwigFunction(
                 'getListingLocation',
                 function ($locationInfo, $currentAdv) {
                     return $this->dispatchSync(new GetListingLocation($locationInfo, $currentAdv));
                 }
             ),
-            new \Twig_SimpleFunction(
+            new \Twig\TwigFunction(
                 'getUserPassiveAdvs',
                 function ($user = null) {
                     if (!$user) {
@@ -89,7 +89,7 @@ class AdvsModulePlugin extends Plugin
                     return $advModel->pendingAdvsByUser()->get();
                 }
             ),
-            new \Twig_SimpleFunction(
+            new \Twig\TwigFunction(
                 'fn',
                 function (Twig_Environment $twig, $name, ...$args) {
                     $fn = $twig->getFunction($name);
@@ -100,7 +100,7 @@ class AdvsModulePlugin extends Plugin
 
                     return $fn->getCallable()(...$args);
                 }, ['needs_environment' => true]
-            ), new \Twig_SimpleFunction(
+            ), new \Twig\TwigFunction(
                 'getPopular',
                 function () {
                     if (!$popular = $this->dispatchSync(new getPopular())) {
@@ -109,7 +109,7 @@ class AdvsModulePlugin extends Plugin
                     return $popular;
                 }
             ),
-            new \Twig_SimpleFunction(
+            new \Twig\TwigFunction(
                 'currency_*',
                 function ($name) {
                     return call_user_func_array(
@@ -118,7 +118,7 @@ class AdvsModulePlugin extends Plugin
                     );
                 }
             ),
-            new \Twig_SimpleFunction(
+            new \Twig\TwigFunction(
                 'getByCat',
                 function ($catID = null,$level = '1', $limit = 12) {
                     return app(AdvRepositoryInterface::class)->getByCat($catID,$level, $limit);
@@ -135,7 +135,7 @@ class AdvsModulePlugin extends Plugin
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter(
+            new \Twig\TwigFilter(
                 'ksort',
                 function ($array) {
                     if ($array) {

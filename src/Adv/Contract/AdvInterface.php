@@ -20,8 +20,6 @@ interface AdvInterface extends EntryInterface
 
     public function myAdvsByUser();
 
-	public function foreignCurrency($currency, $price, $isUpdate, $settings, $showMsg);
-
     public function popularAdvs();
 
     public function advsofDay();

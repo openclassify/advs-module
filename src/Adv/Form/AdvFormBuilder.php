@@ -36,9 +36,6 @@ class AdvFormBuilder extends FormBuilder
                 'type' => 'anomaly.field_type.text',
                 'required' => $requiredFields
             ],
-            'standard_price' => [
-                'type' => 'anomaly.field_type.text'
-            ],
             'advs_desc' => [
                 'required' => setting_value('visiosoft.module.advs::is_desc_required')
             ],
@@ -58,7 +55,6 @@ class AdvFormBuilder extends FormBuilder
             'cat9',
             'cat10',
             'currency',
-            'tax',
             'online_payment',
             'stock',
             'min_order_limit',
@@ -86,9 +82,7 @@ class AdvFormBuilder extends FormBuilder
                 'label' => false,
                 'class' => 'hidden d-none mapVal'
             ],
-            'files' => [
-                'required' => setting_value('visiosoft.module.advs::is_image_required')
-            ],
+            'files',
             'doc_files',
             'popular_adv',
             'adv_day',
@@ -97,17 +91,6 @@ class AdvFormBuilder extends FormBuilder
             'seo_title',
             'seo_description'
         ];
-
-        if (setting_value('visiosoft.module.advs::show_finish_and_publish_date')) {
-            $fields = array_merge($fields, [
-                'finish_at' => [
-                    'required' => true,
-                ],
-                'publish_at' => [
-                    'required' => true,
-                ],
-            ]);
-        }
 
         return $fields;
     }

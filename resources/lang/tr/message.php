@@ -32,7 +32,6 @@ return [
     'passive_status_change' => "İlanınızın Durumu Pasif Olarak Ayarlandı!",
 	'sold_status_change' => "İlanın Durumu Satıldı Olarak Ayarlanmıştır!",
 	'status_change' => "İlanın durumu Ayarland :status !",
-	'disabled_detailed_options_for_admin_role' => "Ayrıntılı ürün seçenekleri devre dışı bırakıldı.",
     'permission_error' => 'Bu işlem için yetkiniz bulunmamaktadır',
     'currency_converter_not_available' => 'Para birimi çevirici kullanılamıyor.',
     'option_saved' => 'Seçenek kaydedildi',

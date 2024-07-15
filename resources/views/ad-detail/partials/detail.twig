@@ -1,16 +1,5 @@
 <div class="slider-text">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offered-field offered-row">
-        {% set standardPrice = adv.standard_price.value %}
-        {% if standardPrice and standardPrice > 0 %}
-            <div class="d-flex flex-wrap align-items-center">
-                <h3 class="ad-price-standard mr-3 text-truncate">
-                    <b>{{ currency_format(adv.standard_price,adv.currency, {'decimals' : setting_value('visiosoft.field_type.decimal::decimal_length')}) }}</b>
-                </h3>
-                <h3 class="ad-price-standard-percentage text-white p-2">
-                    <b>%{{ (100 - ((100 * adv.price.value) / adv.standard_price.value))|round(0, 'common') }}</b>
-                </h3>
-            </div>
-        {% endif %}
         <h3 class="ad-price">
             <b>{{ currency_format(adv.price,adv.currency, {'decimals' : setting_value('visiosoft.field_type.decimal::decimal_length')}) }}</b>
             <!-- priceField with Block -->
